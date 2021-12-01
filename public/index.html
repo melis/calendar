@@ -57,9 +57,10 @@
           <div class="col-lg-5">
             <div class="pbt_bl">
               <h4>Выберите дату посещения*</h4>
-              <div class="input_date_pos">
+              <!-- <div class="input_date_pos">
                 <input placeholder="дата" class="input_date" type="text" />
-              </div>
+              </div> -->
+              <div class="input_date_pos" id="root"></div>
 
               <div class="hover_check">
                 <div class="form-check">
@@ -218,7 +219,6 @@
           </div>
         </div>
       </div>
-      <div id="root"></div>
     </footer>
 
     <script src="./assets/js/jquery-3.6.0.min.js"></script>
@@ -226,35 +226,5 @@
     <script src="./assets/js/owl.carousel.min.js"></script>
     <script src="./assets/js/script.js"></script>
     <script></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react@17/umd/react.production.min.js"
-    ></script>
-    <script
-      crossorigin
-      src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"
-      integrity="sha512-kp7YHLxuJDJcOzStgd6vtpxr4ZU9kjn77e6dBsivSz+pUuAuMlE2UTdKB7jjsWT84qbS8kdCWHPETnP/ctrFsA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script src="https://unpkg.com/@mui/material@latest/umd/material-ui.production.min.js"></script>
-
-    <script type="text/babel">
-      const Test = () => {
-        return <div>Melis</div>;
-      };
-
-      function App() {
-        return (
-          <LocalizationProvider
-            dateAdapter={AdapterDateFns}
-          ></LocalizationProvider>
-        );
-      }
-      ReactDOM.render(<App />, document.getElementById("root"));
-    </script>
   </body>
 </html>
