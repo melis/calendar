@@ -12,7 +12,9 @@ import ruLocale from "date-fns/locale/ru";
 const localeMap = {
   ru: ruLocale,
 };
-
+const maskMap = {
+  ru: "__/__/____",
+};
 function getRandomNumber(min, max) {
   return Math.round(Math.random() * (max - min) + min);
 }
@@ -104,7 +106,14 @@ export default function App() {
             <Badge
               key={day.toString()}
               overlap="circular"
-              badgeContent={isSelected ? "🌚" : undefined}
+              badgeContent={
+                isSelected ? (
+                  <>
+                    <span className="m_label_1"></span>
+                    <span className="m_label_2"></span>
+                  </>
+                ) : undefined
+              }
             >
               <PickersDay {...DayComponentProps} />
             </Badge>
