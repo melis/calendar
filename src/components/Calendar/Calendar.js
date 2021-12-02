@@ -8,6 +8,7 @@ import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import getDaysInMonth from "date-fns/getDaysInMonth";
 import ruLocale from "date-fns/locale/ru";
+import { getDay, getDate, setDate } from "date-fns";
 
 const data = [
   {
@@ -23,10 +24,10 @@ const data = [
     proceed: "3-5",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 6,
-    distance: 7,
+    ageLimit: 8,
+    distance: 12,
     transport: "Пеший",
-    count: "5-25",
+    count: "5-30",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -46,7 +47,7 @@ const data = [
     id: 2,
     type: "excursion",
     date: "12.06.2021",
-    time: ["12:00", "15:00"],
+    time: ["10:00", "15:00"],
     title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
     text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
     Подойдет подготовленным посетителям, которые любят 
@@ -55,10 +56,10 @@ const data = [
     proceed: "3-5",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 6,
-    distance: 7,
+    ageLimit: 4,
+    distance: 12,
     transport: "Пеший",
-    count: "5-25",
+    count: "10-25",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -96,7 +97,103 @@ const data = [
   {
     id: 5,
     type: "event",
-    date: "12.01.2021",
+    date: "12.10.2021",
+    time: "Предпоследняя суббота июля, 11:00 — 17:00",
+    title: "День открытых дверей",
+    text: `Добрая традиция заповедника — день, когда усадьба превращается 
+    в одну большую эколого-просветительскую площадку, где каждый 
+    находит занятие по душе.`,
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 6,
+    type: "excursion",
+    date: "12.11.2021",
+    time: ["12:00", "15:00"],
+    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
+    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
+    Подойдет подготовленным посетителям, которые любят 
+    долгие прогулки, вылазки в горы и с легкостью преодолевают 
+    большие расстояния.`,
+    proceed: "3-5",
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    ageLimit: 6,
+    distance: 7,
+    transport: "Пеший",
+    count: "5-25",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 7,
+    type: "event",
+    date: "12.13.2021",
+    time: "Предпоследняя суббота июля, 11:00 — 17:00",
+    title: "День открытых дверей",
+    text: `Добрая традиция заповедника — день, когда усадьба превращается 
+    в одну большую эколого-просветительскую площадку, где каждый 
+    находит занятие по душе.`,
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 8,
+    type: "excursion",
+    date: "12.15.2021",
+    time: ["12:00", "15:00"],
+    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
+    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
+    Подойдет подготовленным посетителям, которые любят 
+    долгие прогулки, вылазки в горы и с легкостью преодолевают 
+    большие расстояния.`,
+    proceed: "3-5",
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    ageLimit: 6,
+    distance: 7,
+    transport: "Пеший",
+    count: "5-25",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 9,
+    type: "event",
+    date: "12.15.2021",
+    time: "Предпоследняя суббота июля, 11:00 — 17:00",
+    title: "День открытых дверей",
+    text: `Добрая традиция заповедника — день, когда усадьба превращается 
+    в одну большую эколого-просветительскую площадку, где каждый 
+    находит занятие по душе.`,
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 10,
+    type: "excursion",
+    date: "12.20.2021",
+    time: ["12:00", "15:00"],
+    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
+    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
+    Подойдет подготовленным посетителям, которые любят 
+    долгие прогулки, вылазки в горы и с легкостью преодолевают 
+    большие расстояния.`,
+    proceed: "3-5",
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    ageLimit: 6,
+    distance: 7,
+    transport: "Пеший",
+    count: "5-25",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 11,
+    type: "event",
+    date: "12.18.2021",
     time: "Предпоследняя суббота июля, 11:00 — 17:00",
     title: "День открытых дверей",
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
@@ -112,14 +209,6 @@ const localeMap = {
   ru: ruLocale,
 };
 
-function getRandomNumber(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
-
-function disableWeekends(date) {
-  return date.getDay() === 0 || date.getDay() === 6;
-}
-
 /**
  * Mimic fetch with abort controller https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
  * ⚠️ No IE11 support
@@ -127,12 +216,6 @@ function disableWeekends(date) {
 function fakeFetch(date, { signal }) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
-      const daysInMonth = getDaysInMonth(date);
-
-      const daysToHighlight = [1, 2, 3].map(() =>
-        getRandomNumber(1, daysInMonth)
-      );
-
       resolve(data);
     }, 500);
 
@@ -150,6 +233,39 @@ const Calendar = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
   const [value, setValue] = React.useState(initialValue);
+
+  const renderDay = (day, _value, DayComponentProps) => {
+    let exc = false;
+    let evn = false;
+    highlightedDays.forEach((el) => {
+      if (
+        !DayComponentProps.outsideCurrentMonth &&
+        Date.parse(el.date) === Date.parse(day)
+      ) {
+        exc = el.type === "excursion" ? true : exc;
+        evn = el.type === "event" ? true : evn;
+      }
+    });
+
+    return (
+      <Badge
+        key={day.toString()}
+        overlap="circular"
+        badgeContent={
+          <>
+            {exc ? <span className="m_label_1"></span> : null}
+            {evn ? <span className="m_label_2"></span> : null}
+          </>
+        }
+      >
+        <PickersDay {...DayComponentProps} />
+      </Badge>
+    );
+  };
+
+  const disableWeekends = (date) => {
+    return false;
+  };
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
@@ -178,11 +294,8 @@ const Calendar = () => {
 
   const handleMonthChange = (date) => {
     if (requestAbortController.current) {
-      // make sure that you are aborting useless requests
-      // because it is possible to switch between months pretty quickly
       requestAbortController.current.abort();
     }
-
     setIsLoading(true);
     setHighlightedDays([]);
     fetchHighlightedDays(date);
@@ -206,35 +319,7 @@ const Calendar = () => {
           shouldDisableDate={disableWeekends}
           renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}
-          renderDay={(day, _value, DayComponentProps) => {
-            let exc = false;
-            let evn = false;
-            highlightedDays.forEach((el) => {
-              console.log(Date.parse(el.date) === Date.parse(day));
-              if (Date.parse(el.date) === Date.parse(day)) {
-                exc = el.type === "excursion" ? true : false;
-                evn = el.type === "event" ? true : false;
-              }
-            });
-
-            // !DayComponentProps.outsideCurrentMonth &&
-            // highlightedDays.indexOf(day.getDate()) > -1;
-
-            return (
-              <Badge
-                key={day.toString()}
-                overlap="circular"
-                badgeContent={
-                  <>
-                    {exc ? <span className="m_label_1"></span> : null}
-                    {evn ? <span className="m_label_2"></span> : null}
-                  </>
-                }
-              >
-                <PickersDay {...DayComponentProps} />
-              </Badge>
-            );
-          }}
+          renderDay={renderDay}
         />
       </LocalizationProvider>
     </div>
