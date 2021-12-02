@@ -209,10 +209,6 @@ const localeMap = {
   ru: ruLocale,
 };
 
-/**
- * Mimic fetch with abort controller https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
- * ⚠️ No IE11 support
- */
 function fakeFetch(date, { signal }) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
@@ -226,13 +222,11 @@ function fakeFetch(date, { signal }) {
   });
 }
 
-const initialValue = new Date();
-
 const Calendar = () => {
   const requestAbortController = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
-  const [value, setValue] = React.useState(initialValue);
+  const [value, setValue] = React.useState(new Date());
 
   const renderDay = (day, _value, DayComponentProps) => {
     let exc = false;
@@ -287,7 +281,7 @@ const Calendar = () => {
   };
 
   React.useEffect(() => {
-    fetchHighlightedDays(initialValue);
+    fetchHighlightedDays(new Date());
     // abort request on unmount
     return () => requestAbortController.current?.abort();
   }, []);
