@@ -13,7 +13,7 @@ const data = [
   {
     id: 0,
     type: "excursion",
-    date: "01.02.2021",
+    date: "12.02.2021",
     time: ["12:00", "15:00"],
     title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
     text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
@@ -21,6 +21,8 @@ const data = [
     долгие прогулки, вылазки в горы и с легкостью преодолевают 
     большие расстояния.`,
     proceed: "3-5",
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 6,
     distance: 7,
     transport: "Пеший",
@@ -30,12 +32,78 @@ const data = [
   {
     id: 1,
     type: "event",
-    date: "01.02.2021",
+    date: "12.02.2021",
     time: "Предпоследняя суббота июля, 11:00 — 17:00",
     title: "День открытых дверей",
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
     в одну большую эколого-просветительскую площадку, где каждый 
     находит занятие по душе.`,
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 2,
+    type: "excursion",
+    date: "12.06.2021",
+    time: ["12:00", "15:00"],
+    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
+    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
+    Подойдет подготовленным посетителям, которые любят 
+    долгие прогулки, вылазки в горы и с легкостью преодолевают 
+    большие расстояния.`,
+    proceed: "3-5",
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    ageLimit: 6,
+    distance: 7,
+    transport: "Пеший",
+    count: "5-25",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 3,
+    type: "event",
+    date: "12.05.2021",
+    time: "Предпоследняя суббота июля, 11:00 — 17:00",
+    title: "День открытых дверей",
+    text: `Добрая традиция заповедника — день, когда усадьба превращается 
+    в одну большую эколого-просветительскую площадку, где каждый 
+    находит занятие по душе.`,
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 4,
+    type: "excursion",
+    date: "12.03.2021",
+    time: ["12:00", "15:00"],
+    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
+    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
+    Подойдет подготовленным посетителям, которые любят 
+    долгие прогулки, вылазки в горы и с легкостью преодолевают 
+    большие расстояния.`,
+    proceed: "3-5",
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    ageLimit: 6,
+    distance: 7,
+    transport: "Пеший",
+    count: "5-25",
+    price: { base: 450, child: 400, pref: 0 },
+  },
+  {
+    id: 5,
+    type: "event",
+    date: "12.01.2021",
+    time: "Предпоследняя суббота июля, 11:00 — 17:00",
+    title: "День открытых дверей",
+    text: `Добрая традиция заповедника — день, когда усадьба превращается 
+    в одну большую эколого-просветительскую площадку, где каждый 
+    находит занятие по душе.`,
+    img_url:
+      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
 ];
@@ -65,7 +133,7 @@ function fakeFetch(date, { signal }) {
         getRandomNumber(1, daysInMonth)
       );
 
-      resolve({ daysToHighlight });
+      resolve(data);
     }, 500);
 
     signal.onabort = () => {
@@ -88,8 +156,8 @@ const Calendar = () => {
     fakeFetch(date, {
       signal: controller.signal,
     })
-      .then(({ daysToHighlight }) => {
-        setHighlightedDays(daysToHighlight);
+      .then((data) => {
+        setHighlightedDays(data);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -139,21 +207,28 @@ const Calendar = () => {
           renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}
           renderDay={(day, _value, DayComponentProps) => {
-            const isSelected =
-              !DayComponentProps.outsideCurrentMonth &&
-              highlightedDays.indexOf(day.getDate()) > -1;
+            let exc = false;
+            let evn = false;
+            highlightedDays.forEach((el) => {
+              console.log(Date.parse(el.date) === Date.parse(day));
+              if (Date.parse(el.date) === Date.parse(day)) {
+                exc = el.type === "excursion" ? true : false;
+                evn = el.type === "event" ? true : false;
+              }
+            });
+
+            // !DayComponentProps.outsideCurrentMonth &&
+            // highlightedDays.indexOf(day.getDate()) > -1;
 
             return (
               <Badge
                 key={day.toString()}
                 overlap="circular"
                 badgeContent={
-                  isSelected ? (
-                    <>
-                      <span className="m_label_1"></span>
-                      <span className="m_label_2"></span>
-                    </>
-                  ) : undefined
+                  <>
+                    {exc ? <span className="m_label_1"></span> : null}
+                    {evn ? <span className="m_label_2"></span> : null}
+                  </>
                 }
               >
                 <PickersDay {...DayComponentProps} />
