@@ -6,208 +6,9 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import PickersDay from "@mui/lab/PickersDay";
 import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
-import getDaysInMonth from "date-fns/getDaysInMonth";
 import ruLocale from "date-fns/locale/ru";
-import { getDay, getDate, setDate } from "date-fns";
-
-const data = [
-  {
-    id: 0,
-    type: "excursion",
-    date: "12.02.2021",
-    time: ["12:00", "15:00"],
-    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
-    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
-    Подойдет подготовленным посетителям, которые любят 
-    долгие прогулки, вылазки в горы и с легкостью преодолевают 
-    большие расстояния.`,
-    proceed: "3-5",
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 8,
-    distance: 12,
-    transport: "Пеший",
-    count: "5-30",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 1,
-    type: "event",
-    date: "12.02.2021",
-    time: "Предпоследняя суббота июля, 11:00 — 17:00",
-    title: "День открытых дверей",
-    text: `Добрая традиция заповедника — день, когда усадьба превращается 
-    в одну большую эколого-просветительскую площадку, где каждый 
-    находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 2,
-    type: "excursion",
-    date: "12.06.2021",
-    time: ["10:00", "15:00"],
-    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
-    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
-    Подойдет подготовленным посетителям, которые любят 
-    долгие прогулки, вылазки в горы и с легкостью преодолевают 
-    большие расстояния.`,
-    proceed: "3-5",
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 4,
-    distance: 12,
-    transport: "Пеший",
-    count: "10-25",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 3,
-    type: "event",
-    date: "12.05.2021",
-    time: "Предпоследняя суббота июля, 11:00 — 17:00",
-    title: "День открытых дверей",
-    text: `Добрая традиция заповедника — день, когда усадьба превращается 
-    в одну большую эколого-просветительскую площадку, где каждый 
-    находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 4,
-    type: "excursion",
-    date: "12.03.2021",
-    time: ["12:00", "15:00"],
-    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
-    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
-    Подойдет подготовленным посетителям, которые любят 
-    долгие прогулки, вылазки в горы и с легкостью преодолевают 
-    большие расстояния.`,
-    proceed: "3-5",
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 6,
-    distance: 7,
-    transport: "Пеший",
-    count: "5-25",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 5,
-    type: "event",
-    date: "12.10.2021",
-    time: "Предпоследняя суббота июля, 11:00 — 17:00",
-    title: "День открытых дверей",
-    text: `Добрая традиция заповедника — день, когда усадьба превращается 
-    в одну большую эколого-просветительскую площадку, где каждый 
-    находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 6,
-    type: "excursion",
-    date: "12.11.2021",
-    time: ["12:00", "15:00"],
-    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
-    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
-    Подойдет подготовленным посетителям, которые любят 
-    долгие прогулки, вылазки в горы и с легкостью преодолевают 
-    большие расстояния.`,
-    proceed: "3-5",
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 6,
-    distance: 7,
-    transport: "Пеший",
-    count: "5-25",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 7,
-    type: "event",
-    date: "12.13.2021",
-    time: "Предпоследняя суббота июля, 11:00 — 17:00",
-    title: "День открытых дверей",
-    text: `Добрая традиция заповедника — день, когда усадьба превращается 
-    в одну большую эколого-просветительскую площадку, где каждый 
-    находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 8,
-    type: "excursion",
-    date: "12.15.2021",
-    time: ["12:00", "15:00"],
-    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
-    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
-    Подойдет подготовленным посетителям, которые любят 
-    долгие прогулки, вылазки в горы и с легкостью преодолевают 
-    большие расстояния.`,
-    proceed: "3-5",
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 6,
-    distance: 7,
-    transport: "Пеший",
-    count: "5-25",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 9,
-    type: "event",
-    date: "12.15.2021",
-    time: "Предпоследняя суббота июля, 11:00 — 17:00",
-    title: "День открытых дверей",
-    text: `Добрая традиция заповедника — день, когда усадьба превращается 
-    в одну большую эколого-просветительскую площадку, где каждый 
-    находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 10,
-    type: "excursion",
-    date: "12.20.2021",
-    time: ["12:00", "15:00"],
-    title: "Экскурсия «От болота до вершины» по тропе «В гору Ельнюн-2»",
-    text: `Знакомит с ландшафтами заповедника и особенностями северной природы.
-    Подойдет подготовленным посетителям, которые любят 
-    долгие прогулки, вылазки в горы и с легкостью преодолевают 
-    большие расстояния.`,
-    proceed: "3-5",
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    ageLimit: 6,
-    distance: 7,
-    transport: "Пеший",
-    count: "5-25",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-  {
-    id: 11,
-    type: "event",
-    date: "12.18.2021",
-    time: "Предпоследняя суббота июля, 11:00 — 17:00",
-    title: "День открытых дверей",
-    text: `Добрая традиция заповедника — день, когда усадьба превращается 
-    в одну большую эколого-просветительскую площадку, где каждый 
-    находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
-    price: { base: 450, child: 400, pref: 0 },
-  },
-];
-
-const localeMap = {
-  ru: ruLocale,
-};
+import data from "../../data";
+// import { getDay, getDate, setDate } from "date-fns";
 
 function fakeFetch(date, { signal }) {
   return new Promise((resolve, reject) => {
@@ -227,6 +28,10 @@ const Calendar = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
   const [value, setValue] = React.useState(new Date());
+
+  const disableWeekends = (d) => {
+    return false;
+  };
 
   const renderDay = (day, _value, DayComponentProps) => {
     let exc = false;
@@ -255,10 +60,6 @@ const Calendar = () => {
         <PickersDay {...DayComponentProps} />
       </Badge>
     );
-  };
-
-  const disableWeekends = (date) => {
-    return false;
   };
 
   const fetchHighlightedDays = (date) => {
@@ -297,10 +98,7 @@ const Calendar = () => {
 
   return (
     <div className="input_date_pos">
-      <LocalizationProvider
-        dateAdapter={AdapterDateFns}
-        locale={localeMap["ru"]}
-      >
+      <LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
         <DatePicker
           inputFormat="dd MMMM yyyy"
           value={value}
