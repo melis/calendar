@@ -23,7 +23,7 @@ const App = () => {
                     id="Check_1"
                   />
                   <label className="form-check-label" htmlFor="Check_1">
-                    С правилами покупки билета ознакомлен(а)
+                    Хочу посетить заповедник самостоятельно
                   </label>
                 </div>
               </div>

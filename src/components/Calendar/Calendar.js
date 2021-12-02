@@ -32,11 +32,13 @@ const Calendar = () => {
   const disableDays = (d) => {
     let a = true;
     highlightedDays.forEach((e) => {
-      if (new Date(e.date).getDate() === d.getDate()) {
+      if (
+        new Date(e.date).getDate() === d.getDate() &&
+        d.getDate() >= new Date().getDate()
+      ) {
         a = false;
       }
     });
-
     return a;
   };
 
