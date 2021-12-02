@@ -188,7 +188,13 @@ img {
   height: 234px;
   position: absolute;
 }
-
+.banner_content .white_bird {
+  bottom: 0;
+  float: left;
+  width: 158px;
+  height: 200px;
+  position: absolute;
+}
 .banner_content .reptile img {
   width: 100%;
 }
@@ -243,7 +249,15 @@ img {
   color: #212121;
   margin-bottom: 23px;
 }
-
+.title_block_m {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 35px;
+  color: #212121;
+  margin-bottom: 23px;
+}
 .content_item p {
   font-family: Raleway;
   font-style: normal;
@@ -536,8 +550,7 @@ section.allert .content_block {
   align-items: center;
   margin-bottom: 15px;
 }
-
-.form-check label {
+.form-check .form-check label {
   font-family: Raleway;
   font-style: normal;
   font-weight: normal;
@@ -598,7 +611,9 @@ section.allert .content_block {
   display: flex;
   align-items: end;
 }
-
+.head_page.green {
+  background: #88bf57;
+}
 .head_page_content {
   display: flex;
   justify-content: center;
@@ -672,6 +687,7 @@ section.allert .content_block {
   border: 2px solid #005d90;
   color: #005d90;
   margin-right: 18px;
+  margin-left: 0;
 }
 
 .btn.border_line:hover {
@@ -696,13 +712,12 @@ section.allert .content_block {
   margin-bottom: 20px;
 }
 
-input.input_date,
-.MuiFormControl-root {
-  padding: 20px 25px !important;
+input.input_date {
+  border: 2px solid #eef5e9;
+  padding: 20px 35px 20px 25px;
   width: 100%;
   background: #eef5e9;
   border-radius: 20px;
-  border: none;
   box-shadow: none;
   font-family: Raleway;
   font-style: normal;
@@ -710,11 +725,7 @@ input.input_date,
   font-size: 18px;
   line-height: 140%;
   color: #212121;
-  margin-bottom: 15px !important;
-}
-.MuiToolbar-root,
-.MuiInput-underline:before {
-  display: none !important;
+  margin-bottom: 15px;
 }
 
 .pbt_img img {
@@ -784,7 +795,10 @@ button.btn_link {
 .btn_link.chose {
   background: #d76729;
 }
-
+.btn_link.chose:hover {
+  background: #007db5;
+  color: #ffffff;
+}
 .tickets {
   margin-top: 100px;
 }
@@ -796,6 +810,8 @@ button.btn_link {
 .pbt_r_b {
   height: 100%;
   position: relative;
+  width: 100%;
+  max-width: 670px;
 }
 
 .pbt_r_b .btns {
@@ -810,12 +826,12 @@ button.btn_link {
 
 /* .input_date_pos:after {
   content: "";
-  right: 14px;
+  right: 24px;
   width: 30px;
   height: 30px;
   position: absolute;
   background: url(../images/icons/calnedar.svg);
-  top: 16px;
+  top: 18px;
   z-index: 1;
 } */
 
@@ -858,6 +874,9 @@ button.btn_link {
 }
 
 .blue_bg h4 {
+  display: flex;
+  align-items: end;
+  flex-direction: column;
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
@@ -1043,7 +1062,7 @@ button.btn_link {
   margin-bottom: 10px;
 }
 .ticket_selection_item .accordion-body {
-  padding: 28px 0 40px;
+  padding: 28px 0 28px;
 }
 .ticket_selection_item .accordion-body p {
   font-family: Raleway;
@@ -1102,6 +1121,7 @@ button.btn_link {
 }
 .a_warning.active {
   display: block;
+  z-index: 9;
 }
 .pbt_bl.r_bl {
   max-width: inherit;
@@ -1110,6 +1130,7 @@ button.btn_link {
   width: 420px;
   display: inline-grid;
   margin-right: 40px;
+  margin-bottom: 24px;
 }
 .accordion-body .form-group label {
   font-family: Raleway;
@@ -1134,11 +1155,17 @@ button.btn_link {
   line-height: 140%;
   color: #212121;
 }
-.form-group.select {
+.relative_b {
   position: relative;
 }
-.form-group.select:after {
+.relative_b:after {
   position: absolute;
+  width: 35px;
+  height: 35px;
+  background: url(../images/icons/normal.svg) no-repeat center;
+  right: 20px;
+  top: 8px;
+  content: "";
 }
 .form-select.is-invalid:not([multiple]):not([size]),
 .form-select.is-invalid:not([multiple])[size="1"],
@@ -1167,4 +1194,72 @@ button.btn_link {
   font-size: 14px;
   line-height: 100%;
   color: #e13838;
+}
+.form-check-input.is-valid:checked,
+.was-validated .form-check-input:valid:checked {
+  background-color: #fbfbfb;
+}
+input.input_date:focus {
+  outline-offset: 0px;
+  border: 2px solid #007db5;
+  outline: none;
+}
+.container.tab-content > .active {
+  display: flex;
+}
+.container.fade {
+  display: none;
+}
+.cancel_this {
+  margin-bottom: 16px;
+  width: 30px;
+  height: 30px;
+  content: "";
+  cursor: pointer;
+  background: url(../images/icons/Union.svg) no-repeat center;
+}
+.form-check.relative label {
+  color: #8b8b8b;
+}
+.form-check.relative label.active {
+  color: #212121;
+}
+.banner.regulations .banner_text {
+  width: 100%;
+}
+.green .head_page_content h2 {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 75px;
+  line-height: 95%;
+  color: #ffffff;
+  margin-left: 48px;
+  margin-bottom: 14px;
+}
+.green .head_page_content img {
+  width: 160px;
+}
+.border_line.add_ticket {
+  border-radius: 30px;
+  padding: 16px 30px;
+  margin-top: 34px;
+}
+.form_item input {
+  min-height: 55px;
+}
+.form-check-input {
+  min-height: inherit !important;
+}
+.ticket_item {
+  position: relative;
+}
+.remove_this {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: url(../images/icons/close.svg) no-repeat center;
+  right: 14px;
+  top: 2px;
+  cursor: pointer;
 }

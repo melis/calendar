@@ -1,125 +1,104 @@
-import * as React from "react";
-import Badge from "@mui/material/Badge";
-import TextField from "@mui/material/TextField";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import PickersDay from "@mui/lab/PickersDay";
-import DatePicker from "@mui/lab/DatePicker";
-import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
-import getDaysInMonth from "date-fns/getDaysInMonth";
-import ruLocale from "date-fns/locale/ru";
+import React, { useState } from "react";
+import Calendar from "../Calendar/Calendar";
 
-const localeMap = {
-  ru: ruLocale,
-};
-const maskMap = {
-  ru: "__/__/____",
-};
-function getRandomNumber(min, max) {
-  return Math.round(Math.random() * (max - min) + min);
-}
-
-/**
- * Mimic fetch with abort controller https://developer.mozilla.org/en-US/docs/Web/API/AbortController/abort
- * ⚠️ No IE11 support
- */
-function fakeFetch(date, { signal }) {
-  return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      const daysInMonth = getDaysInMonth(date);
-      const daysToHighlight = [1, 2, 3].map(() =>
-        getRandomNumber(1, daysInMonth)
-      );
-
-      resolve({ daysToHighlight });
-    }, 500);
-
-    signal.onabort = () => {
-      clearTimeout(timeout);
-      reject(new DOMException("aborted", "AbortError"));
-    };
-  });
-}
-
-const initialValue = new Date();
-
-export default function App() {
-  const requestAbortController = React.useRef(null);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
-  const [value, setValue] = React.useState(initialValue);
-
-  const fetchHighlightedDays = (date) => {
-    const controller = new AbortController();
-    fakeFetch(date, {
-      signal: controller.signal,
-    })
-      .then(({ daysToHighlight }) => {
-        setHighlightedDays(daysToHighlight);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        // ignore the error if it's caused by `controller.abort`
-        if (error.name !== "AbortError") {
-          throw error;
-        }
-      });
-
-    requestAbortController.current = controller;
-  };
-
-  React.useEffect(() => {
-    fetchHighlightedDays(initialValue);
-    // abort request on unmount
-    return () => requestAbortController.current?.abort();
-  }, []);
-
-  const handleMonthChange = (date) => {
-    if (requestAbortController.current) {
-      // make sure that you are aborting useless requests
-      // because it is possible to switch between months pretty quickly
-      requestAbortController.current.abort();
-    }
-
-    setIsLoading(true);
-    setHighlightedDays([]);
-    fetchHighlightedDays(date);
-  };
+const App = () => {
+  const [list, setList] = useState();
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap["ru"]}>
-      <DatePicker
-        value={value}
-        loading={isLoading}
-        onChange={(newValue) => {
-          setValue(newValue);
-        }}
-        onMonthChange={handleMonthChange}
-        renderInput={(params) => <TextField {...params} />}
-        renderLoading={() => <CalendarPickerSkeleton />}
-        renderDay={(day, _value, DayComponentProps) => {
-          const isSelected =
-            !DayComponentProps.outsideCurrentMonth &&
-            highlightedDays.indexOf(day.getDate()) > 0;
+    <>
+      <div className="container content_container">
+        <div className="row">
+          <div className="col-lg-5">
+            <div className="pbt_bl">
+              <h4>Выберите дату посещения*</h4>
 
-          return (
-            <Badge
-              key={day.toString()}
-              overlap="circular"
-              badgeContent={
-                isSelected ? (
-                  <>
-                    <span className="m_label_1"></span>
-                    <span className="m_label_2"></span>
-                  </>
-                ) : undefined
-              }
-            >
-              <PickersDay {...DayComponentProps} />
-            </Badge>
-          );
-        }}
-      />
-    </LocalizationProvider>
+              <Calendar />
+
+              <div className="hover_check">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="Check_1"
+                  />
+                  <label className="form-check-label" htmlFor="Check_1">
+                    С правилами покупки билета ознакомлен(а)
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-7">
+            <div className="pbt_bl">
+              <h4>Выберите дату посещения*</h4>
+              <div className="btns">
+                <button className="btn border_line">Экскурсия</button>
+                <button className="btn border_line active">Мероприятие</button>
+              </div>
+              <p>
+                Обратите внимание: вы можете выбрать для посещения только одну
+                экскурсию в день. Для посещения экскурсии вам нужно выбрать
+                конкретное время.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="container tickets">
+        <div className="row ticket_item">
+          <div className="col-lg-5">
+            <div className="pbt_img">
+              <img src="./assets/images/bt.png" alt="" />
+            </div>
+          </div>
+          <div className="col-lg-7">
+            <div className="pbt_r_b">
+              <div className="pbt_r_b_top">
+                <div className="pbt_r_b_item">
+                  <img
+                    src="./assets/images/icons/fam.svg"
+                    alt=""
+                    style={{ maxWidth: "36px" }}
+                  />
+                  <p>6+</p>
+                </div>
+                <div className="pbt_r_b_item">
+                  <img src="./assets/images/icons/clock1.svg" alt="" />
+                  <p>3-5 ч.</p>
+                </div>
+                <div className="pbt_r_b_item">
+                  <img src="./assets/images/icons/icon_distance.svg" alt="" />
+                  <p>5.5 км</p>
+                </div>
+                <div className="pbt_r_b_item">
+                  <img src="./assets/images/icons/icon_travel.svg" alt="" />
+                  <p>Пеший</p>
+                </div>
+              </div>
+              <div className="pbt_r_b_title">
+                <h4>День открытых дверей</h4>
+              </div>
+              <div className="pbt_r_b_cont">
+                <p>
+                  Добрая традиция заповедника — день, когда усадьба превращается
+                  в одну большую эколого-просветительскую площадку, где каждый
+                  находит занятие по душе.
+                </p>
+                <p>
+                  Стоимость: 450 ₽ взрослый, 400 ₽ детский билет, льготные
+                  категории — бесплатно.
+                </p>
+              </div>
+              <div className="btns">
+                <button className="btn_link chose">Выбрать</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
-}
+};
+
+export default App;
