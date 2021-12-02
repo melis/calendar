@@ -29,8 +29,15 @@ const Calendar = () => {
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
   const [value, setValue] = React.useState(new Date());
 
-  const disableWeekends = (d) => {
-    return false;
+  const disableDays = (d) => {
+    let a = true;
+    highlightedDays.forEach((e) => {
+      if (new Date(e.date).getDate() === d.getDate()) {
+        a = false;
+      }
+    });
+
+    return a;
   };
 
   const renderDay = (day, _value, DayComponentProps) => {
@@ -107,8 +114,8 @@ const Calendar = () => {
             setValue(newValue);
           }}
           onMonthChange={handleMonthChange}
-          hintText="Weekends Disabled"
-          shouldDisableDate={disableWeekends}
+          // hintText="Weekends Disabled"
+          shouldDisableDate={disableDays}
           renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}
           renderDay={renderDay}
