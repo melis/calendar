@@ -1,6 +1,6 @@
 import React from "react";
 
-const Eventt = ({ el }) => {
+const Event = ({ el }) => {
   return (
     <div className="row ticket_item">
       <div className="col-lg-5">
@@ -50,7 +50,11 @@ const Eventt = ({ el }) => {
           </div>
           <div className="btns">
             {el.type === "excursion" ? (
-              el.time.map((t) => <button class="btn border_line ">{t}</button>)
+              el.time.map((t) => (
+                <button className="btn border_line " key={t}>
+                  {t}
+                </button>
+              ))
             ) : (
               <button className="btn_link chose">Выбрать</button>
             )}
@@ -61,4 +65,4 @@ const Eventt = ({ el }) => {
   );
 };
 
-export default Eventt;
+export default Event;

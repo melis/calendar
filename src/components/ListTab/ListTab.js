@@ -1,22 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const ListTab = ({ tab, list, setTab }) => {
-  let exc = true;
-  let evn = true;
-  list.forEach((el) => {
-    if (el.type === "excursion") {
-      exc = false;
+  const [exc, setExc] = useState(true);
+  const [evn, setEvn] = useState(true);
+
+  useEffect(() => {
+    setExc(true);
+    setEvn(true);
+    list.forEach((el) => {
+      if (el.type === "excursion") {
+        setExc(false);
+      }
+      if (el.type === "event") {
+        setEvn(false);
+      }
+    });
+    if (!exc && evn) {
+      setTab("excursion");
     }
-    if (el.type === "event") {
-      evn = false;
+    if (!evn && exc) {
+      setTab("event");
     }
-  });
-  if (!exc && evn) {
-    setTab("excursion");
-  }
-  if (!evn && exc) {
-    setTab("event");
-  }
+  }, [setEvn, setExc, exc, evn, setTab, list]);
   return (
     <div className="pbt_bl">
       <h4>Выберите дату посещения*</h4>

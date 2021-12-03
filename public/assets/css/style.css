@@ -833,6 +833,7 @@ button.btn_link {
   background: url(../images/icons/calnedar.svg);
   top: 18px;
   z-index: 1;
+  pointer-events: none;
 } */
 
 .pbt_r_b_cont ul {
@@ -1096,9 +1097,18 @@ button.btn_link {
   border-radius: 20px 20px 20px 0px;
   position: absolute;
   right: 30px;
-  top: -153px;
+  bottom: 0;
   width: 400px;
+  z-index: 2;
   display: none;
+}
+.a_warning > img {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
 }
 .close_this {
   position: absolute;

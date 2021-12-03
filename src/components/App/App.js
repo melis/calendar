@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Calendar from "../Calendar/Calendar";
-import Eventt from "../Event/Event";
+import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
 import Self from "../Self/Self";
 
@@ -17,7 +17,7 @@ const App = () => {
             <div className="pbt_bl">
               <h4>Выберите дату посещения*</h4>
 
-              <Calendar list={list} setList={setList} />
+              <Calendar list={list} setList={setList} disabled={self} />
 
               <div className="hover_check">
                 <div className="form-check">
@@ -38,7 +38,7 @@ const App = () => {
             </div>
           </div>
           <div className="col-lg-7">
-            <ListTab list={list} tab={tab} setTab={setTab} />
+            {self ? null : <ListTab list={list} tab={tab} setTab={setTab} />}
           </div>
         </div>
       </div>
@@ -86,10 +86,10 @@ const App = () => {
           list.map((el) => {
             if (tab) {
               if (tab === el.type) {
-                return <Eventt el={el} />;
+                return <Event el={el} key={el.id} />;
               }
             } else {
-              return <Eventt el={el} />;
+              return <Event el={el} key={el.id} />;
             }
             return null;
           })

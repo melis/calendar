@@ -94,3 +94,16 @@ input.input_date,
 
   color: #212121;
 }
+
+.calendar_ico {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+.MuiIconButton-root {
+  opacity: 0 !important;
+}

@@ -27,11 +27,12 @@ function fakeFetch(date, { signal }) {
   });
 }
 
-const Calendar = ({ list, setList }) => {
+const Calendar = ({ list, setList, disabled }) => {
   const requestAbortController = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
   const [value, setValue] = React.useState(new Date());
+  const [warn, setWarn] = React.useState(false);
 
   const disableDays = (d) => {
     let a = true;
@@ -110,8 +111,32 @@ const Calendar = ({ list, setList }) => {
 
   return (
     <div className="input_date_pos">
+      <span
+        className="a_warning"
+        style={warn ? { display: "block" } : { display: "none" }}
+      >
+        Снимите галочку, чтобы вернуться от самостоятельного посещения без даты
+        к списку мероприятий и экскурсий
+        <img
+          src="/assets/images/icons/close_normal.svg"
+          alt=""
+          onClick={() => {
+            setWarn(false);
+          }}
+        />
+      </span>
+      <img
+        src={`/assets/images/icons/calendar_ico_${disabled ? "d" : "a"}.svg`}
+        style={disabled ? { pointerEvents: "auto" } : { pointerEvents: "none" }}
+        onClick={() => {
+          setWarn(true);
+        }}
+        alt=""
+        className="calendar_ico"
+      />
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
         <DatePicker
+          disabled={disabled}
           inputFormat="dd MMMM yyyy"
           value={value}
           loading={isLoading}
