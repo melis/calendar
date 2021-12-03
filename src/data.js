@@ -9,7 +9,7 @@ const data = [
       Подойдет подготовленным посетителям, которые любят 
       долгие прогулки, вылазки в горы и с легкостью преодолевают 
       большие расстояния.`,
-    proceed: "3-5",
+    proceed: "3-6 ч",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 8,
@@ -27,8 +27,8 @@ const data = [
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
       в одну большую эколого-просветительскую площадку, где каждый 
       находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    proceed: "Предпоследняя суббота июля, 11:00 — 17:00",
+    img_url: "https://vyuchit.work/wp-content/uploads/2018/02/den.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -41,7 +41,7 @@ const data = [
       Подойдет подготовленным посетителям, которые любят 
       долгие прогулки, вылазки в горы и с легкостью преодолевают 
       большие расстояния.`,
-    proceed: "3-5",
+    proceed: "3-5 ч",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 4,
@@ -59,8 +59,8 @@ const data = [
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
       в одну большую эколого-просветительскую площадку, где каждый 
       находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    proceed: "Предпоследняя суббота июля, 11:00 — 17:00",
+    img_url: "https://vyuchit.work/wp-content/uploads/2018/02/den.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -73,7 +73,7 @@ const data = [
       Подойдет подготовленным посетителям, которые любят 
       долгие прогулки, вылазки в горы и с легкостью преодолевают 
       большие расстояния.`,
-    proceed: "3-5",
+    proceed: "3-5 ч",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 6,
@@ -91,8 +91,8 @@ const data = [
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
       в одну большую эколого-просветительскую площадку, где каждый 
       находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    proceed: "Предпоследняя суббота июля, 11:00 — 17:00",
+    img_url: "https://vyuchit.work/wp-content/uploads/2018/02/den.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -105,7 +105,7 @@ const data = [
       Подойдет подготовленным посетителям, которые любят 
       долгие прогулки, вылазки в горы и с легкостью преодолевают 
       большие расстояния.`,
-    proceed: "3-5",
+    proceed: "3-5 ч",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 6,
@@ -123,8 +123,8 @@ const data = [
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
       в одну большую эколого-просветительскую площадку, где каждый 
       находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    proceed: "Предпоследняя суббота июля, 11:00 — 17:00",
+    img_url: "https://vyuchit.work/wp-content/uploads/2018/02/den.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -137,7 +137,7 @@ const data = [
       Подойдет подготовленным посетителям, которые любят 
       долгие прогулки, вылазки в горы и с легкостью преодолевают 
       большие расстояния.`,
-    proceed: "3-5",
+    proceed: "3-5 ч",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 6,
@@ -155,8 +155,8 @@ const data = [
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
       в одну большую эколого-просветительскую площадку, где каждый 
       находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    proceed: "Предпоследняя суббота июля, 11:00 — 17:00",
+    img_url: "https://vyuchit.work/wp-content/uploads/2018/02/den.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
   {
@@ -169,7 +169,7 @@ const data = [
       Подойдет подготовленным посетителям, которые любят 
       долгие прогулки, вылазки в горы и с легкостью преодолевают 
       большие расстояния.`,
-    proceed: "3-5",
+    proceed: "3-5 ч",
     img_url:
       "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
     ageLimit: 6,
@@ -187,8 +187,8 @@ const data = [
     text: `Добрая традиция заповедника — день, когда усадьба превращается 
       в одну большую эколого-просветительскую площадку, где каждый 
       находит занятие по душе.`,
-    img_url:
-      "https://obrazovaka.ru/wp-content/uploads/2017/09/kak-pishetsya-ekskursiya.jpg",
+    proceed: "Предпоследняя суббота июля, 11:00 — 17:00",
+    img_url: "https://vyuchit.work/wp-content/uploads/2018/02/den.jpg",
     price: { base: 450, child: 400, pref: 0 },
   },
 ];

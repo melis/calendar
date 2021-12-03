@@ -23,7 +23,7 @@ function fakeFetch(date, { signal }) {
   });
 }
 
-const Calendar = () => {
+const Calendar = ({ list, setList }) => {
   const requestAbortController = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
@@ -54,7 +54,6 @@ const Calendar = () => {
         evn = el.type === "event" ? true : evn;
       }
     });
-
     return (
       <Badge
         key={day.toString()}
@@ -113,10 +112,14 @@ const Calendar = () => {
           value={value}
           loading={isLoading}
           onChange={(newValue) => {
+            setList(
+              highlightedDays.filter(
+                (el) => new Date(el.date).getDate() === newValue.getDate()
+              )
+            );
             setValue(newValue);
           }}
           onMonthChange={handleMonthChange}
-          // hintText="Weekends Disabled"
           shouldDisableDate={disableDays}
           renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}

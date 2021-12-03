@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import Calendar from "../Calendar/Calendar";
+import Eventt from "../Event/Event";
+import ListTab from "../ListTab/ListTab";
 
 const App = () => {
-  const [list, setList] = useState();
+  const [list, setList] = useState([]);
+  const [tab, setTab] = useState(null);
 
   return (
     <>
@@ -12,7 +15,7 @@ const App = () => {
             <div className="pbt_bl">
               <h4>Выберите дату посещения*</h4>
 
-              <Calendar />
+              <Calendar list={list} setList={setList} />
 
               <div className="hover_check">
                 <div className="form-check">
@@ -30,72 +33,21 @@ const App = () => {
             </div>
           </div>
           <div className="col-lg-7">
-            <div className="pbt_bl">
-              <h4>Выберите дату посещения*</h4>
-              <div className="btns">
-                <button className="btn border_line">Экскурсия</button>
-                <button className="btn border_line active">Мероприятие</button>
-              </div>
-              <p>
-                Обратите внимание: вы можете выбрать для посещения только одну
-                экскурсию в день. Для посещения экскурсии вам нужно выбрать
-                конкретное время.
-              </p>
-            </div>
+            <ListTab list={list} tab={tab} setTab={setTab} />
           </div>
         </div>
       </div>
       <div className="container tickets">
-        <div className="row ticket_item">
-          <div className="col-lg-5">
-            <div className="pbt_img">
-              <img src="./assets/images/bt.png" alt="" />
-            </div>
-          </div>
-          <div className="col-lg-7">
-            <div className="pbt_r_b">
-              <div className="pbt_r_b_top">
-                <div className="pbt_r_b_item">
-                  <img
-                    src="./assets/images/icons/fam.svg"
-                    alt=""
-                    style={{ maxWidth: "36px" }}
-                  />
-                  <p>6+</p>
-                </div>
-                <div className="pbt_r_b_item">
-                  <img src="./assets/images/icons/clock1.svg" alt="" />
-                  <p>3-5 ч.</p>
-                </div>
-                <div className="pbt_r_b_item">
-                  <img src="./assets/images/icons/icon_distance.svg" alt="" />
-                  <p>5.5 км</p>
-                </div>
-                <div className="pbt_r_b_item">
-                  <img src="./assets/images/icons/icon_travel.svg" alt="" />
-                  <p>Пеший</p>
-                </div>
-              </div>
-              <div className="pbt_r_b_title">
-                <h4>День открытых дверей</h4>
-              </div>
-              <div className="pbt_r_b_cont">
-                <p>
-                  Добрая традиция заповедника — день, когда усадьба превращается
-                  в одну большую эколого-просветительскую площадку, где каждый
-                  находит занятие по душе.
-                </p>
-                <p>
-                  Стоимость: 450 ₽ взрослый, 400 ₽ детский билет, льготные
-                  категории — бесплатно.
-                </p>
-              </div>
-              <div className="btns">
-                <button className="btn_link chose">Выбрать</button>
-              </div>
-            </div>
-          </div>
-        </div>
+        {list.map((el) => {
+          if (tab) {
+            if (tab === el.type) {
+              return <Eventt el={el} />;
+            }
+          } else {
+            return <Eventt el={el} />;
+          }
+          return null;
+        })}
       </div>
     </>
   );
