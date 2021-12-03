@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import Eventt from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
+import Self from "../Self/Self";
 
 const App = () => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
+  const [self, setSelf] = useState(false);
 
   return (
     <>
@@ -22,8 +24,11 @@ const App = () => {
                   <input
                     className="form-check-input"
                     type="checkbox"
-                    value=""
+                    value={self}
                     id="Check_1"
+                    onChange={(e) => {
+                      setSelf(e.target.checked);
+                    }}
                   />
                   <label className="form-check-label" htmlFor="Check_1">
                     Хочу посетить заповедник самостоятельно
@@ -38,17 +43,59 @@ const App = () => {
         </div>
       </div>
       <div className="container tickets">
-        {list.map((el) => {
-          if (tab) {
-            if (tab === el.type) {
+        {self ? (
+          <div className="row ticket_item">
+            <div className="col-lg-5">
+              <div className="pbt_r_b">
+                <div className="pbt_r_b_title bigest">
+                  <h4>Самостоятельное посещение заповедника</h4>
+                </div>
+                <div className="pbt_r_b_cont">
+                  <p>
+                    Билет даёт право на посещение территории
+                    эколого-экскурсионного комплекса Чунозерской усадьбы
+                    Лапландского заповедника.
+                  </p>
+                  <div className="pbt_r_b_title">
+                    <h4>В стоимость билета входит:</h4>
+                  </div>
+                  <ul>
+                    <li>посещение территории,</li>
+
+                    <li>
+                      посещение экотроп, посещение музеев и природных объектов,
+                    </li>
+
+                    <li>
+                      услуги объектов инфраструктуры: парковки, туалетов,
+                      Туристско-информационного центра, Визит-центра и
+                      Конференц-дома,
+                    </li>
+                    <li>посещение всех объектов инфраструктуры для детей.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div className="col-lg-7">
+              <div className="pbt_img right">
+                <img src="./assets/images/bt.png" alt="" />
+              </div>
+            </div>
+          </div>
+        ) : (
+          list.map((el) => {
+            if (tab) {
+              if (tab === el.type) {
+                return <Eventt el={el} />;
+              }
+            } else {
               return <Eventt el={el} />;
             }
-          } else {
-            return <Eventt el={el} />;
-          }
-          return null;
-        })}
+            return null;
+          })
+        )}
       </div>
+      {self ? <Self /> : null}
     </>
   );
 };

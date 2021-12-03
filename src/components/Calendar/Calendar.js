@@ -8,11 +8,15 @@ import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 import data from "../../data";
+import { getMonth } from "date-fns";
 // import { getDay, getDate, setDate } from "date-fns";
 
 function fakeFetch(date, { signal }) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
+      if (getMonth(date) !== getMonth(new Date())) {
+        resolve([]);
+      }
       resolve(data);
     }, 500);
 

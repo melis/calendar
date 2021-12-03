@@ -23,18 +23,14 @@ const ListTab = ({ tab, list, setTab }) => {
       <div className="btns">
         <button
           disabled={exc}
-          className={`btn border_line ${
-            tab === "excursion" || (!exc && evn) ? "active" : ""
-          }`}
+          className={`btn border_line ${tab === "excursion" ? "active" : ""}`}
           onClick={() => setTab("excursion")}
         >
           Экскурсия
         </button>
         <button
           disabled={evn}
-          className={`btn border_line ${
-            tab === "event" || (!evn && exc) ? "active" : ""
-          }`}
+          className={`btn border_line ${tab === "event" ? "active" : ""}`}
           onClick={() => setTab("event")}
         >
           Мероприятие
