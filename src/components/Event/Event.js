@@ -1,6 +1,6 @@
 import React from "react";
 
-const Event = ({ el }) => {
+const Event = ({ el, setBilet, bilet }) => {
   return (
     <div className="row ticket_item">
       <div className="col-lg-5">
@@ -50,13 +50,30 @@ const Event = ({ el }) => {
           </div>
           <div className="btns">
             {el.type === "excursion" ? (
-              el.time.map((t) => (
-                <button className="btn border_line " key={t}>
-                  {t}
+              el.time.map((time) => (
+                <button
+                  className={`btn border_line ${
+                    bilet?.id === el.id && time === bilet.selectTime
+                      ? "active"
+                      : ""
+                  }`}
+                  key={time}
+                  onClick={() => {
+                    setBilet({ ...el, selectTime: time });
+                  }}
+                >
+                  {time}
                 </button>
               ))
             ) : (
-              <button className="btn_link chose">Выбрать</button>
+              <button
+                className="btn_link chose"
+                onClick={() => {
+                  setBilet(el);
+                }}
+              >
+                Выбрать
+              </button>
             )}
           </div>
         </div>

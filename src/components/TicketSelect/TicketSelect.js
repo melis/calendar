@@ -1,16 +1,30 @@
 import React from "react";
 
-const Self = () => {
+const TicketSelect = ({ bilet, setBilet }) => {
+  console.log("bilet:", bilet);
   return (
     <>
       <div className="blue_bg">
         <div className="container">
           <div className="row">
             <div className="col-lg-7">
-              <h3>Самостоятельное посещение заповедника</h3>
+              <h3>{bilet.title}</h3>
             </div>
             <div className="col-lg-5">
-              <h4>Бессрочный билет на год</h4>
+              {bilet.type !== "free_date" ? (
+                <div className="ticket_close">
+                  <img
+                    src="/assets/images/icons/close_white.svg"
+                    alt=""
+                    onClick={() => {
+                      setBilet(null);
+                    }}
+                  />
+                </div>
+              ) : null}
+              <h4>{`${bilet.date} ${
+                bilet.selectTime ? "в " + bilet.selectTime : ""
+              }`}</h4>
             </div>
           </div>
         </div>
@@ -207,7 +221,7 @@ const Self = () => {
           <div className="row">
             <div className="row">
               <div className="col-lg-4 form_item">
-                <label for="name">Имя*</label>
+                <label htmlFor="name">Имя*</label>
                 <input
                   type="text"
                   className="form-control"
@@ -218,7 +232,7 @@ const Self = () => {
                 <div className="invalid-feedback">*текст ошибки</div>
               </div>
               <div className="col-lg-4 form_item">
-                <label for="surname">Фамилия*</label>
+                <label htmlFor="surname">Фамилия*</label>
                 <input
                   type="text"
                   className="form-control"
@@ -229,7 +243,7 @@ const Self = () => {
                 <div className="invalid-feedback">*текст ошибки</div>
               </div>
               <div className="col-lg-4 form_item">
-                <label for="middle_name">Отчество*</label>
+                <label htmlFor="middle_name">Отчество*</label>
                 <input
                   type="text"
                   className="form-control"
@@ -240,7 +254,7 @@ const Self = () => {
                 <div className="invalid-feedback">*текст ошибки</div>
               </div>
               <div className="col-lg-4 form_item">
-                <label for="phone">телефон*</label>
+                <label htmlFor="phone">телефон*</label>
                 <input
                   type="text"
                   className="form-control"
@@ -251,7 +265,7 @@ const Self = () => {
                 <div className="invalid-feedback">*текст ошибки</div>
               </div>
               <div className="col-lg-4 form_item">
-                <label for="email">E-mail*</label>
+                <label htmlFor="email">E-mail*</label>
                 <input
                   type="email"
                   className="form-control"
@@ -262,7 +276,7 @@ const Self = () => {
                 <div className="invalid-feedback">*текст ошибки</div>
               </div>
               <div className="col-lg-4 form_item">
-                <label for="place_of_residence">Место жительства*</label>
+                <label htmlFor="place_of_residence">Место жительства*</label>
                 <input
                   type="email"
                   className="form-control"
@@ -282,8 +296,8 @@ const Self = () => {
                     value=""
                     id="accept"
                   />
-                  <label className="form-check-label" for="accept">
-                    Согласен на обработку <a href="">персональных данных</a>
+                  <label className="form-check-label" htmlFor="accept">
+                    Согласен на обработку <a href="/">персональных данных</a>
                   </label>
                 </div>
               </div>
@@ -305,4 +319,4 @@ const Self = () => {
   );
 };
 
-export default Self;
+export default TicketSelect;

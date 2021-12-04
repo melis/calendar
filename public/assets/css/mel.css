@@ -107,3 +107,6 @@ input.input_date,
 .MuiIconButton-root {
   opacity: 0 !important;
 }
+.hover_check {
+  position: relative;
+}

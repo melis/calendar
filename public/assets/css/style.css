@@ -1096,8 +1096,8 @@ button.btn_link {
   background: #c5e5ed;
   border-radius: 20px 20px 20px 0px;
   position: absolute;
-  right: 30px;
-  bottom: 0;
+  bottom: 100%;
+  left: 30px;
   width: 400px;
   z-index: 2;
   display: none;
@@ -1271,5 +1271,14 @@ input.input_date:focus {
   background: url(../images/icons/close.svg) no-repeat center;
   right: 14px;
   top: 2px;
+  cursor: pointer;
+}
+
+.ticket_close {
+  text-align: right;
+}
+.ticket_close > img {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }

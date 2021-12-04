@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
-import Self from "../Self/Self";
+import TicketSelect from "../TicketSelect/TicketSelect";
 
 const App = () => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
   const [self, setSelf] = useState(false);
+  const [bilet, setBilet] = useState();
+  const [warn, setWarn] = useState(false);
 
   return (
     <>
@@ -17,10 +19,32 @@ const App = () => {
             <div className="pbt_bl">
               <h4>Выберите дату посещения*</h4>
 
-              <Calendar list={list} setList={setList} disabled={self} />
+              <Calendar
+                list={list}
+                setList={setList}
+                disabled={self}
+                warn={warn}
+                setWarn={setWarn}
+                setBilet={setBilet}
+                tab={tab}
+              />
 
               <div className="hover_check">
                 <div className="form-check">
+                  <span
+                    className="a_warning"
+                    style={warn ? { display: "block" } : { display: "none" }}
+                  >
+                    Снимите галочку, чтобы вернуться от самостоятельного
+                    посещения без даты к списку мероприятий и экскурсий
+                    <img
+                      src="/assets/images/icons/close_normal.svg"
+                      alt=""
+                      onClick={() => {
+                        setWarn(false);
+                      }}
+                    />
+                  </span>
                   <input
                     className="form-check-input"
                     type="checkbox"
@@ -28,8 +52,21 @@ const App = () => {
                     id="Check_1"
                     onChange={(e) => {
                       setSelf(e.target.checked);
+                      if (e.target.checked) {
+                        setBilet({
+                          type: "free_date",
+                          title: "Самостоятельное посещение заповедника",
+                          price: { basic: 400, child: 200, pref: 0 },
+                          date: "Бессрочный билет на год",
+                        });
+                        setWarn(true);
+                      } else {
+                        setBilet(null);
+                        setWarn(false);
+                      }
                     }}
                   />
+
                   <label className="form-check-label" htmlFor="Check_1">
                     Хочу посетить заповедник самостоятельно
                   </label>
@@ -84,18 +121,16 @@ const App = () => {
           </div>
         ) : (
           list.map((el) => {
-            if (tab) {
-              if (tab === el.type) {
-                return <Event el={el} key={el.id} />;
-              }
-            } else {
-              return <Event el={el} key={el.id} />;
+            if (tab === el.type) {
+              return (
+                <Event el={el} key={el.id} setBilet={setBilet} bilet={bilet} />
+              );
             }
             return null;
           })
         )}
       </div>
-      {self ? <Self /> : null}
+      {bilet ? <TicketSelect bilet={bilet} setBilet={setBilet} /> : null}
     </>
   );
 };
