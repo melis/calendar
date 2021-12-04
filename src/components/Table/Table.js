@@ -50,27 +50,6 @@ const Table = () => {
               </button>
             </td>
             <td className="item_sum w_0">450</td>
-            <td className="d-block">
-              <div className="chield_collaps">
-                <div
-                  id="collapseOne"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#accordionExample"
-                >
-                  <div className="accordion-body">
-                    <p>
-                      Обратите внимание! <br />
-                      При оформлении 15 детских билетов 1 взрослый билет
-                      оформляется бесплатно.
-                    </p>
-                    <div className="rounded_circle">
-                      Бесплатный взрослый билет: 1
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </td>
           </tr>
 
           <tr className="ticket_selection_item zebra accordion-item">
