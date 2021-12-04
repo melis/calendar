@@ -33,6 +33,9 @@ const Event = ({ el, setBilet, bilet }) => {
                   <img src="./assets/images/icons/icon_travel.svg" alt="" />
                   <p>{el.transport}</p>
                 </div>
+                <div className="pbt_r_b_item">
+                  <p>{el.count} чел</p>
+                </div>
               </>
             ) : null}
           </div>
