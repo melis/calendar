@@ -1,11 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../Table/Table";
 const Form = ({ bilet }) => {
-  // const [order, setOrder] = useState({});
-
+  const { price } = bilet;
+  const [summ, setSumm] = useState(0);
+  const [tickets, setTickets] = useState(null);
+  useEffect(() => {
+    if (tickets) {
+      console.log(tickets);
+      setSumm(tickets.base * price.base + tickets.child * price.child);
+    }
+  }, [tickets, price]);
   return (
     <form id="needs-validation" className="container" noValidate>
-      <Table bilet={bilet} />
+      <Table bilet={bilet} setTickets={setTickets} />
       <div className="container checkout">
         <div className="row">
           <div className="">
@@ -101,7 +108,7 @@ const Form = ({ bilet }) => {
           <div className="col-lg-12">
             <div className="payment">
               Итого к оплате:
-              <span id="cart_summ2"></span> ₽
+              <span id="cart_summ2"> {summ}</span> ₽
             </div>
           </div>
 

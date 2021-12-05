@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const Tr = ({ bilet }) => {
+const Tr = ({ bilet, setTickets }) => {
   const { price } = bilet;
   const [base, setBase] = useState(0);
   const [child, setChild] = useState(0);
   const [pref, setPref] = useState(0);
+
+  useEffect(() => {
+    setTickets({ base, child, pref });
+  }, [base, child, pref, setTickets]);
+
   return (
     <>
       <tr className="ticket_selection_item zebra accordion-item">
@@ -135,13 +140,14 @@ const Tr = ({ bilet }) => {
                   className="form-select"
                   id="example1"
                   required=""
-                  placeholder="Выберите категорию льготы"
+                  name="example1"
                 >
-                  <option>Подопечные социальных учреждений</option>
-                  <option value="2">2</option>
-                  <option value="2">3</option>
-                  <option value="2">4</option>
-                  <option value="2">5</option>
+                  <option value={0}>Выберите категорию льготы</option>
+                  <option value={1}>Подопечные социальных учреждений</option>
+                  <option value={2}>2</option>
+                  <option value={3}>3</option>
+                  <option value={4}>4</option>
+                  <option value={5}>5</option>
                 </select>
                 <div className="invalid-feedback">*текст ошибки</div>
               </div>
