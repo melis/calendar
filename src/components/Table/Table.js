@@ -20,26 +20,13 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            <tr
-              className="ticket_selection_item zebra accordion-item"
-              id="headingOne"
-            >
-              <td
-                className="ticket_selection_name"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseOne"
-                aria-expanded="true"
-                aria-controls="collapseOne"
-              >
-                Взрослый билет
-              </td>
+            <tr className="ticket_selection_item zebra accordion-item">
+              <td className="ticket_selection_name">Взрослый билет</td>
               <td className="ticket_selection_price">450</td>
-
               <td className="ticket_selection_count">
                 <button className="btn_minus">
                   <img src="./assets/images/icons/minus.svg" alt="" />
                 </button>
-
                 <input className="cart_num" type="text" value="1" size="3" />
                 <button className="btn_plus">
                   <img src="./assets/images/icons/plus.svg" alt="" />
@@ -48,42 +35,21 @@ const Table = () => {
             </tr>
 
             <tr className="ticket_selection_item zebra accordion-item">
-              <td
-                className="ticket_selection_name"
-                id="headingTwo"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseTwo"
-                aria-expanded="false"
-                aria-controls="collapseTwo"
-              >
+              <td className="ticket_selection_name">
                 Детский билет <span>(3-18 лет включительно) </span>
               </td>
               <td className="ticket_selection_price">450</td>
-
               <td className="ticket_selection_count">
                 <button className="btn_minus">
                   <img src="./assets/images/icons/minus.svg" alt="" />
                 </button>
-
-                <input
-                  className="cart_num"
-                  type="text"
-                  value="1"
-                  size="3"
-                  // maxlength="6"
-                />
+                <input className="cart_num" type="text" value="1" size="3" />
                 <button className="btn_plus">
                   <img src="./assets/images/icons/plus.svg" alt="" />
                 </button>
               </td>
-
               <td className="d-block chield_collaps">
-                <div
-                  id="collapseTwo"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingTwo"
-                  data-bs-parent="#accordionExample"
-                >
+                <div className="accordion-collapse collapsed">
                   <div className="accordion-body">
                     <p>
                       Обратите внимание! <br />
@@ -99,19 +65,10 @@ const Table = () => {
             </tr>
 
             <tr className="ticket_selection_item zebra">
-              <td
-                className="ticket_selection_name"
-                id="headingThree"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseThree"
-                aria-expanded="false"
-                aria-controls="collapseThree"
-              >
+              <td className="ticket_selection_name" type="button">
                 Льготный билет
               </td>
               <td className="ticket_selection_price">бесплатно</td>
-
               <td className="ticket_selection_count">
                 <button className="btn_minus" disabled>
                   <img
@@ -120,34 +77,24 @@ const Table = () => {
                     alt=""
                   />
                 </button>
-
-                <input
-                  className="cart_num"
-                  type="text"
-                  value="0"
-                  size="3"
-                  // maxlength="6"
-                />
+                <input className="cart_num" type="text" value="0" size="3" />
                 <button className="btn_plus" disabled>
                   <img src="./assets/images/icons/plus.svg" alt="" />
                 </button>
               </td>
-
               <td className="d-block chield_collaps">
-                <div
-                  id="collapseThree"
-                  className="accordion-collapse collapse"
-                  aria-labelledby="headingThree"
-                  data-bs-parent="#accordionExample"
-                >
+                <div className="accordion-collapse collapsed">
                   <div className="accordion-body">
-                    <p>
-                      Обратите внимание! <br />
-                      При оформлении 15 детских билетов 1 взрослый билет
-                      оформляется бесплатно.
-                    </p>
-                    <div className="rounded_circle">
-                      Бесплатный взрослый билет: 1
+                    <div className="form-group select">
+                      <label htmlFor="example1">Льготный билет 1*</label>
+                      <select className="form-select" id="example1" required="">
+                        <option>Подопечные социальных учреждений</option>
+                        <option value="2">2</option>
+                        <option value="2">3</option>
+                        <option value="2">4</option>
+                        <option value="2">5</option>
+                      </select>
+                      <div className="invalid-feedback">*текст ошибки</div>
                     </div>
                   </div>
                 </div>
