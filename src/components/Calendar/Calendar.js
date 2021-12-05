@@ -49,6 +49,14 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     setBilet(null);
   }, [setBilet, value, tab]);
 
+  React.useEffect(() => {
+    setList(
+      highlightedDays.filter(
+        (el) => new Date(el.date).getDate() === new Date().getDate()
+      )
+    );
+  }, [highlightedDays, setList]);
+
   const renderDay = (day, _value, DayComponentProps) => {
     let exc = false;
     let evn = false;

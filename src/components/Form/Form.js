@@ -2,7 +2,7 @@ import React from "react";
 import Table from "../Table/Table";
 const Form = () => {
   return (
-    <form id="needs-validation" className="container" novalidate>
+    <form id="needs-validation" className="container" noValidate>
       <Table />
       <div className="container checkout">
         <div className="row">

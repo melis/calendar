@@ -15,11 +15,13 @@ const ListTab = ({ tab, list, setTab }) => {
         setEvn(false);
       }
     });
-    if (!exc && evn) {
-      setTab("excursion");
-    }
+    // if (!exc && evn) {
+    //   setTab("excursion");
+    // }
     if (!evn && exc) {
       setTab("event");
+    } else {
+      setTab("excursion");
     }
   }, [setEvn, setExc, exc, evn, setTab, list]);
   return (
