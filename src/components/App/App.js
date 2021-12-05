@@ -56,7 +56,7 @@ const App = () => {
                         setBilet({
                           type: "free_date",
                           title: "Самостоятельное посещение заповедника",
-                          price: { basic: 400, child: 200, pref: 0 },
+                          price: { base: 400, child: 200, pref: 0 },
                           date: "Бессрочный билет на год",
                         });
                         setWarn(true);
