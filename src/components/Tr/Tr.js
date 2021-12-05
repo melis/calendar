@@ -78,7 +78,7 @@ const Tr = ({ bilet }) => {
           </button>
         </td>
         <td className="d-block chield_collaps">
-          <div className="accordion-collapse collapsed">
+          <div className={`accordion-collapse ${child < 15 && "collapse"}`}>
             <div className="accordion-body">
               <p>
                 Обратите внимание! <br />
@@ -127,11 +127,16 @@ const Tr = ({ bilet }) => {
           </button>
         </td>
         <td className="d-block chield_collaps">
-          <div className="accordion-collapse collapsed">
+          <div className={`accordion-collapse ${pref < 1 && "collapse"}`}>
             <div className="accordion-body">
               <div className="form-group select">
                 <label htmlFor="example1">Льготный билет 1*</label>
-                <select className="form-select" id="example1" required="">
+                <select
+                  className="form-select"
+                  id="example1"
+                  required=""
+                  placeholder="Выберите категорию льготы"
+                >
                   <option>Подопечные социальных учреждений</option>
                   <option value="2">2</option>
                   <option value="2">3</option>
