@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../Table/Table";
-const Form = () => {
+const Form = ({ bilet }) => {
+  // const [order, setOrder] = useState({});
+
   return (
     <form id="needs-validation" className="container" noValidate>
-      <Table />
+      <Table bilet={bilet} />
       <div className="container checkout">
         <div className="row">
           <div className="">

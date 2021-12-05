@@ -2,7 +2,6 @@ import React from "react";
 import Form from "../Form/Form";
 
 const TicketSelect = ({ bilet, setBilet }) => {
-  console.log("bilet:", bilet);
   return (
     <>
       <div className="blue_bg">
@@ -30,7 +29,7 @@ const TicketSelect = ({ bilet, setBilet }) => {
           </div>
         </div>
       </div>
-      <Form />
+      <Form bilet={bilet} />
     </>
   );
 };
