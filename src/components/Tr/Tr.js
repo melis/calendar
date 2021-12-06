@@ -5,10 +5,15 @@ const Tr = ({ bilet, setTickets }) => {
   const [base, setBase] = useState(0);
   const [child, setChild] = useState(0);
   const [pref, setPref] = useState(0);
+  const [freeBase, setFreeBase] = useState(0);
 
   useEffect(() => {
-    setTickets({ base, child, pref });
-  }, [base, child, pref, setTickets]);
+    setTickets({ base, child, pref, freeBase });
+  }, [base, child, pref, setTickets, freeBase]);
+
+  useEffect(() => {
+    setFreeBase((child - (child % 15)) / 15);
+  }, [child]);
 
   return (
     <>
@@ -30,8 +35,12 @@ const Tr = ({ bilet, setTickets }) => {
           <input
             className="cart_num"
             type="text"
-            value={base}
-            onChange={(e) => setBase(Number(e.target.value))}
+            value={base + freeBase}
+            onChange={(e) => {
+              if (!isNaN(Number(e.target.value))) {
+                setBase(Number(e.target.value));
+              }
+            }}
           />
           <button
             className="btn_plus"
@@ -68,7 +77,11 @@ const Tr = ({ bilet, setTickets }) => {
             className="cart_num"
             type="text"
             value={child}
-            onChange={(e) => setChild(Number(e.target.value))}
+            onChange={(e) => {
+              if (!isNaN(Number(e.target.value))) {
+                setChild(Number(e.target.value));
+              }
+            }}
           />
           <button
             className="btn_plus"
@@ -90,7 +103,9 @@ const Tr = ({ bilet, setTickets }) => {
                 При оформлении 15 детских билетов 1 взрослый билет оформляется
                 бесплатно.
               </p>
-              <div className="rounded_circle">Бесплатный взрослый билет: 1</div>
+              <div className="rounded_circle">
+                Бесплатный взрослый билет: {freeBase}
+              </div>
             </div>
           </div>
         </td>
@@ -117,7 +132,11 @@ const Tr = ({ bilet, setTickets }) => {
             className="cart_num"
             type="text"
             value={pref}
-            onChange={(e) => setPref(Number(e.target.value))}
+            onChange={(e) => {
+              if (!isNaN(Number(e.target.value))) {
+                setPref(Number(e.target.value));
+              }
+            }}
           />
           <button
             className="btn_plus"

@@ -6,7 +6,6 @@ const Form = ({ bilet }) => {
   const [tickets, setTickets] = useState(null);
   useEffect(() => {
     if (tickets) {
-      console.log(tickets);
       setSumm(tickets.base * price.base + tickets.child * price.child);
     }
   }, [tickets, price]);
