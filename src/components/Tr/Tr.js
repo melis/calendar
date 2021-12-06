@@ -194,7 +194,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
                         let newInfo = [...old];
                         newInfo.forEach((el, index) => {
                           if (el.id === info.id) {
-                            newInfo[index].value_id = e.target.value;
+                            newInfo[index].value_id = Number(e.target.value);
                           }
                         });
                         return newInfo;
