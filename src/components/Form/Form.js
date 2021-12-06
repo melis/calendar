@@ -2,16 +2,30 @@ import React, { useEffect, useState } from "react";
 import Table from "../Table/Table";
 const Form = ({ bilet }) => {
   const { price } = bilet;
+
   const [summ, setSumm] = useState(0);
   const [tickets, setTickets] = useState(null);
+
   useEffect(() => {
     if (tickets) {
-      setSumm(tickets.base * price.base + tickets.child * price.child);
+      setSumm(
+        tickets.baseCount * price.base + tickets.childCount * price.child
+      );
     }
   }, [tickets, price]);
+
   return (
-    <form id="needs-validation" className="container" noValidate>
-      <Table bilet={bilet} setTickets={setTickets} />
+    <form
+      id="needs-validation"
+      className="container"
+      noValidate
+      onSubmit={(e) => {
+        e.preventDefault();
+        alert(JSON.stringify(tickets));
+        console.log(tickets);
+      }}
+    >
+      <Table bilet={bilet} setTickets={setTickets} summ={summ} />
       <div className="container checkout">
         <div className="row">
           <div className="">
