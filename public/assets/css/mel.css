@@ -110,3 +110,7 @@ input.input_date,
 .hover_check {
   position: relative;
 }
+
+.invalid-feedback {
+  display: block;
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import Tr from "../Tr/Tr";
 
-const Table = ({ bilet, setTickets, summ }) => {
+const Table = (props) => {
   return (
     <div className="row">
       <div className="ticket_selection">
@@ -21,7 +21,7 @@ const Table = ({ bilet, setTickets, summ }) => {
             </tr>
           </thead>
           <tbody>
-            <Tr bilet={bilet} setTickets={setTickets} summ={summ} />
+            <Tr {...props} />
           </tbody>
         </table>
       </div>
