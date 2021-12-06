@@ -26,7 +26,7 @@ const Form = ({ bilet }) => {
       noValidate
       onSubmit={(e) => {
         e.preventDefault();
-        alert(JSON.stringify(tickets));
+        alert("Посмотрите в console");
         console.log(tickets);
       }}
     >

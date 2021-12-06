@@ -6,8 +6,15 @@ const Tr = ({ bilet, setTickets, summ }) => {
   const [child, setChild] = useState(0);
   const [pref, setPref] = useState(0);
   const [freeBase, setFreeBase] = useState(0);
-
   const [prefInfo, setPrefInfo] = useState([]);
+
+  useEffect(() => {
+    setBase(0);
+    setFreeBase(0);
+    setChild(0);
+    setPrefInfo([]);
+    setPref(0);
+  }, [bilet]);
 
   useEffect(() => {
     setTickets({
@@ -16,7 +23,6 @@ const Tr = ({ bilet, setTickets, summ }) => {
         date: bilet.date,
         select_time: bilet.selectTime ? bilet.selectTime : "",
         type: bilet.type,
-        price: bilet.price,
       },
       baseCount: base,
       childCount: child,
