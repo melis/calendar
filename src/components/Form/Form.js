@@ -7,12 +7,13 @@ const Form = ({ bilet }) => {
 
   const [summ, setSumm] = useState(0);
   const [tickets, setTickets] = useState(null);
+  const [prefValid, setPrefValid] = useState(false);
+
   const {
     register,
-    formState: { errors },
-    setError,
+    formState: { errors, isValid },
     handleSubmit,
-  } = useForm();
+  } = useForm({ mode: "onChange" });
 
   useEffect(() => {
     setSumm(0);
@@ -25,7 +26,15 @@ const Form = ({ bilet }) => {
         tickets.baseCount * price.base + tickets.childCount * price.child
       );
     }
-  }, [tickets, price]);
+    if (tickets?.pref?.prefCount > 0) {
+      setPrefValid(false);
+      tickets.pref.prefInfo.forEach((i) => {
+        if (i.value_id < 1) {
+          setPrefValid(true);
+        }
+      });
+    }
+  }, [tickets, price, prefValid]);
 
   const onSubmit = (client) => {
     alert(JSON.stringify({ client, tickets }));
@@ -217,7 +226,13 @@ const Form = ({ bilet }) => {
             </div>
           </div>
 
-          <button className="btn_link chose m-auto" type="submit">
+          <button
+            className={`btn_link  m-auto ${
+              !prefValid && isValid ? "chose" : ""
+            }`}
+            type="submit"
+            disabled={prefValid}
+          >
             Оплатить заказ
           </button>
         </div>
