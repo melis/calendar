@@ -27,8 +27,6 @@ const Form = ({ bilet }) => {
     }
   }, [tickets, price]);
 
-  console.log(errors, tickets);
-
   const onSubmit = (client) => {
     alert(JSON.stringify({ client, tickets }));
     console.log(JSON.stringify({ client, tickets }));
