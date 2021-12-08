@@ -132,6 +132,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
       />
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
         <DatePicker
+          ToolbarComponent={() => <div>Melis</div>}
           disabled={disabled}
           inputFormat="dd MMMM yyyy"
           value={value}
