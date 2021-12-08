@@ -1322,3 +1322,7 @@ button.css-slyssw {
   background: none !important;
   width: 100%;
 }
+.pbt_img img {
+  height: 460px;
+  object-fit: cover;
+}

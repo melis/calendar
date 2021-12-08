@@ -9,6 +9,7 @@ import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 import data from "../../data";
 import { getMonth } from "date-fns";
+
 // import { getDay, getDate, setDate } from "date-fns";
 
 function fakeFetch(date, { signal }) {
@@ -132,7 +133,16 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
       />
       <LocalizationProvider dateAdapter={AdapterDateFns} locale={ruLocale}>
         <DatePicker
-          ToolbarComponent={() => <div>Melis</div>}
+          ToolbarComponent={() => (
+            <div className="toolbar">
+              <div className="toolbar_item ">
+                <span className="exc"></span>экскурсии
+              </div>
+              <div className="toolbar_item ">
+                <span className="evn"></span> мероприятия
+              </div>
+            </div>
+          )}
           disabled={disabled}
           inputFormat="dd MMMM yyyy"
           value={value}
@@ -150,6 +160,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
           renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}
           renderDay={renderDay}
+          showToolbar
         />
       </LocalizationProvider>
     </div>

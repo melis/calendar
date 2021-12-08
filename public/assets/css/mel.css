@@ -101,11 +101,11 @@ input.input_date,
 
 } */
 
-.MuiToolbar-root,
+/* .MuiToolbar-root, */
 
-.MuiInput-underline:before {
+/* .MuiInput-underline:before {
   display: none !important;
-}
+} */
 
 .PrivatePickersFadeTransitionGroup-root {
   font-family: Source Sans Pro;
@@ -161,4 +161,40 @@ input.input_date,
 
 .invalid-feedback {
   display: block;
+}
+
+.css-1smlk3z-MuiPaper-root {
+  margin: 15px !important;
+  /* width: 430px;
+  height: 540px; */
+}
+
+.toolbar {
+  position: absolute;
+  border-top: 1px solid #8b8b8b;
+  width: 80%;
+  bottom: 30px;
+  padding: 15px;
+  box-sizing: border-box;
+  display: flex;
+  /* justify-content: space-around; */
+}
+.toolbar_item {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+.toolbar span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.toolbar_item .exc {
+  background: #4f95bd;
+}
+.toolbar_item .evn {
+  background: #d76729;
 }
