@@ -1307,14 +1307,12 @@ input.css-1uvydh2:focus,
   outline: 0 !important;
   box-shadow: none !important;
 }
-button.css-slyssw {
+/* button.css-slyssw {
   position: absolute;
-  right: 30px;
-  top: 17px;
   background: blanchedalmond;
   width: 40px;
   height: 40px;
-}
+} */
 .css-1bn53lx.MuiOutlinedInput-root {
   padding-right: 0 !important;
 }

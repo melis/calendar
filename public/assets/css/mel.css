@@ -138,7 +138,7 @@ input.input_date,
 
   top: 20px;
 
-  right: 30px;
+  right: 15px;
 
   cursor: pointer;
 
@@ -151,8 +151,7 @@ input.input_date,
   position: absolute !important;
   padding: 0 !important;
   top: 35px;
-
-  right: 40px;
+  right: 25px;
 }
 
 .hover_check {
@@ -163,7 +162,7 @@ input.input_date,
   display: block;
 }
 
-.css-1smlk3z-MuiPaper-root {
+.MuiPaper-root {
   margin: 15px !important;
   /* width: 430px;
   height: 540px; */
