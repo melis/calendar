@@ -7,6 +7,7 @@
 .MuiInputBase-root-MuiOutlinedInput-root {
   padding: 0 !important;
 }
+
 .MuiOutlinedInput-notchedOutline {
   border: none !important;
 }
@@ -14,25 +15,34 @@
 .m_label_1,
 .m_label_2 {
   display: inline-block;
+
   width: 5px;
+
   height: 5px;
+
   border-radius: 50%;
 }
 
 .m_label_1 {
   background: #4f95bd;
 }
+
 .m_label_2 {
   background: #d76729;
 }
+
 .MuiBadge-badge {
   gap: 2px;
 }
+
 .MuiPaper-root {
   background: #eef5e9 !important;
+
   border-radius: 20px !important;
+
   padding: 35px 25px;
 }
+
 .MuiButtonBase-root {
   background-color: transparent !important;
 }
@@ -40,52 +50,74 @@
 .Mui-selected {
   background: #88bf57 !important;
 }
+
 .MuiButtonBase-root-MuiPickersDay-root:not(.Mui-selected) {
   background: #eef5e9 !important;
 }
 
 .MuiButtonBase-root-MuiPickersDay-root.Mui-selected {
   color: black !important;
+
   background: #88bf57 !important;
 }
+
 .MuiButtonBase-root:hover {
   background: #e4e4e4 !important;
 }
+
 .MuiOutlinedInput-input {
   padding: 25px !important;
 }
 
-.MuiOutlinedInput-root {
-  padding-right: 25px !important;
-}
-
 input.input_date,
+/* 
 .MuiFormControl-root {
+
   width: 100%;
+
   padding: 0 !important;
+
   background: #eef5e9;
+
   border-radius: 20px;
+
   border: none;
+
   box-shadow: none;
+
   font-family: Raleway;
+
   font-style: normal;
+
   font-weight: normal;
+
   font-size: 18px;
+
   line-height: 140%;
+
   color: #212121;
+
   margin-bottom: 15px !important;
-}
+
+} */
+
 .MuiToolbar-root,
+
 .MuiInput-underline:before {
   display: none !important;
 }
 
 .PrivatePickersFadeTransitionGroup-root {
   font-family: Source Sans Pro;
+
   font-style: normal;
+
   font-weight: bold;
+
   font-size: 20px;
+
   line-height: 120%;
+
   /* identical to box height, or 24px */
 
   font-feature-settings: "pnum" on, "lnum" on;
@@ -97,16 +129,32 @@ input.input_date,
 
 .calendar_ico {
   width: 30px;
+
   height: 30px;
+
   position: absolute;
+
   z-index: 1;
+
   top: 20px;
-  right: 20px;
+
+  right: 30px;
+
   cursor: pointer;
+
+  margin-right: 3px;
 }
-.MuiIconButton-sizeMedium {
+
+/* .MuiIconButton-sizeMedium,  */
+.MuiInputAdornment-root {
   opacity: 0 !important;
+  position: absolute !important;
+  padding: 0 !important;
+  top: 35px;
+
+  right: 40px;
 }
+
 .hover_check {
   position: relative;
 }

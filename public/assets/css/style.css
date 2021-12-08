@@ -140,8 +140,11 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   height: 110px;
-  background: url(../images/bg/header_bg.png) no-repeat center;
-  background-size: cover;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
   padding: 23px 40px;
   position: relative;
   margin-bottom: -150px;
@@ -688,11 +691,12 @@ section.allert .content_block {
   color: #005d90;
   margin-right: 18px;
   margin-left: 0;
+  padding: 23px 30px;
 }
 
-.btn.border_line:hover {
-  border: 2px solid #d76729;
-  color: #d76729;
+.border_line[disabled]:hover {
+  border: 2px solid #d76729 !important;
+  color: #d76729 !important;
 }
 
 .border_line.active {
@@ -700,7 +704,10 @@ section.allert .content_block {
   border: 2px solid #d76729;
   color: #ffffff;
 }
-
+.border_line:hover {
+  border: 2px solid #d76729;
+  color: #d76729;
+}
 .border_line.active:hover {
   color: #ffffff;
 }
@@ -804,7 +811,7 @@ button.btn_link {
 }
 
 .ticket_item:not(:last-child) {
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .pbt_r_b {
@@ -895,6 +902,7 @@ button.btn_link {
 }
 .ticket_selection_content {
   width: 100%;
+  margin-top: 0;
 }
 .ticket_selection_content.accordion {
   max-width: 100%;
@@ -972,10 +980,10 @@ button.btn_link {
   font-weight: 400;
 }
 .ticket_selection_item.zebra:nth-child(odd) {
-  background: #eef5e9;
+  background: #c5e5ed;
 }
 .ticket_selection_item.zebra:nth-child(even) {
-  background: #c5e5ed;
+  background: #eef5e9;
 }
 .ticket_selection .pbt_r_b_title,
 .checkout .pbt_r_b_title {
@@ -1264,15 +1272,6 @@ input.input_date:focus {
 .ticket_item {
   position: relative;
 }
-.remove_this {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  background: url(../images/icons/close.svg) no-repeat center;
-  right: 14px;
-  top: 2px;
-  cursor: pointer;
-}
 
 .ticket_close {
   text-align: right;
@@ -1281,4 +1280,45 @@ input.input_date:focus {
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+
+input.css-1uvydh2,
+.MuiFormControl-root input {
+  border: 2px solid #eef5e9 !important;
+  padding: 0px 35px 0px 25px !important;
+  height: 66px !important;
+  width: 100%;
+  background: #eef5e9 !important;
+  border-radius: 20px;
+  box-shadow: none;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  color: #212121;
+  margin-bottom: 15px;
+}
+input.css-1uvydh2:focus,
+.MuiFormControl-root input:focus {
+  color: #212121;
+  background-color: #fff9ed !important;
+  border: 2px solid #007db5 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+button.css-slyssw {
+  position: absolute;
+  right: 30px;
+  top: 17px;
+  background: blanchedalmond;
+  width: 40px;
+  height: 40px;
+}
+.css-1bn53lx.MuiOutlinedInput-root {
+  padding-right: 0 !important;
+}
+.MuiFormControl-root {
+  background: none !important;
+  width: 100%;
 }
