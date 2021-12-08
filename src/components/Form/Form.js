@@ -65,6 +65,7 @@ const Form = ({ bilet }) => {
                 id="first_name"
                 type="text"
                 className="form-control"
+                style={errors?.first_name && { border: "2px solid red" }}
                 {...register("first_name", {
                   required: "Поле обязательно к заполнению",
                   minLength: {
@@ -86,6 +87,7 @@ const Form = ({ bilet }) => {
             <div className="col-lg-4 form_item">
               <label htmlFor="last_name">Фамилия*</label>
               <input
+                style={errors?.last_name && { border: "2px solid red" }}
                 type="text"
                 className="form-control"
                 id="last_name"
@@ -109,6 +111,7 @@ const Form = ({ bilet }) => {
             <div className="col-lg-4 form_item">
               <label htmlFor="middle_name">Отчество*</label>
               <input
+                style={errors?.middle_name && { border: "2px solid red" }}
                 type="text"
                 className="form-control"
                 id="middle_name"
@@ -131,7 +134,9 @@ const Form = ({ bilet }) => {
             </div>
             <div className="col-lg-4 form_item">
               <label htmlFor="phone">телефон*</label>
+
               <input
+                style={errors?.phone && { border: "2px solid red" }}
                 type="text"
                 className="form-control"
                 id="phone"
@@ -156,6 +161,7 @@ const Form = ({ bilet }) => {
             <div className="col-lg-4 form_item">
               <label htmlFor="email">E-mail*</label>
               <input
+                style={errors?.email && { border: "2px solid red" }}
                 type="email"
                 className="form-control"
                 id="email"
@@ -179,6 +185,9 @@ const Form = ({ bilet }) => {
             <div className="col-lg-4 form_item">
               <label htmlFor="place_of_residence">Место жительства*</label>
               <input
+                style={
+                  errors?.place_of_residence && { border: "2px solid red" }
+                }
                 type="text"
                 className="form-control"
                 id="place_of_residence"
