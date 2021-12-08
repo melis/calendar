@@ -26,7 +26,7 @@ const ListTab = ({ tab, list, setTab }) => {
   }, [setEvn, setExc, exc, evn, setTab, list]);
   return (
     <div className="pbt_bl">
-      <h4>Выберите дату посещения*</h4>
+      <h4>Выберите вид посещения*</h4>
       <div className="btns">
         <button
           disabled={exc}

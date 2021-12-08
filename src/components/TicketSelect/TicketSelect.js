@@ -1,5 +1,7 @@
+import { format } from "date-fns";
 import React from "react";
 import Form from "../Form/Form";
+import ruLocale from "date-fns/locale/ru";
 
 const TicketSelect = ({ bilet, setBilet }) => {
   return (
@@ -22,9 +24,13 @@ const TicketSelect = ({ bilet, setBilet }) => {
                   />
                 </div>
               ) : null}
-              <h4>{`${bilet.date} ${
-                bilet.selectTime ? "в " + bilet.selectTime : ""
-              }`}</h4>
+              <h4>{`${
+                bilet?.type === "free_date"
+                  ? bilet.date
+                  : format(new Date(bilet.date), "d MMMM", {
+                      locale: ruLocale,
+                    })
+              } ${bilet.selectTime ? "в " + bilet.selectTime : ""}`}</h4>
             </div>
           </div>
         </div>
