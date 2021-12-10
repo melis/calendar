@@ -9,10 +9,10 @@ const TicketSelect = ({ bilet, setBilet }) => {
       <div className="blue_bg">
         <div className="container">
           <div className="row">
-            <div className="col-lg-7">
+            <div className="col-lg-8">
               <h3>{bilet.title}</h3>
             </div>
-            <div className="col-lg-5">
+            <div className="col-lg-4">
               {bilet.type !== "free_date" ? (
                 <div className="ticket_close">
                   <img
