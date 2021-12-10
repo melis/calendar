@@ -16,9 +16,9 @@
 .m_label_2 {
   display: inline-block;
 
-  width: 5px;
+  width: 10px;
 
-  height: 5px;
+  height: 10px;
 
   border-radius: 50%;
 }
@@ -184,6 +184,7 @@ input.input_date,
   display: flex;
   align-items: center;
   margin-right: 40px;
+  font-size: 18px;
 }
 .toolbar span {
   display: inline-block;
@@ -202,3 +203,18 @@ input.input_date,
 
 /* .Mui-selected {
 } */
+
+.MuiTypography-root {
+  width: 40px !important;
+  font-family: Raleway !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 21px !important;
+  text-transform: uppercase;
+  font-feature-settings: "pnum" on, "lnum" on !important;
+
+  /* чёрный для сайта */
+
+  color: #212121 !important;
+}

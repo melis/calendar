@@ -81,7 +81,14 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
           </>
         }
       >
-        <PickersDay {...DayComponentProps} style={{ fontSize: "18px" }} />
+        <PickersDay
+          {...DayComponentProps}
+          style={{
+            fontSize: "18px",
+            fontFamily: "Raleway",
+            width: "40px",
+          }}
+        />
       </Badge>
     );
   };
@@ -163,7 +170,12 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
           }}
           onMonthChange={handleMonthChange}
           shouldDisableDate={disableDays}
-          renderInput={(params) => <TextField {...params} />}
+          renderInput={(params) => (
+            <TextField
+              {...params}
+              // style={{ fontFamily: "Raleway", fontSize: "50px" }}
+            />
+          )}
           renderLoading={() => <CalendarPickerSkeleton />}
           renderDay={renderDay}
           showToolbar
