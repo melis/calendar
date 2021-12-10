@@ -81,7 +81,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
           </>
         }
       >
-        <PickersDay {...DayComponentProps} />
+        <PickersDay {...DayComponentProps} style={{ fontSize: "18px" }} />
       </Badge>
     );
   };
@@ -121,7 +121,12 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   };
 
   return (
-    <div className="input_date_pos">
+    <div
+      className="input_date_pos"
+      onMouseMove={(e) => {
+        console.dir(e.target.localName);
+      }}
+    >
       <img
         src={`/assets/images/icons/calendar_ico_${disabled ? "d" : "a"}.svg`}
         style={{ pointerEvents: disabled ? "auto" : "none" }}
@@ -145,6 +150,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
           )}
           disabled={disabled}
           inputFormat="dd MMMM yyyy"
+          mask=""
           value={value}
           loading={isLoading}
           onChange={(newValue) => {

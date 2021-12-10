@@ -45,6 +45,7 @@
 
 .MuiButtonBase-root {
   background-color: transparent !important;
+  border-color: transparent !important;
 }
 
 .Mui-selected {
@@ -62,7 +63,8 @@
 }
 
 .MuiButtonBase-root:hover {
-  background: #e4e4e4 !important;
+  /* background: #e4e4e4 !important; */
+  border: 2px solid #88bf57 !important;
 }
 
 .MuiOutlinedInput-input {
@@ -197,3 +199,6 @@ input.input_date,
 .toolbar_item .evn {
   background: #d76729;
 }
+
+/* .Mui-selected {
+} */
