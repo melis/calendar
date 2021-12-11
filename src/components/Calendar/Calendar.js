@@ -87,6 +87,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
             fontSize: "18px",
             fontFamily: "Raleway",
             width: "40px",
+            height: "40px",
           }}
         />
       </Badge>

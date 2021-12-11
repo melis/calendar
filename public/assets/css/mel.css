@@ -66,6 +66,10 @@
   /* background: #e4e4e4 !important; */
   border: 2px solid #88bf57 !important;
 }
+.MuiButtonBase-root {
+  /* background: #e4e4e4 !important; */
+  border: 2px solid transparent !important;
+}
 
 .MuiOutlinedInput-input {
   padding: 25px !important;
