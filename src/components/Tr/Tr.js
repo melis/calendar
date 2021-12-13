@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Select from "../Select/Select";
 
 const Tr = ({ bilet, setTickets, summ }) => {
   const { price } = bilet;
@@ -184,43 +185,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
           <div className={`accordion-collapse ${pref < 1 && "collapse"}`}>
             <div className="accordion-body">
               {prefInfo.map((info) => (
-                <div className="form-group select" key={info.id}>
-                  <label htmlFor={`example${info.id}`}>{info.name}</label>
-                  <select
-                    style={{
-                      border: info.value_id > 0 ? "none" : "2px solid #E13838",
-                    }}
-                    className="form-select"
-                    id={`example${info.id}`}
-                    required=""
-                    name={`example${info.id}`}
-                    value={info.value_id}
-                    onChange={(e) => {
-                      setPrefInfo((old) => {
-                        let newInfo = [...old];
-                        newInfo.forEach((el, index) => {
-                          if (el.id === info.id) {
-                            newInfo[index].value_id = Number(e.target.value);
-                          }
-                        });
-                        return newInfo;
-                      });
-                    }}
-                  >
-                    <option value={0}>Выберите категорию льготы</option>
-                    <option value={1}>Подопечные социальных учреждений</option>
-                    <option value={2}>2 dsad</option>
-                    <option value={3}>3 dasdasd</option>
-                    <option value={4}>4 dsadas</option>
-                    <option value={5}>5 dasdsa</option>
-                  </select>
-                  <div
-                    className="invalid-feedback"
-                    style={{ display: info.value_id > 0 ? "none" : "block" }}
-                  >
-                    *выберите категорию льготы, чтобы продолжить
-                  </div>
-                </div>
+                <Select info={info} setPrefInfo={setPrefInfo} />
               ))}
             </div>
           </div>

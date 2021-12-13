@@ -1164,7 +1164,7 @@ button.btn_link {
   margin-bottom: 10px;
 }
 .accordion-body .form-group select.form-select {
-  background: #ffffff;
+  /* background: #ffffff; */
   border-radius: 25px;
   padding: 12px 30px;
   border: none;
