@@ -1,6 +1,6 @@
-import { format } from "date-fns";
 import React from "react";
 import Form from "../Form/Form";
+import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
 
 const TicketSelect = ({ bilet, setBilet }) => {

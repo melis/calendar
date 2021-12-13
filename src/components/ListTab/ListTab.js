@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const ListTab = ({ tab, list, setTab }) => {
+const ListTab = ({ tab, list, setTab, bilet }) => {
   const [exc, setExc] = useState(true);
   const [evn, setEvn] = useState(true);
 
@@ -43,10 +43,13 @@ const ListTab = ({ tab, list, setTab }) => {
           Мероприятие
         </button>
       </div>
-      <p>
-        Обратите внимание: вы можете выбрать для посещения только одну экскурсию
-        в день. Для посещения экскурсии вам нужно выбрать конкретное время.
-      </p>
+      {bilet ? null : (
+        <p>
+          Обратите внимание: вы можете выбрать для посещения только одну
+          экскурсию в день. Для посещения экскурсии вам нужно выбрать конкретное
+          время.
+        </p>
+      )}
     </div>
   );
 };

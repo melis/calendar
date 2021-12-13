@@ -75,7 +75,9 @@ const App = () => {
             </div>
           </div>
           <div className="col-lg-7">
-            {self ? null : <ListTab list={list} tab={tab} setTab={setTab} />}
+            {self ? null : (
+              <ListTab list={list} tab={tab} setTab={setTab} bilet={bilet} />
+            )}
           </div>
         </div>
       </div>

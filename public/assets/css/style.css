@@ -643,7 +643,7 @@ section.allert .content_block {
 }
 
 .pbt_bl {
-  max-width: 460px;
+  /* max-width: 460px; */
 }
 
 .pbt_bl h4 {
@@ -851,6 +851,7 @@ button.btn_link {
   padding-bottom: 10px;
   position: relative;
   list-style: none;
+  font-size: 18px;
 }
 
 .pbt_r_b_cont ul li:after {
@@ -1046,6 +1047,7 @@ button.btn_link {
   font-size: 16px !important;
   color: #8b8b8b;
   line-height: inherit;
+  text-transform: none;
 }
 .payment {
   font-family: Source Sans Pro;
@@ -1055,7 +1057,7 @@ button.btn_link {
   line-height: 35px;
   color: #212121;
   margin-bottom: 40px;
-  margin-top: 100px;
+  margin-top: 55px;
 }
 .w_0 {
   display: none !important;
@@ -1323,4 +1325,13 @@ input.css-1uvydh2:focus,
 .pbt_img img {
   height: 460px;
   object-fit: cover;
+}
+
+.border_line:disabled {
+  border: 2px solid #ddd;
+  color: #ddd;
+  opacity: 1;
+}
+table.accordion {
+  margin: 0;
 }

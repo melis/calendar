@@ -1,5 +1,6 @@
 import React from "react";
-
+import { format } from "date-fns";
+import ruLocale from "date-fns/locale/ru";
 const Event = ({ el, setBilet, bilet }) => {
   return (
     <div className="row ticket_item">
@@ -21,7 +22,15 @@ const Event = ({ el, setBilet, bilet }) => {
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              <p>{el.proceed}</p>
+              {el.type === "excursion" ? (
+                <p>{el.proceed}</p>
+              ) : (
+                <p>
+                  {format(new Date(el.date), "d MMMM", {
+                    locale: ruLocale,
+                  })}
+                </p>
+              )}
             </div>
             {el.type === "excursion" ? (
               <>
