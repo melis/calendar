@@ -1,136 +1,403 @@
 import React, { useState } from "react";
-import Calendar from "../Calendar/Calendar";
-import Event from "../Event/Event";
-import ListTab from "../ListTab/ListTab";
-import TicketSelect from "../TicketSelect/TicketSelect";
 
 const App = () => {
-  const [list, setList] = useState([]);
-  const [tab, setTab] = useState(null);
-  const [self, setSelf] = useState(false);
-  const [bilet, setBilet] = useState();
-  const [warn, setWarn] = useState(false);
-
+  const [show, setShow] = useState(0);
+  const [chek1, setChek1] = useState(false);
+  const [chek2, setChek2] = useState(false);
   return (
     <>
-      <div className="container content_container">
+      <div className="container">
         <div className="row">
-          <div className="col-lg-5">
-            <div className="pbt_bl">
-              <h4>Выберите дату посещения*</h4>
+          <div className="accordion" id="accordionPanelsStayOpenExample">
+            <div
+              className="accordion-item bg_blue card"
+              style={{ transition: "2s" }}
+            >
+              <div className="accordion-header" id="headingTwo">
+                <img src="./assets/images/icons/third.svg" alt="" />
 
-              <Calendar
-                list={list}
-                setList={setList}
-                disabled={self}
-                warn={warn}
-                setWarn={setWarn}
-                setBilet={setBilet}
-                tab={tab}
-              />
-
-              <div className="hover_check">
-                <div className="form-check">
-                  <span
-                    className="a_warning"
-                    style={warn ? { display: "block" } : { display: "none" }}
-                  >
-                    Снимите галочку, чтобы вернуться от самостоятельного
-                    посещения без даты к списку мероприятий и экскурсий
-                    <img
-                      src="/assets/images/icons/close_normal.svg"
-                      alt=""
-                      onClick={() => {
-                        setWarn(false);
-                      }}
-                    />
-                  </span>
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    value={self}
-                    id="Check_1"
-                    onChange={(e) => {
-                      setSelf(e.target.checked);
-                      if (e.target.checked) {
-                        setBilet({
-                          type: "free_date",
-                          title: "Самостоятельное посещение заповедника",
-                          price: { base: 400, child: 200, pref: 0 },
-                          date: "Бессрочный билет на год",
-                        });
-                        setWarn(true);
-                      } else {
-                        setBilet(null);
-                        setWarn(false);
+                <button
+                  className={`accordion-button ${
+                    show !== 1 ? "collapsed" : ""
+                  }`}
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                  onClick={() => {
+                    setShow((s) => {
+                      if (s === 1) {
+                        return 0;
                       }
-                    }}
-                  />
+                      return 1;
+                    });
+                  }}
+                >
+                  Стоимость билетов
+                </button>
+              </div>
 
-                  <label className="form-check-label" htmlFor="Check_1">
-                    Хочу посетить заповедник самостоятельно
-                  </label>
+              <div
+                id="collapseTwo"
+                className={`accordion-collapse collapse ${
+                  show === 1 ? "show" : ""
+                }`}
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <div className="accordion_content">
+                    <p>
+                      Бесплатное посещение эколого-экскурсионного комплекса
+                      Чунозерской усадьбы Лапландского заповедника разрешается
+                      для следующих категорий граждан:
+                    </p>
+
+                    <ul>
+                      <li>Дети до 2 лет включительно.</li>
+
+                      <li>
+                        Пенсионеры старше 60 лет — при предъявлении пенсионного
+                        удостоверения.
+                      </li>
+
+                      <li>
+                        Участники Великой Отечественной войны — при предъявлении
+                        удостоверения.
+                      </li>
+
+                      <li>
+                        Организованные группы воспитанников детских домов,
+                        подопечные домов милосердия, домов инвалидов и домов
+                        пенсионеров —
+                      </li>
+
+                      <li>
+                        по предварительной заявке от указанных учреждений и с
+                        официальным
+                      </li>
+
+                      <li>письмом на имя руководителя заповедника.</li>
+
+                      <li>
+                        Члены малообеспеченных семей — при предъявлении справки
+                        из Центра социального обслуживания населения.
+                      </li>
+
+                      <li>
+                        Представители средств массовой информации в целях
+                        создания фильмов и репортажей о заповеднике — по
+                        предварительной заявке.
+                      </li>
+
+                      <li>
+                        Партнёры по совместным программам и проектам, по обмену
+                        опытом.
+                      </li>
+                    </ul>
+
+                    <span>
+                      Основание — Положение о платных услугах Федерального
+                      государственного бюджетного учреждения «Лапландский
+                      государственный природный биосферный заповедник», пункт
+                      5.8.
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="col-lg-7">
-            {self ? null : <ListTab list={list} tab={tab} setTab={setTab} />}
+
+            <div className="accordion-item bg_green card">
+              <div className="accordion-header" id="headingThree">
+                <img src="./assets/images/icons/second.svg" alt="" />
+
+                <button
+                  className={`accordion-button ${
+                    show !== 2 ? "collapsed" : ""
+                  }`}
+                  onClick={() => {
+                    setShow((s) => {
+                      if (s === 2) {
+                        return 0;
+                      }
+                      return 2;
+                    });
+                  }}
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  Что входит в стоимость билетов
+                </button>
+              </div>
+
+              <div
+                id="collapseThree"
+                className={`accordion-collapse collapse ${
+                  show === 2 ? "show" : ""
+                }`}
+                aria-labelledby="headingThree"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <div className="accordion_content">
+                    <p>
+                      Бесплатное посещение эколого-экскурсионного комплекса
+                      Чунозерской усадьбы Лапландского заповедника разрешается
+                      для следующих категорий граждан:
+                    </p>
+
+                    <ul>
+                      <li>Дети до 2 лет включительно.</li>
+
+                      <li>
+                        Пенсионеры старше 60 лет — при предъявлении пенсионного
+                        удостоверения.
+                      </li>
+
+                      <li>
+                        Участники Великой Отечественной войны — при предъявлении
+                        удостоверения.
+                      </li>
+
+                      <li>
+                        Организованные группы воспитанников детских домов,
+                        подопечные домов милосердия, домов инвалидов и домов
+                        пенсионеров —
+                      </li>
+
+                      <li>
+                        по предварительной заявке от указанных учреждений и с
+                        официальным
+                      </li>
+
+                      <li>письмом на имя руководителя заповедника.</li>
+
+                      <li>
+                        Члены малообеспеченных семей — при предъявлении справки
+                        из Центра социального обслуживания населения.
+                      </li>
+
+                      <li>
+                        Представители средств массовой информации в целях
+                        создания фильмов и репортажей о заповеднике — по
+                        предварительной заявке.
+                      </li>
+
+                      <li>
+                        Партнёры по совместным программам и проектам, по обмену
+                        опытом.
+                      </li>
+                    </ul>
+
+                    <span>
+                      Основание — Положение о платных услугах Федерального
+                      государственного бюджетного учреждения «Лапландский
+                      государственный природный биосферный заповедник», пункт
+                      5.8.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="accordion-item bg_blue">
+              <div className="accordion-header" id="heading1">
+                <img src="./assets/images/icons/first.svg" alt="" />
+
+                <button
+                  className={`accordion-button ${
+                    show !== 3 ? "collapsed" : ""
+                  }`}
+                  onClick={() => {
+                    setShow((s) => {
+                      if (s === 3) {
+                        return 0;
+                      }
+                      return 3;
+                    });
+                  }}
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapse1"
+                  aria-expanded="false"
+                  aria-controls="collapse1"
+                >
+                  Льготные категории
+                </button>
+              </div>
+
+              <div
+                id="collapse1"
+                className={`accordion-collapse collapse ${
+                  show === 3 ? "show" : ""
+                }`}
+                aria-labelledby="headingTwo"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <div className="accordion_content">
+                    <p>
+                      Бесплатное посещение эколого-экскурсионного комплекса
+                      Чунозерской усадьбы Лапландского заповедника разрешается
+                      для следующих категорий граждан:
+                    </p>
+
+                    <ul>
+                      <li>Дети до 2 лет включительно.</li>
+
+                      <li>
+                        Пенсионеры старше 60 лет — при предъявлении пенсионного
+                        удостоверения.
+                      </li>
+
+                      <li>
+                        Участники Великой Отечественной войны — при предъявлении
+                        удостоверения.
+                      </li>
+
+                      <li>
+                        Организованные группы воспитанников детских домов,
+                        подопечные домов милосердия, домов инвалидов и домов
+                        пенсионеров —
+                      </li>
+
+                      <li>
+                        по предварительной заявке от указанных учреждений и с
+                        официальным
+                      </li>
+
+                      <li>письмом на имя руководителя заповедника.</li>
+
+                      <li>
+                        Члены малообеспеченных семей — при предъявлении справки
+                        из Центра социального обслуживания населения.
+                      </li>
+
+                      <li>
+                        Представители средств массовой информации в целях
+                        создания фильмов и репортажей о заповеднике — по
+                        предварительной заявке.
+                      </li>
+
+                      <li>
+                        Партнёры по совместным программам и проектам, по обмену
+                        опытом.
+                      </li>
+                    </ul>
+
+                    <span>
+                      Основание — Положение о платных услугах Федерального
+                      государственного бюджетного учреждения «Лапландский
+                      государственный природный биосферный заповедник», пункт
+                      5.8.
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div className="container tickets">
-        {self ? (
-          <div className="row ticket_item">
-            <div className="col-lg-5">
-              <div className="pbt_r_b">
-                <div className="pbt_r_b_title bigest">
-                  <h4>Самостоятельное посещение заповедника</h4>
-                </div>
-                <div className="pbt_r_b_cont">
-                  <p>
-                    Билет даёт право на посещение территории
-                    эколого-экскурсионного комплекса Чунозерской усадьбы
-                    Лапландского заповедника.
-                  </p>
-                  <div className="pbt_r_b_title">
-                    <h4>В стоимость билета входит:</h4>
-                  </div>
-                  <ul>
-                    <li>посещение территории,</li>
 
-                    <li>
-                      посещение экотроп, посещение музеев и природных объектов,
-                    </li>
+      <section className="allert">
+        <div className="container">
+          <div className="row block_content">
+            <h4 className="title_block col-md-12">
+              Пожалуйста, обратите внимание!
+            </h4>
 
-                    <li>
-                      услуги объектов инфраструктуры: парковки, туалетов,
-                      Туристско-информационного центра, Визит-центра и
-                      Конференц-дома,
-                    </li>
-                    <li>посещение всех объектов инфраструктуры для детей.</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-7">
-              <div className="pbt_img right">
-                <img src="./assets/images/bt.png" alt="" />
+            <div className="col-lg-12">
+              <div className="content_block">
+                <p className="content_text">
+                  При покупке билета на сайте сотрудник экскурсионного отдела не
+                  связывается с посетителем по телефону для подтверждения брони.
+                </p>
+
+                <p className="content_text">
+                  Будьте внимательны при покупке билета: ошибки при указании
+                  контактного телефона, <br />
+                  электронной почты и количества человек в группе недопустимы.
+                </p>
+
+                <p className="content_text">
+                  Неиспользованный билет на экскурсионную программу не даёт
+                  права посещения <br />
+                  эколого-экскурсионного комплекса Заповедника в последующие
+                  дни, обмену и возврату не подлежит.
+                </p>
               </div>
             </div>
           </div>
-        ) : (
-          list.map((el) => {
-            if (tab === el.type) {
-              return (
-                <Event el={el} key={el.id} setBilet={setBilet} bilet={bilet} />
-              );
-            }
-            return null;
-          })
-        )}
+        </div>
+      </section>
+
+      <div className="container">
+        <div className="row">
+          <div className="accept_block">
+            <div className="check_block">
+              <form className="hover_check">
+                <div className="form-check">
+                  <input
+                    className="form-check-input form-check-input1"
+                    type="checkbox"
+                    checked={chek1}
+                    onChange={(e) => {
+                      setChek1(e.target.checked);
+                    }}
+                    id="flexCheckDefault"
+                  />
+
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckDefault"
+                  >
+                    С <a href="/">правилами посещения</a> ознакомлен(а)
+                  </label>
+                </div>
+
+                <div className="form-check">
+                  <input
+                    className="form-check-input form-check-input2"
+                    type="checkbox"
+                    checked={chek2}
+                    onChange={(e) => {
+                      setChek2(e.target.checked);
+                    }}
+                    id="flexCheckChecked"
+                  />
+
+                  <label
+                    className="form-check-label"
+                    htmlFor="flexCheckChecked"
+                  >
+                    С правилами покупки билета ознакомлен(а)
+                  </label>
+                </div>
+              </form>
+            </div>
+
+            <a
+              href="/purchase.html"
+              className={`${
+                chek1 && chek2
+                  ? "btn_link buy_ticket st_1 st_2"
+                  : "btn_link buy_ticket"
+              }`}
+              onClick={(e) => {
+                if (!chek1 || !chek2) {
+                  e.preventDefault();
+                }
+              }}
+            >
+              Купить билет
+            </a>
+          </div>
+        </div>
       </div>
-      {bilet ? <TicketSelect bilet={bilet} setBilet={setBilet} /> : null}
     </>
   );
 };
