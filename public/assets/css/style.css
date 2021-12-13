@@ -933,7 +933,7 @@ button.btn_link {
   color: #212121;
   border-radius: 20px;
   margin-bottom: 15px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .ticket_selection_item td,
 .ticket_selection_item th {
