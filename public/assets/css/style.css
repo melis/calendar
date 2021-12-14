@@ -1359,6 +1359,7 @@ table.accordion {
   list-style: none;
   position: absolute;
   top: 120%;
+  z-index: 1;
 }
 .select-option {
   padding: 10px 30px;
