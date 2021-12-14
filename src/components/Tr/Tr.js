@@ -171,7 +171,8 @@ const Tr = ({ bilet, setTickets, summ }) => {
                   {
                     id: c,
                     value_id: 0,
-                    name: "ЛЬГОТНЫЙ БИЛЕТ " + (c + 1),
+                    name: "Выберите категорию льготы",
+                    title: "ЛЬГОТНЫЙ БИЛЕТ " + (c + 1),
                   },
                 ]);
                 return c + 1;
@@ -185,7 +186,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
           <div className={`accordion-collapse ${pref < 1 && "collapse"}`}>
             <div className="accordion-body">
               {prefInfo.map((info) => (
-                <Select info={info} setPrefInfo={setPrefInfo} />
+                <Select info={info} setPrefInfo={setPrefInfo} key={info.id} />
               ))}
             </div>
           </div>

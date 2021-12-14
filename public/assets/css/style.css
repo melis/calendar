@@ -1150,7 +1150,7 @@ button.btn_link {
   width: 420px;
   display: inline-grid;
   margin-right: 40px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 .accordion-body .form-group label {
   font-family: Raleway;
@@ -1331,7 +1331,72 @@ input.css-1uvydh2:focus,
   border: 2px solid #ddd;
   color: #ddd;
   opacity: 1;
+  background-color: #fff;
 }
 table.accordion {
   margin: 0;
+}
+.form-select {
+  position: relative;
+  background-image: none;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 0;
+  border: 2px solid transparent;
+}
+.form-select:hover {
+  border: 2px solid #007db5;
+}
+
+.select-options {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  left: 0;
+  padding: 20px 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 120%;
+}
+.select-option {
+  padding: 10px 30px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #212121;
+  cursor: pointer;
+}
+.select-option:hover {
+  color: #007db5;
+}
+.select-value {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #212121;
+  cursor: pointer;
+  padding: 13px 30px;
+}
+.select-value:hover {
+  color: #007db5;
+}
+.select-arrow {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  pointer-events: none;
+  transition: 0.3s;
 }

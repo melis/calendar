@@ -132,7 +132,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     <div
       className="input_date_pos"
       onMouseMove={(e) => {
-        console.dir(e.target.localName);
+        // console.dir(e.target.localName);
       }}
     >
       <img

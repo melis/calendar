@@ -224,7 +224,8 @@ const Form = ({ bilet }) => {
                 </label>
               </div>
               <div className="invalid-feedback">
-                {errors?.tickets && (errors?.tickets?.message || "*Error")}
+                {/* sasass */}
+                {errors?.accept && (errors?.tickets?.accept || "*Error")}
               </div>
             </div>
           </div>
