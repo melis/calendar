@@ -756,6 +756,7 @@ input.input_date {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
+  line-height: 18px;
   color: #005d90;
   margin: 0;
 }
@@ -768,6 +769,7 @@ input.input_date {
 .pbt_r_b_item {
   display: flex;
   margin-right: 15px;
+  align-items: flex-end;
 }
 
 .pbt_r_b_title {
@@ -1360,6 +1362,7 @@ table.accordion {
   position: absolute;
   top: 120%;
   z-index: 1;
+  border: 1px solid #c5e5ed;
 }
 .select-option {
   padding: 10px 30px;
@@ -1373,6 +1376,20 @@ table.accordion {
   font-feature-settings: "pnum" on, "lnum" on;
   color: #212121;
   cursor: pointer;
+  position: relative;
+}
+.selected::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("/assets/images/icons/select_normal.svg");
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.selected:hover:after {
+  background-image: url("/assets/images/icons/select_hover.svg");
 }
 .select-option:hover {
   color: #007db5;
@@ -1397,7 +1414,7 @@ table.accordion {
   height: 35px;
   position: absolute;
   top: 8px;
-  right: 12px;
+  right: 22px;
   pointer-events: none;
   transition: 0.3s;
 }

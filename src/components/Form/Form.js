@@ -140,7 +140,7 @@ const Form = ({ bilet }) => {
                 type="text"
                 className="form-control"
                 id="phone"
-                placeholder="+7 (999) 99-99-99)"
+                placeholder=" +7 999 999-99-99"
                 {...register("phone", {
                   required: "Поле обязательно к заполнению",
                   minLength: {
@@ -224,8 +224,7 @@ const Form = ({ bilet }) => {
                 </label>
               </div>
               <div className="invalid-feedback">
-                {/* sasass */}
-                {errors?.accept && (errors?.tickets?.accept || "*Error")}
+                {errors?.accept && (errors?.accept?.message || "*Error")}
               </div>
             </div>
           </div>

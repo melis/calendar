@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const lgots = [
   { id: 1, name: "Партнеры" },
@@ -12,6 +13,12 @@ const lgots = [
 
 const Select = ({ info, setPrefInfo }) => {
   const [active, setActive] = useState(false);
+  useEffect(() => {
+    axios
+      .get("http://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
+      .then(({ data }) => console.log(data));
+    // .catch((e) => console.log(e));
+  }, []);
   return (
     <div
       className="form-group select"
@@ -50,7 +57,9 @@ const Select = ({ info, setPrefInfo }) => {
         >
           {lgots.map((l) => (
             <li
-              className="select-option"
+              className={`select-option ${
+                l.id === info.value_id ? "selected" : ""
+              }`}
               key={l.id}
               onClick={() => {
                 setPrefInfo((old) => {
@@ -72,35 +81,6 @@ const Select = ({ info, setPrefInfo }) => {
         </ul>
       </div>
 
-      {/* <select
-        style={{
-          border: info.value_id > 0 ? "none" : "2px solid #E13838",
-        }}
-        className="form-select"
-        id={`example${info.id}`}
-        required=""
-        name={`example${info.id}`}
-        value={info.value_id}
-        onChange={(e) => {
-          setPrefInfo((old) => {
-            let newInfo = [...old];
-            newInfo.forEach((el, index) => {
-              if (el.id === info.id) {
-                newInfo[index].value_id = Number(e.target.value);
-              }
-            });
-            return newInfo;
-          });
-        }}
-      >
-        <option value={0}>Выберите категорию льготы</option>
-
-        {lgots.map((l) => (
-          <option value={l.id} key={l.id}>
-            {l.name}
-          </option>
-        ))}
-      </select> */}
       <div
         className="invalid-feedback"
         style={{ display: info.value_id > 0 ? "none" : "block" }}
