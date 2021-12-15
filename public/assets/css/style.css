@@ -541,6 +541,7 @@ section.allert .content_block {
 
 .form-check-input:checked[type="checkbox"] {
   background-image: url(../images/icons/typcn_tick.svg);
+  background-position: center;
 }
 
 .form-check-input:checked {
@@ -643,7 +644,7 @@ section.allert .content_block {
 }
 
 .pbt_bl {
-  max-width: 460px;
+  /* max-width: 460px; */
 }
 
 .pbt_bl h4 {
@@ -756,6 +757,7 @@ input.input_date {
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
+  line-height: 18px;
   color: #005d90;
   margin: 0;
 }
@@ -768,6 +770,7 @@ input.input_date {
 .pbt_r_b_item {
   display: flex;
   margin-right: 15px;
+  align-items: flex-end;
 }
 
 .pbt_r_b_title {
@@ -851,6 +854,7 @@ button.btn_link {
   padding-bottom: 10px;
   position: relative;
   list-style: none;
+  font-size: 18px;
 }
 
 .pbt_r_b_cont ul li:after {
@@ -932,7 +936,7 @@ button.btn_link {
   color: #212121;
   border-radius: 20px;
   margin-bottom: 15px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .ticket_selection_item td,
 .ticket_selection_item th {
@@ -1046,6 +1050,7 @@ button.btn_link {
   font-size: 16px !important;
   color: #8b8b8b;
   line-height: inherit;
+  text-transform: none;
 }
 .payment {
   font-family: Source Sans Pro;
@@ -1055,7 +1060,7 @@ button.btn_link {
   line-height: 35px;
   color: #212121;
   margin-bottom: 40px;
-  margin-top: 100px;
+  margin-top: 55px;
 }
 .w_0 {
   display: none !important;
@@ -1148,7 +1153,7 @@ button.btn_link {
   width: 420px;
   display: inline-grid;
   margin-right: 40px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 .accordion-body .form-group label {
   font-family: Raleway;
@@ -1162,7 +1167,7 @@ button.btn_link {
   margin-bottom: 10px;
 }
 .accordion-body .form-group select.form-select {
-  background: #ffffff;
+  /* background: #ffffff; */
   border-radius: 25px;
   padding: 12px 30px;
   border: none;
@@ -1323,4 +1328,94 @@ input.css-1uvydh2:focus,
 .pbt_img img {
   height: 460px;
   object-fit: cover;
+}
+
+.border_line:disabled {
+  border: 2px solid #ddd;
+  color: #ddd;
+  opacity: 1;
+  background-color: #fff;
+}
+table.accordion {
+  margin: 0;
+}
+.form-select {
+  position: relative;
+  background-image: none;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 0;
+  border: 2px solid transparent;
+}
+.form-select:hover {
+  border: 2px solid #007db5;
+}
+
+.select-options {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  left: 0;
+  padding: 20px 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 120%;
+  z-index: 1;
+  border: 1px solid #c5e5ed;
+}
+.select-option {
+  padding: 10px 30px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #212121;
+  cursor: pointer;
+  position: relative;
+}
+.selected::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("/assets/images/icons/select_normal.svg");
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.selected:hover:after {
+  background-image: url("/assets/images/icons/select_hover.svg");
+}
+.select-option:hover {
+  color: #007db5;
+}
+.select-value {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #212121;
+  cursor: pointer;
+  padding: 13px 30px;
+}
+.select-value:hover {
+  color: #007db5;
+}
+.select-arrow {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  pointer-events: none;
+  transition: 0.3s;
 }
