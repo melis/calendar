@@ -210,7 +210,7 @@ const Form = ({ bilet }) => {
             <div className="hover_check">
               <div className="form-check">
                 <input
-                  style={{ borderColor: errors?.accept ? "red" : "inherit" }}
+                  style={errors?.accept ? { borderColor: "red" } : null}
                   className="form-check-input"
                   type="checkbox"
                   value=""

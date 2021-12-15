@@ -16,7 +16,7 @@ const Table = (props) => {
           <thead>
             <tr className="ticket_selection_item head">
               <th className="ticket_selection_name">ТИП БИЛЕТА</th>
-              <th className="ticket_selection_price">ЦЕНА, РУБ</th>
+              <th className="ticket_selection_price">ЦЕНА, РУБ.</th>
               <th className="ticket_selection_count">КОЛИЧЕСТВО</th>
             </tr>
           </thead>

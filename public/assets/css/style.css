@@ -541,6 +541,7 @@ section.allert .content_block {
 
 .form-check-input:checked[type="checkbox"] {
   background-image: url(../images/icons/typcn_tick.svg);
+  background-position: center;
 }
 
 .form-check-input:checked {
@@ -885,9 +886,6 @@ button.btn_link {
 }
 
 .blue_bg h4 {
-  display: flex;
-  align-items: end;
-  flex-direction: column;
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
@@ -896,12 +894,10 @@ button.btn_link {
   text-align: right;
   color: #ffffff;
   margin: 0;
-  max-width: 250px;
-  float: right;
   margin-top: 14px;
 }
 .ticket_selection {
-  padding: 50px 15px;
+  padding: 50px 15px 85px 15px;
 }
 .ticket_selection_content {
   width: 100%;
@@ -1050,6 +1046,7 @@ button.btn_link {
   color: #8b8b8b;
   line-height: inherit;
   text-transform: none;
+  letter-spacing: normal;
 }
 .payment {
   font-family: Source Sans Pro;
@@ -1417,4 +1414,9 @@ table.accordion {
   right: 22px;
   pointer-events: none;
   transition: 0.3s;
+}
+.blue_bg .col-lg-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
