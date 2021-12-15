@@ -753,18 +753,19 @@ input.input_date {
 }
 
 .pbt_r_b_top p {
-  font-family: Raleway;
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 18px;
   color: #005d90;
   margin: 0;
+  transform: translateY(2px);
 }
 
 .pbt_r_b_top img {
   max-width: 20px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .pbt_r_b_item {
@@ -1069,7 +1070,7 @@ button.btn_link {
   line-height: 21px;
   text-transform: uppercase;
   color: #212121;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .ticket_selection_item .accordion-body {
   padding: 28px 0 28px;
@@ -1419,4 +1420,12 @@ table.accordion {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+input {
+  outline: none;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #fff9ed !important; /* Цвет фона */
+  -webkit-text-fill-color: #212529 !important; /* цвет текста */
+  color: #212529 !important; /* цвет текста */
 }

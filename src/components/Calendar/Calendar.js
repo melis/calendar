@@ -10,7 +10,7 @@ import ruLocale from "date-fns/locale/ru";
 import data from "../../data";
 import { getMonth } from "date-fns";
 
-// import { getDay, getDate, setDate } from "date-fns";
+import { getDay, getDate, setDate } from "date-fns";
 
 function fakeFetch(date, { signal }) {
   return new Promise((resolve, reject) => {
@@ -36,8 +36,10 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
 
   const disableDays = (d) => {
     let a = true;
+    console.log(new Date("10,06,2020"));
     highlightedDays.forEach((e) => {
       if (
+        e?.date &&
         new Date(e.date).getDate() === d.getDate() &&
         d.getDate() >= new Date().getDate()
       ) {
