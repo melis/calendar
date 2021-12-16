@@ -261,12 +261,12 @@ const App = () => {
                     onChange={(e) => {
                       setChek1(e.target.checked);
                     }}
-                    id="flexCheckDefault"
+                    id="flexCheckDefault1"
                   />
 
                   <label
                     className="form-check-label"
-                    htmlFor="flexCheckDefault"
+                    htmlFor="flexCheckDefault1"
                   >
                     С <a href="/">правилами посещения</a> ознакомлен(а)
                   </label>
@@ -280,12 +280,12 @@ const App = () => {
                     onChange={(e) => {
                       setChek2(e.target.checked);
                     }}
-                    id="flexCheckChecked"
+                    id="flexCheckChecked2"
                   />
 
                   <label
                     className="form-check-label"
-                    htmlFor="flexCheckChecked"
+                    htmlFor="flexCheckChecked2"
                   >
                     С правилами покупки билета ознакомлен(а)
                   </label>
