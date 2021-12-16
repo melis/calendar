@@ -15,7 +15,8 @@ const Select = ({ info, setPrefInfo }) => {
   const [active, setActive] = useState(false);
   useEffect(() => {
     axios
-      .get("http://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
+      .get("http://lapland.syntlex.kg/crm/api.php?method=get_product_bonus")
+
       .then(({ data }) => console.log(data));
     // .catch((e) => console.log(e));
   }, []);

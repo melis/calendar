@@ -36,7 +36,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
 
   const disableDays = (d) => {
     let a = true;
-    console.log(new Date("10,06,2020"));
+
     highlightedDays.forEach((e) => {
       if (
         e?.date &&

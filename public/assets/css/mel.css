@@ -179,7 +179,7 @@ input.input_date,
   border-top: 1px solid #8b8b8b;
   width: 80%;
   bottom: 30px;
-  padding: 15px;
+  padding: 10px;
   box-sizing: border-box;
   display: flex;
   /* justify-content: space-around; */
@@ -221,4 +221,7 @@ input.input_date,
   /* чёрный для сайта */
 
   color: #212121 !important;
+}
+.MuiPaper-root {
+  height: 485px;
 }
