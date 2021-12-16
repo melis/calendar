@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Select from "../Select/Select";
 
@@ -8,6 +9,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
   const [pref, setPref] = useState(0);
   const [freeBase, setFreeBase] = useState(0);
   const [prefInfo, setPrefInfo] = useState([]);
+  const [lgots, setLgots] = useState([]);
 
   useEffect(() => {
     setBase(0);
@@ -16,6 +18,13 @@ const Tr = ({ bilet, setTickets, summ }) => {
     setPrefInfo([]);
     setPref(0);
   }, [bilet]);
+  useEffect(() => {
+    axios
+      .get("http://lapland.syntlex.kg/crm/api.php?method=get_product_bonus")
+
+      .then(({ data }) => setLgots(data))
+      .catch((e) => setLgots([{ id: 1, name: "Error" }]));
+  }, []);
 
   useEffect(() => {
     setTickets({
@@ -186,7 +195,12 @@ const Tr = ({ bilet, setTickets, summ }) => {
           <div className={`accordion-collapse ${pref < 1 && "collapse"}`}>
             <div className="accordion-body">
               {prefInfo.map((info) => (
-                <Select info={info} setPrefInfo={setPrefInfo} key={info.id} />
+                <Select
+                  info={info}
+                  setPrefInfo={setPrefInfo}
+                  key={info.id}
+                  lgots={lgots}
+                />
               ))}
             </div>
           </div>

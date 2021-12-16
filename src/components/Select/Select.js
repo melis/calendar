@@ -1,25 +1,8 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const lgots = [
-  { id: 1, name: "Партнеры" },
-  { id: 2, name: "Дети до 2 лет включительно" },
-  { id: 3, name: "Пенсионеры старше 60 лет" },
-  { id: 4, name: "Участники ВОВ" },
-  { id: 5, name: "Подопечные социальных учреждений" },
-  { id: 6, name: "Малообеспеченные семьи" },
-  { id: 7, name: "Представители СМИ" },
-];
-
-const Select = ({ info, setPrefInfo }) => {
+const Select = ({ info, setPrefInfo, lgots }) => {
   const [active, setActive] = useState(false);
-  useEffect(() => {
-    axios
-      .get("http://lapland.syntlex.kg/crm/api.php?method=get_product_bonus")
 
-      .then(({ data }) => console.log(data));
-    // .catch((e) => console.log(e));
-  }, []);
   return (
     <div
       className="form-group select"
