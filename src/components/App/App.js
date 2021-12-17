@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
@@ -10,6 +10,12 @@ const App = () => {
   const [self, setSelf] = useState(false);
   const [bilet, setBilet] = useState();
   const [warn, setWarn] = useState(false);
+  const Sref = useRef(null);
+  useEffect(() => {
+    if (bilet) {
+      Sref.current.scrollIntoView();
+    }
+  }, [bilet]);
 
   return (
     <>
@@ -132,7 +138,11 @@ const App = () => {
           })
         )}
       </div>
-      {bilet ? <TicketSelect bilet={bilet} setBilet={setBilet} /> : null}
+      {bilet ? (
+        <div ref={Sref}>
+          <TicketSelect bilet={bilet} setBilet={setBilet} />
+        </div>
+      ) : null}
     </>
   );
 };
