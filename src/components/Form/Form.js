@@ -9,7 +9,6 @@ const Form = ({ bilet }) => {
   const [tickets, setTickets] = useState(null);
   const [prefValid, setPrefValid] = useState(false);
   const tRef = useRef(null);
-  console.log(tRef);
 
   const {
     register,
@@ -40,7 +39,6 @@ const Form = ({ bilet }) => {
 
   const onSubmit = (client) => {
     if (prefValid) {
-      console.log("sssss");
       tRef.current.scrollIntoView();
     } else {
       alert(JSON.stringify({ client, tickets }));

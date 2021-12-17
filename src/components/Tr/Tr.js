@@ -19,6 +19,7 @@ const Tr = (props, ref) => {
     setPrefInfo([]);
     setPref(0);
   }, [bilet]);
+
   useEffect(() => {
     axios
       .get("http://lapland.syntlex.kg/crm/api.php?method=get_product_bonus")
