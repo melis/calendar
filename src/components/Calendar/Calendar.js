@@ -9,9 +9,13 @@ import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 import data from "../../data";
 import { getMonth, getYear } from "date-fns";
+import axios from "axios";
 
 function fakeFetch(date, { signal }) {
-  console.log(getMonth(new Date(date)), getYear(new Date(date)));
+  // console.log(getMonth(new Date(date)), getYear(new Date(date)));
+  axios
+    .get("http://lapland.syntlex.kg/crm/api.php?method=get_products")
+    .then(({ data }) => console.log(JSON.parse(data[0].price)));
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       if (getMonth(date) !== getMonth(new Date())) {
@@ -32,6 +36,10 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
   const [value, setValue] = React.useState(new Date());
+  const [icoHov, setIcoHov] = React.useState(false);
+  React.useEffect(() => {
+    setIcoHov(false);
+  }, [value]);
 
   const disableDays = (d) => {
     let a = true;
@@ -133,11 +141,24 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     <div
       className="input_date_pos"
       onMouseMove={(e) => {
-        // console.dir(e.target.localName);
+        if (
+          e.target.localName === "svg" ||
+          e.target.localName === "path" ||
+          e.target.localName === "button"
+        ) {
+          setIcoHov(true);
+        } else {
+          setIcoHov(false);
+        }
+      }}
+      onMouseLeave={() => {
+        setIcoHov(false);
       }}
     >
       <img
-        src={`/assets/images/icons/calendar_ico_${disabled ? "d" : "a"}.svg`}
+        src={`/assets/images/icons/calendar_ico_${
+          disabled ? "d" : icoHov ? "h" : "a"
+        }.svg`}
         style={{ pointerEvents: disabled ? "auto" : "none" }}
         onClick={() => {
           setWarn(true);
