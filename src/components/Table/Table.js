@@ -1,7 +1,7 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import Tr from "../Tr/Tr";
 
-const Table = (props) => {
+const Table = (props, ref) => {
   return (
     <div className="row">
       <div className="ticket_selection">
@@ -21,7 +21,7 @@ const Table = (props) => {
             </tr>
           </thead>
           <tbody>
-            <Tr {...props} />
+            <Tr {...props} ref={ref} />
           </tbody>
         </table>
       </div>
@@ -29,4 +29,4 @@ const Table = (props) => {
   );
 };
 
-export default Table;
+export default forwardRef(Table);

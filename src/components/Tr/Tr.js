@@ -1,8 +1,9 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 import Select from "../Select/Select";
 
-const Tr = ({ bilet, setTickets, summ }) => {
+const Tr = (props, ref) => {
+  const { bilet, setTickets, summ } = props;
   const { price } = bilet;
   const [base, setBase] = useState(0);
   const [child, setChild] = useState(0);
@@ -142,7 +143,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
         </td>
       </tr>
 
-      <tr className="ticket_selection_item zebra">
+      <tr className="ticket_selection_item zebra" ref={ref}>
         <td className="ticket_selection_name" type="button">
           Льготный билет
         </td>
@@ -210,4 +211,4 @@ const Tr = ({ bilet, setTickets, summ }) => {
   );
 };
 
-export default Tr;
+export default forwardRef(Tr);

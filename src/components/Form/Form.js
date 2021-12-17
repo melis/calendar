@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 
@@ -8,6 +8,8 @@ const Form = ({ bilet }) => {
   const [summ, setSumm] = useState(0);
   const [tickets, setTickets] = useState(null);
   const [prefValid, setPrefValid] = useState(false);
+  const tRef = useRef(null);
+  console.log(tRef);
 
   const {
     register,
@@ -37,8 +39,13 @@ const Form = ({ bilet }) => {
   }, [tickets, price, prefValid]);
 
   const onSubmit = (client) => {
-    alert(JSON.stringify({ client, tickets }));
-    console.log(JSON.stringify({ client, tickets }));
+    if (prefValid) {
+      console.log("sssss");
+      tRef.current.scrollIntoView();
+    } else {
+      alert(JSON.stringify({ client, tickets }));
+      console.log(JSON.stringify({ client, tickets }));
+    }
   };
 
   return (
@@ -48,7 +55,7 @@ const Form = ({ bilet }) => {
       noValidate
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Table bilet={bilet} setTickets={setTickets} summ={summ} />
+      <Table bilet={bilet} setTickets={setTickets} summ={summ} ref={tRef} />
       <div className="container checkout">
         <div className="row">
           <div className="">
@@ -240,7 +247,6 @@ const Form = ({ bilet }) => {
               !prefValid && isValid ? "chose" : ""
             }`}
             type="submit"
-            disabled={prefValid}
           >
             Оплатить заказ
           </button>

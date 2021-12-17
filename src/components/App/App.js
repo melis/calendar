@@ -11,15 +11,18 @@ const App = () => {
   const [bilet, setBilet] = useState();
   const [warn, setWarn] = useState(false);
   const Sref = useRef(null);
+  const bRef = useRef(null);
   useEffect(() => {
     if (bilet) {
       Sref.current.scrollIntoView();
+    } else {
+      bRef.current.scrollIntoView();
     }
   }, [bilet]);
 
   return (
     <>
-      <div className="container content_container">
+      <div className="container content_container" ref={bRef}>
         <div className="row">
           <div className="col-lg-5">
             <div className="pbt_bl">
