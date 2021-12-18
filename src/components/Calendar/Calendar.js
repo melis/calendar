@@ -55,7 +55,10 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     let a = true;
 
     highlightedDays.forEach((e) => {
-      if (Date.parse(d) > Date.parse(new Date())) {
+      if (
+        Date.parse(d) > Date.parse(new Date()) &&
+        new Date(e.date).getDate() === new Date(d).getDate()
+      ) {
         a = false;
       }
     });
