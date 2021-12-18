@@ -25,7 +25,7 @@ const Tr = (props, ref) => {
       .get("http://lapland.syntlex.kg/crm/api.php?method=get_product_bonus")
 
       .then(({ data }) => setLgots(data))
-      .catch((e) => setLgots([{ id: 1, name: "Error" }]));
+      .catch((e) => setLgots([{ id: 0, name: "Error" }]));
   }, []);
 
   useEffect(() => {

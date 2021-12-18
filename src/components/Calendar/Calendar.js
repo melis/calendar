@@ -48,7 +48,8 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
       if (
         e?.date &&
         new Date(e.date).getDate() === d.getDate() &&
-        d.getDate() >= new Date().getDate()
+        d.getDate() >= new Date().getDate() &&
+        new Date(e.date).getYear() === d.getYear()
       ) {
         a = false;
       }

@@ -227,6 +227,9 @@ input.input_date,
 .MuiPaper-root {
   height: 485px;
 }
+.css-l0iinn button {
+  display: none;
+}
 
 @media (max-width: 1024px) {
   .toolbar {
