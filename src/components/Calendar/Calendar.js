@@ -7,25 +7,35 @@ import PickersDay from "@mui/lab/PickersDay";
 import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
-import data from "../../data";
+import data1 from "../../data";
 import { getMonth, getYear } from "date-fns";
 import axios from "axios";
 
-function fakeFetch(date, { signal }) {
-  // console.log(getMonth(new Date(date)), getYear(new Date(date)));
-  // axios
-  //   .get("http://lapland.syntlex.kg/crm/api.php?method=get_products")
-  //   .then(({ data }) => console.log(JSON.parse(data[0].price)));
+function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      if (getMonth(date) !== getMonth(new Date())) {
-        resolve([]);
-      }
-      resolve(data);
-    }, 500);
+    axios
+      .get(
+        `https://lapland.syntlex.kg/crm/api/?method=get_products&year=${getYear(
+          new Date(date)
+        )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
+          getMonth(new Date(date)) + 1
+        }`
+      )
+      .then(({ data }) => {
+        let newArr = [];
+        if (!data) {
+          resolve(newArr);
+        }
+
+        for (const [key, value] of Object.entries(data)) {
+          data[key].price = JSON.parse(data[key].price);
+          newArr.push(value);
+        }
+
+        resolve(newArr);
+      });
 
     signal.onabort = () => {
-      clearTimeout(timeout);
       reject(new DOMException("aborted", "AbortError"));
     };
   });
@@ -45,12 +55,15 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     let a = true;
 
     highlightedDays.forEach((e) => {
-      if (
-        e?.date &&
-        new Date(e.date).getDate() === d.getDate() &&
-        d.getDate() >= new Date().getDate() &&
-        new Date(e.date).getYear() === d.getYear()
-      ) {
+      // if (
+      //   e?.date &&
+      //   new Date(e.date).getDate() === d.getDate() &&
+      //   (new Date(e.date).getYear() < d.getYear() ||
+      //     d.getDate() >= new Date().getDate())
+      // ) {
+      //   a = false;
+      // }
+      if (Date.parse(e.date) > Date.parse(new Date())) {
         a = false;
       }
     });
@@ -71,10 +84,11 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   const renderDay = (day, _value, DayComponentProps) => {
     let exc = false;
     let evn = false;
+
     highlightedDays.forEach((el) => {
       if (
         !DayComponentProps.outsideCurrentMonth &&
-        Date.parse(el.date) === Date.parse(day)
+        new Date(el.date).getDate() === new Date(day).getDate()
       ) {
         exc = el.type === "excursion" ? true : exc;
         evn = el.type === "event" ? true : evn;
@@ -106,7 +120,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
-    fakeFetch(date, {
+    fethch(date, {
       signal: controller.signal,
     })
       .then((data) => {

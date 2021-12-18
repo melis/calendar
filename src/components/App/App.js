@@ -12,6 +12,7 @@ const App = () => {
   const [warn, setWarn] = useState(false);
   const Sref = useRef(null);
   const bRef = useRef(null);
+
   useEffect(() => {
     if (bilet) {
       Sref.current.scrollIntoView();
@@ -29,7 +30,6 @@ const App = () => {
               <h4>Выберите дату посещения*</h4>
 
               <Calendar
-                list={list}
                 setList={setList}
                 disabled={self}
                 warn={warn}

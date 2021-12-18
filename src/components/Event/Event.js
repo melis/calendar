@@ -6,7 +6,7 @@ const Event = ({ el, setBilet, bilet }) => {
     <div className="row ticket_item">
       <div className="col-lg-5">
         <div className="pbt_img">
-          <img src={el.img_url} alt="" />
+          <img src={`https://${el.img_url}`} alt="" />
         </div>
       </div>
       <div className="col-lg-7">
@@ -49,9 +49,7 @@ const Event = ({ el, setBilet, bilet }) => {
             ) : null}
           </div>
           <div className="pbt_r_b_title">
-            <h4>
-              {el.title} {new Date(el.date).getDate()}
-            </h4>
+            <h4>{el.title}</h4>
           </div>
           <div className="pbt_r_b_cont">
             <p>{el.text}</p>
