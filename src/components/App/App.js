@@ -3,6 +3,7 @@ import Calendar from "../Calendar/Calendar";
 import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -12,6 +13,14 @@ const App = () => {
   const [warn, setWarn] = useState(false);
   const Sref = useRef(null);
   const bRef = useRef(null);
+  const p = new URLSearchParams(useLocation().search);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (tab) {
+      navigate(`/?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`);
+    }
+  }, [tab, navigate]);
 
   useEffect(() => {
     if (bilet) {

@@ -7,6 +7,7 @@ import PickersDay from "@mui/lab/PickersDay";
 import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
+import { useLocation, useNavigate } from "react-router-dom";
 // import data1 from "../../data";
 import { getMonth, getYear } from "date-fns";
 import axios from "axios";
@@ -44,9 +45,24 @@ function fethch(date, { signal }) {
 const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   const requestAbortController = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
-  const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
-  const [value, setValue] = React.useState(new Date());
+  const [highlightedDays, setHighlightedDays] = React.useState([]);
+  const p = new URLSearchParams(useLocation().search);
+  const [value, setValue] = React.useState(
+    p.get("y") && p.get("m") && p.get("d")
+      ? new Date(`${p.get("y")}-${Number(p.get("m"))}-${p.get("d")}`)
+      : new Date()
+  );
   const [icoHov, setIcoHov] = React.useState(false);
+
+  const navigate = useNavigate();
+  React.useEffect(() => {
+    navigate(
+      `/?y=${new Date(value).getFullYear()}&m=${
+        new Date(value).getMonth() + 1
+      }&d=${new Date(value).getDate()}`
+    );
+  }, [value, navigate]);
+
   React.useEffect(() => {
     setIcoHov(false);
   }, [value]);
@@ -64,6 +80,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     });
     return a;
   };
+
   React.useEffect(() => {
     setBilet(null);
   }, [setBilet, value, tab]);
@@ -71,10 +88,10 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   React.useEffect(() => {
     setList(
       highlightedDays.filter(
-        (el) => new Date(el.date).getDate() === new Date().getDate()
+        (el) => new Date(el.date).getDate() === new Date(value).getDate()
       )
     );
-  }, [highlightedDays, setList]);
+  }, [highlightedDays, setList, value]);
 
   const renderDay = (day, _value, DayComponentProps) => {
     let exc = false;
@@ -133,7 +150,11 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   };
 
   React.useEffect(() => {
-    fetchHighlightedDays(new Date());
+    fetchHighlightedDays(
+      p.get("y") && p.get("m") && p.get("d")
+        ? new Date(`${p.get("y")}-${Number(p.get("m"))}-${p.get("d")}`)
+        : new Date()
+    );
     // abort request on unmount
     return () => requestAbortController.current?.abort();
   }, []);
@@ -144,6 +165,9 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     }
     setIsLoading(true);
     setHighlightedDays([]);
+    setValue(date);
+    setList([]);
+    setBilet(null);
     fetchHighlightedDays(date);
   };
 

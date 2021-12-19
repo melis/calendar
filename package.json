@@ -13,6 +13,7 @@
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.20.5",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "^4.0.3"
   },
   "scripts": {

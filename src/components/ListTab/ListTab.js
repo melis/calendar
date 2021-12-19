@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const ListTab = ({ tab, list, setTab, bilet }) => {
   const [exc, setExc] = useState(true);
   const [evn, setEvn] = useState(true);
+  const p = new URLSearchParams(useLocation().search);
 
   useEffect(() => {
     setExc(true);
     setEvn(true);
+
     list.forEach((el) => {
       if (el.type === "excursion") {
         setExc(false);
@@ -15,14 +18,19 @@ const ListTab = ({ tab, list, setTab, bilet }) => {
         setEvn(false);
       }
     });
-    // if (!exc && evn) {
-    //   setTab("excursion");
-    // }
-    if (!evn && exc) {
-      setTab("event");
+
+    if (p.get("evn")) {
+      setTab(p.get("evn"));
     } else {
-      setTab("excursion");
+      if (!evn) {
+        setTab("event");
+      }
+      if (!exc) {
+        setTab("excursion");
+      }
     }
+
+    console.log(tab);
   }, [setEvn, setExc, exc, evn, setTab, list]);
   return (
     <div className="pbt_bl">
