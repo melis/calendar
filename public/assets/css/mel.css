@@ -233,11 +233,16 @@ input.input_date,
 
 @media (max-width: 1024px) {
   .toolbar {
-    bottom: 70px;
+    bottom: 50px;
   }
   .MuiDialogActions-root {
     position: absolute;
-    bottom: 10px;
-    right: 20px;
+    bottom: 0;
+    right: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .MuiDialog-paper {
+    min-width: max-content !important;
   }
 }

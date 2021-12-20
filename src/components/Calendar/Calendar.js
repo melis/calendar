@@ -8,7 +8,6 @@ import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 import { useLocation, useNavigate } from "react-router-dom";
-// import data1 from "../../data";
 import { getMonth, getYear } from "date-fns";
 import axios from "axios";
 
@@ -42,19 +41,19 @@ function fethch(date, { signal }) {
   });
 }
 
-const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
+const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
   const requestAbortController = React.useRef(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([]);
+  const [icoHov, setIcoHov] = React.useState(false);
   const p = new URLSearchParams(useLocation().search);
+  const navigate = useNavigate();
   const [value, setValue] = React.useState(
     p.get("y") && p.get("m") && p.get("d")
       ? new Date(`${p.get("y")}-${Number(p.get("m"))}-${p.get("d")}`)
       : new Date()
   );
-  const [icoHov, setIcoHov] = React.useState(false);
 
-  const navigate = useNavigate();
   React.useEffect(() => {
     navigate(
       `/?y=${new Date(value).getFullYear()}&m=${
@@ -224,6 +223,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
               )
             );
             setValue(newValue);
+            setTab();
           }}
           onMonthChange={handleMonthChange}
           shouldDisableDate={disableDays}

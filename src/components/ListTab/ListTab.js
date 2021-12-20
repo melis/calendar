@@ -4,9 +4,10 @@ import { useLocation } from "react-router-dom";
 const ListTab = ({ tab, list, setTab, bilet }) => {
   const [exc, setExc] = useState(true);
   const [evn, setEvn] = useState(true);
-  const p = new URLSearchParams(useLocation().search);
+  const url = useLocation();
 
   useEffect(() => {
+    const p = new URLSearchParams(url.search);
     setExc(true);
     setEvn(true);
 
@@ -29,8 +30,6 @@ const ListTab = ({ tab, list, setTab, bilet }) => {
         setTab("excursion");
       }
     }
-
-    console.log(tab);
   }, [setEvn, setExc, exc, evn, setTab, list]);
   return (
     <div className="pbt_bl">

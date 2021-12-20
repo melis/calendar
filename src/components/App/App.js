@@ -13,14 +13,22 @@ const App = () => {
   const [warn, setWarn] = useState(false);
   const Sref = useRef(null);
   const bRef = useRef(null);
-  const p = new URLSearchParams(useLocation().search);
+  const url = useLocation();
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    const p = new URLSearchParams(url.search);
     if (tab) {
       navigate(`/?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`);
     }
   }, [tab, navigate]);
+
+  useEffect(() => {
+    if (warn) {
+      navigate("/");
+    }
+  }, [warn, navigate]);
 
   useEffect(() => {
     if (bilet) {
@@ -39,6 +47,7 @@ const App = () => {
               <h4>Выберите дату посещения*</h4>
 
               <Calendar
+                setTab={setTab}
                 setList={setList}
                 disabled={self}
                 warn={warn}
