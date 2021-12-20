@@ -14,21 +14,25 @@ const App = () => {
   const Sref = useRef(null);
   const bRef = useRef(null);
   const url = useLocation();
-  const [mem, setMem] = useState("/");
+  const [mem, setMem] = useState(url.search);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const p = new URLSearchParams(url.search);
     if (tab) {
-      navigate(`/?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`);
+      navigate(
+        `${url.pathname}?y=${p.get("y")}&m=${p.get("m")}&d=${p.get(
+          "d"
+        )}&evn=${tab}`
+      );
     }
   }, [tab, navigate]);
 
   useEffect(() => {
     if (warn) {
       setMem(url.search);
-      navigate("/");
+      navigate(url.pathname);
     } else {
       navigate(mem);
     }

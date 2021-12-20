@@ -46,7 +46,8 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([]);
   const [icoHov, setIcoHov] = React.useState(false);
-  const p = new URLSearchParams(useLocation().search);
+  const url = useLocation();
+  const p = new URLSearchParams(url.search);
   const navigate = useNavigate();
   const [value, setValue] = React.useState(
     p.get("y") && p.get("m") && p.get("d")
@@ -56,7 +57,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
 
   React.useEffect(() => {
     navigate(
-      `/?y=${new Date(value).getFullYear()}&m=${
+      `${url.pathname}?y=${new Date(value).getFullYear()}&m=${
         new Date(value).getMonth() + 1
       }&d=${new Date(value).getDate()}`
     );
