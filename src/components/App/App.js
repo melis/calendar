@@ -31,7 +31,7 @@ const App = () => {
   }, [warn, navigate]);
 
   useEffect(() => {
-    if (bilet) {
+    if (bilet && bilet.type !== "free_date") {
       Sref.current.scrollIntoView();
     } else {
       bRef.current.scrollIntoView();
