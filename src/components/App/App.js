@@ -22,7 +22,7 @@ const App = () => {
     const p = new URLSearchParams(url.search);
     if (tab) {
       navigate(
-        `${url.pathname}?y=${p.get("y")}&m=${p.get("m")}&d=${p.get(
+        `/purchase.html?y=${p.get("y")}&m=${p.get("m")}&d=${p.get(
           "d"
         )}&evn=${tab}`
       );
@@ -32,9 +32,9 @@ const App = () => {
   useEffect(() => {
     if (warn) {
       setMem(url.search);
-      navigate(url.pathname);
+      navigate("/purchase.html");
     } else {
-      navigate(mem);
+      navigate({ pathname: "/purchase.html", search: mem });
     }
   }, [warn, navigate]);
 

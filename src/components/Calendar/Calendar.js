@@ -15,11 +15,9 @@ function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
     axios
       .get(
-        `https://lapland.syntlex.kg/crm/api/?method=get_products&year=${getYear(
-          new Date(date)
-        )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
-          getMonth(new Date(date)) + 1
-        }`
+        `/crm/api/?method=get_products&year=${getYear(new Date(date))}&month=${
+          getMonth(new Date(date)) + 1 < 10 ? "0" : ""
+        }${getMonth(new Date(date)) + 1}`
       )
       .then(({ data }) => {
         let newArr = [];
@@ -57,7 +55,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
 
   React.useEffect(() => {
     navigate(
-      `${url.pathname}?y=${new Date(value).getFullYear()}&m=${
+      `/purchase.html?y=${new Date(value).getFullYear()}&m=${
         new Date(value).getMonth() + 1
       }&d=${new Date(value).getDate()}`
     );
