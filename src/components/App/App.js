@@ -14,6 +14,7 @@ const App = () => {
   const Sref = useRef(null);
   const bRef = useRef(null);
   const url = useLocation();
+  const [mem, setMem] = useState("/");
 
   const navigate = useNavigate();
 
@@ -26,7 +27,10 @@ const App = () => {
 
   useEffect(() => {
     if (warn) {
+      setMem(url.search);
       navigate("/");
+    } else {
+      navigate(mem);
     }
   }, [warn, navigate]);
 
