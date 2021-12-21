@@ -22,7 +22,7 @@ const Tr = (props, ref) => {
 
   useEffect(() => {
     axios
-      .get("/crm/api/?method=get_product_bonus")
+      .get("https://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
 
       .then(({ data }) => setLgots(data))
       .catch((e) => setLgots([{ id: 0, name: "Error" }]));

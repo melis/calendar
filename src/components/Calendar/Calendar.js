@@ -15,9 +15,11 @@ function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
     axios
       .get(
-        `/crm/api/?method=get_products&year=${getYear(new Date(date))}&month=${
-          getMonth(new Date(date)) + 1 < 10 ? "0" : ""
-        }${getMonth(new Date(date)) + 1}`
+        `https://lapland.syntlex.kg/crm/api/?method=get_products&year=${getYear(
+          new Date(date)
+        )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
+          getMonth(new Date(date)) + 1
+        }`
       )
       .then(({ data }) => {
         let newArr = [];
@@ -39,9 +41,17 @@ function fethch(date, { signal }) {
   });
 }
 
-const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
+const Calendar = ({
+  setList,
+  disabled,
+  setWarn,
+  setBilet,
+  tab,
+  setTab,
+  setIsLoading,
+  isLoading,
+}) => {
   const requestAbortController = React.useRef(null);
-  const [isLoading, setIsLoading] = React.useState(false);
   const [highlightedDays, setHighlightedDays] = React.useState([]);
   const [icoHov, setIcoHov] = React.useState(false);
   const url = useLocation();
@@ -54,11 +64,12 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
   );
 
   React.useEffect(() => {
-    navigate(
-      `/purchase.html?y=${new Date(value).getFullYear()}&m=${
+    navigate({
+      pathname: url.pathname,
+      search: `?y=${new Date(value).getFullYear()}&m=${
         new Date(value).getMonth() + 1
-      }&d=${new Date(value).getDate()}`
-    );
+      }&d=${new Date(value).getDate()}`,
+    });
   }, [value, navigate]);
 
   React.useEffect(() => {
@@ -130,6 +141,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
+    setIsLoading(true);
     fethch(date, {
       signal: controller.signal,
     })
@@ -138,6 +150,8 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab, setTab }) => {
         setIsLoading(false);
       })
       .catch((error) => {
+        // setIsLoading(false);
+        console.log("API ERROR");
         // ignore the error if it's caused by `controller.abort`
         if (error.name !== "AbortError") {
           throw error;

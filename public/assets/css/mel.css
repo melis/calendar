@@ -230,6 +230,9 @@ input.input_date,
 .css-l0iinn button {
   display: none;
 }
+.loading_img {
+  width: 200px;
+}
 
 @media (max-width: 1024px) {
   .toolbar {

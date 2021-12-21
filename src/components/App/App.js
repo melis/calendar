@@ -15,26 +15,26 @@ const App = () => {
   const bRef = useRef(null);
   const url = useLocation();
   const [mem, setMem] = useState(url.search);
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const p = new URLSearchParams(url.search);
     if (tab) {
-      navigate(
-        `/purchase.html?y=${p.get("y")}&m=${p.get("m")}&d=${p.get(
-          "d"
-        )}&evn=${tab}`
-      );
+      navigate({
+        pathname: url.pathname,
+        search: `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`,
+      });
     }
   }, [tab, navigate]);
 
   useEffect(() => {
     if (warn) {
       setMem(url.search);
-      navigate("/purchase.html");
+      navigate(url.pathname);
     } else {
-      navigate({ pathname: "/purchase.html", search: mem });
+      navigate({ pathname: url.pathname, search: mem });
     }
   }, [warn, navigate]);
 
@@ -55,6 +55,8 @@ const App = () => {
               <h4>Выберите дату посещения*</h4>
 
               <Calendar
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
                 setTab={setTab}
                 setList={setList}
                 disabled={self}
@@ -91,7 +93,7 @@ const App = () => {
                         setBilet({
                           type: "free_date",
                           title: "Самостоятельное посещение заповедника",
-                          price: { base: 400, child: 200, pref: 0 },
+                          price: { base: 450, child: 400, pref: 0 },
                           date: "Бессрочный билет на год",
                         });
                         setWarn(true);
@@ -156,6 +158,20 @@ const App = () => {
               </div>
             </div>
           </div>
+        ) : list.length < 1 ? (
+          isLoading ? (
+            <div className="row ticket_item">
+              <img
+                src="./assets/images/load.gif"
+                alt=""
+                className="loading_img"
+              />
+            </div>
+          ) : (
+            <div className="row ticket_item">
+              К сожалению, на выбранную вами дату мероприятий не найдено
+            </div>
+          )
         ) : (
           list.map((el) => {
             if (tab === el.type) {
