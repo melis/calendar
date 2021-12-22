@@ -233,6 +233,9 @@ input.input_date,
 .loading_img {
   width: 200px;
 }
+.pbt_r_b_cont br {
+  display: none;
+}
 
 @media (max-width: 1024px) {
   .toolbar {
@@ -243,9 +246,18 @@ input.input_date,
     bottom: 0;
     right: 10px;
   }
+  .MuiDialogActions-root > button:first-child {
+    display: none;
+  }
 }
 @media (max-width: 480px) {
+  .pbt_r_b_cont br {
+    display: block;
+  }
   .MuiDialog-paper {
     min-width: max-content !important;
+  }
+  .form-check-input:hover {
+    border: 2px solid #007db5 !important;
   }
 }

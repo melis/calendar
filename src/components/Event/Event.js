@@ -64,8 +64,10 @@ const Event = ({ el, setBilet, bilet }) => {
           <div className="pbt_r_b_cont">
             <p>{el.text}</p>
             <p>
-              Стоимость: {el.price.base} ₽ взрослый, {el.price.child} ₽ детский
-              билет, льготные категории — бесплатно.
+              Стоимость: <br />
+              {el.price.base} ₽ взрослый, <br />
+              {el.price.child} ₽ детский билет, <br /> льготные категории —
+              бесплатно.
             </p>
           </div>
           <div className="btns">

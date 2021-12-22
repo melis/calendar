@@ -51,7 +51,7 @@ const Tr = (props, ref) => {
   return (
     <>
       <tr className="ticket_selection_item zebra accordion-item">
-        <td className="ticket_selection_name">Взрослый билет</td>
+        <td className="ticket_selection_name">Взрослый</td>
         <td className="ticket_selection_price">{price.base}</td>
         <td className="ticket_selection_count">
           <button
@@ -91,7 +91,7 @@ const Tr = (props, ref) => {
 
       <tr className="ticket_selection_item zebra accordion-item">
         <td className="ticket_selection_name">
-          Детский билет <span>(3-18 лет включительно) </span>
+          Детский <span>(3-18 лет включительно) </span>
         </td>
         <td className="ticket_selection_price">{price.child}</td>
         <td className="ticket_selection_count">
@@ -146,7 +146,7 @@ const Tr = (props, ref) => {
 
       <tr className="ticket_selection_item zebra" ref={ref}>
         <td className="ticket_selection_name" type="button">
-          Льготный билет
+          Льготный
         </td>
         <td className="ticket_selection_price">бесплатно</td>
         <td className="ticket_selection_count">
