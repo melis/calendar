@@ -11,7 +11,7 @@ const Tr = (props, ref) => {
   const [freeBase, setFreeBase] = useState(0);
   const [prefInfo, setPrefInfo] = useState([]);
   const [lgots, setLgots] = useState([]);
-
+  console.log(lgots);
   useEffect(() => {
     setBase(0);
     setFreeBase(0);
@@ -24,7 +24,10 @@ const Tr = (props, ref) => {
     axios
       .get("https://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
 
-      .then(({ data }) => setLgots(data))
+      .then(({ data }) => {
+        console.log(data, "sasass");
+        setLgots([...data]);
+      })
       .catch((e) => setLgots([{ id: 0, name: "Error" }]));
   }, []);
 
