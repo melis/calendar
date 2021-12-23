@@ -750,6 +750,7 @@ input.input_date {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .pbt_r_b_top p {
@@ -772,6 +773,7 @@ input.input_date {
   display: flex;
   margin-right: 15px;
   align-items: flex-end;
+  margin-top: 15px;
 }
 
 .pbt_r_b_title {
@@ -911,7 +913,7 @@ button.btn_link {
   background: none;
   border: none;
   text-align: center;
-  width: 30px;
+  width: 35px;
   outline: none;
   font-family: Source Sans Pro;
   font-style: normal;

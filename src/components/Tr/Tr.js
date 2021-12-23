@@ -69,6 +69,8 @@ const Tr = (props, ref) => {
             className="cart_num"
             type="text"
             value={base + freeBase}
+            min={0}
+            max={999}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
                 setBase(Number(e.target.value));
@@ -110,6 +112,8 @@ const Tr = (props, ref) => {
             className="cart_num"
             type="text"
             value={child}
+            min={0}
+            max={999}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
                 setChild(Number(e.target.value));
@@ -160,11 +164,12 @@ const Tr = (props, ref) => {
               });
             }}
           >
-            <img disabled={true} src="./assets/images/icons/minus.svg" alt="" />
+            <img src="./assets/images/icons/minus.svg" alt="" />
           </button>
           <input
             className="cart_num"
             type="text"
+            readOnly
             value={pref}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
