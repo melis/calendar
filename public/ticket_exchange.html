@@ -1,28 +1,31 @@
 <!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Обмен билетов</title>
-    <link href="/static/css/main.afd7172b.chunk.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+
     <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" />
+
     <link rel="stylesheet" href="./assets/css/theme.default.min.css" />
+
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/mel.css" />
-    <link rel="stylesheet" href="./assets/css/media.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
       rel="stylesheet"
     />
-    <style>
-      .loading_img {
-        width: 200px;
-      }
-    </style>
   </head>
+
   <body>
     <header class="header page_w01">
       <a href="" class="logo">
@@ -65,9 +68,47 @@
         </div>
       </div>
 
-      <div class="container content_container" id="root">
-        <img src="./assets/images/load.gif" alt="" class="loading_img" />
+      <div class="container content_container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="title_block">Введите номера билетов для обмена:</div>
+          </div>
+        </div>
+
+        <div class="row" id="tickets_c">
+          <div class="col-lg-4 form_item ticket_items">
+            <div class="remove_this"></div>
+
+            <label for="ticket1">Билет 1*</label>
+
+            <input
+              type="text"
+              class="form-control"
+              id="ticket1"
+              placeholder="Введите номер билета"
+              required=""
+            />
+
+            <div class="invalid-feedback">
+              **билет не найден, проверьте правильность данных
+            </div>
+          </div>
+
+          <div class="col-lg-4 form_item" id="add_ticket_block">
+            <button
+              type="button"
+              class="btn border_line add_ticket"
+              id="add_ticket"
+            >
+              + Добавить билет для обмена
+            </button>
+          </div>
+        </div>
       </div>
+
+      <button class="btn_link chose m-auto" type="submit">
+        Оплатить заказ
+      </button>
     </div>
 
     <div class="pre_footer">
@@ -162,5 +203,15 @@
         </div>
       </div>
     </footer>
+
+    <script src="./assets/js/jquery-3.6.0.min.js"></script>
+
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="./assets/js/owl.carousel.min.js"></script>
+
+    <script src="./assets/js/script.js"></script>
+
+    <script></script>
   </body>
 </html>
