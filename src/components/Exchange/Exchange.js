@@ -3,6 +3,7 @@ import TInput from "../Input/Input";
 
 function Exchange(props) {
   const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
+  const [ch, setCh] = useState(1);
   return (
     <>
       <div className="title_block">Введите номера билетов для обмена:</div>
@@ -18,7 +19,8 @@ function Exchange(props) {
             className="btn border_line add_ticket"
             id="add_ticket"
             onClick={() => {
-              setTikets((arr) => [...arr, { id: arr.length, v: "" }]);
+              setTikets((arr) => [...arr, { id: ch, v: "" }]);
+              setCh((c) => c + 1);
             }}
           >
             + Добавить билет для обмена

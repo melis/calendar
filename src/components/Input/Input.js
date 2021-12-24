@@ -8,7 +8,12 @@ const TInput = ({ t, setTikets }) => {
 
   return (
     <div className="col-lg-4 form_item ticket_items">
-      <div class="remove_this"></div>
+      <div
+        className="remove_this"
+        onClick={() => {
+          setTikets((arr) => arr.filter((e) => e.id !== t.id));
+        }}
+      ></div>
       <label htmlFor={`ticket${t.id}`}>
         Билет {t.id + 1}*
         <img src="" alt="" />
@@ -86,14 +91,14 @@ function SInput({ t, setTikets, setEr, find, setFind, er }) {
   return (
     <Input
       // readOnly={find}
-      disabled={find}
-      style={
-        find
-          ? { border: "2px solid green", borderRadius: "5px" }
-          : er
-          ? { border: "2px solid red", borderRadius: "5px" }
-          : null
-      }
+      // disabled={find}
+      // style={
+      //   find
+      //     ? { border: "2px solid green", borderRadius: "5px" }
+      //     : er
+      //     ? { border: "2px solid red", borderRadius: "5px" }
+      //     : null
+      // }
       placeholder="Введите номер билета"
       value={values.textmask}
       onChange={handleChange}

@@ -750,7 +750,6 @@ input.input_date {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
-  flex-wrap: wrap;
 }
 
 .pbt_r_b_top p {
@@ -773,7 +772,6 @@ input.input_date {
   display: flex;
   margin-right: 15px;
   align-items: flex-end;
-  margin-top: 15px;
 }
 
 .pbt_r_b_title {
@@ -913,7 +911,7 @@ button.btn_link {
   background: none;
   border: none;
   text-align: center;
-  width: 35px;
+  width: 30px;
   outline: none;
   font-family: Source Sans Pro;
   font-style: normal;
@@ -991,7 +989,10 @@ button.btn_link {
 .checkout .pbt_r_b_title {
   margin-bottom: 14px;
 }
-
+.form-control {
+  background-color: #fff9ed;
+  border: 2px solid #fff9ed;
+}
 .form-control.is-invalid,
 .was-validated .form-control:invalid {
   border: 2px solid #e13838;
@@ -1001,7 +1002,13 @@ button.btn_link {
   color: #212121;
   background-color: #fff9ed;
 }
-
+.form-control:focus {
+  color: #212121;
+  background-color: #fff9ed;
+  border: 2px solid #007db5;
+  outline: 0;
+  box-shadow: none;
+}
 .form-control.is-valid,
 .was-validated .form-control:valid {
   background-color: #fff9ed;
@@ -1258,7 +1265,9 @@ input.input_date:focus {
   padding: 16px 30px;
   margin-top: 34px;
 }
-
+.form_item input {
+  min-height: 55px;
+}
 .form-check-input {
   min-height: inherit !important;
 }
@@ -1421,10 +1430,56 @@ input:-webkit-autofill {
   color: #212529 !important; /* цвет текста */
 }
 
+.remove_this {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: url(../images/icons/close.svg) no-repeat center;
+  right: 14px;
+  top: 2px;
+  cursor: pointer;
+}
+.head_page.brown {
+  background: #7f4b1d;
+}
+.head_page.blue {
+  background: #005d90;
+}
+.brown .head_page_content img {
+  width: 192px;
+}
+.blue .head_page_content img {
+  width: 166px;
+}
+button.btn_return {
+  display: inline-block;
+  background: #ffffff;
+  border: 2px solid #005d90;
+  color: #005d90;
+  margin-right: 18px;
+  padding: 15px 50px;
+  width: inherit;
+}
+.btn_return:hover {
+  background: #d76729;
+  border: 2px solid #d76729;
+  color: #ffffff;
+}
+.simple_date:after {
+  right: 15px;
+  top: 12px;
+}
+.ticket_items {
+  position: relative;
+}
+button.btn_asd {
+  margin: 30px auto 0;
+}
+
 .form-control,
 .MuiInput-root {
   padding: 0;
-  width: 350px;
+  width: 100%;
 }
 .MuiInput-root::after,
 .MuiInput-root::before {
