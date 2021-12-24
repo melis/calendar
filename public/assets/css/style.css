@@ -1207,6 +1207,14 @@ button.btn_link {
   background-image: none;
 }
 
+.form-group.select .invalid-feedback {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: #e13838;
+}
 .form-check-input.is-valid:checked,
 .was-validated .form-check-input:valid:checked {
   background-color: #fbfbfb;
@@ -1456,6 +1464,12 @@ button.btn_return {
   background: #d76729;
   border: 2px solid #d76729;
   color: #ffffff;
+}
+.btn_return.orange_btn {
+  background: #d76729;
+  border: 2px solid #d76729;
+  color: #ffffff;
+  margin-right: 0;
 }
 .simple_date:after {
   right: 15px;
