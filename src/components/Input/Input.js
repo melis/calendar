@@ -90,7 +90,7 @@ function SInput({
     if (values.textmask.length === 19) {
       setLoading(true);
       setTimeout(() => {
-        if (values.textmask.replace(/\s/g, "") === "1111111111111111") {
+        if (values.textmask.replace(/\s/g, "") === "4444444444444444") {
           setEr(true);
           setFind(false);
         } else {
