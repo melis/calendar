@@ -1207,14 +1207,6 @@ button.btn_link {
   background-image: none;
 }
 
-.form-group.select .invalid-feedback {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 100%;
-  color: #e13838;
-}
 .form-check-input.is-valid:checked,
 .was-validated .form-check-input:valid:checked {
   background-color: #fbfbfb;
@@ -1515,8 +1507,22 @@ button.btn_asd {
   font-weight: 500;
   font-size: 14px;
   line-height: 100%;
+  margin-top: 5px;
+  height: 15px;
+}
+.feedback_invalid {
+  color: red;
+}
+
+.feedback_find {
   color: green;
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: 0.875em;
+}
+
+.finded > input {
+  border-color: green !important;
+}
+
+.invalid input,
+.invalid input:focus {
+  border-color: red;
 }
