@@ -991,10 +991,7 @@ button.btn_link {
 .checkout .pbt_r_b_title {
   margin-bottom: 14px;
 }
-.form-control {
-  background-color: #fff9ed;
-  border: 2px solid #fff9ed;
-}
+
 .form-control.is-invalid,
 .was-validated .form-control:invalid {
   border: 2px solid #e13838;
@@ -1004,13 +1001,7 @@ button.btn_link {
   color: #212121;
   background-color: #fff9ed;
 }
-.form-control:focus {
-  color: #212121;
-  background-color: #fff9ed;
-  border: 2px solid #007db5;
-  outline: 0;
-  box-shadow: none;
-}
+
 .form-control.is-valid,
 .was-validated .form-control:valid {
   background-color: #fff9ed;
@@ -1267,9 +1258,7 @@ input.input_date:focus {
   padding: 16px 30px;
   margin-top: 34px;
 }
-.form_item input {
-  min-height: 55px;
-}
+
 .form-check-input {
   min-height: inherit !important;
 }
@@ -1430,4 +1419,49 @@ input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0 50px #fff9ed !important; /* Цвет фона */
   -webkit-text-fill-color: #212529 !important; /* цвет текста */
   color: #212529 !important; /* цвет текста */
+}
+
+.form-control,
+.MuiInput-root {
+  padding: 0;
+  width: 350px;
+}
+.MuiInput-root::after,
+.MuiInput-root::before {
+  display: none;
+}
+
+.form_item input {
+  box-sizing: border-box;
+  background: #fff9ed;
+  border-radius: 5px;
+  height: 55px;
+  border: 2px solid transparent;
+  padding: 0 15px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.form-control:focus,
+.form_item input:focus {
+  color: #212121;
+  background-color: #fff9ed;
+  border: 2px solid #007db5;
+  outline: 0;
+  box-shadow: none;
+}
+
+.feedback {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  color: green;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 0.875em;
 }
