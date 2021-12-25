@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
 import Input from "@mui/material/Input";
 
-const TInput = ({ t, setTikets }) => {
+import LinearProgress from "@mui/material/LinearProgress";
+
+const TInput = ({ t, setTikets, index }) => {
   const [er, setEr] = useState(false);
   const [find, setFind] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   return (
     <div className="col-lg-4 form_item ticket_items">
@@ -15,24 +18,32 @@ const TInput = ({ t, setTikets }) => {
         }}
       ></div>
       <label htmlFor={`ticket${t.id}`}>
-        Билет {t.id + 1}*
+        Билет {index + 1}*
         <img src="" alt="" />
       </label>
 
       <SInput
+        setLoading={setLoading}
         t={t}
         setTikets={setTikets}
         setEr={setEr}
         find={find}
         setFind={setFind}
         er={er}
+        loading={loading}
       />
-      {er && (
-        <div className="invalid-feedback">
-          **билет не найден, проверьте правильность данных
-        </div>
-      )}
-      {find && <div className="feedback">**билет найден</div>}
+
+      <div
+        className={`feedback ${er ? "feedback_invalid" : ""}${
+          find ? " feedback_find" : ""
+        }`}
+      >
+        {loading ? <LinearProgress /> : ""}
+        {er && !loading
+          ? "  **билет не найден, проверьте правильность данных"
+          : ""}
+        {find && !loading ? "**билет найден" : ""}
+      </div>
     </div>
   );
 };
@@ -53,7 +64,16 @@ const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   );
 });
 
-function SInput({ t, setTikets, setEr, find, setFind, er }) {
+function SInput({
+  t,
+  setTikets,
+  setEr,
+  find,
+  setFind,
+  er,
+  setLoading,
+  loading,
+}) {
   const [values, setValues] = React.useState({
     textmask: t.v,
     numberformat: "1320",
@@ -68,43 +88,42 @@ function SInput({ t, setTikets, setEr, find, setFind, er }) {
 
   useEffect(() => {
     if (values.textmask.length === 19) {
-      if (values.textmask.replace(/\s/g, "") === "1111111111111111") {
-        setEr(true);
-      } else {
-        setFind(true);
-        setEr(false);
-        setTikets((arr) => {
-          let newArr = [...arr];
-          newArr.forEach((e, i) => {
-            if (e.id === t.id) {
-              newArr[i] = {
-                ...newArr[i],
-                v: values.textmask.replace(/\s/g, ""),
-              };
-            }
+      setLoading(true);
+      setTimeout(() => {
+        if (values.textmask.replace(/\s/g, "") === "4444444444444444") {
+          setEr(true);
+          setFind(false);
+        } else {
+          setFind(true);
+          setEr(false);
+          setTikets((arr) => {
+            let newArr = [...arr];
+            newArr.forEach((e, i) => {
+              if (e.id === t.id) {
+                newArr[i] = {
+                  ...newArr[i],
+                  v: values.textmask.replace(/\s/g, ""),
+                };
+              }
+            });
+            return newArr;
           });
-          return newArr;
-        });
-      }
+        }
+        setLoading(false);
+      }, 1000);
     }
-  }, [values, t.id, setTikets, setEr, setFind]);
+  }, [values, t.id, setTikets, setEr, setFind, setLoading]);
   return (
     <Input
-      // readOnly={find}
-      // disabled={find}
-      // style={
-      //   find
-      //     ? { border: "2px solid green", borderRadius: "5px" }
-      //     : er
-      //     ? { border: "2px solid red", borderRadius: "5px" }
-      //     : null
-      // }
+      disabled={loading}
+      readOnly={find}
       placeholder="Введите номер билета"
       value={values.textmask}
       onChange={handleChange}
       name="textmask"
       id={`ticket${t.id}`}
       inputComponent={TextMaskCustom}
+      className={find ? "finded" : er ? "invalid" : ""}
     />
   );
 }
