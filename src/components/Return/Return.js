@@ -200,64 +200,6 @@ function Return(props) {
         </form>
       </div>
       <Exchange />
-      {/* 
-      <div className="mt-5 container content_container">
-        <div className="row">
-          <div className="col-lg-12">
-            <div className="title_block">
-              Введите номера билетов для обмена:
-            </div>
-          </div>
-        </div>
-
-        <div className="row" id="tickets_c">
-          <div className="col-lg-4 form_item ticket_items">
-            <div className="remove_this"></div>
-
-            <label for="ticket1">Билет 1*</label>
-
-            <input
-              type="text"
-              className="form-control"
-              id="ticket1"
-              placeholder="Введите номер билета"
-              required=""
-            />
-
-            <div className="invalid-feedback">
-              **билет не найден, проверьте правильность данных
-            </div>
-          </div>
-
-          <div className="mt-1 col-lg-4 form_item" id="add_ticket_block">
-            <button
-              type="button"
-              className="btn border_line add_ticket"
-              id="add_ticket"
-            >
-              + Добавить билет для обмена
-            </button>
-          </div>
-
-          <div className="col-lg-12">
-            <div className="form-check">
-              <input
-                className="form-check-input form-check-input1"
-                type="checkbox"
-                value=""
-                id="flexCheckaccept"
-              />
-
-              <label className="form-check-label h-jyt" for="flexCheckaccept">
-                Согласен на обработку <a href="#">персональных данных</a>
-              </label>
-            </div>
-          </div>
-          <button className="btn_link chose m-auto btn_asd" type="submit">
-            Оформить возврат
-          </button>
-        </div>
-      </div> */}
     </>
   );
 }
