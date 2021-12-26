@@ -43,18 +43,12 @@ function Exchange(props) {
             id="flexCheckaccept"
           />
 
-          <label className="form-check-label h-jyt" for="flexCheckaccept">
+          <label className="form-check-label h-jyt" htmlFor="flexCheckaccept">
             Согласен на обработку <a href="/">персональных данных</a>
           </label>
         </div>
       </div>
-      <button
-        className="btn_link chose m-auto"
-        type="submit"
-        onClick={() => {
-          console.log(tikets);
-        }}
-      >
+      <button className="btn_link chose m-auto" type="submit">
         Обменять билеты
       </button>
     </div>

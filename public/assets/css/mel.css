@@ -296,6 +296,40 @@ input.input_date,
 .invalid input:focus {
   border-color: red;
 }
+.return_calendar {
+  position: relative;
+}
+.return_calendar .calendar_ico {
+  top: 12px;
+  right: 22px;
+  pointer-events: none;
+}
+.return_calendar input {
+  box-sizing: border-box !important;
+  background: #fff9ed !important;
+  border-radius: 5px !important;
+  border: 2px solid transparent !important;
+  padding: 0 15px !important;
+  font-family: Raleway !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-size: 16px !important;
+  line-height: 140% !important;
+  position: relative !important;
+  height: 55px !important;
+}
+
+/* .return_calendar .MuiInputAdornment-root {
+  opacity: 1 !important;
+} */
+.return_calendar .MuiInputAdornment-root {
+  top: 27px;
+  right: 30px;
+}
+.return_page .MuiPaper-root {
+  height: 420px !important;
+  padding: 25px !important;
+}
 
 @media (max-width: 1024px) {
   .toolbar {

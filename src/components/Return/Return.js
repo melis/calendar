@@ -1,6 +1,7 @@
 import React from "react";
 import Exchange from "../Exchange/Exchange";
 import ReturnTab from "../ReturnTab/ReturnTab";
+import Calendar from "../Calendar/Calendar";
 
 function Return(props) {
   return (
@@ -8,7 +9,13 @@ function Return(props) {
       <div className="container content_container">
         <ReturnTab />
 
-        <form className="row mt-5">
+        <form
+          className="row mt-5"
+          onSubmit={(e) => {
+            e.preventDefault();
+            console.log(e);
+          }}
+        >
           <div className="col-lg-12">
             <div className="title_block">
               Введите данные, указанные при покупке билета:
@@ -16,7 +23,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="name">ваше Имя*</label>
+            <label htmlFor="name">ваше Имя*</label>
 
             <input
               type="text"
@@ -30,7 +37,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="surname">ваша Фамилия*</label>
+            <label htmlFor="surname">ваша Фамилия*</label>
 
             <input
               type="text"
@@ -44,7 +51,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="middle_name">ваше Отчество*</label>
+            <label htmlFor="middle_name">ваше Отчество*</label>
 
             <input
               type="text"
@@ -58,7 +65,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="phone">ваш Телефон*</label>
+            <label htmlFor="phone">ваш Телефон*</label>
 
             <input
               type="text"
@@ -72,7 +79,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="email">E-mail*</label>
+            <label htmlFor="email">E-mail*</label>
 
             <input
               type="email"
@@ -86,22 +93,23 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="date">дата покупки билетов*</label>
+            <label htmlFor="date">дата покупки билетов*</label>
 
             <div className="input_date_pos simple_date">
-              <input
+              {/* <input
                 placeholder="08.09.2021"
                 id="date"
                 className="form-control"
                 type="text"
-              />
+              /> */}
+              <Calendar />
             </div>
 
             <div className="invalid-feedback">*текст ошибки</div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">Сумма к возврату, руб.*</label>
+            <label htmlFor="">Сумма к возврату, руб.*</label>
 
             <input
               type="text"
@@ -115,7 +123,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">наименование банка*</label>
+            <label htmlFor="">наименование банка*</label>
 
             <input
               type="text"
@@ -129,7 +137,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">БИК банка*</label>
+            <label htmlFor="">БИК банка*</label>
 
             <input
               type="text"
@@ -143,7 +151,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">Корреспондентский счет *</label>
+            <label htmlFor="">Корреспондентский счет *</label>
 
             <input
               type="text"
@@ -157,7 +165,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">Расчётный счет*</label>
+            <label htmlFor="">Расчётный счет*</label>
 
             <input
               type="text"
@@ -171,7 +179,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">ФИО получателя*</label>
+            <label htmlFor="">ФИО получателя*</label>
 
             <input
               type="text"
@@ -185,7 +193,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label for="">причина возврата билетов *</label>
+            <label htmlFor="">причина возврата билетов *</label>
 
             <input
               type="text"
@@ -197,9 +205,9 @@ function Return(props) {
 
             <div className="invalid-feedback">*текст ошибки</div>
           </div>
+          <Exchange />
         </form>
       </div>
-      <Exchange />
     </>
   );
 }
