@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Возврат билетов</title>
+</head>
+<link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="./assets/css/owl.carousel.min.css">
+<link rel="stylesheet" href="./assets/css/theme.default.min.css">
+<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="./assets/css/media.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+      rel="stylesheet">
+<body>
+<header class="header page_w01">
+    <a href="" class="logo">
+        <img src="./assets/images/logo_white.svg" alt="">
+    </a>
+    <ul class="nav justify-content-end container main_navigation">
+
+    </ul>
+</header>
+
+<div class="head_page brown">
+    <div class="container">
+        <div class="row">
+            <div class="head_page_content">
+                <img src="./assets/images/icons/mishka.svg" alt="">
+                <h2>
+                    Возврат билетов
+                </h2>
+                <img class="bear_m" src="./assets/images/icons/bear_m.svg" alt="">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="container content_container">
+        <div class="row">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Главная &nbsp; /&nbsp; Правила обмена и возврата билетов &nbsp; /&nbsp;</a>Возврат билетов</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <div class="container content_container">
+        <div class="row">
+            <div class="col-xl-6 col-xxl-5 col-lg-8 col-md-10">
+                <div class="content_block">
+                    <div class="title_block" style="color:#005D90 ">
+                        Обратите внимание!
+                    </div>
+                    <p class="content_text">
+                        Вы можете отменить экскурсию, но не возвращать билет —
+                        по нему можно посетить заповедник самостоятельно в течение года с даты покупки.
+                    </p>
+                    <div class="btns">
+                        <button type="button" class="btn_return btn_link">Вернуть билет</button>
+                        <button type="button" class="btn_return btn_link orange_btn">Отменить экскурсию</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="row mt-5">
+            <div class="col-lg-12">
+                <div class="title_block">
+                    Введите данные, указанные при покупке билета:
+                </div>
+            </div>
+            <div class="col-lg-4 form_item">
+                <label for="name">ваше Имя*</label>
+                <input type="text" class="form-control" id="name" placeholder="Введите имя" required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+            <div class="col-lg-4 form_item">
+                <label for="surname">ваша Фамилия*</label>
+                <input type="text" class="form-control" id="surname" placeholder="Введите вашу фамилию" required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+            <div class="col-lg-4 form_item">
+                <label for="middle_name">ваше Отчество*</label>
+                <input type="text" class="form-control" id="middle_name"
+                       placeholder="Введите ваше отчество (при наличии)" required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+            <div class="col-lg-4 form_item">
+                <label for="phone">ваш Телефон*</label>
+                <input type="text" class="form-control" id="phone" placeholder="+7 (999) 99-99-99)" required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+            <div class="col-lg-4 form_item">
+                <label for="email">E-mail*</label>
+                <input type="email" class="form-control" id="email" placeholder="example@mail.ru" required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+            <div class="col-lg-4 form_item">
+                <label for="date">дата покупки билетов*</label>
+                <div class="input_date_pos simple_date">
+                    <input placeholder="08.09.2021" id="date" class="form-control" type="text">
+                </div>
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">Сумма к возврату, руб.*</label>
+                <input type="text" class="form-control" id="place_of_residence" placeholder="Введите сумму"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">наименование банка*</label>
+                <input type="text" class="form-control" id="" placeholder="Введите наименование банка"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">БИК банка*</label>
+                <input type="text" class="form-control" id="" placeholder="Введимте БИК банка"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">Корреспондентский счет *</label>
+                <input type="text" class="form-control" id="" placeholder="Введите корреспондентский счет"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">Расчётный счет*</label>
+                <input type="text" class="form-control" id="" placeholder="Введите расчётный счет"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">ФИО получателя*</label>
+                <input type="text" class="form-control" id="" placeholder="Введите ФИО получателя"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+            <div class="col-lg-4 form_item">
+                <label for="">причина возврата билетов *</label>
+                <input type="text" class="form-control" id="" placeholder="Выберите из списка"
+                       required="">
+                <div class="invalid-feedback">
+                    *текст ошибки
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="mt-5 container content_container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title_block">
+                    Введите номера билетов для обмена:
+                </div>
+
+            </div>
+        </div>
+        <div class="row" id="tickets_c">
+
+            <div class="col-lg-4 form_item ticket_items">
+                <div class="remove_this"></div>
+                <label for="ticket1">Билет 1*</label>
+                <input type="text" class="form-control" id="ticket1" placeholder="Введите номер билета" required="">
+                <div class="invalid-feedback">
+                    **билет не найден, проверьте правильность данных
+                </div>
+            </div>
+            <div class="mt-1 col-lg-4 form_item" id="add_ticket_block">
+                <button type="button" class="btn border_line add_ticket" id="add_ticket">+ Добавить билет для обмена</button>
+            </div>
+            <div class="col-lg-12">
+            <div class="form-check">
+                <input class="form-check-input form-check-input1" type="checkbox" value="" id="flexCheckaccept">
+                <label class="form-check-label h-jyt" for="flexCheckaccept">
+                    Согласен на обработку  <a href="#">персональных данных</a>
+                </label>
+            </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn_link chose m-auto btn_asd"  type="submit">Оформить возврат</button>
+
+</div>
+
+
+<div class="pre_footer">
+    <img src="./assets/images/bg/footer.png" alt="">
+</div>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer_logo">
+                    <a href="#">
+                        <img src="./assets/images/logo_white.svg" alt="">
+                    </a>
+                </div>
+                <div class="footer_icons">
+                    <a href="#"><img src="./assets/images/icons/icon_Fb.svg" alt=""></a>
+                    <a href="#"><img src="./assets/images/icons/icon_Insta.svg" alt=""></a>
+                    <a href="#"><img src="./assets/images/icons/icon_VK.svg" alt=""></a>
+                </div>
+                <div class="footer_text">
+                    <p>
+                        © ФГБУ «Лапландский государственный
+                        природный биосферный заповедник»
+                    </p>
+                </div>
+                <div class="footer_text">
+                    <p>
+                        Все права защищены.
+                        Любое копирование возможно
+                        только с разрешения дирекции.
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <ul class="footer_links mm_h">
+                    <li><h3>КОНТАКТНАЯ ИНФОРМАЦИЯ</h3></li>
+                    <li><p>184506, Россия,
+                        Мурманская обл., Мончегорск,
+                        пер. Зелёный, 8.</p></li>
+                    <li><a href="">tur.lapland@mail.ru</a></li>
+                    <li><a href="">+7-921-283-03-31</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <ul class="footer_links mm_h2">
+                    <li><p>
+                        Сообщить о возгораниях, чрезвычайных ситуациях, местах несанкционированного размещения отходов и
+                        иных нарушениях:
+                    </p></li>
+                    <li><a href="">+7-921-174-34-43</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <ul class="footer_links">
+
+                    <li><a href="">Правила посещения</a></li>
+                    <li><a href="">Правила экскурсионного
+                        обслуживания</a></li>
+                    <li><a href="">Правила покупки билета</a></li>
+                    <li><a href="">Правила обмена и возврата билета</a></li>
+                    <li><a href="">Обращения с отходами</a></li>
+                    <li><a href="">Противодействие коррупции</a></li>
+                    <li><a href="">Политика
+                        конфиденциальности</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<script src="./assets/js/jquery-3.6.0.min.js"></script>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
+<script src="./assets/js/owl.carousel.min.js"></script>
+<script src="./assets/js/script.js"></script>
+<script>
+
+</script>
+</body>
+</html>

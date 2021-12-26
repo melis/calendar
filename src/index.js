@@ -7,8 +7,6 @@ import { BrowserRouter } from "react-router-dom";
 import Cansel from "./components/Cansel/Cansel";
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Cansel />
-  </BrowserRouter>,
+  <BrowserRouter>{/* <Cansel /> */}</BrowserRouter>,
   document.getElementById("root")
 );
