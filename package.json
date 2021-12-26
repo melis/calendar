@@ -8,10 +8,13 @@
     "@mui/core": "latest",
     "@mui/lab": "latest",
     "@mui/material": "latest",
+    "axios": "^0.24.0",
     "date-fns": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.20.5",
+    "react-imask": "^6.2.2",
+    "react-router-dom": "^6.2.1",
     "react-scripts": "^4.0.3"
   },
   "scripts": {

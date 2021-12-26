@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-const ListTab = ({ tab, list, setTab }) => {
+const ListTab = ({ tab, list, setTab, bilet }) => {
   const [exc, setExc] = useState(true);
   const [evn, setEvn] = useState(true);
+  const url = useLocation();
 
   useEffect(() => {
+    const p = new URLSearchParams(url.search);
     setExc(true);
     setEvn(true);
+
     list.forEach((el) => {
       if (el.type === "excursion") {
         setExc(false);
@@ -15,13 +19,16 @@ const ListTab = ({ tab, list, setTab }) => {
         setEvn(false);
       }
     });
-    // if (!exc && evn) {
-    //   setTab("excursion");
-    // }
-    if (!evn && exc) {
-      setTab("event");
+
+    if (p.get("evn")) {
+      setTab(p.get("evn"));
     } else {
-      setTab("excursion");
+      if (!evn) {
+        setTab("event");
+      }
+      if (!exc) {
+        setTab("excursion");
+      }
     }
   }, [setEvn, setExc, exc, evn, setTab, list]);
   return (
@@ -43,10 +50,13 @@ const ListTab = ({ tab, list, setTab }) => {
           Мероприятие
         </button>
       </div>
-      <p>
-        Обратите внимание: вы можете выбрать для посещения только одну экскурсию
-        в день. Для посещения экскурсии вам нужно выбрать конкретное время.
-      </p>
+      {!exc && tab === "excursion" ? (
+        <p>
+          Обратите внимание: вы можете выбрать для посещения только одну
+          экскурсию в день. Для посещения экскурсии вам нужно выбрать конкретное
+          время.
+        </p>
+      ) : null}
     </div>
   );
 };

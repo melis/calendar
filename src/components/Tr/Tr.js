@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { forwardRef, useEffect, useState } from "react";
+import Select from "../Select/Select";
 
-const Tr = ({ bilet, setTickets, summ }) => {
+const Tr = (props, ref) => {
+  const { bilet, setTickets, summ } = props;
   const { price } = bilet;
   const [base, setBase] = useState(0);
   const [child, setChild] = useState(0);
   const [pref, setPref] = useState(0);
   const [freeBase, setFreeBase] = useState(0);
   const [prefInfo, setPrefInfo] = useState([]);
-
+  const [lgots, setLgots] = useState([]);
+  console.log(lgots);
   useEffect(() => {
     setBase(0);
     setFreeBase(0);
@@ -15,6 +19,17 @@ const Tr = ({ bilet, setTickets, summ }) => {
     setPrefInfo([]);
     setPref(0);
   }, [bilet]);
+
+  useEffect(() => {
+    axios
+      .get("https://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
+
+      .then(({ data }) => {
+        console.log(data, "sasass");
+        setLgots([...data]);
+      })
+      .catch((e) => setLgots([{ id: 0, name: "Error" }]));
+  }, []);
 
   useEffect(() => {
     setTickets({
@@ -39,7 +54,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
   return (
     <>
       <tr className="ticket_selection_item zebra accordion-item">
-        <td className="ticket_selection_name">Взрослый билет</td>
+        <td className="ticket_selection_name">Взрослый</td>
         <td className="ticket_selection_price">{price.base}</td>
         <td className="ticket_selection_count">
           <button
@@ -57,6 +72,8 @@ const Tr = ({ bilet, setTickets, summ }) => {
             className="cart_num"
             type="text"
             value={base + freeBase}
+            min={0}
+            max={999}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
                 setBase(Number(e.target.value));
@@ -79,7 +96,7 @@ const Tr = ({ bilet, setTickets, summ }) => {
 
       <tr className="ticket_selection_item zebra accordion-item">
         <td className="ticket_selection_name">
-          Детский билет <span>(3-18 лет включительно) </span>
+          Детский <span>(3-18 лет включительно) </span>
         </td>
         <td className="ticket_selection_price">{price.child}</td>
         <td className="ticket_selection_count">
@@ -98,6 +115,8 @@ const Tr = ({ bilet, setTickets, summ }) => {
             className="cart_num"
             type="text"
             value={child}
+            min={0}
+            max={999}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
                 setChild(Number(e.target.value));
@@ -132,9 +151,9 @@ const Tr = ({ bilet, setTickets, summ }) => {
         </td>
       </tr>
 
-      <tr className="ticket_selection_item zebra">
+      <tr className="ticket_selection_item zebra" ref={ref}>
         <td className="ticket_selection_name" type="button">
-          Льготный билет
+          Льготный
         </td>
         <td className="ticket_selection_price">бесплатно</td>
         <td className="ticket_selection_count">
@@ -148,11 +167,12 @@ const Tr = ({ bilet, setTickets, summ }) => {
               });
             }}
           >
-            <img disabled={true} src="./assets/images/icons/minus.svg" alt="" />
+            <img src="./assets/images/icons/minus.svg" alt="" />
           </button>
           <input
             className="cart_num"
             type="text"
+            readOnly
             value={pref}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
@@ -170,7 +190,8 @@ const Tr = ({ bilet, setTickets, summ }) => {
                   {
                     id: c,
                     value_id: 0,
-                    name: "ЛЬГОТНЫЙ БИЛЕТ " + (c + 1),
+                    name: "Выберите категорию льготы",
+                    title: "ЛЬГОТНЫЙ БИЛЕТ " + (c + 1),
                   },
                 ]);
                 return c + 1;
@@ -184,43 +205,12 @@ const Tr = ({ bilet, setTickets, summ }) => {
           <div className={`accordion-collapse ${pref < 1 && "collapse"}`}>
             <div className="accordion-body">
               {prefInfo.map((info) => (
-                <div className="form-group select" key={info.id}>
-                  <label htmlFor={`example${info.id}`}>{info.name}</label>
-                  <select
-                    style={{
-                      border: info.value_id > 0 ? "none" : "2px solid #E13838",
-                    }}
-                    className="form-select"
-                    id={`example${info.id}`}
-                    required=""
-                    name={`example${info.id}`}
-                    value={info.value_id}
-                    onChange={(e) => {
-                      setPrefInfo((old) => {
-                        let newInfo = [...old];
-                        newInfo.forEach((el, index) => {
-                          if (el.id === info.id) {
-                            newInfo[index].value_id = Number(e.target.value);
-                          }
-                        });
-                        return newInfo;
-                      });
-                    }}
-                  >
-                    <option value={0}>Выберите категорию льготы</option>
-                    <option value={1}>Подопечные социальных учреждений</option>
-                    <option value={2}>2 dsad</option>
-                    <option value={3}>3 dasdasd</option>
-                    <option value={4}>4 dsadas</option>
-                    <option value={5}>5 dasdsa</option>
-                  </select>
-                  <div
-                    className="invalid-feedback"
-                    style={{ display: info.value_id > 0 ? "none" : "block" }}
-                  >
-                    *выберите категорию льготы, чтобы продолжить
-                  </div>
-                </div>
+                <Select
+                  info={info}
+                  setPrefInfo={setPrefInfo}
+                  key={info.id}
+                  lgots={lgots}
+                />
               ))}
             </div>
           </div>
@@ -230,4 +220,4 @@ const Tr = ({ bilet, setTickets, summ }) => {
   );
 };
 
-export default Tr;
+export default forwardRef(Tr);

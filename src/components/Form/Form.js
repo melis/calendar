@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 
@@ -8,6 +8,7 @@ const Form = ({ bilet }) => {
   const [summ, setSumm] = useState(0);
   const [tickets, setTickets] = useState(null);
   const [prefValid, setPrefValid] = useState(false);
+  const tRef = useRef(null);
 
   const {
     register,
@@ -37,8 +38,12 @@ const Form = ({ bilet }) => {
   }, [tickets, price, prefValid]);
 
   const onSubmit = (client) => {
-    alert(JSON.stringify({ client, tickets }));
-    console.log(JSON.stringify({ client, tickets }));
+    if (prefValid) {
+      tRef.current.scrollIntoView();
+    } else {
+      window.location.href = "http://lapland.syntlex.kg";
+      console.log(JSON.stringify({ client, tickets }));
+    }
   };
 
   return (
@@ -48,7 +53,7 @@ const Form = ({ bilet }) => {
       noValidate
       onSubmit={handleSubmit(onSubmit)}
     >
-      <Table bilet={bilet} setTickets={setTickets} summ={summ} />
+      <Table bilet={bilet} setTickets={setTickets} summ={summ} ref={tRef} />
       <div className="container checkout">
         <div className="row">
           <div className="">
@@ -140,7 +145,7 @@ const Form = ({ bilet }) => {
                 type="text"
                 className="form-control"
                 id="phone"
-                placeholder="+7 (999) 99-99-99)"
+                placeholder=" +7 999 999-99-99"
                 {...register("phone", {
                   required: "Поле обязательно к заполнению",
                   minLength: {
@@ -210,7 +215,7 @@ const Form = ({ bilet }) => {
             <div className="hover_check">
               <div className="form-check">
                 <input
-                  style={{ borderColor: errors?.accept ? "red" : "inherit" }}
+                  style={errors?.accept ? { borderColor: "red" } : null}
                   className="form-check-input"
                   type="checkbox"
                   value=""
@@ -224,13 +229,13 @@ const Form = ({ bilet }) => {
                 </label>
               </div>
               <div className="invalid-feedback">
-                {errors?.tickets && (errors?.tickets?.message || "*Error")}
+                {errors?.accept && (errors?.accept?.message || "*Error")}
               </div>
             </div>
           </div>
           <div className="col-lg-12">
             <div className="payment">
-              Итого к оплате:
+              Доплата за обмен:
               <span id="cart_summ2"> {summ}</span> ₽
             </div>
           </div>
@@ -240,9 +245,8 @@ const Form = ({ bilet }) => {
               !prefValid && isValid ? "chose" : ""
             }`}
             type="submit"
-            disabled={prefValid}
           >
-            Оплатить заказ
+            Оформить обмен
           </button>
         </div>
       </div>

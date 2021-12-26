@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { format } from "date-fns";
+import ruLocale from "date-fns/locale/ru";
 
 const Event = ({ el, setBilet, bilet }) => {
+  const [img, setImg] = useState(el.img_url);
   return (
     <div className="row ticket_item">
       <div className="col-lg-5">
         <div className="pbt_img">
-          <img src={el.img_url} alt="" />
+          <img
+            src={`https://${img}`}
+            alt=""
+            onError={() =>
+              setImg(
+                "martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg"
+              )
+            }
+          />
         </div>
       </div>
       <div className="col-lg-7">
@@ -21,7 +32,15 @@ const Event = ({ el, setBilet, bilet }) => {
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              <p>{el.proceed}</p>
+              {el.type === "excursion" ? (
+                <p>{el.proceed}</p>
+              ) : (
+                <p>
+                  {format(new Date(el.date), "d MMMM", {
+                    locale: ruLocale,
+                  })}
+                </p>
+              )}
             </div>
             {el.type === "excursion" ? (
               <>
@@ -40,15 +59,15 @@ const Event = ({ el, setBilet, bilet }) => {
             ) : null}
           </div>
           <div className="pbt_r_b_title">
-            <h4>
-              {el.title} {new Date(el.date).getDate()}
-            </h4>
+            <h4>{el.title}</h4>
           </div>
           <div className="pbt_r_b_cont">
             <p>{el.text}</p>
             <p>
-              Стоимость: {el.price.base} ₽ взрослый, {el.price.child} ₽ детский
-              билет, льготные категории — бесплатно.
+              Стоимость: <br />
+              {el.price.base} ₽ взрослый, <br />
+              {el.price.child} ₽ детский билет, <br /> льготные категории —
+              бесплатно.
             </p>
           </div>
           <div className="btns">

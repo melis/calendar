@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Calendar from "../Calendar/Calendar";
 import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -10,17 +11,53 @@ const App = () => {
   const [self, setSelf] = useState(false);
   const [bilet, setBilet] = useState();
   const [warn, setWarn] = useState(false);
+  const Sref = useRef(null);
+  const bRef = useRef(null);
+  const url = useLocation();
+  const [mem, setMem] = useState(url.search);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const p = new URLSearchParams(url.search);
+    if (tab) {
+      navigate({
+        pathname: url.pathname,
+        search: `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`,
+      });
+    }
+  }, [tab, navigate]);
+
+  useEffect(() => {
+    if (warn) {
+      setMem(url.search);
+      navigate(url.pathname);
+    } else {
+      navigate({ pathname: url.pathname, search: mem });
+    }
+  }, [warn, navigate]);
+
+  useEffect(() => {
+    if (bilet && bilet.type !== "free_date") {
+      Sref.current.scrollIntoView();
+    } else {
+      bRef.current.scrollIntoView();
+    }
+  }, [bilet]);
 
   return (
     <>
-      <div className="container content_container">
+      <div className="container content_container" ref={bRef}>
         <div className="row">
           <div className="col-lg-5">
             <div className="pbt_bl">
               <h4>Выберите дату посещения*</h4>
 
               <Calendar
-                list={list}
+                isLoading={isLoading}
+                setIsLoading={setIsLoading}
+                setTab={setTab}
                 setList={setList}
                 disabled={self}
                 warn={warn}
@@ -56,7 +93,7 @@ const App = () => {
                         setBilet({
                           type: "free_date",
                           title: "Самостоятельное посещение заповедника",
-                          price: { base: 400, child: 200, pref: 0 },
+                          price: { base: 450, child: 400, pref: 0 },
                           date: "Бессрочный билет на год",
                         });
                         setWarn(true);
@@ -75,7 +112,9 @@ const App = () => {
             </div>
           </div>
           <div className="col-lg-7">
-            {self ? null : <ListTab list={list} tab={tab} setTab={setTab} />}
+            {self ? null : (
+              <ListTab list={list} tab={tab} setTab={setTab} bilet={bilet} />
+            )}
           </div>
         </div>
       </div>
@@ -119,6 +158,21 @@ const App = () => {
               </div>
             </div>
           </div>
+        ) : list.length < 1 ? (
+          isLoading ? (
+            <div className="row ticket_item">
+              <img
+                src="./assets/images/load.gif"
+                alt=""
+                className="loading_img"
+              />
+            </div>
+          ) : (
+            <div className="row ticket_item">
+              Увы! В этот день мероприятий нет. Пожалуйста, выберите другую
+              дату!
+            </div>
+          )
         ) : (
           list.map((el) => {
             if (tab === el.type) {
@@ -130,7 +184,11 @@ const App = () => {
           })
         )}
       </div>
-      {bilet ? <TicketSelect bilet={bilet} setBilet={setBilet} /> : null}
+      {bilet ? (
+        <div ref={Sref}>
+          <TicketSelect bilet={bilet} setBilet={setBilet} />
+        </div>
+      ) : null}
     </>
   );
 };

@@ -541,6 +541,7 @@ section.allert .content_block {
 
 .form-check-input:checked[type="checkbox"] {
   background-image: url(../images/icons/typcn_tick.svg);
+  background-position: center;
 }
 
 .form-check-input:checked {
@@ -602,7 +603,8 @@ section.allert .content_block {
   cursor: pointer;
 }
 
-.buy_ticket.st_1.st_2 {
+.buy_ticket.st_1.st_2,
+.buy_ticket2.st_2 {
   color: #ffffff;
   background: #d76729;
 }
@@ -643,7 +645,7 @@ section.allert .content_block {
 }
 
 .pbt_bl {
-  max-width: 460px;
+  /* max-width: 460px; */
 }
 
 .pbt_bl h4 {
@@ -687,8 +689,8 @@ section.allert .content_block {
 }
 
 .border_line {
-  border: 2px solid #005d90;
-  color: #005d90;
+  border: 2px solid #007db5;
+  color: #007db5;
   margin-right: 18px;
   margin-left: 0;
   padding: 23px 30px;
@@ -752,22 +754,25 @@ input.input_date {
 }
 
 .pbt_r_b_top p {
-  font-family: Raleway;
+  font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
+  line-height: 18px;
   color: #005d90;
   margin: 0;
+  transform: translateY(2px);
 }
 
 .pbt_r_b_top img {
   max-width: 20px;
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .pbt_r_b_item {
   display: flex;
   margin-right: 15px;
+  align-items: flex-end;
 }
 
 .pbt_r_b_title {
@@ -851,6 +856,7 @@ button.btn_link {
   padding-bottom: 10px;
   position: relative;
   list-style: none;
+  font-size: 18px;
 }
 
 .pbt_r_b_cont ul li:after {
@@ -882,9 +888,6 @@ button.btn_link {
 }
 
 .blue_bg h4 {
-  display: flex;
-  align-items: end;
-  flex-direction: column;
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
@@ -893,12 +896,10 @@ button.btn_link {
   text-align: right;
   color: #ffffff;
   margin: 0;
-  max-width: 250px;
-  float: right;
   margin-top: 14px;
 }
 .ticket_selection {
-  padding: 50px 15px;
+  padding: 50px 15px 85px 15px;
 }
 .ticket_selection_content {
   width: 100%;
@@ -932,7 +933,7 @@ button.btn_link {
   color: #212121;
   border-radius: 20px;
   margin-bottom: 15px;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 .ticket_selection_item td,
 .ticket_selection_item th {
@@ -987,7 +988,7 @@ button.btn_link {
 }
 .ticket_selection .pbt_r_b_title,
 .checkout .pbt_r_b_title {
-  margin-bottom: 28px;
+  margin-bottom: 14px;
 }
 .form-control {
   background-color: #fff9ed;
@@ -1046,6 +1047,8 @@ button.btn_link {
   font-size: 16px !important;
   color: #8b8b8b;
   line-height: inherit;
+  text-transform: none;
+  letter-spacing: normal;
 }
 .payment {
   font-family: Source Sans Pro;
@@ -1055,7 +1058,7 @@ button.btn_link {
   line-height: 35px;
   color: #212121;
   margin-bottom: 40px;
-  margin-top: 100px;
+  margin-top: 55px;
 }
 .w_0 {
   display: none !important;
@@ -1068,7 +1071,7 @@ button.btn_link {
   line-height: 21px;
   text-transform: uppercase;
   color: #212121;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .ticket_selection_item .accordion-body {
   padding: 28px 0 28px;
@@ -1148,7 +1151,7 @@ button.btn_link {
   width: 420px;
   display: inline-grid;
   margin-right: 40px;
-  margin-bottom: 24px;
+  padding-bottom: 24px;
 }
 .accordion-body .form-group label {
   font-family: Raleway;
@@ -1162,7 +1165,7 @@ button.btn_link {
   margin-bottom: 10px;
 }
 .accordion-body .form-group select.form-select {
-  background: #ffffff;
+  /* background: #ffffff; */
   border-radius: 25px;
   padding: 12px 30px;
   border: none;
@@ -1323,4 +1326,161 @@ input.css-1uvydh2:focus,
 .pbt_img img {
   height: 460px;
   object-fit: cover;
+}
+
+.border_line:disabled {
+  border: 2px solid #ddd;
+  color: #ddd;
+  opacity: 1;
+  background-color: #fff;
+}
+table.accordion {
+  margin: 0;
+}
+.form-select {
+  position: relative;
+  background-image: none;
+  background: #ffffff;
+  box-sizing: border-box;
+  border-radius: 25px;
+  padding: 0;
+  border: 2px solid transparent;
+}
+.form-select:hover {
+  border: 2px solid #007db5;
+}
+
+.select-options {
+  background-color: #fff;
+  border-radius: 5px;
+  width: 100%;
+  left: 0;
+  padding: 20px 0;
+  margin: 0;
+  list-style: none;
+  position: absolute;
+  top: 120%;
+  z-index: 1;
+  border: 1px solid #c5e5ed;
+}
+.select-option {
+  padding: 10px 30px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  display: flex;
+  align-items: center;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #212121;
+  cursor: pointer;
+  position: relative;
+}
+.selected::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-image: url("/assets/images/icons/select_normal.svg");
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.selected:hover:after {
+  background-image: url("/assets/images/icons/select_hover.svg");
+}
+.select-option:hover {
+  color: #007db5;
+}
+.select-value {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  font-feature-settings: "pnum" on, "lnum" on;
+
+  color: #212121;
+  cursor: pointer;
+  padding: 13px 30px;
+}
+.select-value:hover {
+  color: #007db5;
+}
+.select-arrow {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 8px;
+  right: 22px;
+  pointer-events: none;
+  transition: 0.3s;
+}
+.blue_bg .col-lg-4 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+input {
+  outline: none;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: inset 0 0 0 50px #fff9ed !important; /* Цвет фона */
+  -webkit-text-fill-color: #212529 !important; /* цвет текста */
+  color: #212529 !important; /* цвет текста */
+}
+
+.remove_this {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: url(../images/icons/close.svg) no-repeat center;
+  right: 14px;
+  top: 2px;
+  cursor: pointer;
+}
+.head_page.brown {
+  background: #7f4b1d;
+}
+.head_page.blue {
+  background: #005d90;
+}
+.brown .head_page_content img {
+  width: 192px;
+}
+.blue .head_page_content img {
+  width: 166px;
+}
+button.btn_return {
+  display: inline-block;
+  background: #ffffff;
+  border: 2px solid #005d90;
+  color: #005d90;
+  margin-right: 18px;
+  padding: 15px 50px;
+  width: inherit;
+}
+.btn_return:hover {
+  background: #d76729;
+  border: 2px solid #d76729;
+  color: #ffffff;
+}
+
+.btn_return.orange_btn {
+  background: #d76729;
+  border: 2px solid #d76729;
+  color: #ffffff;
+  margin-right: 0;
+}
+
+.simple_date:after {
+  right: 15px;
+  top: 12px;
+}
+.ticket_items {
+  position: relative;
+}
+button.btn_asd {
+  margin: 30px auto 0;
 }

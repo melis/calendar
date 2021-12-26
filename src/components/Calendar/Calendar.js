@@ -7,45 +7,89 @@ import PickersDay from "@mui/lab/PickersDay";
 import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
-import data from "../../data";
-import { getMonth } from "date-fns";
+import { useLocation, useNavigate } from "react-router-dom";
+import { getMonth, getYear } from "date-fns";
+import axios from "axios";
 
-// import { getDay, getDate, setDate } from "date-fns";
-
-function fakeFetch(date, { signal }) {
+function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
-    const timeout = setTimeout(() => {
-      if (getMonth(date) !== getMonth(new Date())) {
-        resolve([]);
-      }
-      resolve(data);
-    }, 500);
+    axios
+      .get(
+        `https://lapland.syntlex.kg/crm/api/?method=get_products&year=${getYear(
+          new Date(date)
+        )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
+          getMonth(new Date(date)) + 1
+        }`
+      )
+      .then(({ data }) => {
+        let newArr = [];
+        if (!data) {
+          resolve(newArr);
+        }
+
+        for (const [key, value] of Object.entries(data)) {
+          data[key].price = JSON.parse(data[key].price);
+          newArr.push(value);
+        }
+
+        resolve(newArr);
+      });
 
     signal.onabort = () => {
-      clearTimeout(timeout);
       reject(new DOMException("aborted", "AbortError"));
     };
   });
 }
 
-const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
+const Calendar = ({
+  setList,
+  disabled,
+  setWarn,
+  setBilet,
+  tab,
+  setTab,
+  setIsLoading,
+  isLoading,
+}) => {
   const requestAbortController = React.useRef(null);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [highlightedDays, setHighlightedDays] = React.useState([1, 2, 15]);
-  const [value, setValue] = React.useState(new Date());
+  const [highlightedDays, setHighlightedDays] = React.useState([]);
+  const [icoHov, setIcoHov] = React.useState(false);
+  const url = useLocation();
+  const p = new URLSearchParams(url.search);
+  const navigate = useNavigate();
+  const [value, setValue] = React.useState(
+    p.get("y") && p.get("m") && p.get("d")
+      ? new Date(`${p.get("y")}-${Number(p.get("m"))}-${p.get("d")}`)
+      : new Date()
+  );
+
+  React.useEffect(() => {
+    navigate({
+      pathname: url.pathname,
+      search: `?y=${new Date(value).getFullYear()}&m=${
+        new Date(value).getMonth() + 1
+      }&d=${new Date(value).getDate()}`,
+    });
+  }, [value, navigate]);
+
+  React.useEffect(() => {
+    setIcoHov(false);
+  }, [value]);
 
   const disableDays = (d) => {
     let a = true;
+
     highlightedDays.forEach((e) => {
       if (
-        new Date(e.date).getDate() === d.getDate() &&
-        d.getDate() >= new Date().getDate()
+        Date.parse(d) > Date.parse(new Date()) &&
+        new Date(e.date).getDate() === new Date(d).getDate()
       ) {
         a = false;
       }
     });
     return a;
   };
+
   React.useEffect(() => {
     setBilet(null);
   }, [setBilet, value, tab]);
@@ -53,18 +97,19 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   React.useEffect(() => {
     setList(
       highlightedDays.filter(
-        (el) => new Date(el.date).getDate() === new Date().getDate()
+        (el) => new Date(el.date).getDate() === new Date(value).getDate()
       )
     );
-  }, [highlightedDays, setList]);
+  }, [highlightedDays, setList, value]);
 
   const renderDay = (day, _value, DayComponentProps) => {
     let exc = false;
     let evn = false;
+
     highlightedDays.forEach((el) => {
       if (
         !DayComponentProps.outsideCurrentMonth &&
-        Date.parse(el.date) === Date.parse(day)
+        new Date(el.date).getDate() === new Date(day).getDate()
       ) {
         exc = el.type === "excursion" ? true : exc;
         evn = el.type === "event" ? true : evn;
@@ -96,7 +141,8 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
-    fakeFetch(date, {
+    setIsLoading(true);
+    fethch(date, {
       signal: controller.signal,
     })
       .then((data) => {
@@ -104,6 +150,8 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
         setIsLoading(false);
       })
       .catch((error) => {
+        // setIsLoading(false);
+        console.log("API ERROR");
         // ignore the error if it's caused by `controller.abort`
         if (error.name !== "AbortError") {
           throw error;
@@ -114,7 +162,11 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
   };
 
   React.useEffect(() => {
-    fetchHighlightedDays(new Date());
+    fetchHighlightedDays(
+      p.get("y") && p.get("m") && p.get("d")
+        ? new Date(`${p.get("y")}-${Number(p.get("m"))}-${p.get("d")}`)
+        : new Date()
+    );
     // abort request on unmount
     return () => requestAbortController.current?.abort();
   }, []);
@@ -125,6 +177,9 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     }
     setIsLoading(true);
     setHighlightedDays([]);
+    setValue(date);
+    setList([]);
+    setBilet(null);
     fetchHighlightedDays(date);
   };
 
@@ -132,11 +187,24 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     <div
       className="input_date_pos"
       onMouseMove={(e) => {
-        console.dir(e.target.localName);
+        if (
+          e.target.localName === "svg" ||
+          e.target.localName === "path" ||
+          e.target.localName === "button"
+        ) {
+          setIcoHov(true);
+        } else {
+          setIcoHov(false);
+        }
+      }}
+      onMouseLeave={() => {
+        setIcoHov(false);
       }}
     >
       <img
-        src={`/assets/images/icons/calendar_ico_${disabled ? "d" : "a"}.svg`}
+        src={`/assets/images/icons/calendar_ico_${
+          disabled ? "d" : icoHov ? "h" : "a"
+        }.svg`}
         style={{ pointerEvents: disabled ? "auto" : "none" }}
         onClick={() => {
           setWarn(true);
@@ -168,6 +236,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
               )
             );
             setValue(newValue);
+            setTab();
           }}
           onMonthChange={handleMonthChange}
           shouldDisableDate={disableDays}
