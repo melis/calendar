@@ -235,7 +235,7 @@ const Form = ({ bilet }) => {
           </div>
           <div className="col-lg-12">
             <div className="payment">
-              Итого к оплате:
+              Доплата за обмен:
               <span id="cart_summ2"> {summ}</span> ₽
             </div>
           </div>
@@ -246,7 +246,7 @@ const Form = ({ bilet }) => {
             }`}
             type="submit"
           >
-            Оплатить заказ
+            Оформить обмен
           </button>
         </div>
       </div>
