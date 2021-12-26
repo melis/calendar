@@ -1,37 +1,12 @@
 import React from "react";
+import Exchange from "../Exchange/Exchange";
+import ReturnTab from "../ReturnTab/ReturnTab";
 
 function Return(props) {
   return (
     <>
       <div className="container content_container">
-        <div className="row">
-          <div className="col-xl-6 col-xxl-5 col-lg-8 col-md-10">
-            <div className="content_block">
-              <div className="title_block" style="color: #005d90">
-                Обратите внимание!
-              </div>
-
-              <p className="content_text">
-                Вы можете отменить экскурсию, но не возвращать билет — по нему
-                можно посетить заповедник самостоятельно в течение года с даты
-                покупки.
-              </p>
-
-              <div className="btns">
-                <button type="button" className="btn_return btn_link">
-                  Вернуть билет
-                </button>
-
-                <button
-                  type="button"
-                  className="btn_return btn_link orange_btn"
-                >
-                  Отменить экскурсию
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+        <ReturnTab />
 
         <form className="row mt-5">
           <div className="col-lg-12">
@@ -224,7 +199,8 @@ function Return(props) {
           </div>
         </form>
       </div>
-
+      <Exchange />
+      {/* 
       <div className="mt-5 container content_container">
         <div className="row">
           <div className="col-lg-12">
@@ -281,7 +257,7 @@ function Return(props) {
             Оформить возврат
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -1471,7 +1471,7 @@ button.btn_return {
   background: #d76729;
   border: 2px solid #d76729;
   color: #ffffff;
-  margin-right: 0;
+  /* margin-right: 0; */
 }
 
 .simple_date:after {
