@@ -1,8 +1,117 @@
-.head_page_content .chicken_2 {
+.head_page_content .chicken_2,
+.head_page_content .los_mobile,
+.head_page_content .bear_m {
   display: none;
 }
 
+.btn_link.m-auto {
+  padding: 15px 50px;
+
+  width: auto;
+}
+
+.content_container {
+  margin-bottom: 0px !important;
+}
+
 @media screen and (max-width: 768px) {
+  .mobile-none {
+    display: none;
+  }
+
+  label.h-jyt {
+    width: 250px;
+  }
+
+  button.btn_asd {
+    margin: 45px auto 0 !important;
+  }
+
+  .form_item label {
+    font-weight: 500;
+
+    font-size: 18px;
+
+    line-height: 21px;
+
+    text-transform: uppercase;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #212121;
+  }
+
+  .form_item input::placeholder {
+    font-size: 18px;
+
+    line-height: 140%;
+
+    display: flex;
+
+    align-items: center;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #8b8b8b;
+  }
+
+  .form_item input {
+    font-size: 18px;
+
+    line-height: 140%;
+
+    display: flex;
+
+    align-items: center;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #212121;
+
+    padding: 13px 25px;
+  }
+
+  button.btn_return {
+    margin: 5px auto 25px;
+
+    display: block;
+  }
+
+  .border_line.add_ticket {
+    margin: 0 0;
+
+    width: 100%;
+  }
+
+  .btn_link.m-auto.cnsl {
+    padding: 15px 50px;
+
+    margin-top: 15px !important;
+  }
+
+  .title_block {
+    margin-bottom: 30px;
+  }
+
+  .blue .head_page_content h2,
+  .brown .head_page_content h2 {
+    margin-left: 8px;
+  }
+
+  .breadcrumb {
+    font-family: Raleway;
+
+    font-style: normal;
+
+    font-weight: normal;
+
+    font-size: 16px;
+
+    line-height: 140%;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+  }
+
   .pbt_img.right img {
     float: left;
   }
@@ -124,10 +233,27 @@
     display: none;
   }
 
+  .blue .head_page_content img,
+  .brown .head_page_content img {
+    display: none;
+  }
+
   .head_page_content .chicken_2 {
     display: block;
 
     width: 96px;
+  }
+
+  .blue .head_page_content .los_mobile {
+    display: block;
+
+    width: 100px;
+  }
+
+  .brown .head_page_content .bear_m {
+    display: block;
+
+    width: 100px;
   }
 
   .head_page_content h2 {
@@ -178,7 +304,6 @@
 
   .btn_link {
     width: initial;
-    padding: 15px 30px;
   }
 
   .blue_bg h3 {
@@ -301,6 +426,131 @@
 }
 
 @media screen and (max-width: 425px) {
+  .btn_link.m-auto {
+    padding: 15px 50px;
+
+    color: #ffffff;
+
+    background: #d76729;
+  }
+
+  label.h-jyt {
+    width: 250px;
+  }
+
+  button.btn_asd {
+    margin: 45px auto 0 !important;
+  }
+
+  .form_item label {
+    font-weight: 500;
+
+    font-size: 18px;
+
+    line-height: 21px;
+
+    text-transform: uppercase;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #212121;
+  }
+
+  .form_item input::placeholder {
+    font-size: 18px;
+
+    line-height: 140%;
+
+    display: flex;
+
+    align-items: center;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #8b8b8b;
+  }
+
+  .form_item input {
+    font-size: 18px;
+
+    line-height: 140%;
+
+    display: flex;
+
+    align-items: center;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+
+    color: #212121;
+
+    padding: 13px 25px;
+  }
+
+  button.btn_return {
+    margin: 5px auto 25px;
+
+    display: block;
+  }
+
+  .border_line.add_ticket {
+    margin: 0 0;
+
+    width: 100%;
+  }
+
+  .btn_link.m-auto.cnsl {
+    padding: 15px 50px;
+
+    margin-top: 15px !important;
+  }
+
+  .title_block {
+    margin-bottom: 30px;
+  }
+
+  .blue .head_page_content .los_mobile {
+    display: block;
+
+    width: 100px;
+
+    margin-bottom: -23px;
+  }
+
+  .brown .head_page_content .bear_m {
+    display: block;
+
+    width: 115px;
+
+    margin-bottom: -51px;
+  }
+
+  .blue .head_page_content h2,
+  .brown .head_page_content h2 {
+    margin-left: 8px;
+  }
+
+  .breadcrumb {
+    font-family: Raleway;
+
+    font-style: normal;
+
+    font-weight: normal;
+
+    font-size: 16px;
+
+    line-height: 140%;
+
+    font-feature-settings: "pnum" on, "lnum" on;
+  }
+
+  .breadcrumb-item {
+    overflow-wrap: break-word;
+
+    white-space: pre-wrap;
+  }
+
+  /**/
+
   .rounded_circle {
     font-weight: 600;
 
@@ -472,7 +722,7 @@
   }
 
   .breadcrumb {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
   }
 
   .head_page_content .chicken_1 {
@@ -682,5 +932,17 @@
   .ticket_selection .pbt_r_b_title,
   .checkout .pbt_r_b_title {
     margin-bottom: 70px;
+  }
+
+  .content_container {
+    margin-bottom: 0px !important;
+  }
+
+  .container {
+    padding: 0 20px !important;
+  }
+
+  .ticket_items.form_item {
+    margin-bottom: 15px;
   }
 }

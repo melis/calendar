@@ -603,7 +603,7 @@ section.allert .content_block {
   cursor: pointer;
 }
 
-.buy_ticket.st_1.st_2 {
+.buy_ticket.st_1.st_2, .buy_ticket2.st_2{
   color: #ffffff;
   background: #d76729;
 }
@@ -688,8 +688,8 @@ section.allert .content_block {
 }
 
 .border_line {
-  border: 2px solid #005d90;
-  color: #005d90;
+  border: 2px solid #007DB5;
+  color: #007DB5;
   margin-right: 18px;
   margin-left: 0;
   padding: 23px 30px;
@@ -750,7 +750,6 @@ input.input_date {
   display: flex;
   width: 100%;
   margin-bottom: 30px;
-  flex-wrap: wrap;
 }
 
 .pbt_r_b_top p {
@@ -773,7 +772,6 @@ input.input_date {
   display: flex;
   margin-right: 15px;
   align-items: flex-end;
-  margin-top: 15px;
 }
 
 .pbt_r_b_title {
@@ -913,7 +911,7 @@ button.btn_link {
   background: none;
   border: none;
   text-align: center;
-  width: 35px;
+  width: 30px;
   outline: none;
   font-family: Source Sans Pro;
   font-style: normal;
@@ -1265,7 +1263,7 @@ input.input_date:focus {
 .border_line.add_ticket {
   border-radius: 30px;
   padding: 16px 30px;
-  margin-top: 34px;
+  margin-top: 38px;
 }
 .form_item input {
   min-height: 55px;
@@ -1430,4 +1428,60 @@ input:-webkit-autofill {
   -webkit-box-shadow: inset 0 0 0 50px #fff9ed !important; /* Цвет фона */
   -webkit-text-fill-color: #212529 !important; /* цвет текста */
   color: #212529 !important; /* цвет текста */
+}
+
+.remove_this{
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: url(../images/icons/close.svg) no-repeat center;
+  right: 14px;
+  top: 2px;
+  cursor: pointer;
+}
+.head_page.brown{
+  background: #7F4B1D;
+}
+.head_page.blue{
+  background: #005D90;
+}
+.brown .head_page_content img {
+  width: 192px;
+}
+.blue .head_page_content img {
+  width: 166px;
+}
+button.btn_return{
+  display: inline-block;
+  background: #ffffff;
+  border: 2px solid #005D90;
+  color: #005D90;
+  margin-right: 18px;
+  padding: 15px 50px;
+  width: inherit;
+}
+.btn_return:hover{
+  background: #D76729;
+  border: 2px solid #D76729;
+  color: #ffffff;
+}
+.btn_return.orange_btn{
+  background: #D76729;
+  border: 2px solid #D76729;
+  color: #ffffff;
+  margin-right: 0;
+}
+.simple_date:after{
+  right: 15px;
+  top: 12px;
+}
+.ticket_items{
+  position: relative;
+}
+button.btn_asd{
+  margin: 30px auto 0;
+}
+button:focus{
+  outline: none;
+  box-shadow: none!important;
 }

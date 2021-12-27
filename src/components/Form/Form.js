@@ -41,7 +41,7 @@ const Form = ({ bilet }) => {
     if (prefValid) {
       tRef.current.scrollIntoView();
     } else {
-      window.location.href = "http://lapland.syntlex.kg";
+      // window.location.href = "http://lapland.syntlex.kg";
       console.log(JSON.stringify({ client, tickets }));
     }
   };
