@@ -48,7 +48,7 @@ function Exchange({ tikets, setTikets }) {
         </div>
       </div>
       <button className="btn_link chose m-auto" type="submit">
-        Обменять билеты
+        Оформить возврат
       </button>
     </div>
   );
