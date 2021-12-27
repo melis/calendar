@@ -41,8 +41,27 @@ const Form = ({ bilet }) => {
     if (prefValid) {
       tRef.current.scrollIntoView();
     } else {
-      // window.location.href = "http://lapland.syntlex.kg";
-      console.log({ client, tickets });
+      const prefMake = (arr) => {
+        let str = "";
+        arr.forEach((el) => {
+          str += el.value_id + ", ";
+        });
+        return str;
+      };
+      const order = {
+        name: `${client.first_name} ${client.last_name} ${client.middle_name}`,
+        phone: client.phone,
+        email: client.email,
+        address: client.place_of_residence,
+        order_type: tickets?.event?.type,
+        base_count: tickets.baseCount,
+        child_count: tickets.childCount,
+        pref: prefMake(tickets.pref.prefInfo),
+        product_id: tickets.event.id,
+        product_session_id: tickets.event.product_session,
+        time: tickets.event.select_time ? tickets.event.select_time : "08:00",
+      };
+      console.log(order);
     }
   };
 

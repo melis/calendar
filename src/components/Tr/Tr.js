@@ -35,6 +35,7 @@ const Tr = (props, ref) => {
       event: {
         id: bilet.id,
         date: bilet.date,
+        product_session: bilet.product_session,
         select_time: bilet.selectTime ? bilet.selectTime : "",
         type: bilet.type,
       },
