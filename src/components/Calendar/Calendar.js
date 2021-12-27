@@ -111,8 +111,8 @@ const Calendar = ({
         !DayComponentProps.outsideCurrentMonth &&
         new Date(el.date).getDate() === new Date(day).getDate()
       ) {
-        exc = el.type === "excursion" ? true : exc;
-        evn = el.type === "event" ? true : evn;
+        exc = el.type === "2" ? true : exc;
+        evn = el.type === "3" ? true : evn;
       }
     });
     return (
