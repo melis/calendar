@@ -28,12 +28,12 @@ const Event = ({ el, setBilet, bilet }) => {
                 alt=""
                 style={{ maxWidth: "36px" }}
               />
-              {el.type === "excursion" ? <p>{el.ageLimit}+</p> : null}
+              {el.type === "2" ? <p>{el.ageLimit ? el.ageLimit : 0}+</p> : null}
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              {el.type === "excursion" ? (
-                <p>{el.proceed}</p>
+              {el.type === "2" ? (
+                <p>{el.proceed} ч.</p>
               ) : (
                 <p>
                   {format(new Date(el.date), "d MMMM", {
@@ -42,15 +42,15 @@ const Event = ({ el, setBilet, bilet }) => {
                 </p>
               )}
             </div>
-            {el.type === "excursion" ? (
+            {el.type === "2" ? (
               <>
                 <div className="pbt_r_b_item">
                   <img src="./assets/images/icons/icon_distance.svg" alt="" />
-                  <p>{el.distance}км</p>
+                  <p>{el.distance} км</p>
                 </div>
                 <div className="pbt_r_b_item">
                   <img src="./assets/images/icons/icon_travel.svg" alt="" />
-                  <p>{el.transport}</p>
+                  <p>{el.transport ? el.transport : "Пеший"}</p>
                 </div>
                 <div className="pbt_r_b_item">
                   <p>{el.count} чел</p>
@@ -71,7 +71,7 @@ const Event = ({ el, setBilet, bilet }) => {
             </p>
           </div>
           <div className="btns">
-            {el.type === "excursion" ? (
+            {el.type === "2" ? (
               el.time.map((time) => (
                 <button
                   className={`btn border_line ${

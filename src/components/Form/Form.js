@@ -42,7 +42,7 @@ const Form = ({ bilet }) => {
       tRef.current.scrollIntoView();
     } else {
       // window.location.href = "http://lapland.syntlex.kg";
-      console.log(JSON.stringify({ client, tickets }));
+      console.log({ client, tickets });
     }
   };
 
