@@ -13,7 +13,7 @@ const TicketSelect = ({ bilet, setBilet }) => {
               <h3>{bilet.title}</h3>
             </div>
             <div className="col-lg-4">
-              {bilet.type !== "free_date" ? (
+              {bilet.type !== "1" ? (
                 <div className="ticket_close">
                   <img
                     src="/assets/images/icons/close_white.svg"
@@ -25,7 +25,7 @@ const TicketSelect = ({ bilet, setBilet }) => {
                 </div>
               ) : null}
               <h4>{`${
-                bilet?.type === "free_date"
+                bilet?.type === "1"
                   ? bilet.date
                   : format(new Date(bilet.date), "d MMMM", {
                       locale: ruLocale,
