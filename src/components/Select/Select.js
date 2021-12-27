@@ -1,21 +1,26 @@
 import React, { useState } from "react";
 
-const Select = ({ info, setPrefInfo, lgots }) => {
+const Select = ({ val, setVal }) => {
+  const [reasons, setReasons] = useState([
+    { id: 1, name: "Причина 1" },
+    { id: 2, name: "Причина 2" },
+    { id: 3, name: "Причина 3" },
+    { id: 4, name: "Причина 4" },
+    { id: 5, name: "Причина 5" },
+  ]);
   const [active, setActive] = useState(false);
 
   return (
     <div
-      className="form-group select"
-      key={info.id}
+      className="form-group select return_select"
       onMouseLeave={() => setActive(false)}
     >
-      <label htmlFor={`example${info.id}`}>{info.title}</label>
       <div
         className="form-select"
         style={{
           borderColor: active
             ? "#007DB5"
-            : info.value_id === 0
+            : val.id === 0
             ? "#E13838"
             : "transparent",
         }}
@@ -25,9 +30,9 @@ const Select = ({ info, setPrefInfo, lgots }) => {
           onClick={() => {
             setActive((a) => !a);
           }}
-          style={info.value_id === 0 ? { color: "#8B8B8B" } : null}
+          style={val.id === 0 ? { color: "#8B8B8B" } : null}
         >
-          {info.name}
+          {val.name}
         </div>
         <img
           src="/assets/images/icons/arrow_down.svg"
@@ -35,27 +40,23 @@ const Select = ({ info, setPrefInfo, lgots }) => {
           style={{ transform: active ? "rotate(180deg)" : "rotate(0)" }}
           alt=""
         />
+
         <ul
           className="select-options"
           style={{ display: `${active ? "block" : "none"}` }}
         >
-          {lgots.map((l) => (
+          {reasons.map((l) => (
             <li
-              className={`select-option ${
-                l.id === info.value_id ? "selected" : ""
-              }`}
+              className={`select-option ${l.id === val.id ? "selected" : ""}`}
               key={l.id}
               onClick={() => {
-                setPrefInfo((old) => {
-                  let newInfo = [...old];
-                  newInfo.forEach((el, index) => {
-                    if (el.id === info.id) {
-                      newInfo[index].value_id = l.id;
-                      newInfo[index].name = l.name;
-                    }
-                  });
-                  return newInfo;
+                let newVal;
+                reasons.forEach((e) => {
+                  if (l.id === e.id) {
+                    newVal = e;
+                  }
                 });
+                setVal(newVal);
                 setActive(false);
               }}
             >
@@ -67,9 +68,9 @@ const Select = ({ info, setPrefInfo, lgots }) => {
 
       <div
         className="invalid-feedback"
-        style={{ display: info.value_id > 0 ? "none" : "block" }}
+        style={{ display: val.id > 0 ? "none" : "block" }}
       >
-        *выберите категорию льготы, чтобы продолжить
+        *выберите причину, чтобы продолжить
       </div>
     </div>
   );

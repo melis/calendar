@@ -6,8 +6,8 @@ import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 
-const Calendar = () => {
-  const [value, setValue] = React.useState();
+const Calendar = ({ date, setDate }) => {
+  // const [value, setValue] = React.useState();
   const [icoHov, setIcoHov] = React.useState();
   return (
     <div
@@ -29,10 +29,6 @@ const Calendar = () => {
     >
       <img
         src={`/assets/images/icons/calendar_ico_${icoHov ? "h" : "a"}.svg`}
-        // style={{ pointerEvents: disabled ? "auto" : "none" }}
-        onClick={() => {
-          // setWarn(true);
-        }}
         alt=""
         className="calendar_ico"
       />
@@ -41,11 +37,11 @@ const Calendar = () => {
           className="melis"
           inputFormat="dd MMMM yyyy"
           mask=""
-          value={value}
-          onChange={(d) => setValue(d)}
+          value={date}
+          onChange={(d) => setDate(d)}
           renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}
-          onMonthChange={(d) => setValue(null)}
+          onMonthChange={(d) => setDate(d)}
           showToolbar={false}
         />
       </LocalizationProvider>

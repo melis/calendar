@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import TInput from "../Input/Input";
 // import App from "../App/App";
 
-function Exchange(props) {
-  const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
+function Exchange({ tikets, setTikets }) {
   const [ch, setCh] = useState(1);
-  // const [app, setApp] = useState(false);
+
   return (
     <div
       className="container content_container mt-5 "

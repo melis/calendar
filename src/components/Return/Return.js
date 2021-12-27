@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Exchange from "../Exchange/Exchange";
 import ReturnTab from "../ReturnTab/ReturnTab";
 import Calendar from "../Calendar/Calendar";
+import { useForm } from "react-hook-form";
+import Select from "../Select/Select";
 
 function Return(props) {
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+  } = useForm({ mode: "onChange" });
+  const [date, setDate] = useState(new Date());
+  const [reason, setReason] = useState({ id: 0, name: "Выберите из списка" });
+  const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
+
+  const onSubmit = (x) => {
+    console.log({ ...x, tikets, date });
+  };
   return (
     <>
       <div className="container content_container">
         <ReturnTab />
 
-        <form
-          className="row mt-5"
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log(e);
-          }}
-        >
+        <form className="row mt-5" onSubmit={handleSubmit(onSubmit)}>
           <div className="col-lg-12">
             <div className="title_block">
               Введите данные, указанные при покупке билета:
@@ -24,188 +32,257 @@ function Return(props) {
 
           <div className="col-lg-4 form_item">
             <label htmlFor="name">ваше Имя*</label>
-
             <input
               type="text"
               className="form-control"
               id="name"
               placeholder="Введите имя"
-              required=""
+              style={errors?.name && { border: "2px solid red" }}
+              {...register("name", {
+                required: "Поле обязательно к заполнению",
+                minLength: {
+                  value: 2,
+                  message: "Минимум 2 символов",
+                },
+                pattern: {
+                  value: /^[a-zа-яё\s]+$/iu,
+                  message: "Не корректные данные",
+                },
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.name && (errors?.name?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
             <label htmlFor="surname">ваша Фамилия*</label>
-
             <input
               type="text"
               className="form-control"
               id="surname"
               placeholder="Введите вашу фамилию"
-              required=""
+              style={errors?.surname && { border: "2px solid red" }}
+              {...register("surname", {
+                required: "Поле обязательно к заполнению",
+                minLength: {
+                  value: 2,
+                  message: "Минимум 2 символов",
+                },
+                pattern: {
+                  value: /^[a-zа-яё\s]+$/iu,
+                  message: "Не корректные данные",
+                },
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.surname && (errors?.surname?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
             <label htmlFor="middle_name">ваше Отчество*</label>
-
             <input
               type="text"
               className="form-control"
               id="middle_name"
               placeholder="Введите ваше отчество (при наличии)"
-              required=""
+              style={errors?.middle_name && { border: "2px solid red" }}
+              {...register("middle_name", {
+                minLength: {
+                  value: 2,
+                  message: "Минимум 2 символов",
+                },
+                pattern: {
+                  value: /^[a-zа-яё\s]+$/iu,
+                  message: "Не корректные данные",
+                },
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.middle_name &&
+                (errors?.middle_name?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
             <label htmlFor="phone">ваш Телефон*</label>
-
             <input
+              style={errors?.phone && { border: "2px solid red" }}
               type="text"
               className="form-control"
               id="phone"
-              placeholder="+7 (999) 99-99-99)"
-              required=""
+              placeholder=" +7 999 999-99-99"
+              {...register("phone", {
+                required: "Поле обязательно к заполнению",
+                minLength: {
+                  value: 10,
+                  message: "Минимум 10 символов",
+                },
+                pattern: {
+                  value:
+                    /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/,
+                  message: "Не корректные данные",
+                },
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.phone && (errors?.phone?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
             <label htmlFor="email">E-mail*</label>
-
             <input
+              style={errors?.email && { border: "2px solid red" }}
               type="email"
               className="form-control"
               id="email"
               placeholder="example@mail.ru"
-              required=""
+              {...register("email", {
+                required: "Поле обязательно к заполнению",
+                minLength: {
+                  value: 4,
+                  message: "Минимум 4 символов",
+                },
+                pattern: {
+                  value: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
+                  message: "Не корректные данные",
+                },
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.email && (errors?.email?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
             <label htmlFor="date">дата покупки билетов*</label>
-
             <div className="input_date_pos simple_date">
-              {/* <input
-                placeholder="08.09.2021"
-                id="date"
-                className="form-control"
-                type="text"
-              /> */}
-              <Calendar />
+              <Calendar setDate={setDate} date={date} />
             </div>
-
-            <div className="invalid-feedback">*текст ошибки</div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">Сумма к возврату, руб.*</label>
+            <label htmlFor="ret_summ">Сумма к возврату, руб.*</label>
 
             <input
               type="text"
               className="form-control"
-              id="place_of_residence"
+              id="ret_summ"
               placeholder="Введите сумму"
-              required=""
+              style={errors?.return_summ && { border: "2px solid red" }}
+              {...register("return_summ", {
+                required: "Поле обязательно к заполнению",
+                pattern: {
+                  value: /[0-9]/,
+                  message: "Не корректные данные",
+                },
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.return_summ &&
+                (errors?.return_summ?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">наименование банка*</label>
-
+            <label htmlFor="bank_name">наименование банка*</label>
             <input
               type="text"
               className="form-control"
-              id=""
+              id="bank_name"
+              style={errors?.bank_name && { border: "2px solid red" }}
               placeholder="Введите наименование банка"
-              required=""
+              {...register("bank_name", {
+                required: "Поле обязательно к заполнению",
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.bank_name && (errors?.bank_name?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">БИК банка*</label>
-
+            <label htmlFor="bank_bik">БИК банка*</label>
             <input
               type="text"
               className="form-control"
-              id=""
+              id="bank_bik"
               placeholder="Введимте БИК банка"
-              required=""
+              style={errors?.bank_bik && { border: "2px solid red" }}
+              {...register("bank_bik", {
+                required: "Поле обязательно к заполнению",
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.bank_bik && (errors?.bank_bik?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">Корреспондентский счет *</label>
-
+            <label htmlFor="cor_sch">Корреспондентский счет *</label>
             <input
               type="text"
               className="form-control"
-              id=""
+              id="cor_sch"
               placeholder="Введите корреспондентский счет"
-              required=""
+              style={errors?.cor_sch && { border: "2px solid red" }}
+              {...register("cor_sch", {
+                required: "Поле обязательно к заполнению",
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.cor_sch && (errors?.cor_sch?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">Расчётный счет*</label>
-
+            <label htmlFor="ras_sch">Расчётный счет*</label>
             <input
               type="text"
               className="form-control"
-              id=""
+              id="ras_sch"
               placeholder="Введите расчётный счет"
-              required=""
+              style={errors?.ras_sch && { border: "2px solid red" }}
+              {...register("ras_sch", {
+                required: "Поле обязательно к заполнению",
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.ras_sch && (errors?.ras_sch?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">ФИО получателя*</label>
-
+            <label htmlFor="receiver">ФИО получателя*</label>
             <input
               type="text"
               className="form-control"
-              id=""
+              id="receiver"
               placeholder="Введите ФИО получателя"
-              required=""
+              style={errors?.receiver && { border: "2px solid red" }}
+              {...register("receiver", {
+                required: "Поле обязательно к заполнению",
+              })}
             />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            <div className="invalid-feedback">
+              {errors?.receiver && (errors?.receiver?.message || "*Error")}
+            </div>
           </div>
 
           <div className="col-lg-4 form_item">
             <label htmlFor="">причина возврата билетов *</label>
-
-            <input
+            {/* <input
               type="text"
               className="form-control"
               id=""
               placeholder="Выберите из списка"
               required=""
-            />
-
-            <div className="invalid-feedback">*текст ошибки</div>
+            /> */}
+            <Select val={reason} setVal={setReason} />
           </div>
-          <Exchange />
+          <Exchange tikets={tikets} setTikets={setTikets} />
         </form>
       </div>
     </>
