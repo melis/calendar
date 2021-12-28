@@ -1,5 +1,14 @@
-.head_page_content .chicken_2, .head_page_content .los_mobile, .head_page_content .bear_m{
+.head_page_content .chicken_2,.head_page_content .ros_m, .head_page_content .los_mobile, .head_page_content .bear_m{
     display: none;
+}
+.btn_link.m-auto{
+    padding: 15px 50px;
+    color: #ffffff;
+    background: #d76729;
+    width: auto;
+}
+.content_container{
+    margin-bottom: 0px!important;
 }
 @media screen and (max-width: 768px) {
     .mobile-none{
@@ -281,6 +290,28 @@
 
 }
 @media screen and (max-width: 425px) {
+
+    .white_bird{
+        display: none;
+    }
+    .btn_link.chose.m-auto{
+        margin-top: 40px!important;
+    }
+    .row.mt-5 .title_block{
+        margin-bottom: 40px;
+    }
+    .title_block{
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25px;
+        line-height: 31px;
+    }
+    .btn_link.m-auto{
+        padding: 15px 50px;
+        color: #ffffff;
+        background: #d76729;
+    }
     label.h-jyt{
         width: 250px;
     }
@@ -288,6 +319,7 @@
         margin: 45px auto 0!important;
     }
     .form_item label{
+        letter-spacing: initial;
         font-weight: 500;
         font-size: 18px;
         line-height: 21px;
@@ -328,18 +360,39 @@
     .title_block{
         margin-bottom: 30px;
     }
+    .green .head_page_content img{
+        display: none;
+    }
     .blue .head_page_content .los_mobile {
         display: block;
         width: 100px;
-        margin-bottom: -23px;
+        margin-bottom: -25px;
+        margin-right: 5px;
     }
     .brown .head_page_content .bear_m {
         display: block;
         width: 115px;
-        margin-bottom: -51px;
+        margin-bottom: -52px;
+        margin-right: 5px;
+    }
+    .green .head_page_content .ros_m {
+        display: block;
+        width: 139px;
+        margin-bottom: -9px;
+        margin-right: 5px;
     }
     .blue .head_page_content h2,.brown .head_page_content h2{
         margin-left: 8px;
+    }
+    .green .head_page_content h2{
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 45px;
+        line-height: 110%;
+        margin-bottom: 20px;
+        margin-left: 6px;
+        margin-right: 18px;
     }
     .breadcrumb {
         font-family: Raleway;
@@ -477,7 +530,7 @@
         width: 200px;
     }
     .breadcrumb {
-        margin-bottom: 50px;
+        margin-bottom: 45px;
     }
     .head_page_content .chicken_1{
         display: none;
@@ -616,5 +669,27 @@
     }
     .ticket_selection .pbt_r_b_title, .checkout .pbt_r_b_title {
         margin-bottom: 70px;
+    }
+    .content_container{
+        margin-bottom: 0px!important;
+    }
+    .container{
+        padding: 0 20px!important;
+    }
+    .ticket_items.form_item{
+        margin-bottom: 15px;
+    }
+    .banner_text.main_br h3{
+        font-family: Source Sans Pro;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 45px;
+        line-height: 110%;
+        margin: 0 0;
+    }
+    .banner.regulations{
+        height: 400px;
+        background: url(../images/modile_reg.png) !important;
+        background-size: cover!important;
     }
 }

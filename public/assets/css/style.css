@@ -1263,7 +1263,7 @@ input.input_date:focus {
 .border_line.add_ticket {
   border-radius: 30px;
   padding: 16px 30px;
-  margin-top: 34px;
+  margin-top: 38px;
 }
 .form_item input {
   min-height: 55px;
@@ -1457,7 +1457,7 @@ button.btn_return{
   border: 2px solid #005D90;
   color: #005D90;
   margin-right: 18px;
-  padding: 15px 50px;
+  padding: 13px 50px 15px 50px;
   width: inherit;
 }
 .btn_return:hover{
@@ -1465,23 +1465,17 @@ button.btn_return{
   border: 2px solid #D76729;
   color: #ffffff;
 }
-<<<<<<< HEAD
-.btn_return.orange_btn{
+.btn_return.orange_btn.btn_link{
+  background: #ffffff;
+  border: 2px solid #007DB5;
+  color: #007DB5;
+}
+.btn_return.btn_link{
   background: #D76729;
   border: 2px solid #D76729;
   color: #ffffff;
-  margin-right: 0;
 }
 .simple_date:after{
-=======
-.btn_return.orange_btn {
-  background: #d76729;
-  border: 2px solid #d76729;
-  color: #ffffff;
-  margin-right: 0;
-}
-.simple_date:after {
->>>>>>> ee533aaa2aba3804db87a6e9cc1fa45c5ab125a2
   right: 15px;
   top: 12px;
 }
@@ -1490,69 +1484,15 @@ button.btn_return{
 }
 button.btn_asd{
   margin: 30px auto 0;
-<<<<<<< HEAD
 }
-=======
+button:focus{
+  outline: none;
+  box-shadow: none!important;
 }
-
-/* melis styles */
-
-.form-control,
-.MuiInput-root {
-  padding: 0;
-  width: 100%;
+.ticket_items label{
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
 }
-.MuiInput-root::after,
-.MuiInput-root::before {
-  display: none;
+.form-check:hover input{
+  border: 2px solid #d76729;
 }
-
-.form_item input {
-  box-sizing: border-box;
-  background: #fff9ed;
-  border-radius: 5px;
-  height: 55px;
-  border: 2px solid transparent;
-  padding: 0 15px;
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 140%;
-}
-
-.form-control:focus,
-.form_item input:focus {
-  color: #212121;
-  background-color: #fff9ed;
-  border: 2px solid #007db5;
-  outline: 0;
-  box-shadow: none;
-}
-
-.feedback {
-  font-family: Raleway;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 100%;
-  margin-top: 5px;
-  height: 15px;
-}
-.feedback_invalid {
-  color: red;
-}
-
-.feedback_find {
-  color: green;
-}
-
-.finded > input {
-  border-color: green !important;
-}
-
-.invalid input,
-.invalid input:focus {
-  border-color: red;
-}
->>>>>>> ee533aaa2aba3804db87a6e9cc1fa45c5ab125a2
