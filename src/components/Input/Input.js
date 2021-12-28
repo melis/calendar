@@ -86,33 +86,33 @@ function SInput({
     });
   };
 
-  useEffect(() => {
-    if (values.textmask.length === 19) {
-      setLoading(true);
-      setTimeout(() => {
-        if (values.textmask.replace(/\s/g, "") === "4444444444444444") {
-          setEr(true);
-          setFind(false);
-        } else {
-          setFind(true);
-          setEr(false);
-          setTikets((arr) => {
-            let newArr = [...arr];
-            newArr.forEach((e, i) => {
-              if (e.id === t.id) {
-                newArr[i] = {
-                  ...newArr[i],
-                  v: values.textmask.replace(/\s/g, ""),
-                };
-              }
-            });
-            return newArr;
-          });
-        }
-        setLoading(false);
-      }, 1000);
-    }
-  }, [values, t.id, setTikets, setEr, setFind, setLoading]);
+  // useEffect(() => {
+  //   if (values.textmask.length === 19) {
+  //     setLoading(true);
+  //     setTimeout(() => {
+  //       if (values.textmask.replace(/\s/g, "") === "4444444444444444") {
+  //         setEr(true);
+  //         setFind(false);
+  //       } else {
+  //         setFind(true);
+  //         setEr(false);
+  //         setTikets((arr) => {
+  //           let newArr = [...arr];
+  //           newArr.forEach((e, i) => {
+  //             if (e.id === t.id) {
+  //               newArr[i] = {
+  //                 ...newArr[i],
+  //                 v: values.textmask.replace(/\s/g, ""),
+  //               };
+  //             }
+  //           });
+  //           return newArr;
+  //         });
+  //       }
+  //       setLoading(false);
+  //     }, 1000);
+  //   }
+  // }, [values, t.id, setTikets, setEr, setFind, setLoading]);
   return (
     <Input
       disabled={loading}
