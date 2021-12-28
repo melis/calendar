@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
+import { useNavigate } from "react-router-dom";
 
 const Form = ({ bilet }) => {
   const { price } = bilet;
@@ -10,7 +11,9 @@ const Form = ({ bilet }) => {
   const [tickets, setTickets] = useState(null);
   const [prefValid, setPrefValid] = useState(false);
   const tRef = useRef(null);
-
+  const [loding, setLoding] = useState(false);
+  const [er, setEr] = useState([]);
+  const navigate = useNavigate();
   const {
     register,
     formState: { errors, isValid },
@@ -35,6 +38,8 @@ const Form = ({ bilet }) => {
           setPrefValid(true);
         }
       });
+    } else {
+      setPrefValid(false);
     }
   }, [tickets, price, prefValid]);
 
@@ -44,13 +49,13 @@ const Form = ({ bilet }) => {
     } else {
       const prefMake = (arr) => {
         let str = "";
-        arr.forEach((el) => {
-          str += el.value_id + ", ";
+        arr.forEach((el, i) => {
+          str += el.value_id + (arr.length > i + 1 ? ", " : "");
         });
         return str;
       };
       const order = {
-        name: `${client.first_name} ${client.last_name} ${client.middle_name}`,
+        name: `${client.last_name} ${client.first_name} ${client.middle_name}`,
         phone: client.phone,
         email: client.email,
         address: client.place_of_residence,
@@ -62,13 +67,29 @@ const Form = ({ bilet }) => {
         product_session_id: tickets.event.product_session,
         time: tickets.event.select_time ? tickets.event.select_time : "08:00",
       };
+      setLoding(true);
+      setEr([]);
       axios
         .post("https://lapland.syntlex.kg/crm/api/?method=buy_tickets", {
           order,
         })
         .then(({ data }) => {
-          console.log("ax", data);
-        });
+          if (data.status) {
+            window.location.href = data.msg;
+          } else {
+            throw data;
+          }
+        })
+        .catch((data) => {
+          let newArr = [];
+          for (const [key, value] of Object.entries(data)) {
+            if (value) {
+              newArr.push(value);
+            }
+          }
+          setEr(newArr);
+        })
+        .finally((a) => setLoding(false));
     }
   };
 
@@ -265,15 +286,30 @@ const Form = ({ bilet }) => {
               <span id="cart_summ2"> {summ}</span> ₽
             </div>
           </div>
+          <div>
+            <ul>
+              {er.map((el) => (
+                <li key={el}>{el}</li>
+              ))}
+            </ul>
 
-          <button
-            className={`btn_link  m-auto ${
-              !prefValid && isValid ? "chose" : ""
-            }`}
-            type="submit"
-          >
-            Оплатить заказ
-          </button>
+            {loding ? (
+              <img
+                src="./assets/images/load.gif"
+                alt=""
+                className="loading_img"
+              />
+            ) : (
+              <button
+                className={`btn_link  m-auto ${
+                  !prefValid && isValid ? "chose" : ""
+                }`}
+                type="submit"
+              >
+                Оплатить заказ
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </form>

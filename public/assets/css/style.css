@@ -603,7 +603,8 @@ section.allert .content_block {
   cursor: pointer;
 }
 
-.buy_ticket.st_1.st_2, .buy_ticket2.st_2{
+.buy_ticket.st_1.st_2,
+.buy_ticket2.st_2 {
   color: #ffffff;
   background: #d76729;
 }
@@ -688,8 +689,8 @@ section.allert .content_block {
 }
 
 .border_line {
-  border: 2px solid #007DB5;
-  color: #007DB5;
+  border: 2px solid #007db5;
+  color: #007db5;
   margin-right: 18px;
   margin-left: 0;
   padding: 23px 30px;
@@ -1430,7 +1431,7 @@ input:-webkit-autofill {
   color: #212529 !important; /* цвет текста */
 }
 
-.remove_this{
+.remove_this {
   position: absolute;
   width: 10px;
   height: 10px;
@@ -1439,11 +1440,11 @@ input:-webkit-autofill {
   top: 2px;
   cursor: pointer;
 }
-.head_page.brown{
-  background: #7F4B1D;
+.head_page.brown {
+  background: #7f4b1d;
 }
-.head_page.blue{
-  background: #005D90;
+.head_page.blue {
+  background: #005d90;
 }
 .brown .head_page_content img {
   width: 192px;
@@ -1451,37 +1452,37 @@ input:-webkit-autofill {
 .blue .head_page_content img {
   width: 166px;
 }
-button.btn_return{
+button.btn_return {
   display: inline-block;
   background: #ffffff;
-  border: 2px solid #005D90;
-  color: #005D90;
+  border: 2px solid #005d90;
+  color: #005d90;
   margin-right: 18px;
   padding: 15px 50px;
   width: inherit;
 }
-.btn_return:hover{
-  background: #D76729;
-  border: 2px solid #D76729;
+.btn_return:hover {
+  background: #d76729;
+  border: 2px solid #d76729;
   color: #ffffff;
 }
-.btn_return.orange_btn{
-  background: #D76729;
-  border: 2px solid #D76729;
+.btn_return.orange_btn {
+  background: #d76729;
+  border: 2px solid #d76729;
   color: #ffffff;
   margin-right: 0;
 }
-.simple_date:after{
+.simple_date:after {
   right: 15px;
   top: 12px;
 }
-.ticket_items{
+.ticket_items {
   position: relative;
 }
-button.btn_asd{
+button.btn_asd {
   margin: 30px auto 0;
 }
-button:focus{
+button:focus {
   outline: none;
-  box-shadow: none!important;
+  box-shadow: none !important;
 }
