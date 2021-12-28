@@ -16,7 +16,13 @@ function Exchange(props) {
 
         <div className="row" id="tickets_c">
           {tikets.map((t, index) => (
-            <TInput key={t.id} t={t} setTikets={setTikets} index={index} />
+            <TInput
+              key={t.id}
+              t={t}
+              setTikets={setTikets}
+              index={index}
+              tickets={tikets}
+            />
           ))}
 
           <div className="col-lg-4 form_item" id="add_ticket_block">
@@ -39,7 +45,7 @@ function Exchange(props) {
             type="submit"
             onClick={() => {
               console.log(tikets);
-              setApp(true);
+              // setApp(true);
             }}
           >
             Обменять билеты
