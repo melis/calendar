@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
@@ -61,7 +62,13 @@ const Form = ({ bilet }) => {
         product_session_id: tickets.event.product_session,
         time: tickets.event.select_time ? tickets.event.select_time : "08:00",
       };
-      console.log(order);
+      axios
+        .post("https://lapland.syntlex.kg/crm/api/?method=buy_tickets", {
+          order,
+        })
+        .then(({ data }) => {
+          console.log("ax", data);
+        });
     }
   };
 
