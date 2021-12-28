@@ -97,13 +97,22 @@ function SInput({
       });
 
       if (l && tickets.length > 1) {
-        setEr("Этот билет уже вводил");
+        setEr("Этот билет уже вводили");
       } else {
         setLoading(true);
         setEr(false);
         let tick = [];
-        if (tickets[0]?.v) {
-          tick.push(tickets[0].v);
+
+        let i = 0;
+        let v = "";
+        tickets.forEach((t) => {
+          if (t.v && i === 0) {
+            i++;
+            v = t.v;
+          }
+        });
+        if (v) {
+          tick.push(v);
         }
         tick.push(values.textmask.replace(/\s/g, ""));
         axios
