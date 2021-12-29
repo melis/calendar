@@ -8,7 +8,7 @@ const Select = ({ val, setVal }) => {
     axios
       .get("https://lapland.syntlex.kg/crm/api/?method=get_product_reasons")
       .then(({ data }) => {
-        setReasons(data);
+        setReasons(data.sort());
       });
   }, []);
 
