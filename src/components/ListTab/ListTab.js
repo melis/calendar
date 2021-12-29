@@ -12,10 +12,10 @@ const ListTab = ({ tab, list, setTab, bilet }) => {
     setEvn(true);
 
     list.forEach((el) => {
-      if (el.type === "excursion") {
+      if (el.type === "2") {
         setExc(false);
       }
-      if (el.type === "event") {
+      if (el.type === "3") {
         setEvn(false);
       }
     });
@@ -24,10 +24,10 @@ const ListTab = ({ tab, list, setTab, bilet }) => {
       setTab(p.get("evn"));
     } else {
       if (!evn) {
-        setTab("event");
+        setTab("3");
       }
       if (!exc) {
-        setTab("excursion");
+        setTab("2");
       }
     }
   }, [setEvn, setExc, exc, evn, setTab, list]);
@@ -37,20 +37,20 @@ const ListTab = ({ tab, list, setTab, bilet }) => {
       <div className="btns">
         <button
           disabled={exc}
-          className={`btn border_line ${tab === "excursion" ? "active" : ""}`}
-          onClick={() => setTab("excursion")}
+          className={`btn border_line ${tab === "2" ? "active" : ""}`}
+          onClick={() => setTab("2")}
         >
           Экскурсия
         </button>
         <button
           disabled={evn}
-          className={`btn border_line ${tab === "event" ? "active" : ""}`}
-          onClick={() => setTab("event")}
+          className={`btn border_line ${tab === "3" ? "active" : ""}`}
+          onClick={() => setTab("3")}
         >
           Мероприятие
         </button>
       </div>
-      {!exc && tab === "excursion" ? (
+      {!exc && tab === "2" ? (
         <p>
           Обратите внимание: вы можете выбрать для посещения только одну
           экскурсию в день. Для посещения экскурсии вам нужно выбрать конкретное

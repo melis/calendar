@@ -338,6 +338,9 @@ input.input_date,
 .return_select .form-select {
   background: #fff9ed;
 }
+.btn_link:disabled {
+  background-color: gray !important;
+}
 @media (max-width: 1024px) {
   .toolbar {
     bottom: 50px;

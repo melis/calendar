@@ -9,7 +9,7 @@ const TInput = ({ t, setTikets, index, tickets }) => {
   const [er, setEr] = useState(false);
   const [find, setFind] = useState(false);
   const [loading, setLoading] = useState(false);
-  console.log(er);
+
   return (
     <div className="col-lg-4 form_item ticket_items">
       <div
@@ -137,8 +137,6 @@ function SInput({
                 return newArr;
               });
             }
-
-            console.log("ok", data);
           })
           .catch((e) => {
             setEr(

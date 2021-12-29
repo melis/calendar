@@ -5,7 +5,7 @@ import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const App = () => {
+const App = ({ data }) => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
   const [self, setSelf] = useState(false);
@@ -91,7 +91,7 @@ const App = () => {
                       setSelf(e.target.checked);
                       if (e.target.checked) {
                         setBilet({
-                          type: "free_date",
+                          type: "1",
                           title: "Самостоятельное посещение заповедника",
                           price: { base: 450, child: 400, pref: 0 },
                           date: "Бессрочный билет на год",
@@ -186,7 +186,7 @@ const App = () => {
       </div>
       {bilet ? (
         <div ref={Sref}>
-          <TicketSelect bilet={bilet} setBilet={setBilet} />
+          <TicketSelect bilet={bilet} setBilet={setBilet} data={data} />
         </div>
       ) : null}
     </>

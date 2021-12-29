@@ -28,11 +28,11 @@ const Event = ({ el, setBilet, bilet }) => {
                 alt=""
                 style={{ maxWidth: "36px" }}
               />
-              {el.type === "excursion" ? <p>{el.ageLimit}+</p> : null}
+              {el.type === "2" ? <p>{el.ageLimit}+</p> : null}
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              {el.type === "excursion" ? (
+              {el.type === "2" ? (
                 <p>{el.proceed}</p>
               ) : (
                 <p>
@@ -42,7 +42,7 @@ const Event = ({ el, setBilet, bilet }) => {
                 </p>
               )}
             </div>
-            {el.type === "excursion" ? (
+            {el.type === "2" ? (
               <>
                 <div className="pbt_r_b_item">
                   <img src="./assets/images/icons/icon_distance.svg" alt="" />
@@ -71,7 +71,7 @@ const Event = ({ el, setBilet, bilet }) => {
             </p>
           </div>
           <div className="btns">
-            {el.type === "excursion" ? (
+            {el.type === "2" ? (
               el.time.map((time) => (
                 <button
                   className={`btn border_line ${

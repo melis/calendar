@@ -3,6 +3,7 @@ import React, { forwardRef, useEffect, useState } from "react";
 import Select from "../Select/Select";
 
 const Tr = (props, ref) => {
+  const { data } = props;
   const { bilet, setTickets, summ } = props;
   const { price } = bilet;
   const [base, setBase] = useState(0);
@@ -11,7 +12,10 @@ const Tr = (props, ref) => {
   const [freeBase, setFreeBase] = useState(0);
   const [prefInfo, setPrefInfo] = useState([]);
   const [lgots, setLgots] = useState([]);
-  console.log(lgots);
+  const rb = data?.order?.base_count ? data.order.base_count : 0;
+  const rch = data?.order?.child_count ? props.data.order.child_count : 0;
+  const rp = data?.order?.pref?.count ? data.order.pref.count : 0;
+  console.log(data);
   useEffect(() => {
     setBase(0);
     setFreeBase(0);
@@ -25,7 +29,6 @@ const Tr = (props, ref) => {
       .get("https://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
 
       .then(({ data }) => {
-        console.log(data, "sasass");
         setLgots([...data]);
       })
       .catch((e) => setLgots([{ id: 0, name: "Error" }]));
@@ -71,7 +74,7 @@ const Tr = (props, ref) => {
           <input
             className="cart_num"
             type="text"
-            value={base + freeBase}
+            value={base + freeBase + Number(rb)}
             min={0}
             max={999}
             onChange={(e) => {
@@ -114,7 +117,7 @@ const Tr = (props, ref) => {
           <input
             className="cart_num"
             type="text"
-            value={child}
+            value={child + Number(rch)}
             min={0}
             max={999}
             onChange={(e) => {
@@ -173,7 +176,7 @@ const Tr = (props, ref) => {
             className="cart_num"
             type="text"
             readOnly
-            value={pref}
+            value={pref + Number(rp)}
             onChange={(e) => {
               if (!isNaN(Number(e.target.value))) {
                 setPref(Number(e.target.value));
