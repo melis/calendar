@@ -19,6 +19,20 @@ function Exchange(props) {
     });
 
     setBtn(l);
+    if (data) {
+      axios
+        .post("https://lapland.syntlex.kg/crm/api/?method=exchange_tickets", {
+          tickets: tikets.map((t) => t.v),
+        })
+        .then(({ data }) => {
+          if (data.status === false) {
+            throw data;
+          }
+          setData(data);
+        })
+        .catch((e) => console.log(e))
+        .finally((e) => setLoading(false));
+    }
   }, [tikets]);
   return (
     <>
@@ -39,21 +53,19 @@ function Exchange(props) {
             />
           ))}
 
-          {!data ? (
-            <div className="col-lg-4 form_item" id="add_ticket_block">
-              <button
-                type="button"
-                className="btn border_line add_ticket"
-                id="add_ticket"
-                onClick={() => {
-                  setTikets((arr) => [...arr, { id: ch, v: "" }]);
-                  setCh((c) => c + 1);
-                }}
-              >
-                + Добавить билет для обмена
-              </button>
-            </div>
-          ) : null}
+          <div className="col-lg-4 form_item" id="add_ticket_block">
+            <button
+              type="button"
+              className="btn border_line add_ticket"
+              id="add_ticket"
+              onClick={() => {
+                setTikets((arr) => [...arr, { id: ch, v: "" }]);
+                setCh((c) => c + 1);
+              }}
+            >
+              + Добавить билет для обмена
+            </button>
+          </div>
         </div>
         {!data && (
           <button

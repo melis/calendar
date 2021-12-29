@@ -38,6 +38,7 @@ const Form = ({ bilet, data, exChTickets }) => {
     if (prefValid) {
       tRef.current.scrollIntoView();
     } else {
+      setLoading(true);
       let p = "";
       if (tickets?.pref?.prefInfo?.length) {
         tickets.pref.prefInfo.forEach((el, i) => {
@@ -58,7 +59,7 @@ const Form = ({ bilet, data, exChTickets }) => {
         order_id: data.order_id,
       };
 
-      console.log("O", orders, exChTickets);
+      console.log("O", orders, exChTickets, data);
       axios
         .post(
           "https://lapland.syntlex.kg/crm/api/?method=update_and_add_tickets",
@@ -68,8 +69,7 @@ const Form = ({ bilet, data, exChTickets }) => {
           }
         )
         .then(({ data }) => {
-          console.log(data);
-          window.location.href = "https://lapland.syntlex.kg/";
+          alert(JSON.stringify(data));
         })
         .finally((e) => setLoading(false));
     }
