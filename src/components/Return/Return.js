@@ -175,7 +175,7 @@ function Return(props) {
               {...register("return_summ", {
                 required: "Поле обязательно к заполнению",
                 pattern: {
-                  value: /[0-9]/,
+                  value: /^[0-9]+$/,
                   message: "Не корректные данные",
                 },
               })}

@@ -599,7 +599,6 @@ section.allert .content_block {
 }
 
 .hover_check:hover .form-check-input {
-  border: 2px solid #d76729;
   cursor: pointer;
 }
 
@@ -767,7 +766,9 @@ input.input_date {
   max-width: 20px;
   margin-right: 10px;
 }
-
+.loading_img{
+  margin: 15px;
+}
 .pbt_r_b_item {
   display: flex;
   margin-right: 15px;
@@ -1457,7 +1458,7 @@ button.btn_return{
   border: 2px solid #005D90;
   color: #005D90;
   margin-right: 18px;
-  padding: 15px 50px;
+  padding: 13px 50px 15px 50px;
   width: inherit;
 }
 .btn_return:hover{
@@ -1465,11 +1466,15 @@ button.btn_return{
   border: 2px solid #D76729;
   color: #ffffff;
 }
-.btn_return.orange_btn{
+.btn_return.orange_btn.btn_link{
+  background: #ffffff;
+  border: 2px solid #007DB5;
+  color: #007DB5;
+}
+.btn_return.btn_link{
   background: #D76729;
   border: 2px solid #D76729;
   color: #ffffff;
-  margin-right: 0;
 }
 .simple_date:after{
   right: 15px;
@@ -1484,4 +1489,17 @@ button.btn_asd{
 button:focus{
   outline: none;
   box-shadow: none!important;
+}
+.ticket_items label{
+  font-family: 'Source Sans Pro';
+  font-size: 18px;
+}
+.form-check:hover input{
+  border: 2px solid #d76729;
+}
+.form-check-input:checked[type="checkbox"]{
+  background-repeat: no-repeat!important;
+}
+.container.checkout {
+  padding: 0 5px!important;
 }
