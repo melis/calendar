@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Select = ({ val, setVal }) => {
-  const [reasons, setReasons] = useState([
-    { id: 1, name: "Причина 1" },
-    { id: 2, name: "Причина 2" },
-    { id: 3, name: "Причина 3" },
-    { id: 4, name: "Причина 4" },
-    { id: 5, name: "Причина 5" },
-  ]);
+  const [reasons, setReasons] = useState([]);
   const [active, setActive] = useState(false);
+  useEffect(() => {
+    axios
+      .get("https://lapland.syntlex.kg/crm/api/?method=get_product_reasons")
+      .then(({ data }) => {
+        setReasons(data);
+      });
+  }, []);
 
   return (
     <div
