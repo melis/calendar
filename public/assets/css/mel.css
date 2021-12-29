@@ -166,6 +166,7 @@ input.input_date,
 
 .invalid-feedback {
   display: block;
+  height: 21px;
 }
 
 .MuiPaper-root {
@@ -179,21 +180,23 @@ input.input_date,
   border-top: 1px solid #8b8b8b;
   width: 80%;
   bottom: 30px;
-  padding: 15px;
+  padding: 10px;
   box-sizing: border-box;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
   /* justify-content: space-around; */
 }
 .toolbar_item {
   display: flex;
   align-items: center;
-  margin-right: 40px;
+  margin-right: 20px;
   font-size: 18px;
 }
 .toolbar span {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background-color: gray;
   border-radius: 50%;
   margin-right: 10px;
@@ -221,4 +224,144 @@ input.input_date,
   /* чёрный для сайта */
 
   color: #212121 !important;
+}
+.MuiPaper-root {
+  height: 485px;
+}
+.css-l0iinn button {
+  display: none;
+}
+.loading_img {
+  width: 200px;
+}
+.pbt_r_b_cont br {
+  display: none;
+}
+
+/* melis styles */
+
+.form-control,
+.MuiInput-root {
+  padding: 0;
+  width: 100%;
+}
+.MuiInput-root::after,
+.MuiInput-root::before {
+  display: none;
+}
+
+.form_item input {
+  box-sizing: border-box;
+  background: #fff9ed;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  padding: 0 15px;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.form-control:focus,
+.form_item input:focus {
+  color: #212121;
+  background-color: #fff9ed;
+  border: 2px solid #007db5;
+  outline: 0;
+  box-shadow: none;
+}
+
+.feedback {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 100%;
+  margin-top: 5px;
+  height: 15px;
+}
+.feedback_invalid {
+  color: red;
+}
+
+.feedback_find {
+  color: green;
+}
+
+.finded > input {
+  border-color: green !important;
+}
+
+.invalid input,
+.invalid input:focus {
+  border-color: red;
+}
+.return_calendar {
+  position: relative;
+}
+.return_calendar .calendar_ico {
+  top: 12px;
+  right: 7px;
+  pointer-events: none;
+}
+.return_calendar input {
+  box-sizing: border-box !important;
+  background: #fff9ed !important;
+  border-radius: 5px !important;
+  border: 2px solid transparent !important;
+  padding: 0 15px !important;
+  font-family: Raleway !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-size: 16px !important;
+  line-height: 140% !important;
+  position: relative !important;
+  height: 55px !important;
+}
+
+.return_calendar .MuiInputAdornment-root {
+  top: 27px;
+  right: 15px;
+  /* opacity: 1 !important; */
+}
+.return_page .MuiPaper-root {
+  height: 420px !important;
+  padding: 25px !important;
+}
+.return_page .MuiOutlinedInput-root {
+  padding: 0 !important;
+}
+.return_select {
+  padding-bottom: 10px;
+}
+.return_select .form-select {
+  background: #fff9ed;
+}
+.btn_link:disabled {
+  background-color: gray !important;
+}
+@media (max-width: 1024px) {
+  .toolbar {
+    bottom: 50px;
+  }
+  .MuiDialogActions-root {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+  }
+  .MuiDialogActions-root > button:first-child {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .pbt_r_b_cont br {
+    display: block;
+  }
+  .MuiDialog-paper {
+    min-width: max-content !important;
+  }
+  .form-check-input:hover {
+    border: 2px solid #007db5 !important;
+  }
 }
