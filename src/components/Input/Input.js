@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
 import Input from "@mui/material/Input";
+import axios from "axios";
 
 import LinearProgress from "@mui/material/LinearProgress";
 
-const TInput = ({ t, setTikets, index }) => {
+const TInput = ({ t, setTikets, index, tickets }) => {
   const [er, setEr] = useState(false);
   const [find, setFind] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -31,6 +32,7 @@ const TInput = ({ t, setTikets, index }) => {
         setFind={setFind}
         er={er}
         loading={loading}
+        tickets={tickets}
       />
 
       <div
@@ -39,9 +41,7 @@ const TInput = ({ t, setTikets, index }) => {
         }`}
       >
         {loading ? <LinearProgress /> : ""}
-        {er && !loading
-          ? "  **билет не найден, проверьте правильность данных"
-          : ""}
+        {er && !loading ? er : ""}
         {find && !loading ? "**билет найден" : ""}
       </div>
     </div>
@@ -73,6 +73,7 @@ function SInput({
   er,
   setLoading,
   loading,
+  tickets,
 }) {
   const [values, setValues] = React.useState({
     textmask: t.v,
@@ -88,29 +89,57 @@ function SInput({
 
   useEffect(() => {
     if (values.textmask.length === 19) {
-      setLoading(true);
-      setTimeout(() => {
-        if (values.textmask.replace(/\s/g, "") === "4444444444444444") {
-          setEr(true);
-          setFind(false);
-        } else {
-          setFind(true);
-          setEr(false);
-          setTikets((arr) => {
-            let newArr = [...arr];
-            newArr.forEach((e, i) => {
-              if (e.id === t.id) {
-                newArr[i] = {
-                  ...newArr[i],
-                  v: values.textmask.replace(/\s/g, ""),
-                };
-              }
-            });
-            return newArr;
-          });
+      let l = false;
+      tickets.forEach((t) => {
+        if (t.v === values.textmask.replace(/\s/g, "")) {
+          l = true;
         }
-        setLoading(false);
-      }, 1000);
+      });
+
+      if (l && tickets.length > 1) {
+        setEr("Этот билет уже вводили");
+      } else {
+        setLoading(true);
+        setEr(false);
+
+        axios
+          .post("https://lapland.syntlex.kg/crm/api/?method=check_tickets", {
+            tickets: [values.textmask.replace(/\s/g, "")],
+          })
+          .then(({ data }) => {
+            if (!data.status) {
+              throw data;
+            } else {
+              setFind(true);
+              setTikets((arr) => {
+                let newArr = [...arr];
+                newArr.forEach((e, i) => {
+                  if (e.id === t.id) {
+                    newArr[i] = {
+                      ...newArr[i],
+                      v: values.textmask.replace(/\s/g, ""),
+                    };
+                  }
+                });
+                return newArr;
+              });
+            }
+          })
+          .catch((e) => {
+            setEr(
+              e[0]
+                ? e[0].msg
+                : e[1]
+                ? e[1].msg
+                : e[2]
+                ? e[2].msg
+                : "Ошибка из сервера"
+            );
+          })
+          .finally((a) => setLoading(false));
+      }
+    } else {
+      setEr(false);
     }
   }, [values, t.id, setTikets, setEr, setFind, setLoading]);
   return (

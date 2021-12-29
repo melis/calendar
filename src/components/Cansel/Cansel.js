@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import TInput from "../Input/Input";
 
@@ -5,6 +6,8 @@ function Cansel(props) {
   const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
   const [ch, setCh] = useState(1);
   const [ready, setReady] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     let a = false;
     tikets.forEach((el) => {
@@ -23,7 +26,13 @@ function Cansel(props) {
 
       <div className="row" id="tickets_c">
         {tikets.map((t, index) => (
-          <TInput key={t.id} t={t} setTikets={setTikets} index={index} />
+          <TInput
+            key={t.id}
+            t={t}
+            setTikets={setTikets}
+            index={index}
+            tickets={tikets}
+          />
         ))}
 
         <div className="col-lg-4 form_item" id="add_ticket_block">
@@ -41,16 +50,30 @@ function Cansel(props) {
         </div>
       </div>
 
-      <button
-        disabled={ready}
-        className={`btn_link  m-auto ${!ready && "chose"}`}
-        type="submit"
-        onClick={() => {
-          console.log(tikets);
-        }}
-      >
-        Отменить экскурсию
-      </button>
+      {loading ? (
+        <div className="container">
+          <img src="./assets/images/load.gif" alt="" className="loading_img" />
+        </div>
+      ) : (
+        <button
+          disabled={ready}
+          className={`btn_link  m-auto ${!ready && "chose"}`}
+          type="submit"
+          onClick={() => {
+            setLoading(true);
+            axios
+              .post(
+                "https://lapland.syntlex.kg/crm/api/?method=update_and_add_tickets",
+                { tickets: tikets.map((t) => t.v) }
+              )
+              .then(({ data }) => alert(JSON.stringify(data)))
+              .catch((e) => alert(e))
+              .finally((e) => setLoading(false));
+          }}
+        >
+          Отменить экскурсию
+        </button>
+      )}
     </div>
   );
 }
