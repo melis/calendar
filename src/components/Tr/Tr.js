@@ -15,7 +15,7 @@ const Tr = (props, ref) => {
   const rb = data?.order?.base_count ? data.order.base_count : 0;
   const rch = data?.order?.child_count ? props.data.order.child_count : 0;
   const rp = data?.order?.pref?.count ? data.order.pref.count : 0;
-  console.log(data);
+
   useEffect(() => {
     setBase(0);
     setFreeBase(0);

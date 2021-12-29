@@ -88,7 +88,7 @@ function Exchange(props) {
           <img src="./assets/images/load.gif" alt="" className="loading_img" />
         </div>
       ) : null}
-      {data && <App data={data} />}
+      {data && <App data={data} exChTickets={tikets.map((t) => t.v)} />}
     </>
   );
 }

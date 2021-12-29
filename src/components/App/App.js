@@ -5,7 +5,7 @@ import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const App = ({ data }) => {
+const App = ({ data, exChTickets }) => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
   const [self, setSelf] = useState(false);
@@ -186,7 +186,12 @@ const App = ({ data }) => {
       </div>
       {bilet ? (
         <div ref={Sref}>
-          <TicketSelect bilet={bilet} setBilet={setBilet} data={data} />
+          <TicketSelect
+            bilet={bilet}
+            setBilet={setBilet}
+            data={data}
+            exChTickets={exChTickets}
+          />
         </div>
       ) : null}
     </>

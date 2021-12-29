@@ -1,8 +1,9 @@
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 // import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 
-const Form = ({ bilet, data }) => {
+const Form = ({ bilet, data, exChTickets }) => {
   const { price } = bilet;
 
   const [summ, setSumm] = useState(0);
@@ -37,7 +38,40 @@ const Form = ({ bilet, data }) => {
     if (prefValid) {
       tRef.current.scrollIntoView();
     } else {
-      setLoading(true);
+      let p = "";
+      if (tickets?.pref?.prefInfo?.length) {
+        tickets.pref.prefInfo.forEach((el, i) => {
+          p += `${el.value_id}${
+            tickets.pref.prefInfo.length !== i + 1 ? ", " : ""
+          }`;
+        });
+      }
+
+      let orders = {
+        order_type: bilet.type,
+        base_count: tickets?.baseCount ? tickets.baseCount : 0,
+        child_count: tickets?.childCount ? tickets.childCount : 0,
+        pref: p,
+        product_id: bilet.id,
+        product_session_id: bilet.product_session,
+        time: bilet.selectTime,
+        order_id: data.order_id,
+      };
+
+      console.log("O", orders, exChTickets);
+      axios
+        .post(
+          "https://lapland.syntlex.kg/crm/api/?method=update_and_add_tickets",
+          {
+            orders,
+            tickets: exChTickets,
+          }
+        )
+        .then(({ data }) => {
+          console.log(data);
+          window.location.href = "https://lapland.syntlex.kg/";
+        })
+        .finally((e) => setLoading(false));
     }
   };
 
