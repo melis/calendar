@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TInput from "../Input/Input";
 // import App from "../App/App";
 
-function Exchange({ tikets, setTikets }) {
+function Exchange({ tickets, setTickets, loading }) {
   const [ch, setCh] = useState(1);
+  const [ready, setReady] = useState(true);
+
+  useEffect(() => {
+    let a = false;
+    tickets.forEach((el) => {
+      if (!el.v) {
+        a = true;
+      }
+    });
+    setReady(a);
+  }, [tickets]);
 
   return (
     <div
@@ -15,8 +26,14 @@ function Exchange({ tikets, setTikets }) {
       </div>
 
       <div className="row" id="tickets_c">
-        {tikets.map((t, index) => (
-          <TInput key={t.id} t={t} setTikets={setTikets} index={index} />
+        {tickets.map((t, index) => (
+          <TInput
+            key={t.id}
+            t={t}
+            setTickets={setTickets}
+            index={index}
+            tickets={tickets}
+          />
         ))}
 
         <div className="col-lg-4 form_item" id="add_ticket_block">
@@ -25,7 +42,7 @@ function Exchange({ tikets, setTikets }) {
             className="btn border_line add_ticket"
             id="add_ticket"
             onClick={() => {
-              setTikets((arr) => [...arr, { id: ch, v: "" }]);
+              setTickets((arr) => [...arr, { id: ch, v: "" }]);
               setCh((c) => c + 1);
             }}
           >
@@ -47,9 +64,19 @@ function Exchange({ tikets, setTikets }) {
           </label>
         </div>
       </div>
-      <button className="btn_link chose m-auto" type="submit">
-        Оформить возврат
-      </button>
+      {loading ? (
+        <div className="container">
+          <img src="./assets/images/load.gif" alt="" className="loading_img" />
+        </div>
+      ) : (
+        <button
+          disabled={ready}
+          className="btn_link chose m-auto"
+          type="submit"
+        >
+          Оформить возврат
+        </button>
+      )}
     </div>
   );
 }

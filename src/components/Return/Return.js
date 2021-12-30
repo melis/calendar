@@ -4,6 +4,7 @@ import ReturnTab from "../ReturnTab/ReturnTab";
 import Calendar from "../Calendar/Calendar";
 import { useForm } from "react-hook-form";
 import Select from "../Select/Select";
+import axios from "axios";
 
 function Return(props) {
   const {
@@ -13,10 +14,34 @@ function Return(props) {
   } = useForm({ mode: "onChange" });
   const [date, setDate] = useState(new Date());
   const [reason, setReason] = useState({ id: 0, name: "Выберите из списка" });
-  const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
+  const [tickets, setTickets] = useState([{ id: 0, v: "" }]);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = (x) => {
-    console.log({ ...x, tikets, date });
+    const user = {
+      customer_fio: `${x.surname} ${x.name}${
+        x.middle_name ? " " + x.middle_name : ""
+      }`,
+      receiver_fio: x.receiver,
+      phone: x.phone,
+      email: x.email,
+      date_buy_ticket: x.date,
+      summ_return: x.return_summ,
+      bank_name: x.bank_name,
+      bank_bik: x.bank_bik,
+      correspondent_account: x.cor_sch,
+      payment_account: x.ras_sch,
+      product_reason_id: reason.id,
+    };
+    setLoading(true);
+    axios
+      .post("https://lapland.syntlex.kg/crm/api/?method=refund_tickets", {
+        user,
+        tickets: tickets.map((t) => t.v),
+      })
+      .then(({ data }) => alert(JSON.stringify(data)))
+      .catch((e) => console.log(e))
+      .finally((f) => setLoading(false));
   };
   return (
     <>
@@ -282,7 +307,11 @@ function Return(props) {
             /> */}
             <Select val={reason} setVal={setReason} />
           </div>
-          <Exchange tikets={tikets} setTikets={setTikets} />
+          <Exchange
+            tickets={tickets}
+            setTickets={setTickets}
+            loading={loading}
+          />
         </form>
       </div>
     </>
