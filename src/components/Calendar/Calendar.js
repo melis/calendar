@@ -13,9 +13,9 @@ import axios from "axios";
 
 function fakeFetch(date, { signal }) {
   // console.log(getMonth(new Date(date)), getYear(new Date(date)));
-  axios
-    .get("http://lapland.syntlex.kg/crm/api.php?method=get_products")
-    .then(({ data }) => console.log(JSON.parse(data[0].price)));
+  // axios
+  //   .get("http://lapland.syntlex.kg/crm/api.php?method=get_products")
+  //   .then(({ data }) => console.log(JSON.parse(data[0].price)));
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
       if (getMonth(date) !== getMonth(new Date())) {
