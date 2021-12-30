@@ -1,312 +1,150 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const App = () => {
-  const [show, setShow] = useState(3);
-  const [chek1, setChek1] = useState(false);
-  const [chek2, setChek2] = useState(false);
+  const ref = useRef();
+  const [chek, setChek] = useState(false);
+
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="accordion" id="accordionPanelsStayOpenExample">
-            <div
-              className="accordion-item bg_blue card"
-              style={{ transition: "2s" }}
-            >
-              <div className="accordion-header" id="headingTwo">
-                <img src="./assets/images/icons/third.svg" alt="" />
+      <div className="container content_container">
+        <div className="row block_content">
+          <div className="col-lg-7">
+            <div className="content_block">
+              <div className="title_block">Общие правила</div>
 
-                <button
-                  className={`accordion-button ${
-                    show !== 1 ? "collapsed" : ""
-                  }`}
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="collapseTwo"
-                  onClick={() => {
-                    setShow((s) => {
-                      if (s === 1) {
-                        return 0;
-                      }
-                      return 1;
-                    });
-                  }}
-                >
-                  Стоимость билетов
-                </button>
+              <p className="content_text">
+                Если у вас изменились планы, вы можете вернуть или обменять
+                билет, купленный на наши экскурсии, мероприятия или для
+                самостоятельного посещения территории Лапландского заповедника.
+              </p>
+
+              <div className="title_block_m">
+                Условия обмена и возврата билетов
               </div>
 
-              <div
-                id="collapseTwo"
-                className={`accordion-collapse collapse ${
-                  show === 1 ? "show" : ""
-                }`}
-                aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample"
-              >
-                <div className="accordion-body">
-                  <div className="accordion_content">
-                    <table style={{ width: "100%" }}>
-                      <thead>
-                        <tr>
-                          <th>Детский (до 14 лет)</th>
-                          <th>Взрослый</th>
-                          <th>Льготные категории</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>400 р.</td>
-                          <td>450 р.</td>
-                          <td>Бесплатно.</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+              <p className="content_text">
+                Обмен и возврат билетов, приобретенных для посещения территории
+                Лапландского заповедника, на экскурсию или мероприятие, возможен
+                только при соблюдении следующих условий:
+              </p>
+
+              <div className="content_item">
+                <img src="./assets/images/icons/moroshka.svg" alt="" />
+
+                <p>
+                  с 1 февраля по 30 ноября — не менее чем за 3 рабочих дня до
+                  даты проведения экскурсии (мероприятия),
+                  <br />с 1 декабря по 31 января — не менее чем за 7 рабочих
+                  дней до даты проведения экскурсии (мероприятия).
+                </p>
               </div>
+
+              <div className="content_item">
+                <img src="./assets/images/icons/moroshka.svg" alt="" />
+
+                <p>
+                  Обмен и возврат билетов, приобретенных для самостоятельного
+                  посещения территории Лапландского заповедника, возможен не
+                  позднее даты окончания действия билета.
+                </p>
+              </div>
+
+              <div className="content_item">
+                <img src="./assets/images/icons/moroshka.svg" alt="" />
+
+                <p>
+                  В более поздние сроки Заповедник вправе отказать в обмене
+                  билета или не возвращать Заказчику его стоимость за
+                  исключением случаев, предусмотренных законодательством, либо
+                  по причине отмены экскурсии (мероприятия) со стороны
+                  Заповедника.
+                </p>
+              </div>
+
+              <div className="content_item">
+                <img src="./assets/images/icons/moroshka.svg" alt="" />
+
+                <p>
+                  Неиспользованный билет на экскурсионную программу не даёт
+                  права на посещение эколого-экскурсионного комплекса
+                  Заповедника в последующие дни, обмену и возврату не подлежит.
+                </p>
+              </div>
+
+              <div className="title_block">Обмен билета</div>
+
+              <p className="content_text">
+                Обмен билета оформляется на сайте Заповедника в разделе «Обмен
+                билета». Обмен билета на экскурсионное обслуживание возможен в
+                указанные выше сроки на любую другую свободную дату и время
+                экскурсии либо на самостоятельное посещение
+                эколого-экскурсионного комплекса Заповедника с открытой датой.
+                Дополнительные сборы за обмен не взимаются.
+              </p>
+
+              <div className="title_block">Возврат билета</div>
+
+              <p className="content_text">
+                Возврат билета оформляется на сайте Заповедника в разделе
+                «Возврат билета». Заполненная заявка на возврат поступает
+                сотруднику экскурсионно-туристического отдела, который проверяет
+                корректность её заполнения, фиксирует дату подачу и передаёт
+                заявку в отдел бухгалтерии.
+              </p>
+
+              <p className="content_text">
+                Возврат денежных средств осуществляется в полном объёме в
+                течение десяти рабочих дней тем же способом, которым
+                производилась оплата: по банковским реквизитам, указанным при
+                онлайн-покупке.
+              </p>
+
+              <p className="content_text">
+                При покупке билета за наличный расчёт в кассе Заповедника
+                возврат денежных средств возможен только в день приобретения
+                билета и до начала экскурсии при условии возврата бланка
+                бумажного билета в надлежащем виде. Заявку на возврат в этом
+                случае заполнять не требуется.
+              </p>
             </div>
 
-            <div className="accordion-item bg_green card">
-              <div className="accordion-header" id="headingThree">
-                <img src="./assets/images/icons/second.svg" alt="" />
+            <div className="form-check">
+              <input
+                ref={ref}
+                className="form-check-input form-check-input3"
+                type="checkbox"
+                value={chek}
+                id="flexCheckChecked"
+                onChange={(e) => {
+                  setChek(e.target.checked);
+                }}
+              />
 
-                <button
-                  className={`accordion-button ${
-                    show !== 2 ? "collapsed" : ""
-                  }`}
-                  onClick={() => {
-                    setShow((s) => {
-                      if (s === 2) {
-                        return 0;
-                      }
-                      return 2;
-                    });
-                  }}
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapseThree"
-                  aria-expanded="false"
-                  aria-controls="collapseThree"
-                >
-                  Что входит в стоимость билетов
-                </button>
-              </div>
-
-              <div
-                id="collapseThree"
-                className={`accordion-collapse collapse ${
-                  show === 2 ? "show" : ""
-                }`}
-                aria-labelledby="headingThree"
-                data-bs-parent="#accordionExample"
-              >
-                <div className="accordion-body">
-                  <div className="accordion_content">
-                    <ul>
-                      <li>посещение территории, </li>
-                      <li> посещение экотроп, </li>
-                      <li> экскурсионное сопровождение, </li>
-                      <li> посещение музеев и природных объектов, </li>
-                      <li>
-                        услуги объектов инфраструктуры: парковки, туалетов,
-                        Туристско-информационного центра, Визит-центра и
-                        Конференц-дома,
-                      </li>
-                      <li>посещение всех объектов инфраструктуры для детей.</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="accordion-item bg_blue">
-              <div className="accordion-header" id="heading1">
-                <img src="./assets/images/icons/first.svg" alt="" />
-
-                <button
-                  className={`accordion-button ${
-                    show !== 3 ? "collapsed" : ""
-                  }`}
-                  onClick={() => {
-                    setShow((s) => {
-                      if (s === 3) {
-                        return 0;
-                      }
-                      return 3;
-                    });
-                  }}
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#collapse1"
-                  aria-expanded="false"
-                  aria-controls="collapse1"
-                >
-                  Льготные категории
-                </button>
-              </div>
-
-              <div
-                id="collapse1"
-                className={`accordion-collapse collapse ${
-                  show === 3 ? "show" : ""
-                }`}
-                aria-labelledby="headingTwo"
-                data-bs-parent="#accordionExample"
-              >
-                <div className="accordion-body">
-                  <div className="accordion_content">
-                    <p>
-                      Бесплатное посещение эколого-экскурсионного комплекса
-                      Чунозерской усадьбы Лапландского заповедника разрешается
-                      для следующих категорий граждан:
-                    </p>
-
-                    <ul>
-                      <li>Дети до 2 лет включительно.</li>
-
-                      <li>
-                        Пенсионеры старше 60 лет — при предъявлении пенсионного
-                        удостоверения.
-                      </li>
-
-                      <li>
-                        Участники Великой Отечественной войны — при предъявлении
-                        удостоверения.
-                      </li>
-
-                      <li>
-                        Организованные группы воспитанников детских домов,
-                        подопечные домов милосердия, домов инвалидов и домов
-                        пенсионеров — по предварительной заявке от указанных
-                        учреждений и с официальным письмом на имя руководителя
-                        заповедника.
-                      </li>
-
-                      <li>
-                        Члены малообеспеченных семей — при предъявлении справки
-                        из Центра социального обслуживания населения.
-                      </li>
-
-                      <li>
-                        Представители средств массовой информации в целях
-                        создания фильмов и репортажей о заповеднике — по
-                        предварительной заявке.
-                      </li>
-
-                      <li>
-                        Партнёры по совместным программам и проектам, по обмену
-                        опытом.
-                      </li>
-                    </ul>
-
-                    <span>
-                      Основание — Положение о платных услугах Федерального
-                      государственного бюджетного учреждения «Лапландский
-                      государственный природный биосферный заповедник», пункт
-                      5.8.
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <label className="form-check-label" htmlFor="flexCheckChecked">
+                С правилами обмена и возврата ознакомлен(а)
+              </label>
             </div>
           </div>
         </div>
       </div>
 
-      <section className="allert">
-        <div className="container">
-          <div className="row block_content">
-            <h4 className="title_block col-md-12">
-              Пожалуйста, обратите внимание!
-            </h4>
-
-            <div className="col-lg-12">
-              <div className="content_block">
-                <p className="content_text">
-                  При покупке билета на сайте сотрудник экскурсионного отдела не
-                  связывается с посетителем по телефону для подтверждения брони.
-                </p>
-
-                <p className="content_text">
-                  Будьте внимательны при покупке билета: ошибки при указании
-                  контактного телефона, <br />
-                  электронной почты и количества человек в группе недопустимы.
-                </p>
-
-                <p className="content_text">
-                  Неиспользованный билет на экскурсионную программу не даёт
-                  права посещения <br />
-                  эколого-экскурсионного комплекса Заповедника в последующие
-                  дни, обмену и возврату не подлежит.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <div className="container">
         <div className="row">
           <div className="accept_block">
-            <div className="check_block">
-              <form className="hover_check">
-                <div className="form-check">
-                  <input
-                    className="form-check-input form-check-input1"
-                    type="checkbox"
-                    checked={chek1}
-                    onChange={(e) => {
-                      setChek1(e.target.checked);
-                    }}
-                    id="flexCheckDefault1"
-                  />
-
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexCheckDefault1"
-                  >
-                    С <a href="/">правилами посещения</a> ознакомлен(а)
-                  </label>
-                </div>
-
-                <div className="form-check">
-                  <input
-                    className="form-check-input form-check-input2"
-                    type="checkbox"
-                    checked={chek2}
-                    onChange={(e) => {
-                      setChek2(e.target.checked);
-                    }}
-                    id="flexCheckChecked2"
-                  />
-
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexCheckChecked2"
-                  >
-                    С правилами покупки билета ознакомлен(а)
-                  </label>
-                </div>
-              </form>
-            </div>
+            <div className="check_block"></div>
 
             <a
-              href="/purchase.html"
-              className={`${
-                chek1 && chek2
-                  ? "btn_link buy_ticket st_1 st_2"
-                  : "btn_link buy_ticket"
+              href="https://www.google.ru/"
+              className={`btn_link buy_ticket buy_ticket2 ${
+                chek ? "st_2" : ""
               }`}
               onClick={(e) => {
-                if (!chek1 || !chek2) {
+                if (!chek) {
                   e.preventDefault();
                 }
               }}
             >
-              Купить билет
+              Продолжить
             </a>
           </div>
         </div>
