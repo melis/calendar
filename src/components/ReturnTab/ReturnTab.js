@@ -15,9 +15,9 @@ function ReturnTab(props) {
           </p>
 
           <div className="btns">
-            <button type="button" className="btn_return btn_link  orange_btn">
+            {/* <button type="button" className="btn_return btn_link  orange_btn">
               Вернуть билет
-            </button>
+            </button> */}
 
             <button
               type="button"
