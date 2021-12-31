@@ -246,7 +246,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="cor_sch">Корреспондентский счет *</label>
+            <label htmlFor="cor_sch">Корреспондентский счет*</label>
             <input
               type="text"
               className="form-control"
@@ -297,7 +297,7 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="">причина возврата билетов *</label>
+            <label htmlFor="">причина возврата билетов*</label>
             {/* <input
               type="text"
               className="form-control"
