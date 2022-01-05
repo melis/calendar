@@ -1,13 +1,26 @@
 .head_page_content .chicken_2,
+.head_page_content .ros_m,
 .head_page_content .los_mobile,
 .head_page_content .bear_m {
   display: none;
 }
 
+.css-ub1r1 {
+  font-size: 1rem !important;
+}
+
 .btn_link.m-auto {
   padding: 15px 50px;
 
+  color: #ffffff;
+
+  background: #d76729;
+
   width: auto;
+}
+
+.db_none_br {
+  display: none;
 }
 
 .content_container {
@@ -426,6 +439,33 @@
 }
 
 @media screen and (max-width: 425px) {
+  .return_span1 {
+    width: 100px;
+  }
+  .white_bird {
+    display: none;
+  }
+
+  .btn_link.chose.m-auto {
+    margin-top: 40px !important;
+  }
+
+  .row.mt-5 .title_block {
+    margin-bottom: 40px;
+  }
+
+  .title_block {
+    font-family: Source Sans Pro;
+
+    font-style: normal;
+
+    font-weight: bold;
+
+    font-size: 25px;
+
+    line-height: 31px;
+  }
+
   .btn_link.m-auto {
     padding: 15px 50px;
 
@@ -443,6 +483,8 @@
   }
 
   .form_item label {
+    letter-spacing: initial;
+
     font-weight: 500;
 
     font-size: 18px;
@@ -508,12 +550,18 @@
     margin-bottom: 30px;
   }
 
+  .green .head_page_content img {
+    display: none;
+  }
+
   .blue .head_page_content .los_mobile {
     display: block;
 
     width: 100px;
 
-    margin-bottom: -23px;
+    margin-bottom: -27px;
+
+    margin-right: 10px;
   }
 
   .brown .head_page_content .bear_m {
@@ -521,12 +569,42 @@
 
     width: 115px;
 
-    margin-bottom: -51px;
+    margin-bottom: -54px;
+
+    margin-right: 15px;
+  }
+
+  .green .head_page_content .ros_m {
+    display: block;
+
+    width: 139px;
+
+    margin-bottom: -9px;
+
+    margin-right: 5px;
   }
 
   .blue .head_page_content h2,
   .brown .head_page_content h2 {
     margin-left: 8px;
+  }
+
+  .green .head_page_content h2 {
+    font-family: Source Sans Pro;
+
+    font-style: normal;
+
+    font-weight: bold;
+
+    font-size: 45px;
+
+    line-height: 110%;
+
+    margin-bottom: 20px;
+
+    margin-left: 6px;
+
+    margin-right: 18px;
   }
 
   .breadcrumb {
@@ -545,8 +623,6 @@
 
   .breadcrumb-item {
     overflow-wrap: break-word;
-
-    white-space: pre-wrap;
   }
 
   /**/
@@ -571,6 +647,8 @@
 
   #collapseTwo table {
     display: flex;
+
+    justify-content: space-between;
   }
 
   #collapseTwo table tr {
@@ -580,7 +658,9 @@
   }
 
   .banner.main_banner {
-    background: url(../images/bg/mobile_bg.png) !important;
+    background: url(../images/bg/mobile_bg.png) no-repeat center !important;
+
+    background-size: cover !important;
   }
 
   .banner_text h3 {
@@ -622,7 +702,7 @@
   }
 
   .block_owl {
-    padding: 20px 131px 20px 20px;
+    padding: 20px 117px 20px 20px;
   }
 
   .pbt_bl label {
@@ -722,7 +802,7 @@
   }
 
   .breadcrumb {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
   }
 
   .head_page_content .chicken_1 {
@@ -880,7 +960,7 @@
   .select-value {
     font-size: 16px;
 
-    padding: 13px 20px;
+    padding: 13px 37px 13px 20px;
   }
 
   .ticket_selection {
@@ -944,5 +1024,173 @@
 
   .ticket_items.form_item {
     margin-bottom: 15px;
+  }
+
+  .checkout .form-check-input {
+    padding: 0;
+  }
+
+  .banner_text.main_br h3 {
+    font-family: Source Sans Pro;
+
+    font-style: normal;
+
+    font-weight: bold;
+
+    font-size: 45px;
+
+    line-height: 110%;
+
+    margin: 0 0;
+  }
+
+  .banner.regulations {
+    height: 400px;
+
+    background: url(../images/modile_reg.png) !important;
+
+    background-size: cover !important;
+  }
+
+  .accordion_content table tbody tr {
+    text-align: right;
+  }
+
+  .pbt_r_b_top {
+    display: block;
+  }
+
+  .pbt_r_b_item {
+    display: inline-block;
+
+    margin-top: 5px;
+  }
+
+  .pbt_r_b_top img {
+    display: inline-block;
+  }
+
+  .pbt_r_b_top p {
+    display: inline-block;
+  }
+
+  .pbt_r_b_item:nth-child(4) img {
+    width: 13px;
+  }
+
+  .blue .head_page_content h2 {
+    margin-right: 13px;
+  }
+
+  .d_none_br {
+    display: block;
+  }
+
+  .block_owl p {
+    width: 195px;
+  }
+
+  .form-check-input:hover {
+    border: 2px solid #007db5;
+  }
+
+  .form-check:hover input {
+    border: 2px solid #007db5;
+  }
+
+  .accordion {
+    padding: 0 20px;
+  }
+
+  .form-check .form-check-label {
+    width: 250px;
+  }
+
+  .footer_text p {
+    font-family: Raleway;
+
+    font-style: normal;
+
+    font-weight: normal;
+
+    font-size: 18px;
+
+    line-height: 140%;
+  }
+
+  .footer_links li h3 {
+    font-family: Source Sans Pro;
+
+    font-style: normal;
+
+    font-weight: bold;
+
+    font-size: 28px;
+
+    line-height: 35px;
+  }
+
+  .footer_links.mm_h {
+    width: initial;
+  }
+
+  .footer_text {
+    max-width: initial;
+  }
+
+  .breadcrumb.mfa,
+  .back_to {
+    margin-bottom: 50px;
+  }
+
+  .content_text {
+    width: 320px;
+  }
+
+  .border_line:hover {
+    border: 2px solid #007db5;
+
+    color: #007db5;
+  }
+
+  .db_none_br {
+    display: block;
+  }
+  .modal_content{
+      width: 90%;
+      padding: 15px 30px 3px 15px;
+  }
+    .modal_title{
+        font-size: 22px;
+        line-height: 24px;
+    }
+    .modal_close {
+        position: absolute;
+        top: 14px;
+        right: 14px;
+        width: 24px;
+        height: 24px;
+    }
+}
+
+@media screen and (max-width: 363px) {
+  .banner_text {
+    width: 100%;
+  }
+
+  .border_line.add_ticket {
+    padding: 16px 5px;
+  }
+
+  .rounded_circle {
+    font-weight: 600;
+
+    font-size: 13px;
+
+    line-height: 19px;
+
+    padding: 13px 10px;
+
+    width: 100%;
   }
 }

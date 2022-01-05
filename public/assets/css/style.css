@@ -312,8 +312,8 @@ footer {
 
 .block_owl:after {
   position: absolute;
-  width: 100px;
-  height: 190px;
+  width: 85px;
+  height: 160px;
   right: 1px;
   top: -24px;
   content: "";
@@ -598,11 +598,6 @@ section.allert .content_block {
   margin-top: -10px;
 }
 
-.hover_check:hover .form-check-input {
-  border: 2px solid #d76729;
-  cursor: pointer;
-}
-
 .buy_ticket.st_1.st_2,
 .buy_ticket2.st_2 {
   color: #ffffff;
@@ -768,7 +763,9 @@ input.input_date {
   max-width: 20px;
   margin-right: 10px;
 }
-
+.loading_img {
+  margin: 15px;
+}
 .pbt_r_b_item {
   display: flex;
   margin-right: 15px;
@@ -1458,7 +1455,7 @@ button.btn_return {
   border: 2px solid #005d90;
   color: #005d90;
   margin-right: 18px;
-  padding: 15px 50px;
+  padding: 13px 50px 15px 50px;
   width: inherit;
 }
 .btn_return:hover {
@@ -1466,11 +1463,15 @@ button.btn_return {
   border: 2px solid #d76729;
   color: #ffffff;
 }
-.btn_return.orange_btn {
+.btn_return.orange_btn.btn_link {
+  background: #ffffff;
+  border: 2px solid #007db5;
+  color: #007db5;
+}
+.btn_return.btn_link {
   background: #d76729;
   border: 2px solid #d76729;
   color: #ffffff;
-  margin-right: 0;
 }
 .simple_date:after {
   right: 15px;
@@ -1485,4 +1486,112 @@ button.btn_asd {
 button:focus {
   outline: none;
   box-shadow: none !important;
+}
+.ticket_items label {
+  font-family: "Source Sans Pro";
+  font-size: 18px;
+}
+.form-check:hover input {
+  border: 2px solid #d76729;
+}
+.form-check-input:checked[type="checkbox"] {
+  background-repeat: no-repeat !important;
+}
+.container.checkout {
+  padding: 0 5px !important;
+}
+.back_to {
+  display: flex;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  font-feature-settings: "pnum" on, "lnum" on;
+  align-items: center;
+  margin-bottom: 60px;
+  /* 6_сияние_1 */
+
+  color: #007db5;
+}
+.back_to img {
+  width: 26px;
+  margin-right: 24px;
+}
+.breadcrumb.mfa {
+  margin-bottom: 60px;
+}
+.col-xl-6.col-xxl-5.col-lg-8.col-md-10 .btns .btn_return.btn_link {
+  border: 2px solid #007db5;
+  color: #007db5;
+  background: #ffffff;
+}
+.col-xl-6.col-xxl-5.col-lg-8.col-md-10 .btns .btn_return.btn_link:hover {
+  border: 2px solid #d76729;
+  color: #d76729;
+  background: #ffffff;
+}
+.form_item input.form-check-input {
+  background: #ffffff;
+  border: 2px solid #007db5;
+  padding: 0;
+  background-color: #ffffff !important;
+}
+
+.return_span1 {
+  display: inline-block;
+  width: 20px;
+}
+.modal_body{
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+.modal_body:before{
+  background: #005D90;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+}
+.modal_content{
+  width: 600px;
+  position: relative;
+  background: #FFF9ED;
+  border-radius: 20px;
+  padding: 28px 90px 3px 30px;
+}
+.modal_close{
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  width: 30px;
+  height: 30px;
+}
+.modal_title{
+  /*font-family: Iskra;*/
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  color: #212121;
+  margin-bottom: 25px;
+}
+.modal_text{
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  color: #212121;
+  margin-bottom: 25px;
 }
