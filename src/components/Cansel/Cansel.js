@@ -19,6 +19,8 @@ function Cansel(props) {
     });
     if (tikets.length > 0) {
       setReady(a);
+    } else {
+      setReady(true);
     }
   }, [tikets]);
   return (
