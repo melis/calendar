@@ -70,15 +70,16 @@ function Return(props) {
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
                 </a>
-                <div className="modal_title">Вы успешно обменяли билеты!</div>
+                <div className="modal_title">
+                  Заявка на возврат билетов получена!
+                </div>
                 <div>
                   <div className="modal_text">
-                    Мы отправили ваши билеты на почту, указанную при оформлении
-                    заказа.
+                    Информация о возврате выслана на почту, указанную в заявке.
                   </div>
                   <div className="modal_text">
-                    На этой странице вы можете посмотреть наши рекомендации
-                    перед поездкой.
+                    Возврат денежных средств будет произведён в течение 10
+                    рабочих дней.
                   </div>
                 </div>
               </div>
