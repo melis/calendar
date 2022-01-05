@@ -38,12 +38,13 @@ const Form = ({ bilet }) => {
   }, [tickets, price, prefValid]);
 
   const onSubmit = (client) => {
-    if (prefValid) {
-      tRef.current.scrollIntoView();
-    } else {
-      window.location.href = "http://lapland.syntlex.kg";
-      console.log(JSON.stringify({ client, tickets }));
-    }
+    // if (prefValid) {
+    console.log("dsd");
+    //   tRef.current.scrollIntoView();
+    // } else {
+    //   window.location.href = "http://lapland.syntlex.kg";
+    //   console.log(JSON.stringify({ client, tickets }));
+    // }
   };
 
   return (
@@ -218,7 +219,7 @@ const Form = ({ bilet }) => {
                   style={errors?.accept ? { borderColor: "red" } : null}
                   className="form-check-input"
                   type="checkbox"
-                  value=""
+                  value={false}
                   id="accept"
                   {...register("accept", {
                     required: "Поле обязательно к заполнению",

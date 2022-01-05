@@ -4,12 +4,13 @@ import TInput from "../Input/Input";
 
 function Exchange({ tickets, setTickets, loading }) {
   const [ch, setCh] = useState(1);
-  const [ready, setReady] = useState(true);
+  const [ready, setReady] = useState(false);
+  const [chek, setChek] = useState(false);
 
   useEffect(() => {
     let a = false;
     tickets.forEach((el) => {
-      if (!el.v) {
+      if (el.v) {
         a = true;
       }
     });
@@ -26,15 +27,17 @@ function Exchange({ tickets, setTickets, loading }) {
       </div>
 
       <div className="row" id="tickets_c">
-        {tickets.map((t, index) => (
-          <TInput
-            key={t.id}
-            t={t}
-            setTickets={setTickets}
-            index={index}
-            tickets={tickets}
-          />
-        ))}
+        {tickets.map((t, index) => {
+          return (
+            <TInput
+              key={t.id}
+              t={t}
+              setTickets={setTickets}
+              index={index}
+              tickets={tickets}
+            />
+          );
+        })}
 
         <div className="col-lg-4 form_item" id="add_ticket_block">
           <button
@@ -55,7 +58,10 @@ function Exchange({ tickets, setTickets, loading }) {
           <input
             className="form-check-input form-check-input1"
             type="checkbox"
-            value=""
+            checked={chek}
+            onChange={(e) => {
+              setChek(e.target.checked);
+            }}
             id="flexCheckaccept"
           />
 
@@ -70,7 +76,7 @@ function Exchange({ tickets, setTickets, loading }) {
         </div>
       ) : (
         <button
-          disabled={ready}
+          disabled={ready === false || chek === false}
           className="btn_link chose m-auto"
           type="submit"
         >

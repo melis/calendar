@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Exchange from "../Exchange/Exchange";
 import ReturnTab from "../ReturnTab/ReturnTab";
 import Calendar from "../Calendar/Calendar";
 import { useForm } from "react-hook-form";
 import Select from "../Select/Select";
 import axios from "axios";
+import ReactDOM from "react-dom";
 
 function Return(props) {
   const {
@@ -16,35 +17,75 @@ function Return(props) {
   const [reason, setReason] = useState({ id: 0, name: "Выберите из списка" });
   const [tickets, setTickets] = useState([{ id: 0, v: "" }]);
   const [loading, setLoading] = useState(false);
+  const [after, setAfter] = useState();
+  const reasRef = useRef();
 
   const onSubmit = (x) => {
-    const user = {
-      customer_fio: `${x.surname} ${x.name}${
-        x.middle_name ? " " + x.middle_name : ""
-      }`,
-      receiver_fio: x.receiver,
-      phone: x.phone,
-      email: x.email,
-      date_buy_ticket: x.date,
-      summ_return: x.return_summ,
-      bank_name: x.bank_name,
-      bank_bik: x.bank_bik,
-      correspondent_account: x.cor_sch,
-      payment_account: x.ras_sch,
-      product_reason_id: reason.id,
-    };
-    setLoading(true);
-    axios
-      .post("https://lapland.syntlex.kg/crm/api/?method=refund_tickets", {
-        user,
-        tickets: tickets.map((t) => t.v),
-      })
-      .then(({ data }) => alert(JSON.stringify(data)))
-      .catch((e) => console.log(e))
-      .finally((f) => setLoading(false));
+    if (reason.id > 0) {
+      const user = {
+        customer_fio: `${x.surname} ${x.name}${
+          x.middle_name ? " " + x.middle_name : ""
+        }`,
+        receiver_fio: x.receiver,
+        phone: x.phone,
+        email: x.email,
+        date_buy_ticket: x.date,
+        summ_return: x.return_summ,
+        bank_name: x.bank_name,
+        bank_bik: x.bank_bik,
+        correspondent_account: x.cor_sch,
+        payment_account: x.ras_sch,
+        product_reason_id: reason.id,
+      };
+      setLoading(true);
+      axios
+        .post("https://lapland.syntlex.kg/crm/api/?method=refund_tickets", {
+          user,
+          tickets: tickets.map((t) => t.v),
+        })
+        .then(({ data }) => {
+          setAfter(data);
+        })
+        .catch((e) => console.log(e))
+        .finally((f) => setLoading(false));
+    } else {
+      reasRef.current.scrollIntoView();
+    }
   };
+
   return (
     <>
+      {after
+        ? ReactDOM.createPortal(
+            <div className="modal_body">
+              <div className="modal_content">
+                <a
+                  href="/"
+                  className="modal_close"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setAfter(false);
+                    setTickets([]);
+                  }}
+                >
+                  <img src="./assets/images/icons/close_normal.svg" alt="" />
+                </a>
+                <div className="modal_title">Вы успешно обменяли билеты!</div>
+                <div>
+                  <div className="modal_text">
+                    Мы отправили ваши билеты на почту, указанную при оформлении
+                    заказа.
+                  </div>
+                  <div className="modal_text">
+                    На этой странице вы можете посмотреть наши рекомендации
+                    перед поездкой.
+                  </div>
+                </div>
+              </div>
+            </div>,
+            document.getElementById("modal")
+          )
+        : null}
       <div className="container content_container">
         <ReturnTab />
 
@@ -296,15 +337,9 @@ function Return(props) {
             </div>
           </div>
 
-          <div className="col-lg-4 form_item">
+          <div className="col-lg-4 form_item" ref={reasRef}>
             <label htmlFor="">причина возврата билетов*</label>
-            {/* <input
-              type="text"
-              className="form-control"
-              id=""
-              placeholder="Выберите из списка"
-              required=""
-            /> */}
+
             <Select val={reason} setVal={setReason} />
           </div>
           <Exchange
