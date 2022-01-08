@@ -29,7 +29,9 @@ const App = () => {
         pathname: url.pathname,
         search: l
           ? `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`
-          : `?y=${new Date().getFullYear()}&m=${new Date().getMonth()}&d=${new Date().getDate()}&evn=${tab}`,
+          : `?y=${new Date().getFullYear()}&m=${
+              new Date().getMonth() + 1
+            }&d=${new Date().getDate()}&evn=${tab}`,
       });
     }
   }, [tab, navigate]);
