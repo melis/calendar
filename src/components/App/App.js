@@ -4,6 +4,7 @@ import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
+import ReactDOM from "react-dom";
 
 const App = () => {
   const [list, setList] = useState([]);
@@ -16,15 +17,19 @@ const App = () => {
   const url = useLocation();
   const [mem, setMem] = useState(url.search);
   const [isLoading, setIsLoading] = useState(false);
+  const [after, setAfter] = useState();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const p = new URLSearchParams(url.search);
+    const l = !!p.get("y");
     if (tab) {
       navigate({
         pathname: url.pathname,
-        search: `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`,
+        search: l
+          ? `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`
+          : `?y=${new Date().getFullYear()}&m=${new Date().getMonth()}&d=${new Date().getDate()}&evn=${tab}`,
       });
     }
   }, [tab, navigate]);
@@ -48,6 +53,38 @@ const App = () => {
 
   return (
     <>
+      {after
+        ? ReactDOM.createPortal(
+            <div className="modal_body">
+              <div className="modal_content">
+                <a
+                  href="/"
+                  className="modal_close"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    setAfter(false);
+                    window.location.href = "http://lapland.syntlex.kg/";
+                  }}
+                >
+                  <img src="./assets/images/icons/close_normal.svg" alt="" />
+                </a>
+                <div className="modal_title">Заказ успешно оплачен!</div>
+                <div>
+                  <div className="modal_text">
+                    Мы отправили ваши билеты на почту, указанную при оформлении
+                    заказа.
+                  </div>
+                  <div className="modal_text">
+                    На этой странице вы можете посмотреть наши рекомендации
+                    перед поездкой.
+                  </div>
+                </div>
+              </div>
+            </div>,
+            document.getElementById("modal")
+          )
+        : null}
       <div className="container content_container" ref={bRef}>
         <div className="row">
           <div className="col-lg-5">
@@ -186,7 +223,7 @@ const App = () => {
       </div>
       {bilet ? (
         <div ref={Sref}>
-          <TicketSelect bilet={bilet} setBilet={setBilet} />
+          <TicketSelect bilet={bilet} setBilet={setBilet} setAfter={setAfter} />
         </div>
       ) : null}
     </>

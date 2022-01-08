@@ -81,8 +81,14 @@ const Calendar = ({
 
     highlightedDays.forEach((e) => {
       if (
-        Date.parse(d) > Date.parse(new Date()) &&
-        new Date(e.date).getDate() === new Date(d).getDate()
+        Date.parse(d) >=
+        Date.parse(
+          new Date(
+            new Date().getFullYear(),
+            new Date().getMonth(),
+            new Date().getDate()
+          )
+        )
       ) {
         a = false;
       }
@@ -240,12 +246,7 @@ const Calendar = ({
           }}
           onMonthChange={handleMonthChange}
           shouldDisableDate={disableDays}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              // style={{ fontFamily: "Raleway", fontSize: "50px" }}
-            />
-          )}
+          renderInput={(params) => <TextField {...params} />}
           renderLoading={() => <CalendarPickerSkeleton />}
           renderDay={renderDay}
           showToolbar

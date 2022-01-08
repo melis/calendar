@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 import { useNavigate } from "react-router-dom";
 
-const Form = ({ bilet }) => {
+const Form = ({ bilet, setAfter }) => {
   const { price } = bilet;
 
   const [summ, setSumm] = useState(0);
@@ -75,7 +75,8 @@ const Form = ({ bilet }) => {
         })
         .then(({ data }) => {
           if (data.status) {
-            window.location.href = data.msg;
+            // window.location.href = data.msg;
+            setAfter(data);
           } else {
             throw data;
           }

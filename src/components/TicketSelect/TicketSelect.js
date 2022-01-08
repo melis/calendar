@@ -3,7 +3,7 @@ import Form from "../Form/Form";
 import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
 
-const TicketSelect = ({ bilet, setBilet }) => {
+const TicketSelect = ({ bilet, setBilet, setAfter }) => {
   return (
     <>
       <div className="blue_bg">
@@ -35,7 +35,7 @@ const TicketSelect = ({ bilet, setBilet }) => {
           </div>
         </div>
       </div>
-      <Form bilet={bilet} />
+      <Form bilet={bilet} setAfter={setAfter} />
     </>
   );
 };
