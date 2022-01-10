@@ -66,7 +66,8 @@ const App = () => {
                     e.preventDefault();
 
                     setAfter(false);
-                    window.location.href = "http://lapland.syntlex.kg/";
+                    window.location.href =
+                      "http://laplandzap.ru/before-the-trip";
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
