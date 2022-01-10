@@ -57,7 +57,7 @@ const App = () => {
     <>
       {after
         ? ReactDOM.createPortal(
-            <div className="modal_body">
+            <div className="modal_body purchase_modal">
               <div className="modal_content">
                 <a
                   href="/"
