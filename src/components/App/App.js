@@ -5,7 +5,7 @@ import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const App = ({ data, exChTickets }) => {
+const App = ({ data, exChTickets, setAfter }) => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
   const [self, setSelf] = useState(false);
@@ -21,10 +21,15 @@ const App = ({ data, exChTickets }) => {
 
   useEffect(() => {
     const p = new URLSearchParams(url.search);
+    const l = !!p.get("y");
     if (tab) {
       navigate({
         pathname: url.pathname,
-        search: `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`,
+        search: l
+          ? `?y=${p.get("y")}&m=${p.get("m")}&d=${p.get("d")}&evn=${tab}`
+          : `?y=${new Date().getFullYear()}&m=${
+              new Date().getMonth() + 1
+            }&d=${new Date().getDate()}&evn=${tab}`,
       });
     }
   }, [tab, navigate]);
@@ -191,6 +196,7 @@ const App = ({ data, exChTickets }) => {
             setBilet={setBilet}
             data={data}
             exChTickets={exChTickets}
+            setAfter={setAfter}
           />
         </div>
       ) : null}

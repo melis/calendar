@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 // import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 
-const Form = ({ bilet, data, exChTickets }) => {
+const Form = ({ bilet, data, exChTickets, setAfter }) => {
   const { price } = bilet;
 
   const [summ, setSumm] = useState(0);
@@ -59,17 +59,16 @@ const Form = ({ bilet, data, exChTickets }) => {
         order_id: data.order_id,
       };
 
-      console.log("O", orders, exChTickets, data);
       axios
         .post(
-          "https://lapland.syntlex.kg/crm/api/?method=update_and_add_tickets",
+          "http://tickets.laplandzap.ru/crm/api/?method=update_and_add_tickets",
           {
             orders,
             tickets: exChTickets,
           }
         )
         .then(({ data }) => {
-          alert(JSON.stringify(data));
+          setAfter(JSON.stringify(data));
         })
         .finally((e) => setLoading(false));
     }
@@ -108,7 +107,7 @@ const Form = ({ bilet, data, exChTickets }) => {
             className={`btn_link  m-auto ${!prefValid ? "chose" : ""}`}
             type="submit"
           >
-            Оплатить заказ
+            Оформить обмен
           </button>
         )}
       </div>

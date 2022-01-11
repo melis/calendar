@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import TInput from "../Input/Input";
 import App from "../App/App";
 import axios from "axios";
+import ReactDOM from "react-dom";
 
 function Exchange(props) {
   const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
@@ -10,7 +11,8 @@ function Exchange(props) {
   const [btn, setBtn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
-  // console.log(data);
+  const [after, setAfter] = useState(false);
+
   useEffect(() => {
     let l = false;
     tikets.forEach((t) => {
@@ -18,10 +20,13 @@ function Exchange(props) {
         l = true;
       }
     });
-
+    if (!tikets.length) {
+      setData(null);
+      l = true;
+    }
     setBtn(l);
-    if (data) {
-      console.log(data);
+    if (data && !l) {
+      console.log(tikets);
       axios
         .post("http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets", {
           tickets: tikets.map((t) => t.v),
@@ -30,14 +35,49 @@ function Exchange(props) {
           if (data.status === false) {
             throw data;
           }
+
           setData(data);
         })
-        .catch((e) => console.log(e))
+        .catch((e) => console.log("error", e))
         .finally((e) => setLoading(false));
     }
   }, [tikets]);
+
   return (
     <>
+      {after
+        ? ReactDOM.createPortal(
+            <div className="modal_body change_modal">
+              <div className="modal_content">
+                <a
+                  href="/"
+                  className="modal_close"
+                  onClick={(e) => {
+                    e.preventDefault();
+
+                    setAfter(false);
+                    window.location.href =
+                      "http://laplandzap.ru/before-the-trip";
+                  }}
+                >
+                  <img src="./assets/images/icons/close_normal.svg" alt="" />
+                </a>
+                <div className="modal_title">Вы успешно обменяли билеты!</div>
+                <div>
+                  <div className="modal_text">
+                    Мы отправили ваши билеты на почту, указанную при оформлении
+                    заказа.
+                  </div>
+                  <div className="modal_text">
+                    На этой странице вы можете посмотреть наши рекомендации
+                    перед поездкой.
+                  </div>
+                </div>
+              </div>
+            </div>,
+            document.getElementById("modal")
+          )
+        : null}
       <div
         className="container content_container"
         style={{ marginBottom: "100px" }}
@@ -61,8 +101,16 @@ function Exchange(props) {
               className="btn border_line add_ticket"
               id="add_ticket"
               onClick={() => {
-                setTikets((arr) => [...arr, { id: ch, v: "" }]);
-                setCh((c) => c + 1);
+                let l = false;
+                tikets.forEach((t) => {
+                  if (!t.v) {
+                    l = true;
+                  }
+                });
+                if (!l) {
+                  setTikets((arr) => [...arr, { id: ch, v: "" }]);
+                  setCh((c) => c + 1);
+                }
               }}
             >
               + Добавить билет для обмена
@@ -87,6 +135,7 @@ function Exchange(props) {
                   if (data.status === false) {
                     throw data;
                   }
+                  console.log("knopka", data);
                   setData(data);
                 })
                 .catch((e) => console.log(e))
@@ -102,7 +151,13 @@ function Exchange(props) {
           <img src="./assets/images/load.gif" alt="" className="loading_img" />
         </div>
       ) : null}
-      {data && <App data={data} exChTickets={tikets.map((t) => t.v)} />}
+      {data && (
+        <App
+          data={data}
+          exChTickets={tikets.map((t) => t.v)}
+          setAfter={setAfter}
+        />
+      )}
     </>
   );
 }

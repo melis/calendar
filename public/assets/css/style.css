@@ -1600,3 +1600,9 @@ button:focus {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.change_modal {
+  background-image: url(../images/modal_2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
