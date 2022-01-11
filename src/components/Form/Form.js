@@ -70,7 +70,7 @@ const Form = ({ bilet, setAfter }) => {
       setLoding(true);
       setEr([]);
       axios
-        .post("https://lapland.syntlex.kg/crm/api/?method=buy_tickets", {
+        .post("http://tickets.laplandzap.ru/crm/api/?method=buy_tickets", {
           order,
         })
         .then(({ data }) => {

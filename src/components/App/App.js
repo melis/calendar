@@ -18,6 +18,7 @@ const App = () => {
   const [mem, setMem] = useState(url.search);
   const [isLoading, setIsLoading] = useState(false);
   const [after, setAfter] = useState();
+  const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
 
@@ -104,6 +105,7 @@ const App = () => {
                 setWarn={setWarn}
                 setBilet={setBilet}
                 tab={tab}
+                setErr={setErr}
               />
 
               <div className="hover_check">
@@ -209,8 +211,9 @@ const App = () => {
             </div>
           ) : (
             <div className="row ticket_item">
-              Увы! В этот день мероприятий нет. Пожалуйста, выберите другую
-              дату!
+              {err
+                ? err
+                : "Увы! В этот день мероприятий нет. Пожалуйста, выберите другую дату!"}
             </div>
           )
         ) : (

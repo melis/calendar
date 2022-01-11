@@ -10,18 +10,19 @@ import ruLocale from "date-fns/locale/ru";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getMonth, getYear } from "date-fns";
 import axios from "axios";
-
+// http://tickets.laplandzap.ru
 function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
     axios
       .get(
-        `https://lapland.syntlex.kg/crm/api/?method=get_products&year=${getYear(
+        `http://tickets.laplandzap.ru/crm/api/?method=get_products&year=${getYear(
           new Date(date)
         )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
           getMonth(new Date(date)) + 1
         }`
       )
       .then(({ data }) => {
+        console.log("thenF");
         let newArr = [];
         if (!data) {
           resolve(newArr);
@@ -33,6 +34,9 @@ function fethch(date, { signal }) {
         }
 
         resolve(newArr);
+      })
+      .catch((e) => {
+        reject(e);
       });
 
     signal.onabort = () => {
@@ -50,6 +54,7 @@ const Calendar = ({
   setTab,
   setIsLoading,
   isLoading,
+  setErr,
 }) => {
   const requestAbortController = React.useRef(null);
   const [highlightedDays, setHighlightedDays] = React.useState([]);
@@ -147,21 +152,26 @@ const Calendar = ({
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
+    console.log("start");
     setIsLoading(true);
     fethch(date, {
       signal: controller.signal,
     })
       .then((data) => {
+        console.log("then");
         setHighlightedDays(data);
         setIsLoading(false);
       })
       .catch((error) => {
-        // setIsLoading(false);
-        console.log("API ERROR");
+        setErr(error.message);
+
         // ignore the error if it's caused by `controller.abort`
-        if (error.name !== "AbortError") {
-          throw error;
-        }
+        // if (error.name !== "AbortError") {
+        //   throw error;
+        // }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
 
     requestAbortController.current = controller;
