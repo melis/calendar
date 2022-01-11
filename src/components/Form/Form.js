@@ -82,12 +82,19 @@ const Form = ({ bilet, setAfter }) => {
           }
         })
         .catch((data) => {
+          console.log(data);
+
           let newArr = [];
-          for (const [key, value] of Object.entries(data)) {
-            if (value) {
-              newArr.push(value);
+          if (Array.isArray(data)) {
+            for (const [key, value] of Object.entries(data)) {
+              if (value) {
+                newArr.push(value);
+              }
             }
+          } else {
+            newArr.push(String(data));
           }
+
           setEr(newArr);
         })
         .finally((a) => setLoding(false));
@@ -288,7 +295,7 @@ const Form = ({ bilet, setAfter }) => {
             </div>
           </div>
           <div>
-            <ul>
+            <ul style={{ color: "red" }}>
               {er.map((el) => (
                 <li key={el}>{el}</li>
               ))}
