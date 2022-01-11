@@ -22,7 +22,6 @@ function fethch(date, { signal }) {
         }`
       )
       .then(({ data }) => {
-        console.log("thenF");
         let newArr = [];
         if (!data) {
           resolve(newArr);
@@ -152,23 +151,17 @@ const Calendar = ({
 
   const fetchHighlightedDays = (date) => {
     const controller = new AbortController();
-    console.log("start");
+
     setIsLoading(true);
     fethch(date, {
       signal: controller.signal,
     })
       .then((data) => {
-        console.log("then");
         setHighlightedDays(data);
         setIsLoading(false);
       })
       .catch((error) => {
         setErr(error.message);
-
-        // ignore the error if it's caused by `controller.abort`
-        // if (error.name !== "AbortError") {
-        //   throw error;
-        // }
       })
       .finally(() => {
         setIsLoading(false);
