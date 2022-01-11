@@ -10,6 +10,7 @@ function Exchange(props) {
   const [btn, setBtn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
+  // console.log(data);
   useEffect(() => {
     let l = false;
     tikets.forEach((t) => {
@@ -20,8 +21,9 @@ function Exchange(props) {
 
     setBtn(l);
     if (data) {
+      console.log(data);
       axios
-        .post("https://lapland.syntlex.kg/crm/api/?method=exchange_tickets", {
+        .post("http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets", {
           tickets: tikets.map((t) => t.v),
         })
         .then(({ data }) => {
@@ -76,7 +78,7 @@ function Exchange(props) {
               setLoading(true);
               axios
                 .post(
-                  "https://lapland.syntlex.kg/crm/api/?method=exchange_tickets",
+                  "http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets",
                   {
                     tickets: tikets.map((t) => t.v),
                   }

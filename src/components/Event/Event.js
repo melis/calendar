@@ -3,19 +3,15 @@ import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
 
 const Event = ({ el, setBilet, bilet }) => {
-  const [img, setImg] = useState(el.img_url);
+  const [img, setImg] = useState("https://" + el.img_url);
   return (
     <div className="row ticket_item">
       <div className="col-lg-5">
         <div className="pbt_img">
           <img
-            src={`https://${img}`}
+            src={img}
             alt=""
-            onError={() =>
-              setImg(
-                "martialartsplusinc.com/wp-content/uploads/2017/04/default-image-620x600.jpg"
-              )
-            }
+            onError={() => setImg("./assets/images/default_img.jpg")}
           />
         </div>
       </div>

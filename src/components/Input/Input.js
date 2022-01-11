@@ -116,7 +116,7 @@ function SInput({
         }
         tick.push(values.textmask.replace(/\s/g, ""));
         axios
-          .post("https://lapland.syntlex.kg/crm/api/?method=check_tickets", {
+          .post("http://tickets.laplandzap.ru/crm/api/?method=check_tickets", {
             tickets: tick,
           })
           .then(({ data }) => {
