@@ -86,13 +86,14 @@ const Calendar = ({
     highlightedDays.forEach((e) => {
       if (
         Date.parse(d) >=
-        Date.parse(
-          new Date(
-            new Date().getFullYear(),
-            new Date().getMonth(),
-            new Date().getDate()
-          )
-        )
+          Date.parse(
+            new Date(
+              new Date().getFullYear(),
+              new Date().getMonth(),
+              new Date().getDate()
+            )
+          ) &&
+        d.getDate() === new Date(e.date).getDate()
       ) {
         a = false;
       }
