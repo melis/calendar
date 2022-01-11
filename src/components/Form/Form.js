@@ -74,8 +74,8 @@ const Form = ({ bilet, setAfter }) => {
           order,
         })
         .then(({ data }) => {
+          console.log("data", data);
           if (data.status) {
-            // window.location.href = data.msg;
             setAfter(data);
           } else {
             throw data;
