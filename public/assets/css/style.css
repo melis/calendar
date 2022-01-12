@@ -582,7 +582,13 @@ section.allert .content_block {
 }
 
 .btn_link.buy_ticket {
-  margin: 45px auto;
+  /* margin: 45px auto; */
+}
+
+.accept_block {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
 }
 
 .btn_link:hover {
@@ -600,8 +606,18 @@ section.allert .content_block {
 
 .buy_ticket.st_1.st_2,
 .buy_ticket2.st_2 {
-  color: #ffffff;
+  color: #007db5;
+  /* background: #d76729; */
+  background-color: #fff;
+  border: 1px solid #007db5;
+}
+
+.buy_ticket.st_1.st_2:hover,
+.buy_ticket2.st_2:hover {
+  color: #fff;
   background: #d76729;
+
+  border: 1px solid #d76729;
 }
 
 .head_page {

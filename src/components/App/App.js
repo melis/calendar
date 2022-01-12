@@ -131,10 +131,8 @@ const App = () => {
       <div className="container">
         <div className="row">
           <div className="accept_block">
-            <div className="check_block"></div>
-
             <a
-              href="https://www.google.ru/"
+              href="http://tickets.laplandzap.ru/return_ticket.html"
               className={`btn_link buy_ticket buy_ticket2 ${
                 chek ? "st_2" : ""
               }`}
@@ -144,7 +142,21 @@ const App = () => {
                 }
               }}
             >
-              Продолжить
+              Вернуть билет
+            </a>
+
+            <a
+              href="http://tickets.laplandzap.ru/ticket_exchange.html"
+              className={`btn_link buy_ticket buy_ticket2 ${
+                chek ? "st_2" : ""
+              }`}
+              onClick={(e) => {
+                if (!chek) {
+                  e.preventDefault();
+                }
+              }}
+            >
+              Обменять билет
             </a>
           </div>
         </div>
