@@ -582,7 +582,11 @@ section.allert .content_block {
 }
 
 .btn_link.buy_ticket {
-  /* margin: 45px auto; */
+  margin: 45px auto;
+}
+
+.accept_block_2 .btn_link.buy_ticket {
+  margin: 0;
 }
 
 .accept_block_2 {
@@ -1621,4 +1625,23 @@ button:focus {
   background-image: url(../images/modal_2.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+.link_to_back img{
+  width: 26px;
+  margin-right: 24px;
+}
+.breadcrumb-item a.link_to_back{
+  display: flex;
+  align-items: center;
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  text-transform: uppercase;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #007DB5;
+}
+.breadcrumb.kar{
+  margin-bottom: 60px;
 }
