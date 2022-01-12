@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const App = () => {
-  const [show, setShow] = useState(3);
+  const [show, setShow] = useState(0);
   const [chek1, setChek1] = useState(false);
   const [chek2, setChek2] = useState(false);
   return (
