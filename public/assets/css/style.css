@@ -589,19 +589,14 @@ section.allert .content_block {
   margin: 0;
 }
 
-.accept_block_2 {
-  display: flex;
-  gap: 40px;
-  justify-content: center;
-}
-
 .btn_link:hover {
   color: #ffffff;
 }
 
-.check_block {
-  max-width: 960px;
-  margin: 0 auto;
+.accept_block_2 {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
 }
 
 .footer_logo {
@@ -785,6 +780,7 @@ input.input_date {
 }
 .loading_img {
   margin: 15px;
+  width: 70px;
 }
 .pbt_r_b_item {
   display: flex;
@@ -1615,6 +1611,7 @@ button:focus {
   color: #212121;
   margin-bottom: 25px;
 }
+
 .purchase_modal {
   background-image: url(../images/modal.jpg);
   background-repeat: no-repeat;
@@ -1626,11 +1623,11 @@ button:focus {
   background-repeat: no-repeat;
   background-size: cover;
 }
-.link_to_back img{
+.link_to_back img {
   width: 26px;
   margin-right: 24px;
 }
-.breadcrumb-item a.link_to_back{
+.breadcrumb-item a.link_to_back {
   display: flex;
   align-items: center;
   font-family: Raleway;
@@ -1639,9 +1636,9 @@ button:focus {
   font-size: 18px;
   line-height: 21px;
   text-transform: uppercase;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-  color: #007DB5;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #007db5;
 }
-.breadcrumb.kar{
+.breadcrumb.kar {
   margin-bottom: 60px;
 }
