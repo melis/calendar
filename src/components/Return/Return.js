@@ -276,7 +276,7 @@ function Return(props) {
               type="text"
               className="form-control"
               id="bank_bik"
-              placeholder="Введимте БИК банка"
+              placeholder="Введите БИК банка"
               style={errors?.bank_bik && { border: "2px solid red" }}
               {...register("bank_bik", {
                 required: "Поле обязательно к заполнению",
@@ -322,12 +322,12 @@ function Return(props) {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="receiver">ФИО получателя*</label>
+            <label htmlFor="receiver">Ф. И. О. получателя*</label>
             <input
               type="text"
               className="form-control"
               id="receiver"
-              placeholder="Введите ФИО получателя"
+              placeholder="Введите Ф. И. О. получателя"
               style={errors?.receiver && { border: "2px solid red" }}
               {...register("receiver", {
                 required: "Поле обязательно к заполнению",
