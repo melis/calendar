@@ -6,7 +6,7 @@ const Select = ({ val, setVal }) => {
   const [active, setActive] = useState(false);
   useEffect(() => {
     axios
-      .get("https://lapland.syntlex.kg/crm/api/?method=get_product_reasons")
+      .get("http://tickets.laplandzap.ru/crm/api/?method=get_product_reasons")
       .then(({ data }) => {
         setReasons(data);
       });
