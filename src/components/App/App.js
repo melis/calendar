@@ -99,7 +99,7 @@ const App = ({ data, exChTickets, setAfter }) => {
                           type: "1",
                           title: "Самостоятельное посещение заповедника",
                           price: { base: 450, child: 400, pref: 0 },
-                          date: "Бессрочный билет на год",
+                          date: "Разовое посещение в течение года с момента покупки билета",
                         });
                         setWarn(true);
                       } else {
