@@ -280,7 +280,8 @@ const Form = ({ bilet, setAfter }) => {
                   })}
                 />
                 <label className="form-check-label" htmlFor="accept">
-                  Согласен на обработку <a href="/">персональных данных</a>
+                  Согласен на обработку{" "}
+                  <a href=" /privacy-policy">персональных данных</a>
                 </label>
               </div>
               <div className="invalid-feedback">

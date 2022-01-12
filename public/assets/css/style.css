@@ -765,6 +765,7 @@ input.input_date {
 }
 .loading_img {
   margin: 15px;
+  width: 70px;
 }
 .pbt_r_b_item {
   display: flex;

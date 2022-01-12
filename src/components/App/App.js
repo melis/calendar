@@ -67,8 +67,7 @@ const App = () => {
                     e.preventDefault();
 
                     setAfter(false);
-                    window.location.href =
-                      "http://laplandzap.ru/before-the-trip";
+                    window.location.href = "/before-the-trip";
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
@@ -136,7 +135,7 @@ const App = () => {
                           type: "1",
                           title: "Самостоятельное посещение заповедника",
                           price: { base: 450, child: 400, pref: 0 },
-                          date: "Бессрочный билет на год",
+                          date: "Разовое посещение в течение года с момента покупки билета",
                         });
                         setWarn(true);
                       } else {
