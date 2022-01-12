@@ -582,7 +582,13 @@ section.allert .content_block {
 }
 
 .btn_link.buy_ticket {
-  margin: 45px auto;
+  /* margin: 45px auto; */
+}
+
+.accept_block_2 {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
 }
 
 .btn_link:hover {
@@ -600,8 +606,18 @@ section.allert .content_block {
 
 .buy_ticket.st_1.st_2,
 .buy_ticket2.st_2 {
-  color: #ffffff;
+  color: #007db5;
+  /* background: #d76729; */
+  background-color: #fff;
+  border: 1px solid #007db5;
+}
+
+.buy_ticket.st_1.st_2:hover,
+.buy_ticket2.st_2:hover {
+  color: #fff;
   background: #d76729;
+
+  border: 1px solid #d76729;
 }
 
 .head_page {
@@ -1543,7 +1559,7 @@ button:focus {
   display: inline-block;
   width: 20px;
 }
-.modal_body{
+.modal_body {
   position: fixed;
   width: 100%;
   height: 100vh;
@@ -1552,8 +1568,8 @@ button:focus {
   justify-content: center;
   z-index: 9;
 }
-.modal_body:before{
-  background: #005D90;
+.modal_body:before {
+  background: #005d90;
   opacity: 0.4;
   width: 100%;
   height: 100%;
@@ -1562,21 +1578,21 @@ button:focus {
   left: 0;
   content: "";
 }
-.modal_content{
+.modal_content {
   width: 600px;
   position: relative;
-  background: #FFF9ED;
+  background: #fff9ed;
   border-radius: 20px;
   padding: 28px 90px 3px 30px;
 }
-.modal_close{
+.modal_close {
   position: absolute;
   top: 26px;
   right: 26px;
   width: 30px;
   height: 30px;
 }
-.modal_title{
+.modal_title {
   /*font-family: Iskra;*/
   font-family: Source Sans Pro;
   font-style: normal;
@@ -1586,7 +1602,7 @@ button:focus {
   color: #212121;
   margin-bottom: 25px;
 }
-.modal_text{
+.modal_text {
   font-family: Raleway;
   font-style: normal;
   font-weight: normal;
@@ -1594,4 +1610,15 @@ button:focus {
   line-height: 140%;
   color: #212121;
   margin-bottom: 25px;
+}
+.purchase_modal {
+  background-image: url(../images/modal.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.change_modal {
+  background-image: url(../images/modal_2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
