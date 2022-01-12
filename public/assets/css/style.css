@@ -582,10 +582,14 @@ section.allert .content_block {
 }
 
 .btn_link.buy_ticket {
-  /* margin: 45px auto; */
+  margin: 45px auto;
 }
 
-.accept_block {
+.accept_block_2 .btn_link.buy_ticket {
+  margin: 0;
+}
+
+.accept_block_2 {
   display: flex;
   gap: 40px;
   justify-content: center;

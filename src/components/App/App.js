@@ -130,7 +130,7 @@ const App = () => {
 
       <div className="container">
         <div className="row">
-          <div className="accept_block">
+          <div className="accept_block_2">
             <a
               href="http://tickets.laplandzap.ru/return_ticket.html"
               className={`btn_link buy_ticket buy_ticket2 ${
