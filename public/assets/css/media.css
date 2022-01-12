@@ -439,6 +439,9 @@
 }
 
 @media screen and (max-width: 425px) {
+  .breadcrumb.kar{
+    margin-bottom: 50px;
+  }
   .return_span1 {
     width: 100px;
   }
