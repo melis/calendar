@@ -24,12 +24,12 @@ const Event = ({ el, setBilet, bilet }) => {
                 alt=""
                 style={{ maxWidth: "36px" }}
               />
-              {el.type === "2" ? <p>{el.ageLimit}+</p> : null}
+              {el.type === "2" ? <p>{el.age_limit}+</p> : null}
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              {el.type === "2" ? (
-                <p>{el.proceed}</p>
+              {/* {el.type === "2" ? (
+                <p>{el.proceed} ч.</p>
               ) : (
                 <p>
                   {format(new Date(el.date), "d MMMM yyyy", {
@@ -38,7 +38,8 @@ const Event = ({ el, setBilet, bilet }) => {
 
                   {el.time[0] ? ", " + el.time.join() : ""}
                 </p>
-              )}
+              )} */}
+              <p>{el.proceed} ч.</p>
             </div>
             {el.type === "2" ? (
               <>
