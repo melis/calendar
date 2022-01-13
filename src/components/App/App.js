@@ -65,9 +65,9 @@ const App = () => {
                   className="modal_close"
                   onClick={(e) => {
                     e.preventDefault();
-
                     setAfter(false);
-                    window.location.href = "/before-the-trip";
+                    setBilet(null);
+                    // window.location.href = "/before-the-trip";
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
@@ -79,8 +79,8 @@ const App = () => {
                     заказа.
                   </div>
                   <div className="modal_text">
-                    На этой странице вы можете посмотреть наши рекомендации
-                    перед поездкой.
+                    <a href="/before-the-trip">На этой странице</a>
+                    вы можете посмотреть наши рекомендации перед поездкой.
                   </div>
                 </div>
               </div>
