@@ -268,7 +268,10 @@ const App = () => {
                     className="form-check-label"
                     htmlFor="flexCheckDefault1"
                   >
-                    С <a href="/visiting-rules ">правилами посещения</a>{" "}
+                    С{" "}
+                    <a href="http://laplandzap.ru/visiting-rules">
+                      правилами посещения
+                    </a>{" "}
                     ознакомлен(а)
                   </label>
                 </div>
