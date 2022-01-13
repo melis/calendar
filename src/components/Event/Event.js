@@ -48,7 +48,7 @@ const Event = ({ el, setBilet, bilet }) => {
                 </div>
                 <div className="pbt_r_b_item">
                   <img src="./assets/images/icons/icon_travel.svg" alt="" />
-                  <p>{el.transport}</p>
+                  <p>{el.transport ? el.transport : "Пеший"}</p>
                 </div>
                 <div className="pbt_r_b_item">
                   <p>{el.count} чел</p>
