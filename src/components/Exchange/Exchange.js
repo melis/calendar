@@ -67,7 +67,9 @@ function Exchange({ tickets, setTickets, loading }) {
 
           <label className="form-check-label h-jyt" htmlFor="flexCheckaccept">
             Согласен на обработку{" "}
-            <a href="/privacy-policy">персональных данных</a>
+            <a href="http://laplandzap.ru/privacy-policy">
+              персональных данных
+            </a>
           </label>
         </div>
       </div>
