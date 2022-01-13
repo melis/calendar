@@ -53,7 +53,7 @@ const TextMaskCustom = React.forwardRef(function TextMaskCustom(props, ref) {
   return (
     <IMaskInput
       {...other}
-      mask="0000 0000 0000 0000"
+      mask="000 000"
       definitions={{
         "#": /[1-9]/,
       }}
@@ -88,7 +88,7 @@ function SInput({
   };
 
   useEffect(() => {
-    if (values.textmask.length === 19) {
+    if (values.textmask.length === 7) {
       let l = false;
       tickets.forEach((t) => {
         if (t.v === values.textmask.replace(/\s/g, "")) {
@@ -103,7 +103,7 @@ function SInput({
         setEr(false);
 
         axios
-          .post("https://lapland.syntlex.kg/crm/api/?method=check_tickets", {
+          .post("http://tickets.laplandzap.ru/crm/api/?method=check_tickets", {
             tickets: [values.textmask.replace(/\s/g, "")],
           })
           .then(({ data }) => {
