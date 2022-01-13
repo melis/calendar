@@ -36,6 +36,7 @@ function Cansel(props) {
                     e.preventDefault();
                     setAfter(false);
                     setTikets([]);
+                    window.location.href = "/before-the-trip";
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
