@@ -281,7 +281,9 @@ const Form = ({ bilet, setAfter }) => {
                 />
                 <label className="form-check-label" htmlFor="accept">
                   Согласен на обработку{" "}
-                  <a href=" /privacy-policy">персональных данных</a>
+                  <a href=" http://laplandzap.ru/privacy-policy">
+                    персональных данных
+                  </a>
                 </label>
               </div>
               <div className="invalid-feedback">
