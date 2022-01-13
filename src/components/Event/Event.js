@@ -31,7 +31,7 @@ const Event = ({ el, setBilet, bilet }) => {
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              {el.type === "2" ? (
+              {/* {el.type === "2" ? (
                 <p>{el.proceed} ч.</p>
               ) : (
                 <p>
@@ -41,7 +41,8 @@ const Event = ({ el, setBilet, bilet }) => {
 
                   {el.time[0] ? ", " + el.time.join() : ""}
                 </p>
-              )}
+              )} */}
+              <p>{el.proceed} ч.</p>
             </div>
             {el.type === "2" ? (
               <>
