@@ -25,7 +25,9 @@ const Event = ({ el, setBilet, bilet }) => {
                 alt=""
                 style={{ maxWidth: "36px" }}
               />
-              {el.type === "2" ? <p>{el.ageLimit ? el.ageLimit : 0}+</p> : null}
+              {el.type === "2" ? (
+                <p>{el.age_limit ? el.age_limit : 0}+</p>
+              ) : null}
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
@@ -33,7 +35,7 @@ const Event = ({ el, setBilet, bilet }) => {
                 <p>{el.proceed} ч.</p>
               ) : (
                 <p>
-                  {format(new Date(el.date), "d MMMM", {
+                  {format(new Date(el.date), "d MMMM yyyy", {
                     locale: ruLocale,
                   })}
                 </p>

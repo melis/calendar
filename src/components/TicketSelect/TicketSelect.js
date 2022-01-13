@@ -27,7 +27,7 @@ const TicketSelect = ({ bilet, setBilet, setAfter }) => {
               <h4>{`${
                 bilet?.type === "1"
                   ? bilet.date
-                  : format(new Date(bilet.date), "d MMMM", {
+                  : format(new Date(bilet.date), "d MMMM yyyy", {
                       locale: ruLocale,
                     })
               } ${bilet.selectTime ? "в " + bilet.selectTime : ""}`}</h4>

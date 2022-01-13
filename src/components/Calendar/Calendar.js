@@ -158,6 +158,7 @@ const Calendar = ({
       signal: controller.signal,
     })
       .then((data) => {
+        console.log(data);
         setHighlightedDays(data);
         setIsLoading(false);
       })
