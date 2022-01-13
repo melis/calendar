@@ -226,7 +226,10 @@ const Form = ({ bilet }) => {
                   })}
                 />
                 <label className="form-check-label" htmlFor="accept">
-                  Согласен на обработку <a href="/">персональных данных</a>
+                  Согласен на обработку{" "}
+                  <a href="http://laplandzap.ru/privacy-policy">
+                    персональных данных
+                  </a>
                 </label>
               </div>
               <div className="invalid-feedback">
