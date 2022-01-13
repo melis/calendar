@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
 
 const Event = ({ el, setBilet, bilet }) => {
-  const [img, setImg] = useState("https://" + el.img_url);
+  const [img, setImg] = useState("http://" + el.img_url);
   return (
     <div className="row ticket_item">
       <div className="col-lg-5">
