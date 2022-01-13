@@ -67,7 +67,7 @@ const App = () => {
                     e.preventDefault();
                     setAfter(false);
                     setBilet(null);
-                    // window.location.href = "/before-the-trip";
+                    window.location.href = "/before-the-trip";
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />

@@ -38,6 +38,8 @@ const Event = ({ el, setBilet, bilet }) => {
                   {format(new Date(el.date), "d MMMM yyyy", {
                     locale: ruLocale,
                   })}
+
+                  {el.time[0] ? ", " + el.time.join() : ""}
                 </p>
               )}
             </div>
