@@ -42,7 +42,7 @@ function Return(props) {
       axios
         .post("https://lapland.syntlex.kg/crm/api/?method=refund_tickets", {
           user,
-          tickets: tickets.map((t) => t.v),
+          tickets: tickets.filter((t) => t.v).map((t) => t.v),
         })
         .then(({ data }) => {
           setAfter(data);
