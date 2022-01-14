@@ -79,21 +79,34 @@ const Calendar = ({
   const disableDays = (d) => {
     let a = true;
 
-    highlightedDays.forEach((e) => {
-      if (
-        Date.parse(d) >=
-          Date.parse(
-            new Date(
-              new Date().getFullYear(),
-              new Date().getMonth(),
-              new Date().getDate()
-            )
-          ) &&
-        d.getDate() === new Date(e.date).getDate()
-      ) {
-        a = false;
-      }
-    });
+    if (
+      Date.parse(d) >=
+      Date.parse(
+        new Date(
+          new Date().getFullYear(),
+          new Date().getMonth(),
+          new Date().getDate()
+        )
+      )
+    ) {
+      a = false;
+    }
+
+    // highlightedDays.forEach((e) => {
+    //   if (
+    //     Date.parse(d) >=
+    //       Date.parse(
+    //         new Date(
+    //           new Date().getFullYear(),
+    //           new Date().getMonth(),
+    //           new Date().getDate()
+    //         )
+    //       ) &&
+    //     d.getDate() === new Date(e.date).getDate()
+    //   ) {
+    //     a = false;
+    //   }
+    // });
     return a;
   };
   React.useEffect(() => {
