@@ -14,21 +14,24 @@ function Exchange(props) {
   const [after, setAfter] = useState(false);
 
   useEffect(() => {
+    let xArr = [];
     let l = false;
     tikets.forEach((t) => {
       if (!t.v) {
         l = true;
+      } else {
+        xArr.push(t.v);
       }
     });
-    if (!tikets.length || l) {
+    if (!tikets.length) {
       setData(null);
       l = true;
     }
     setBtn(l);
-    if (data && !l) {
+    if (data) {
       axios
         .post("http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets", {
-          tickets: tikets.map((t) => t.v),
+          tickets: xArr,
         })
         .then(({ data }) => {
           if (data.status === false) {
