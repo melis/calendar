@@ -66,6 +66,7 @@ function Return(props) {
                     e.preventDefault();
                     setAfter(false);
                     setTickets([]);
+                    window.location.href = "http://laplandzap.ru/";
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
