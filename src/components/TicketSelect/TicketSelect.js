@@ -9,10 +9,13 @@ const TicketSelect = ({ bilet, setBilet, data, exChTickets, setAfter }) => {
       <div className="blue_bg">
         <div className="container">
           <div className="row">
-            <div className="col-lg-8">
+            <div className={bilet?.type === "1" ? "col-lg-7" : "col-lg-8"}>
               <h3>{bilet.title}</h3>
             </div>
-            <div className="col-lg-4">
+            <div
+              className={bilet?.type === "1" ? "col-lg-5" : "col-lg-4"}
+              style={bilet?.type === "1" ? { maxWidth: "480px" } : {}}
+            >
               {bilet.type !== "1" ? (
                 <div className="ticket_close">
                   <img
