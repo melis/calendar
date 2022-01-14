@@ -9,7 +9,7 @@ function Cansel(props) {
   const [ready, setReady] = useState(true);
   const [loading, setLoading] = useState(false);
   const [after, setAfter] = useState();
-
+  console.log(tikets);
   useEffect(() => {
     let a = false;
     tikets.forEach((el) => {
