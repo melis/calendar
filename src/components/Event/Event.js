@@ -55,7 +55,7 @@ const Event = ({ el, setBilet, bilet }) => {
                   <p>{el.transport ? el.transport : "Пеший"}</p>
                 </div>
                 <div className="pbt_r_b_item">
-                  <p>{el.count} чел</p>
+                  <p>{el.count} чел.</p>
                 </div>
               </>
             ) : null}
