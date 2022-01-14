@@ -93,6 +93,7 @@ const Event = ({ el, setBilet, bilet }) => {
               <button
                 className="btn_link chose"
                 onClick={() => {
+                  console.log(el);
                   setBilet(el);
                 }}
               >
