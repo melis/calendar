@@ -40,7 +40,10 @@ function Exchange(props) {
 
           setData(data);
         })
-        .catch((e) => console.log("error", e))
+        .catch((e) => {
+          console.log("error", e);
+          setData(null);
+        })
         .finally((e) => setLoading(false));
     }
   }, [tikets]);
@@ -158,7 +161,7 @@ function Exchange(props) {
       {data && (
         <App
           data={data}
-          exChTickets={tikets.map((t) => t.v)}
+          exChTickets={tikets.filter((t) => t.v).map((t) => t.v)}
           setAfter={setAfter}
         />
       )}
