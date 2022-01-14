@@ -20,13 +20,12 @@ function Exchange(props) {
         l = true;
       }
     });
-    if (!tikets.length) {
+    if (!tikets.length || l) {
       setData(null);
       l = true;
     }
     setBtn(l);
     if (data && !l) {
-      console.log(tikets);
       axios
         .post("http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets", {
           tickets: tikets.map((t) => t.v),

@@ -6,6 +6,7 @@ import axios from "axios";
 import LinearProgress from "@mui/material/LinearProgress";
 
 const TInput = ({ t, setTikets, index, tickets }) => {
+  console.log(tickets);
   const [er, setEr] = useState(false);
   const [find, setFind] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -85,10 +86,24 @@ function SInput({
       ...values,
       [event.target.name]: event.target.value,
     });
+    setFind(false);
+    setTikets((arr) => {
+      let newArr = [...arr];
+      newArr.forEach((e, i) => {
+        if (e.id === t.id) {
+          newArr[i] = {
+            ...newArr[i],
+            v: "",
+          };
+        }
+      });
+      return newArr;
+    });
   };
 
   useEffect(() => {
     if (values.textmask.length === 7) {
+      console.log(values.textmask);
       let l = false;
       tickets.forEach((t) => {
         if (t.v === values.textmask.replace(/\s/g, "")) {
@@ -158,7 +173,7 @@ function SInput({
   return (
     <Input
       disabled={loading}
-      readOnly={find}
+      // readOnly={find}
       placeholder="Введите номер билета"
       value={values.textmask}
       onChange={handleChange}
