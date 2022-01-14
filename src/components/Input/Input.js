@@ -85,6 +85,19 @@ function SInput({
       ...values,
       [event.target.name]: event.target.value,
     });
+    setFind(false);
+    setTickets((arr) => {
+      let newArr = [...arr];
+      newArr.forEach((e, i) => {
+        if (e.id === t.id) {
+          newArr[i] = {
+            ...newArr[i],
+            v: "",
+          };
+        }
+      });
+      return newArr;
+    });
   };
 
   useEffect(() => {
@@ -141,7 +154,7 @@ function SInput({
   return (
     <Input
       disabled={loading}
-      readOnly={find}
+      // readOnly={find}
       placeholder="Введите номер билета"
       value={values.textmask}
       onChange={handleChange}

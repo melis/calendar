@@ -19,6 +19,7 @@ function Return(props) {
   const [loading, setLoading] = useState(false);
   const [after, setAfter] = useState();
   const reasRef = useRef();
+  console.log(tickets);
 
   const onSubmit = (x) => {
     if (reason.id > 0) {
