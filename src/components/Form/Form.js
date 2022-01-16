@@ -99,7 +99,7 @@ const Form = ({ bilet, setAfter }) => {
 
           setEr(newArr);
         })
-        .finally((a) => setLoding(false));
+        .finally((a) => setTickets(null));
     }
   };
 
