@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 import { useNavigate } from "react-router-dom";
 
-const Form = ({ bilet }) => {
+const Form = ({ bilet, setAfter }) => {
   const { price } = bilet;
 
   const [summ, setSumm] = useState(0);
@@ -76,12 +76,18 @@ const Form = ({ bilet }) => {
         .then(({ data }) => {
           console.log("data", data);
           if (data.status) {
-            window.location.href = data.url;
+            if (data.url) {
+              window.location.href = data.url;
+            } else {
+              setLoding(false);
+              setAfter(data);
+            }
           } else {
             throw data;
           }
         })
         .catch((data) => {
+          setLoding(false);
           let newArr = [];
           if (Array.isArray(data)) {
             for (const [key, value] of Object.entries(data)) {
@@ -90,7 +96,7 @@ const Form = ({ bilet }) => {
               }
             }
           } else {
-            newArr.push(String(data));
+            newArr.push(data.msg);
           }
 
           setEr(newArr);
@@ -251,10 +257,6 @@ const Form = ({ bilet }) => {
                 placeholder="Например, Мончегорск"
                 {...register("place_of_residence", {
                   required: "Поле обязательно к заполнению",
-                  minLength: {
-                    value: 5,
-                    message: "Минимум 5 символов",
-                  },
                 })}
               />
               <div className="invalid-feedback">
