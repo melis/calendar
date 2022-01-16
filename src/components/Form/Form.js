@@ -68,9 +68,17 @@ const Form = ({ bilet, data, exChTickets, setAfter }) => {
           }
         )
         .then(({ data }) => {
-          setAfter(JSON.stringify(data));
+          if (data.status) {
+            if (data.url) {
+              window.location.href = data.url;
+            } else {
+              setAfter(JSON.stringify(data));
+            }
+          } else throw data;
         })
-        .finally((e) => setLoading(false));
+        .catch((e) => {
+          console.log(e);
+        });
     }
   };
 
