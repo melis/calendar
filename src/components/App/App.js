@@ -17,7 +17,7 @@ const App = () => {
   const url = useLocation();
   const [mem, setMem] = useState(url.search);
   const [isLoading, setIsLoading] = useState(false);
-  const [after, setAfter] = useState();
+
   const [err, setErr] = useState(null);
 
   const navigate = useNavigate();
@@ -56,41 +56,6 @@ const App = () => {
 
   return (
     <>
-      {after
-        ? ReactDOM.createPortal(
-            <div className="modal_body purchase_modal">
-              <div className="modal_content">
-                <a
-                  href="/"
-                  className="modal_close"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setAfter(false);
-                    setBilet(null);
-                    window.location.href =
-                      "http://laplandzap.ru/before-the-trip";
-                  }}
-                >
-                  <img src="./assets/images/icons/close_normal.svg" alt="" />
-                </a>
-                <div className="modal_title">Заказ успешно оплачен!</div>
-                <div>
-                  <div className="modal_text">
-                    Мы отправили ваши билеты на почту, указанную при оформлении
-                    заказа.
-                  </div>
-                  <div className="modal_text">
-                    <a href="http://laplandzap.ru/before-the-trip">
-                      На этой странице
-                    </a>{" "}
-                    вы можете посмотреть наши рекомендации перед поездкой.
-                  </div>
-                </div>
-              </div>
-            </div>,
-            document.getElementById("modal")
-          )
-        : null}
       <div className="container content_container" ref={bRef}>
         <div className="row">
           <div className="col-lg-5">
@@ -231,7 +196,7 @@ const App = () => {
       </div>
       {bilet ? (
         <div ref={Sref}>
-          <TicketSelect bilet={bilet} setBilet={setBilet} setAfter={setAfter} />
+          <TicketSelect bilet={bilet} setBilet={setBilet} />
         </div>
       ) : null}
     </>

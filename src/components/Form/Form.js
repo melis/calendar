@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
 import { useNavigate } from "react-router-dom";
 
-const Form = ({ bilet, setAfter }) => {
+const Form = ({ bilet }) => {
   const { price } = bilet;
 
   const [summ, setSumm] = useState(0);
@@ -76,16 +76,12 @@ const Form = ({ bilet, setAfter }) => {
         .then(({ data }) => {
           console.log("data", data);
           if (data.status) {
-            // setAfter(data);
-
             window.location.href = data.url;
           } else {
             throw data;
           }
         })
         .catch((data) => {
-          console.log(data);
-
           let newArr = [];
           if (Array.isArray(data)) {
             for (const [key, value] of Object.entries(data)) {
@@ -98,8 +94,7 @@ const Form = ({ bilet, setAfter }) => {
           }
 
           setEr(newArr);
-        })
-        .finally((a) => setTickets(null));
+        });
     }
   };
 
