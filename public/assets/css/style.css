@@ -780,7 +780,7 @@ input.input_date {
 }
 .loading_img {
   margin: 15px;
-  width: 70px;
+  width: 100px;
 }
 .pbt_r_b_item {
   display: flex;
@@ -1641,4 +1641,101 @@ button:focus {
 }
 .breadcrumb.kar {
   margin-bottom: 60px;
+}
+.accept_block_2 {
+  margin-top: 35px;
+}
+.accept_block_2 .btn_link.buy_ticket {
+  width: initial;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.error_page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url(../images/lapland_error.jpg) center no-repeat;
+  background-size: cover;
+}
+.error_block {
+  width: 560px;
+  background: #fff9ed;
+  border-radius: 20px;
+  position: relative;
+  padding: 40px 30px 10px;
+}
+.close_error {
+  position: absolute;
+  right: 26px;
+  top: 26px;
+  width: 26px;
+  height: 26px;
+}
+.close_error img {
+  width: 100%;
+}
+.error_block h2 {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 35px;
+  margin-bottom: 23px;
+  /* чёрный для сайта */
+
+  color: #212121;
+}
+.error_block p {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 140%;
+  margin-bottom: 20px;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #212121;
+}
+.error_block p.bot {
+  font-family: Raleway;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  font-feature-settings: "pnum" on, "lnum" on;
+  color: #212121;
+}
+.error_block p.bot a {
+  color: #007db5;
+}
+.error_block .komar {
+  position: absolute;
+  top: -91px;
+  left: 30px;
+  width: 100px;
+}
+.error_page:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #005d90;
+  opacity: 0.4;
+  top: 0;
+  left: 0;
+}
+.error_block h2.error_title{
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 120px;
+  line-height: 95%;
+  color: #D76729;
+  margin-bottom: 36px;
+  margin-top: 12px;
+}
+.p_link a{
+  color: #007db5;
 }

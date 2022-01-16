@@ -439,9 +439,27 @@
 }
 
 @media screen and (max-width: 425px) {
+  .error_block{
+    width: 90%;
+    padding: 40px 20px 10px;
+  }
+  .error_block .komar{
+    position: absolute;
+    top: -91px;
+    left: 20px;
+    width: 100px;
+  }
+  .close_error{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 20px;
+    height: 20px;
+  }
   .return_span1 {
     width: 100px;
   }
+
   .white_bird {
     display: none;
   }
