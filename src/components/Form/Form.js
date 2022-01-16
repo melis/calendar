@@ -46,7 +46,12 @@ const Form = ({ bilet, setAfter }) => {
   const onSubmit = (client) => {
     console.log(tickets);
 
-    if (!tickets) {
+    if (
+      !tickets ||
+      (tickets?.baseCount === 0 &&
+        tickets?.childCount === 0 &&
+        tickets?.pref?.prefCount === 0)
+    ) {
       setEr(["Вы не указали количество и тип билетов"]);
       return;
     }
