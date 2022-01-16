@@ -44,6 +44,12 @@ const Form = ({ bilet, setAfter }) => {
   }, [tickets, price, prefValid]);
 
   const onSubmit = (client) => {
+    console.log(tickets);
+
+    if (!tickets) {
+      setEr(["Вы не указали количество и тип билетов"]);
+      return;
+    }
     if (prefValid) {
       tRef.current.scrollIntoView();
     } else {
