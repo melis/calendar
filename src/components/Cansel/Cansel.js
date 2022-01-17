@@ -112,7 +112,7 @@ function Cansel(props) {
               setLoading(true);
               axios
                 .post(
-                  "https://lapland.syntlex.kg/crm/api/?method=cancel_tickets",
+                  "http://tickets.laplandzap.ru/crm/api/?method=cancel_tickets",
                   { tickets: tikets.map((t) => t.v) }
                 )
                 .then(({ data }) => {

@@ -15,7 +15,7 @@ function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
     axios
       .get(
-        `https://lapland.syntlex.kg/crm/api/?method=get_products&year=${getYear(
+        `http://tickets.laplandzap.ru/crm/api/?method=get_products&year=${getYear(
           new Date(date)
         )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
           getMonth(new Date(date)) + 1
