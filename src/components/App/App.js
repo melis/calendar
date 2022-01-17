@@ -5,7 +5,7 @@ import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-
+import axios from "axios";
 const App = () => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
@@ -19,9 +19,22 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [after, setAfter] = useState();
   const [err, setErr] = useState(null);
-
+  const [price, setPrice] = useState({ base: 450, child: 400, pref: 0 });
   const navigate = useNavigate();
 
+  useEffect(() => {
+    axios
+      .get(
+        "http://tickets.laplandzap.ru/crm/api/?method=get_product_independent"
+      )
+      .then(({ data }) => {
+        setPrice({
+          base: data.price_base,
+          child: data.price_child,
+          pref: data.price_pref,
+        });
+      });
+  }, []);
   useEffect(() => {
     const p = new URLSearchParams(url.search);
     const l = !!p.get("y");
@@ -137,7 +150,7 @@ const App = () => {
                         setBilet({
                           type: "1",
                           title: "Самостоятельное посещение заповедника",
-                          price: { base: 450, child: 400, pref: 0 },
+                          price,
                           date: "Разовое посещение в течение года с момента покупки билета",
                         });
                         setWarn(true);
