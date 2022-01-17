@@ -1435,6 +1435,9 @@ table.accordion {
   flex-direction: column;
   justify-content: space-between;
 }
+.blue_bg .col-lg-5 {
+  margin-left: auto;
+}
 input {
   outline: none;
 }
@@ -1726,16 +1729,16 @@ button:focus {
   top: 0;
   left: 0;
 }
-.error_block h2.error_title{
+.error_block h2.error_title {
   font-family: Source Sans Pro;
   font-style: normal;
   font-weight: bold;
   font-size: 120px;
   line-height: 95%;
-  color: #D76729;
+  color: #d76729;
   margin-bottom: 36px;
   margin-top: 12px;
 }
-.p_link a{
+.p_link a {
   color: #007db5;
 }
