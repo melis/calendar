@@ -116,11 +116,24 @@ function SInput({
         setLoading(true);
         setEr(false);
 
+        let tick = [];
+        let i = 0;
+        let v = "";
+        tickets.forEach((t) => {
+          if (t.v && i === 0) {
+            i++;
+            v = t.v;
+          }
+        });
+        if (v) {
+          tick.push(v);
+        }
+        tick.push(values.textmask.replace(/\s/g, ""));
         axios
           .post(
             "http://tickets.laplandzap.ru/crm/api/?method=check_tickets&type=cancel",
             {
-              tickets: [values.textmask.replace(/\s/g, "")],
+              tickets: tick,
             }
           )
           .then(({ data }) => {
