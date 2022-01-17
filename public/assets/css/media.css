@@ -27,6 +27,12 @@
   margin-bottom: 0px !important;
 }
 
+@media screen and (max-width: 991px) {
+  .footer_links.mm_h2 {
+    margin: 0;
+  }
+}
+
 @media screen and (max-width: 768px) {
   .mobile-none {
     display: none;
@@ -439,17 +445,17 @@
 }
 
 @media screen and (max-width: 425px) {
-  .error_block{
+  .error_block {
     width: 90%;
     padding: 40px 20px 10px;
   }
-  .error_block .komar{
+  .error_block .komar {
     position: absolute;
     top: -91px;
     left: 20px;
     width: 100px;
   }
-  .close_error{
+  .close_error {
     position: absolute;
     right: 20px;
     top: 20px;
@@ -1174,21 +1180,21 @@
   .db_none_br {
     display: block;
   }
-  .modal_content{
-      width: 90%;
-      padding: 15px 30px 3px 15px;
+  .modal_content {
+    width: 90%;
+    padding: 15px 30px 3px 15px;
   }
-    .modal_title{
-        font-size: 22px;
-        line-height: 24px;
-    }
-    .modal_close {
-        position: absolute;
-        top: 14px;
-        right: 14px;
-        width: 24px;
-        height: 24px;
-    }
+  .modal_title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+  .modal_close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 24px;
+    height: 24px;
+  }
 }
 
 @media screen and (max-width: 363px) {
