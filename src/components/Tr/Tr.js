@@ -22,7 +22,7 @@ const Tr = (props, ref) => {
 
   useEffect(() => {
     axios
-      .get("https://lapland.syntlex.kg/crm/api/?method=get_product_bonus")
+      .get("http://tickets.laplandzap.ru/crm/api/?method=get_product_bonus")
 
       .then(({ data }) => {
         console.log(data, "sasass");

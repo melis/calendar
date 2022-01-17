@@ -40,7 +40,7 @@ function Return(props) {
       };
       setLoading(true);
       axios
-        .post("https://lapland.syntlex.kg/crm/api/?method=refund_tickets", {
+        .post("http://tickets.laplandzap.ru/crm/api/?method=refund_tickets", {
           user,
           tickets: tickets.filter((t) => t.v).map((t) => t.v),
         })
