@@ -117,9 +117,12 @@ function SInput({
         setEr(false);
 
         axios
-          .post("http://tickets.laplandzap.ru/crm/api/?method=check_tickets", {
-            tickets: [values.textmask.replace(/\s/g, "")],
-          })
+          .post(
+            "http://tickets.laplandzap.ru/crm/api/?method=check_tickets&type=cancel",
+            {
+              tickets: [values.textmask.replace(/\s/g, "")],
+            }
+          )
           .then(({ data }) => {
             if (!data.status) {
               throw data;
