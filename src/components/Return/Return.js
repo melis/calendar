@@ -24,10 +24,10 @@ function Return(props) {
   const onSubmit = (x) => {
     if (reason.id > 0) {
       const user = {
-        customer_fio: `${x.surname} ${x.name}${
+        name: `${x.surname} ${x.name}${
           x.middle_name ? " " + x.middle_name : ""
         }`,
-        receiver_fio: x.receiver,
+        fio: x.receiver,
         phone: x.phone,
         email: x.email,
         date_buy_ticket: x.date,
