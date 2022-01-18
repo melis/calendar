@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import TInput from "../Input/Input";
 import App from "../App/App";
-import axios from "axios";
+
 import ReactDOM from "react-dom";
+import mApi from "../../api";
 
 function Exchange(props) {
   const [tikets, setTikets] = useState([{ id: 0, v: "" }]);
   const [ch, setCh] = useState(1);
-  // const [app, setApp] = useState(false);
+
   const [btn, setBtn] = useState(false);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
@@ -29,11 +30,9 @@ function Exchange(props) {
     }
     setBtn(l);
     if (data) {
-      axios
-        .post("http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets", {
-          tickets: xArr,
-        })
-        .then(({ data }) => {
+      mApi
+        .ticketsExchange(xArr)
+        .then((data) => {
           if (data.status === false) {
             throw data;
           }
@@ -61,8 +60,7 @@ function Exchange(props) {
                     e.preventDefault();
 
                     setAfter(false);
-                    window.location.href =
-                      "http://laplandzap.ru/before-the-trip";
+                    window.location.href = `${mApi.baseUrl}/before-the-trip`;
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
@@ -74,7 +72,7 @@ function Exchange(props) {
                     заказа.
                   </div>
                   <div className="modal_text">
-                    <a href="http://laplandzap.ru/before-the-trip">
+                    <a href={`${mApi.baseUrl}/before-the-trip`}>
                       На этой странице
                     </a>{" "}
                     вы можете посмотреть наши рекомендации перед поездкой.
@@ -131,14 +129,9 @@ function Exchange(props) {
             type="submit"
             onClick={() => {
               setLoading(true);
-              axios
-                .post(
-                  "http://tickets.laplandzap.ru/crm/api/?method=exchange_tickets",
-                  {
-                    tickets: tikets.map((t) => t.v),
-                  }
-                )
-                .then(({ data }) => {
+              mApi
+                .ticketsExchange(tikets.map((t) => t.v))
+                .then((data) => {
                   if (data.status === false) {
                     throw data;
                   }

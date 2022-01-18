@@ -4,7 +4,7 @@ import Event from "../Event/Event";
 import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import mApi from "../../api";
 
 const App = ({ data, exChTickets, setAfter }) => {
   const [list, setList] = useState([]);
@@ -21,17 +21,13 @@ const App = ({ data, exChTickets, setAfter }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(
-        "http://tickets.laplandzap.ru/crm/api/?method=get_product_independent"
-      )
-      .then(({ data }) => {
-        setPrice({
-          base: data.price_base,
-          child: data.price_child,
-          pref: data.price_pref,
-        });
+    mApi.getPrice().then((data) => {
+      setPrice({
+        base: data.price_base,
+        child: data.price_child,
+        pref: data.price_pref,
       });
+    });
   }, []);
   useEffect(() => {
     const p = new URLSearchParams(url.search);

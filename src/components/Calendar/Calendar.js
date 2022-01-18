@@ -8,32 +8,24 @@ import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getMonth, getYear } from "date-fns";
-import axios from "axios";
+
+import mApi from "../../api";
 
 function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
-    axios
-      .get(
-        `http://tickets.laplandzap.ru/crm/api/?method=get_products&year=${getYear(
-          new Date(date)
-        )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
-          getMonth(new Date(date)) + 1
-        }`
-      )
-      .then(({ data }) => {
-        let newArr = [];
-        if (!data) {
-          resolve(newArr);
-        }
-
-        for (const [key, value] of Object.entries(data)) {
-          data[key].price = JSON.parse(data[key].price);
-          newArr.push(value);
-        }
-
+    mApi.getEvents(date).then((data) => {
+      let newArr = [];
+      if (!data) {
         resolve(newArr);
-      });
+      }
+
+      for (const [key, value] of Object.entries(data)) {
+        data[key].price = JSON.parse(data[key].price);
+        newArr.push(value);
+      }
+
+      resolve(newArr);
+    });
 
     signal.onabort = () => {
       reject(new DOMException("aborted", "AbortError"));
@@ -92,21 +84,6 @@ const Calendar = ({
       a = false;
     }
 
-    // highlightedDays.forEach((e) => {
-    //   if (
-    //     Date.parse(d) >=
-    //       Date.parse(
-    //         new Date(
-    //           new Date().getFullYear(),
-    //           new Date().getMonth(),
-    //           new Date().getDate()
-    //         )
-    //       ) &&
-    //     d.getDate() === new Date(e.date).getDate()
-    //   ) {
-    //     a = false;
-    //   }
-    // });
     return a;
   };
   React.useEffect(() => {

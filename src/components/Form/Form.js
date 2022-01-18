@@ -1,8 +1,7 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-// import { useForm } from "react-hook-form";
-import Table from "../Table/Table";
 
+import Table from "../Table/Table";
+import mApi from "../../api";
 const Form = ({ bilet, data, exChTickets, setAfter }) => {
   const { price } = bilet;
 
@@ -59,15 +58,9 @@ const Form = ({ bilet, data, exChTickets, setAfter }) => {
         order_id: data.order_id,
       };
 
-      axios
-        .post(
-          "http://tickets.laplandzap.ru/crm/api/?method=update_and_add_tickets",
-          {
-            orders,
-            tickets: exChTickets,
-          }
-        )
-        .then(({ data }) => {
+      mApi
+        .ticketsUpdate(orders, exChTickets)
+        .then((data) => {
           if (data.status) {
             if (data.url) {
               window.location.href = data.url;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IMaskInput } from "react-imask";
 import Input from "@mui/material/Input";
 
-import axios from "axios";
+import mApi from "../../api";
 import LinearProgress from "@mui/material/LinearProgress";
 
 const TInput = ({ t, setTikets, index, tickets }) => {
@@ -130,11 +130,9 @@ function SInput({
           tick.push(v);
         }
         tick.push(values.textmask.replace(/\s/g, ""));
-        axios
-          .post("http://tickets.laplandzap.ru/crm/api/?method=check_tickets", {
-            tickets: tick,
-          })
-          .then(({ data }) => {
+        mApi
+          .chekTickets(tick)
+          .then((data) => {
             if (!data.status) {
               throw data;
             } else {
