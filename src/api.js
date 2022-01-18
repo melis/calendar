@@ -125,5 +125,21 @@ class Api {
       };
     }
   }
+  async refundTickets(user, tickets) {
+    try {
+      const { data } = await axios.post(
+        `${this.url}/crm/api/?method=refund_tickets`,
+        {
+          user,
+          tickets,
+        }
+      );
+      return data;
+    } catch (e) {
+      return {
+        error: e,
+      };
+    }
+  }
 }
 export default new Api();

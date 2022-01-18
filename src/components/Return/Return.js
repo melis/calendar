@@ -4,7 +4,7 @@ import ReturnTab from "../ReturnTab/ReturnTab";
 import Calendar from "../Calendar/Calendar";
 import { useForm } from "react-hook-form";
 import Select from "../Select/Select";
-import axios from "axios";
+import mApi from "../../api";
 import ReactDOM from "react-dom";
 
 function Return(props) {
@@ -39,12 +39,12 @@ function Return(props) {
         product_reason_id: reason.id,
       };
       setLoading(true);
-      axios
-        .post("http://tickets.laplandzap.ru/crm/api/?method=refund_tickets", {
+      mApi
+        .refundTickets(
           user,
-          tickets: tickets.filter((t) => t.v).map((t) => t.v),
-        })
-        .then(({ data }) => {
+          tickets.filter((t) => t.v).map((t) => t.v)
+        )
+        .then((data) => {
           setAfter(data);
         })
         .catch((e) => console.log(e))
@@ -67,7 +67,7 @@ function Return(props) {
                     e.preventDefault();
                     setAfter(false);
                     setTickets([]);
-                    window.location.href = "http://laplandzap.ru/";
+                    window.location.href = mApi.baseUrl;
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
