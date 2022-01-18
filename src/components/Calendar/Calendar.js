@@ -8,20 +8,14 @@ import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getMonth, getYear } from "date-fns";
-import axios from "axios";
-// http://tickets.laplandzap.ru
+
+import mApi from "../../api";
+
 function fethch(date, { signal }) {
   return new Promise((resolve, reject) => {
-    axios
-      .get(
-        `http://tickets.laplandzap.ru/crm/api/?method=get_products&year=${getYear(
-          new Date(date)
-        )}&month=${getMonth(new Date(date)) + 1 < 10 ? "0" : ""}${
-          getMonth(new Date(date)) + 1
-        }`
-      )
-      .then(({ data }) => {
+    mApi
+      .getEvents(date)
+      .then((data) => {
         let newArr = [];
         if (!data) {
           resolve(newArr);
@@ -169,7 +163,6 @@ const Calendar = ({
       signal: controller.signal,
     })
       .then((data) => {
-        console.log(data);
         setHighlightedDays(data);
         setIsLoading(false);
       })

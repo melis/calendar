@@ -5,7 +5,8 @@ import ListTab from "../ListTab/ListTab";
 import TicketSelect from "../TicketSelect/TicketSelect";
 import { useLocation, useNavigate } from "react-router-dom";
 import ReactDOM from "react-dom";
-import axios from "axios";
+
+import mApi from "../../api";
 const App = () => {
   const [list, setList] = useState([]);
   const [tab, setTab] = useState(null);
@@ -23,17 +24,13 @@ const App = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
-      .get(
-        "http://tickets.laplandzap.ru/crm/api/?method=get_product_independent"
-      )
-      .then(({ data }) => {
-        setPrice({
-          base: data.price_base,
-          child: data.price_child,
-          pref: data.price_pref,
-        });
+    mApi.getPrice().then((data) => {
+      setPrice({
+        base: data.price_base,
+        child: data.price_child,
+        pref: data.price_pref,
       });
+    });
   }, []);
   useEffect(() => {
     const p = new URLSearchParams(url.search);
@@ -80,8 +77,7 @@ const App = () => {
                     e.preventDefault();
                     setAfter(false);
                     setBilet(null);
-                    window.location.href =
-                      "http://laplandzap.ru/before-the-trip";
+                    window.location.href = `${mApi.baseUrl}/before-the-trip`;
                   }}
                 >
                   <img src="./assets/images/icons/close_normal.svg" alt="" />
@@ -93,7 +89,7 @@ const App = () => {
                     заказа.
                   </div>
                   <div className="modal_text">
-                    <a href="http://laplandzap.ru/before-the-trip">
+                    <a href={`${mApi.baseUrl}/before-the-trip`}>
                       На этой странице
                     </a>{" "}
                     вы можете посмотреть наши рекомендации перед поездкой.

@@ -1,7 +1,6 @@
-import axios from "axios";
 import React, { forwardRef, useEffect, useState } from "react";
 import Select from "../Select/Select";
-
+import mApi from "../../api";
 const Tr = (props, ref) => {
   const { bilet, setTickets, summ } = props;
   const { price } = bilet;
@@ -21,10 +20,9 @@ const Tr = (props, ref) => {
   }, [bilet]);
 
   useEffect(() => {
-    axios
-      .get("http://tickets.laplandzap.ru/crm/api/?method=get_product_bonus")
-
-      .then(({ data }) => {
+    mApi
+      .getLgotList()
+      .then((data) => {
         setLgots([...data]);
       })
       .catch((e) => setLgots([{ id: 0, name: "Error" }]));

@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
-import { useNavigate } from "react-router-dom";
+import mApi from "../../api";
 
 const Form = ({ bilet, setAfter }) => {
   const { price } = bilet;
@@ -13,7 +13,7 @@ const Form = ({ bilet, setAfter }) => {
   const tRef = useRef(null);
   const [loding, setLoding] = useState(false);
   const [er, setEr] = useState([]);
-  const navigate = useNavigate();
+
   const {
     register,
     formState: { errors, isValid },
@@ -80,12 +80,9 @@ const Form = ({ bilet, setAfter }) => {
       };
       setLoding(true);
       setEr([]);
-      axios
-        .post("http://tickets.laplandzap.ru/crm/api/?method=buy_tickets", {
-          order,
-        })
-        .then(({ data }) => {
-          console.log("data", data);
+      mApi
+        .byTickets(order)
+        .then((data) => {
           if (data.status) {
             if (data.url) {
               window.location.href = data.url;
@@ -291,7 +288,7 @@ const Form = ({ bilet, setAfter }) => {
                 />
                 <label className="form-check-label" htmlFor="accept">
                   Согласен на обработку{" "}
-                  <a href=" http://laplandzap.ru/privacy-policy">
+                  <a href={`${mApi.baseUrl}/privacy-policy`}>
                     персональных данных
                   </a>
                 </label>

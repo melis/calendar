@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { format } from "date-fns";
-import ruLocale from "date-fns/locale/ru";
 
 const Event = ({ el, setBilet, bilet }) => {
   const [img, setImg] = useState("http://" + el.img_url);
@@ -31,17 +29,7 @@ const Event = ({ el, setBilet, bilet }) => {
             </div>
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
-              {/* {el.type === "2" ? (
-                <p>{el.proceed} ч.</p>
-              ) : (
-                <p>
-                  {format(new Date(el.date), "d MMMM yyyy", {
-                    locale: ruLocale,
-                  })}
 
-                  {el.time[0] ? ", " + el.time.join() : ""}
-                </p>
-              )} */}
               <p>{el.proceed} ч.</p>
             </div>
             {el.type === "2" ? (
