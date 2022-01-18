@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getMonth, getYear } from "date-fns";
 class Api {
-  url = "";
+  url = "http://tickets.laplandzap.ru";
   baseUrl = "http://laplandzap.ru";
 
   async getPrice() {
@@ -53,7 +53,7 @@ class Api {
   async getLgotList() {
     try {
       const { data } = await axios.get(
-        "http://tickets.laplandzap.ru/crm/api/?method=get_product_bonus"
+        `${this.url}/crm/api/?method=get_product_bonus`
       );
       return data;
     } catch (e) {
