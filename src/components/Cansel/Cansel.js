@@ -1,4 +1,4 @@
-import axios from "axios";
+import mApi from "../../api";
 import React, { useEffect, useState } from "react";
 import TInput from "../Input/Input";
 import ReactDOM from "react-dom";
@@ -110,12 +110,9 @@ function Cansel(props) {
             type="submit"
             onClick={() => {
               setLoading(true);
-              axios
-                .post(
-                  "http://tickets.laplandzap.ru/crm/api/?method=cancel_tickets",
-                  { tickets: tikets.map((t) => t.v) }
-                )
-                .then(({ data }) => {
+              mApi
+                .canselTickets(tikets.map((t) => t.v))
+                .then((data) => {
                   setAfter(data);
                 })
                 .catch((e) => alert(e))
