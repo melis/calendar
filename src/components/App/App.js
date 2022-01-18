@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
-
+import React, { useRef, useState } from "react";
+import mApi from "../../api";
 const App = () => {
   const ref = useRef();
   const [chek, setChek] = useState(false);
@@ -132,7 +132,7 @@ const App = () => {
         <div className="row">
           <div className="accept_block_2">
             <a
-              href="http://tickets.laplandzap.ru/return_ticket.html"
+              href={`${mApi.url}/return_ticket.html`}
               className={`btn_link buy_ticket buy_ticket2 ${
                 chek ? "st_2" : ""
               }`}
@@ -146,7 +146,7 @@ const App = () => {
             </a>
 
             <a
-              href="http://tickets.laplandzap.ru/ticket_exchange.html"
+              href={`${mApi.url}/ticket_exchange.html`}
               className={`btn_link buy_ticket buy_ticket2 ${
                 chek ? "st_2" : ""
               }`}
