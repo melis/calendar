@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import mApi from "../../api";
 const App = () => {
   const [show, setShow] = useState(0);
   const [chek1, setChek1] = useState(false);
@@ -269,7 +269,7 @@ const App = () => {
                     htmlFor="flexCheckDefault1"
                   >
                     С{" "}
-                    <a href="http://laplandzap.ru/visiting-rules">
+                    <a href={`${mApi.baseUrl}/visiting-rules`}>
                       правилами посещения
                     </a>{" "}
                     ознакомлен(а)
