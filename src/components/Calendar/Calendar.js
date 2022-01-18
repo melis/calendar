@@ -7,7 +7,7 @@ import PickersDay from "@mui/lab/PickersDay";
 import DatePicker from "@mui/lab/DatePicker";
 import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
 import ruLocale from "date-fns/locale/ru";
-import data1 from "../../data";
+// import data1 from "../../data";
 import { getMonth, getYear } from "date-fns";
 import axios from "axios";
 
@@ -55,15 +55,7 @@ const Calendar = ({ setList, disabled, setWarn, setBilet, tab }) => {
     let a = true;
 
     highlightedDays.forEach((e) => {
-      // if (
-      //   e?.date &&
-      //   new Date(e.date).getDate() === d.getDate() &&
-      //   (new Date(e.date).getYear() < d.getYear() ||
-      //     d.getDate() >= new Date().getDate())
-      // ) {
-      //   a = false;
-      // }
-      if (Date.parse(e.date) > Date.parse(new Date())) {
+      if (Date.parse(d) > Date.parse(new Date())) {
         a = false;
       }
     });
