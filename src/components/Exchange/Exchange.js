@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TInput from "../Input/Input";
-// import App from "../App/App";
-
+import mApi from "../../api";
 function Exchange({ tickets, setTickets, loading }) {
   const [ch, setCh] = useState(1);
   const [ready, setReady] = useState(false);
@@ -67,9 +66,7 @@ function Exchange({ tickets, setTickets, loading }) {
 
           <label className="form-check-label h-jyt" htmlFor="flexCheckaccept">
             Согласен на обработку{" "}
-            <a href="http://laplandzap.ru/privacy-policy">
-              персональных данных
-            </a>
+            <a href={`${mApi.baseUrl}privacy-policy`}>персональных данных</a>
           </label>
         </div>
       </div>
