@@ -298,7 +298,7 @@ const App = () => {
             </div>
 
             <a
-              href="/purchase.html"
+              href="./purchase.html"
               className={`${
                 chek1 && chek2
                   ? "btn_link buy_ticket st_1 st_2"
