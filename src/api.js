@@ -62,6 +62,18 @@ class Api {
       };
     }
   }
+  async getReasons() {
+    try {
+      const { data } = await axios.get(
+        `${this.url}/crm/api/?method=get_product_reasons`
+      );
+      return data;
+    } catch (e) {
+      return {
+        error: e,
+      };
+    }
+  }
 
   async ticketsExchange(tickets) {
     try {

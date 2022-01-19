@@ -24,7 +24,7 @@ function ReturnTab(props) {
               type="button"
               className="btn_return btn_link"
               onClick={() => {
-                document.location.href = "/cancellation_of_tickets.html";
+                document.location.href = "./cancellation_of_tickets.html";
               }}
             >
               Отменить экскурсию

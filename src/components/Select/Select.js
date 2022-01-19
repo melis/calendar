@@ -1,15 +1,13 @@
-import axios from "axios";
+import mApi from "../../api";
 import React, { useEffect, useState } from "react";
 
 const Select = ({ val, setVal }) => {
   const [reasons, setReasons] = useState([]);
   const [active, setActive] = useState(false);
   useEffect(() => {
-    axios
-      .get("http://tickets.laplandzap.ru/crm/api/?method=get_product_reasons")
-      .then(({ data }) => {
-        setReasons(data);
-      });
+    mApi.getReasons().then((data) => {
+      setReasons(data);
+    });
   }, []);
 
   return (
