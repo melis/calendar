@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import Table from "../Table/Table";
@@ -99,6 +98,7 @@ const Form = ({ bilet, setAfter }) => {
           let newArr = [];
           if (Array.isArray(data)) {
             for (const [key, value] of Object.entries(data)) {
+              console.log(key);
               if (value) {
                 newArr.push(value);
               }
