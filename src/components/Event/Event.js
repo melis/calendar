@@ -57,34 +57,39 @@ const Event = ({ el, setBilet, bilet }) => {
               бесплатно.
             </p>
           </div>
-          <div className="btns">
-            {el.type === "2" ? (
-              el.time.map((time) => (
+          {Date.parse(el.date) <=
+          Date.parse(
+            `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`
+          ) ? (
+            <div className="btns">
+              {el.type === "2" ? (
+                el.time.map((time) => (
+                  <button
+                    className={`btn border_line ${
+                      bilet?.id === el.id && time === bilet.selectTime
+                        ? "active"
+                        : ""
+                    }`}
+                    key={time}
+                    onClick={() => {
+                      setBilet({ ...el, selectTime: time });
+                    }}
+                  >
+                    {time}
+                  </button>
+                ))
+              ) : (
                 <button
-                  className={`btn border_line ${
-                    bilet?.id === el.id && time === bilet.selectTime
-                      ? "active"
-                      : ""
-                  }`}
-                  key={time}
+                  className="btn_link chose"
                   onClick={() => {
-                    setBilet({ ...el, selectTime: time });
+                    setBilet(el);
                   }}
                 >
-                  {time}
+                  Выбрать
                 </button>
-              ))
-            ) : (
-              <button
-                className="btn_link chose"
-                onClick={() => {
-                  setBilet(el);
-                }}
-              >
-                Выбрать
-              </button>
-            )}
-          </div>
+              )}
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
