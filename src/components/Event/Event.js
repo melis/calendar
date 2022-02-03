@@ -57,9 +57,11 @@ const Event = ({ el, setBilet, bilet }) => {
               бесплатно.
             </p>
           </div>
-          {Date.parse(el.date) <=
+          {Date.parse(el.date) >=
           Date.parse(
-            `${new Date().getFullYear()}-${new Date().getMonth()}-${new Date().getDate()}`
+            `${new Date().getFullYear()}-${
+              new Date().getMonth() + 1
+            }-${new Date().getDate()}`
           ) ? (
             <div className="btns">
               {el.type === "2" ? (
