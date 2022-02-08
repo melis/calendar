@@ -72,7 +72,8 @@ const Event = ({ el, setBilet, bilet }) => {
                 el.time.map((time) => (
                   <button
                     className={`btn border_line ${
-                      bilet?.id === el.id && time === bilet.selectTime
+                      bilet?.product_session === el.product_session &&
+                      time === bilet.selectTime
                         ? "active"
                         : ""
                     }`}
