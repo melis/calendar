@@ -5,9 +5,12 @@ const Select = ({ val, setVal }) => {
   const [reasons, setReasons] = useState([]);
   const [active, setActive] = useState(false);
   useEffect(() => {
-    mApi.getReasons().then((data) => {
-      setReasons(data);
-    });
+    mApi
+      .getReasons()
+      .then((data) => {
+        setReasons(data);
+      })
+      .catch((e) => setReasons([]));
   }, []);
 
   return (

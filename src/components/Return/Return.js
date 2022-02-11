@@ -7,10 +7,10 @@ import Select from "../Select/Select";
 import mApi from "../../api";
 import ReactDOM from "react-dom";
 
-function Return(props) {
+function Return() {
   const {
     register,
-    formState: { errors, isValid },
+    formState: { errors },
     handleSubmit,
   } = useForm({ mode: "onChange" });
   const [date, setDate] = useState(new Date());
@@ -232,7 +232,7 @@ function Return(props) {
             </div>
           </div>
 
-          <div className="col-lg-4 form_item">
+          {/* <div className="col-lg-4 form_item">
             <label htmlFor="ret_summ">Сумма к возврату, руб.*</label>
 
             <input
@@ -253,7 +253,7 @@ function Return(props) {
               {errors?.return_summ &&
                 (errors?.return_summ?.message || "*Error")}
             </div>
-          </div>
+          </div> */}
 
           <div className="col-lg-4 form_item">
             <label htmlFor="bank_name">наименование банка*</label>

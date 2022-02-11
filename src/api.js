@@ -2,6 +2,7 @@ import axios from "axios";
 import { getMonth, getYear } from "date-fns";
 class Api {
   url = ".";
+  // url = "https://tickets.laplandzap.ru";
   baseUrl = "http://laplandzap.ru";
 
   async getPrice() {
