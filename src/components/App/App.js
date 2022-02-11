@@ -1,8 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import mApi from "../../api";
 const App = () => {
-  const ref = useRef();
   const [chek, setChek] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setChek(true);
+      setChek(false);
+    }, 0);
+  }, []);
 
   return (
     <>
@@ -110,10 +116,9 @@ const App = () => {
 
             <div className="form-check">
               <input
-                ref={ref}
                 className="form-check-input form-check-input3"
                 type="checkbox"
-                value={chek}
+                checked={chek}
                 id="flexCheckChecked"
                 onChange={(e) => {
                   setChek(e.target.checked);
