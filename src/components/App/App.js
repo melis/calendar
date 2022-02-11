@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+
 import mApi from "../../api";
 const App = () => {
   const [show, setShow] = useState(0);
   const [chek1, setChek1] = useState(false);
   const [chek2, setChek2] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setChek1(true);
+      setChek2(true);
+      setChek1(false);
+      setChek2(false);
+    }, 0);
+  }, []);
   return (
     <>
       <div className="container">

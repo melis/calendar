@@ -8,6 +8,7 @@
     "@mui/core": "latest",
     "@mui/lab": "latest",
     "@mui/material": "latest",
+    "axios": "^0.25.0",
     "date-fns": "latest",
     "react": "latest",
     "react-dom": "latest",
