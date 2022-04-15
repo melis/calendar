@@ -73,7 +73,7 @@ const Event = ({ el, setBilet, bilet }) => {
                   <button
                     className={`btn border_line ${
                       bilet?.product_session === el.product_session &&
-                      time === bilet.selectTime
+                      time === bilet?.selectTime
                         ? "active"
                         : ""
                     }`}
