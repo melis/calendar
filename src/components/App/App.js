@@ -134,36 +134,30 @@ const App = () => {
       </div>
 
       <div className="container">
-        <div className="row">
-          <div className="accept_block_2">
-            <a
-              href={`${mApi.url}/return_ticket.html`}
-              className={`btn_link buy_ticket buy_ticket2 ${
-                chek ? "st_2" : ""
-              }`}
-              onClick={(e) => {
-                if (!chek) {
-                  e.preventDefault();
-                }
-              }}
-            >
-              Вернуть билет
-            </a>
+        <div className="accept_block_2">
+          <a
+            href={`${mApi.url}/return_ticket.html`}
+            className={`btn_link buy_ticket buy_ticket2 ${chek ? "st_2" : ""}`}
+            onClick={(e) => {
+              if (!chek) {
+                e.preventDefault();
+              }
+            }}
+          >
+            Вернуть билет
+          </a>
 
-            <a
-              href={`${mApi.url}/ticket_exchange.html`}
-              className={`btn_link buy_ticket buy_ticket2 ${
-                chek ? "st_2" : ""
-              }`}
-              onClick={(e) => {
-                if (!chek) {
-                  e.preventDefault();
-                }
-              }}
-            >
-              Обменять билет
-            </a>
-          </div>
+          <a
+            href={`${mApi.url}/ticket_exchange.html`}
+            className={`btn_link buy_ticket buy_ticket2 ${chek ? "st_2" : ""}`}
+            onClick={(e) => {
+              if (!chek) {
+                e.preventDefault();
+              }
+            }}
+          >
+            Обменять билет
+          </a>
         </div>
       </div>
     </>
