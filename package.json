@@ -10,10 +10,10 @@
     "@mui/material": "latest",
     "axios": "^0.24.0",
     "date-fns": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-hook-form": "^7.20.5",
-    "react-router-dom": "^6.2.1",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "^4.0.3"
   },
   "scripts": {
