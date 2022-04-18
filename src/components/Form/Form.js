@@ -27,7 +27,7 @@ const Form = ({ bilet, setAfter }) => {
   useEffect(() => {
     if (tickets) {
       setSumm(
-        tickets.baseCount * price.base + tickets.childCount * price.child
+        tickets.baseCount * price?.base + tickets.childCount * price?.child
       );
     }
     if (tickets?.pref?.prefCount > 0) {
@@ -145,7 +145,7 @@ const Form = ({ bilet, setAfter }) => {
                   },
                   pattern: {
                     value: /^[a-zа-яё\s]+$/iu,
-                    message: "Не корректные данные",
+                    message: "Некорректные данные",
                   },
                 })}
                 placeholder="Введите имя"
@@ -171,7 +171,7 @@ const Form = ({ bilet, setAfter }) => {
                   },
                   pattern: {
                     value: /^[a-zа-яё\s]+$/iu,
-                    message: "Не корректные данные",
+                    message: "Некорректные данные",
                   },
                 })}
               />
@@ -180,7 +180,7 @@ const Form = ({ bilet, setAfter }) => {
               </div>
             </div>
             <div className="col-lg-4 form_item">
-              <label htmlFor="middle_name">Отчество*</label>
+              <label htmlFor="middle_name">Отчество</label>
               <input
                 style={errors?.middle_name && { border: "2px solid red" }}
                 type="text"
@@ -194,7 +194,7 @@ const Form = ({ bilet, setAfter }) => {
                   },
                   pattern: {
                     value: /^[a-zа-яё\s]+$/iu,
-                    message: "Не корректные данные",
+                    message: "Некорректные данные",
                   },
                 })}
               />
@@ -221,7 +221,7 @@ const Form = ({ bilet, setAfter }) => {
                   pattern: {
                     value:
                       /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/,
-                    message: "Не корректные данные",
+                    message: "Некорректные данные",
                   },
                 })}
               />
@@ -245,7 +245,7 @@ const Form = ({ bilet, setAfter }) => {
                   },
                   pattern: {
                     value: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
-                    message: "Не корректные данные",
+                    message: "Некорректные данные",
                   },
                 })}
               />

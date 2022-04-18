@@ -4,7 +4,6 @@ import { format } from "date-fns";
 import ruLocale from "date-fns/locale/ru";
 
 const TicketSelect = ({ bilet, setBilet, setAfter }) => {
-  console.log(bilet);
   return (
     <>
       <div className="blue_bg">
