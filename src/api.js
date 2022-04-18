@@ -68,6 +68,10 @@ class Api {
       const { data } = await axios.get(
         `${this.url}/crm/api/?method=get_product_reasons`
       );
+      console.log(data);
+      if (!Array.isArray(data)) {
+        throw new Error();
+      }
       return data;
     } catch (e) {
       return {
