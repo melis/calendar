@@ -115,7 +115,7 @@ function Return() {
                 },
                 pattern: {
                   value: /^[a-zа-яё\s]+$/iu,
-                  message: "Не корректные данные",
+                  message: "Некорректные данные данные",
                 },
               })}
             />
@@ -140,7 +140,7 @@ function Return() {
                 },
                 pattern: {
                   value: /^[a-zа-яё\s]+$/iu,
-                  message: "Не корректные данные",
+                  message: "Некорректные данные данные",
                 },
               })}
             />
@@ -150,7 +150,7 @@ function Return() {
           </div>
 
           <div className="col-lg-4 form_item">
-            <label htmlFor="middle_name">ваше Отчество*</label>
+            <label htmlFor="middle_name">ваше Отчество</label>
             <input
               type="text"
               className="form-control"
@@ -164,7 +164,7 @@ function Return() {
                 },
                 pattern: {
                   value: /^[a-zа-яё\s]+$/iu,
-                  message: "Не корректные данные",
+                  message: "Некорректные данные данные",
                 },
               })}
             />
@@ -191,7 +191,7 @@ function Return() {
                 pattern: {
                   value:
                     /^(\+)?(\(\d{2,3}\) ?\d|\d)(([ \-]?\d)|( ?\(\d{2,3}\) ?)){5,12}\d$/,
-                  message: "Не корректные данные",
+                  message: "Некорректные данные данные",
                 },
               })}
             />
@@ -216,7 +216,7 @@ function Return() {
                 },
                 pattern: {
                   value: /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/,
-                  message: "Не корректные данные",
+                  message: "Некорректные данные данные",
                 },
               })}
             />
@@ -245,7 +245,7 @@ function Return() {
                 required: "Поле обязательно к заполнению",
                 pattern: {
                   value: /^[0-9]+$/,
-                  message: "Не корректные данные",
+                  message: "Некорректные данные данные",
                 },
               })}
             />
