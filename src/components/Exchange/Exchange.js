@@ -13,6 +13,7 @@ function Exchange(props) {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [after, setAfter] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     let xArr = [];
@@ -45,6 +46,8 @@ function Exchange(props) {
         })
         .finally((e) => setLoading(false));
     }
+
+    setError(false);
   }, [tikets]);
 
   return (
@@ -122,7 +125,7 @@ function Exchange(props) {
             </button>
           </div>
         </div>
-        {!data && (
+        {!data && !error && (
           <button
             disabled={btn}
             className="btn_link chose m-auto"
@@ -132,19 +135,20 @@ function Exchange(props) {
               mApi
                 .ticketsExchange(tikets.map((t) => t.v))
                 .then((data) => {
-                  if (data.status === false) {
-                    throw data;
+                  if (data?.status === false) {
+                    throw new Error(data?.msg);
                   }
-                  console.log("knopka", data);
+
                   setData(data);
                 })
-                .catch((e) => console.log(e))
+                .catch((e) => setError(e.message))
                 .finally((e) => setLoading(false));
             }}
           >
             Обменять билеты
           </button>
         )}
+        {error && <p style={{ color: "red" }}>{error}</p>}
       </div>
       {loading ? (
         <div className="container">

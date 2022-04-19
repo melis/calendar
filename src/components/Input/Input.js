@@ -6,7 +6,6 @@ import mApi from "../../api";
 import LinearProgress from "@mui/material/LinearProgress";
 
 const TInput = ({ t, setTikets, index, tickets }) => {
-  console.log(tickets);
   const [er, setEr] = useState(false);
   const [find, setFind] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -103,7 +102,6 @@ function SInput({
 
   useEffect(() => {
     if (values.textmask.length === 7) {
-      console.log(values.textmask);
       let l = false;
       tickets.forEach((t) => {
         if (t.v === values.textmask.replace(/\s/g, "")) {
