@@ -27,7 +27,11 @@ const Event = ({ el, setBilet, bilet }) => {
             <div className="pbt_r_b_item">
               <img src="./assets/images/icons/clock1.svg" alt="" />
 
-              <p>{el.proceed} ч.</p>
+              {el.type === "2" ? (
+                <p>{el.proceed} ч.</p>
+              ) : (
+                <p>{el.proceed.split(",")[0]}</p>
+              )}
             </div>
             {el.type === "2" ? (
               <>
@@ -85,10 +89,10 @@ const Event = ({ el, setBilet, bilet }) => {
                 <button
                   className="btn_link chose"
                   onClick={() => {
-                    setBilet(el);
+                    setBilet({ ...el, selectTime: el.proceed.split(",")[1] });
                   }}
                 >
-                  Выбрать
+                  {el.proceed.split(",")[1]}
                 </button>
               )}
             </div>
