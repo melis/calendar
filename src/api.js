@@ -1,8 +1,8 @@
 import axios from "axios";
 import { getMonth, getYear } from "date-fns";
 class Api {
-  url = "https://tickets.laplandzap.ru";
-  // url = ".";
+  // url = "https://tickets.laplandzap.ru";
+  url = ".";
   baseUrl = "http://laplandzap.ru";
 
   async getPrice() {
@@ -100,7 +100,7 @@ class Api {
   async chekTickets(tickets) {
     try {
       const { data } = await axios.post(
-        `${this.url}/crm/api/?method=check_tickets`,
+        `${this.url}/crm/api/?method=check_tickets&type_product=2`,
         {
           tickets,
         }
