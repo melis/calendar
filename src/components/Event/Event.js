@@ -90,7 +90,11 @@ const Event = ({ el, setBilet, bilet }) => {
                 ))
               ) : (
                 <button
-                  className="btn_link chose"
+                  // className="btn_link chose"
+
+                  className={`btn border_line ${
+                    bilet?.id === el.id ? "active" : ""
+                  }`}
                   onClick={() => {
                     setBilet({ ...el, selectTime: el.proceed.split(",")[1] });
                   }}
