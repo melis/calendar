@@ -80,8 +80,8 @@ const App = () => {
                           <td>{price ? price.base : ""}</td>
                           <td>{price ? price.child : ""}</td>
                           <td>
-                            {price && Number(price.base) > 0
-                              ? price.base
+                            {price && Number(price.pref) > 0
+                              ? price.pref
                               : "Бесплатно"}
                           </td>
                         </tr>
