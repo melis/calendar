@@ -77,11 +77,11 @@ const App = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>{price ? price.base : ""}</td>
-                          <td>{price ? price.child : ""}</td>
+                          <td>{price ? price.base + " р." : ""}</td>
+                          <td>{price ? price.child + " р." : ""}</td>
                           <td>
                             {price && Number(price.pref) > 0
-                              ? price.pref
+                              ? price.pref + " р."
                               : "Бесплатно"}
                           </td>
                         </tr>
