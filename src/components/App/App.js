@@ -5,8 +5,17 @@ const App = () => {
   const [show, setShow] = useState(0);
   const [chek1, setChek1] = useState(false);
   const [chek2, setChek2] = useState(false);
+  const [price, setPrice] = useState(null);
 
   useEffect(() => {
+    mApi.getPrice().then((data) => {
+      setPrice({
+        base: data.price_base,
+        child: data.price_child,
+        pref: data.price_pref,
+      });
+    });
+
     setTimeout(() => {
       setChek1(true);
       setChek2(true);
@@ -68,9 +77,13 @@ const App = () => {
                       </thead>
                       <tbody>
                         <tr>
-                          <td>400 р.</td>
-                          <td>450 р.</td>
-                          <td>Бесплатно.</td>
+                          <td>{price ? price.base : ""}</td>
+                          <td>{price ? price.child : ""}</td>
+                          <td>
+                            {price && Number(price.base) > 0
+                              ? price.base
+                              : "Бесплатно"}
+                          </td>
                         </tr>
                       </tbody>
                     </table>
