@@ -21,7 +21,7 @@ const App = () => {
   const [after, setAfter] = useState();
   const [err, setErr] = useState(null);
   const [price, setPrice] = useState({ base: 450, child: 400, pref: 0 });
-  const [freeVisit, setFreeVisit] = useState(true);
+  const [freeVisit, setFreeVisit] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -140,7 +140,7 @@ const App = () => {
                     />
                   </span>
                   <input
-                    disabled={freeVisit}
+                    disabled={!freeVisit}
                     className="form-check-input"
                     type="checkbox"
                     value={self}
