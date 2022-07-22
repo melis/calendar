@@ -528,6 +528,9 @@ section.allert .content_block {
   box-shadow: none;
   margin: 0 15px 0 0;
 }
+.form-check-input:disabled {
+  border-color: gray;
+}
 
 .form-check-input:hover {
   border: 2px solid #d76729;
@@ -535,6 +538,7 @@ section.allert .content_block {
 
 .form-check-input:focus {
   border: 2px solid #007db5;
+
   outline: 0;
   box-shadow: none;
 }
@@ -1741,4 +1745,8 @@ button:focus {
 }
 .p_link a {
   color: #007db5;
+}
+
+.pbt_bl p {
+  display: none !important;
 }

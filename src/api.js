@@ -1,8 +1,8 @@
 import axios from "axios";
 import { getMonth, getYear } from "date-fns";
 class Api {
-  // url = "https://tickets.laplandzap.ru";
-  url = ".";
+  url = "https://tickets.laplandzap.ru";
+  // url = ".";
   baseUrl = "http://laplandzap.ru";
 
   async getPrice() {
@@ -11,6 +11,20 @@ class Api {
         `${this.url}/crm/api/?method=get_product_independent`
       );
       return data;
+    } catch (e) {
+      return {
+        error: e,
+      };
+    }
+  }
+
+  async checkFreeVisit() {
+    try {
+      const { data } = await axios.get(
+        `${this.url}/crm/api/?method=get_product_independent_visit`
+      );
+
+      return data.status;
     } catch (e) {
       return {
         error: e,

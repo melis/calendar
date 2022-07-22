@@ -1,11 +1,13 @@
 import * as React from "react";
 import Badge from "@mui/material/Badge";
 import TextField from "@mui/material/TextField";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
-import LocalizationProvider from "@mui/lab/LocalizationProvider";
-import PickersDay from "@mui/lab/PickersDay";
-import DatePicker from "@mui/lab/DatePicker";
-import CalendarPickerSkeleton from "@mui/lab/CalendarPickerSkeleton";
+import AdapterDateFns from "@material-ui/lab/AdapterDateFns";
+import LocalizationProvider from "@material-ui/lab/LocalizationProvider";
+import PickersDay from "@material-ui/lab/PickersDay";
+import DatePicker from "@material-ui/lab/DatePicker";
+// import CalendarPickerSkeleton from "@material-ui/lab/CalendarPickerSkeleton";
+// import CalendarPickerSkeleton from "@mui/x-date-pickers/CalendarPickerSkeleton";
+// import { CalendarPickerSkeleton } from "@mui/x-date-pickers";
 import ruLocale from "date-fns/locale/ru";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -256,7 +258,7 @@ const Calendar = ({
           onMonthChange={handleMonthChange}
           shouldDisableDate={disableDays}
           renderInput={(params) => <TextField {...params} />}
-          renderLoading={() => <CalendarPickerSkeleton />}
+          renderLoading={() => <>{/* <CalendarPickerSkeleton /> */}</>}
           renderDay={renderDay}
           showToolbar
         />

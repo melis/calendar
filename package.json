@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/react": "latest",
-    "@emotion/styled": "latest",
-    "@mui/core": "latest",
-    "@mui/lab": "latest",
-    "@mui/material": "latest",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
+    "@material-ui/core": "5.0.0-alpha.24",
+    "@material-ui/lab": "5.0.0-alpha.24",
+    "@mui/material": "^5.9.1",
     "axios": "^0.24.0",
-    "date-fns": "latest",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
+    "date-fns": "2.17.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
     "react-hook-form": "^7.20.5",
     "react-router-dom": "^6.0.0",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
