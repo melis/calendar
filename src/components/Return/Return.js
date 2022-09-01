@@ -30,7 +30,7 @@ function Return() {
         fio: x.receiver,
         phone: x.phone,
         email: x.email,
-        date_buy_ticket: x.date,
+        date_buy_ticket: date,
         summ_return: x.return_summ,
         bank_name: x.bank_name,
         bank_bik: x.bank_bik,
