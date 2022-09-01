@@ -13,13 +13,13 @@ function Return() {
     formState: { errors },
     handleSubmit,
   } = useForm({ mode: "onChange" });
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(null);
   const [reason, setReason] = useState({ id: 0, name: "Выберите из списка" });
   const [tickets, setTickets] = useState([{ id: 0, v: "" }]);
   const [loading, setLoading] = useState(false);
   const [after, setAfter] = useState();
   const reasRef = useRef();
-  console.log(tickets);
+  console.log(date);
 
   const onSubmit = (x) => {
     if (reason.id > 0) {

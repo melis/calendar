@@ -29,9 +29,7 @@ class Api {
       );
       return data;
     } catch (e) {
-      return {
-        error: e,
-      };
+      return { data: [] };
     }
   }
 
